@@ -1,0 +1,1375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson Template</title>
+  <style>
+    :root {
+      --surface: #f4f6fb;
+      --surface-elevated: rgba(255, 255, 255, 0.82);
+      --ink: #0f172a;
+      --ink-muted: #64748b;
+      --accent: #3157df;
+      --accent-soft: rgba(49, 87, 223, 0.12);
+      --lesson-deep: #4a1260;
+      --lesson-mid: #5c1878;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --shadow-soft: 0 24px 64px rgba(15, 23, 42, 0.08);
+      --shadow-lift: 0 32px 80px rgba(15, 23, 42, 0.14);
+      --shadow-slide: 0 28px 70px rgba(15, 23, 42, 0.22);
+      --glass: rgba(255, 255, 255, 0.72);
+      --glass-border: rgba(255, 255, 255, 0.55);
+      --space-1: 8px;
+      --space-2: 12px;
+      --space-3: 16px;
+      --space-4: 24px;
+      --space-5: 32px;
+      --space-6: 48px;
+      --lesson-content-max: 1120px;
+      --lesson-page-max: 1680px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(49, 87, 223, 0.07), transparent 34%),
+        radial-gradient(circle at 88% 92%, rgba(84, 21, 109, 0.06), transparent 30%),
+        linear-gradient(180deg, #f8faff 0%, var(--surface) 100%);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .lesson-page {
+      display: grid;
+      width: 100%;
+      max-width: var(--lesson-page-max);
+      height: 100vh;
+      min-height: 0;
+      margin-inline: auto;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+      gap: var(--space-4);
+      padding: clamp(20px, 2.8vw, 32px);
+    }
+
+    .lesson-card,
+    .avatar-card,
+    .chat-card {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .lesson-card {
+      display: grid;
+      min-width: 0;
+      min-height: 0;
+      justify-items: center;
+      grid-template-rows: auto minmax(0, 1fr);
+      padding: clamp(28px, 3.6vw, 44px);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.1), transparent 42%),
+        linear-gradient(165deg, var(--lesson-mid) 0%, var(--lesson-deep) 100%);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .lesson-stage {
+      display: grid;
+      width: 100%;
+      min-height: 0;
+      justify-items: center;
+      grid-template-rows: minmax(0, 1fr) auto;
+      position: relative;
+    }
+
+    .lesson-start {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      padding: var(--space-4);
+      background: rgba(42, 10, 56, 0.58);
+      backdrop-filter: blur(14px);
+    }
+
+    .lesson-start.is-hidden {
+      display: none;
+    }
+
+    .lesson-start-card {
+      width: min(420px, 100%);
+      padding: clamp(28px, 4vw, 36px);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      color: #ffffff;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.24);
+    }
+
+    .lesson-start-card p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .lesson-start-eyebrow {
+      margin-bottom: 10px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lesson-start-card h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+
+    .lesson-start-copy {
+      margin-top: 12px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.98rem;
+    }
+
+    .start-lesson-button {
+      margin-top: 24px;
+      min-width: 220px;
+      min-height: 56px;
+      padding: 0 28px;
+      border: 0;
+      border-radius: 999px;
+      color: var(--lesson-deep);
+      background: #ffffff;
+      cursor: pointer;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.2);
+      transition:
+        transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 200ms ease;
+    }
+
+    .start-lesson-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.24);
+    }
+
+    .start-lesson-button:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .start-lesson-button:focus-visible {
+      outline: 3px solid rgba(255, 255, 255, 0.72);
+      outline-offset: 3px;
+    }
+
+    .lesson-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      width: 100%;
+      max-width: var(--lesson-content-max);
+      margin-bottom: var(--space-2);
+    }
+
+    .back-link,
+    .slide-number {
+      border-radius: 999px;
+      color: var(--lesson-deep);
+      background: rgba(255, 255, 255, 0.94);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .back-link {
+      padding: 10px 16px;
+      font-size: 0.84rem;
+      text-decoration: none;
+    }
+
+    .back-link:hover,
+    .back-link:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+      outline: none;
+    }
+
+    .slide-number {
+      padding: 9px 14px;
+      font-size: 0.84rem;
+    }
+
+    .slide-body {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      width: 100%;
+      min-height: 0;
+      padding: var(--space-2) 0 var(--space-4);
+      text-align: center;
+    }
+
+    .slide-frame {
+      display: grid;
+      width: 100%;
+      max-width: var(--lesson-content-max);
+      aspect-ratio: 16 / 9;
+      place-items: center;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      box-shadow: var(--shadow-slide);
+    }
+
+    .slide-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .slide-footer {
+      display: grid;
+      gap: var(--space-5);
+      width: 100%;
+      max-width: var(--lesson-content-max);
+      justify-items: center;
+      margin-top: var(--space-2);
+      padding-top: var(--space-5);
+    }
+
+    .slide-thumbs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      overflow-x: auto;
+      padding: 4px 2px 8px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.45) transparent;
+    }
+
+    .slide-thumb {
+      width: 88px;
+      height: 50px;
+      flex: 0 0 auto;
+      border: 2px solid rgba(255, 255, 255, 0.38);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      background-position: center;
+      background-size: cover;
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .slide-thumb:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.72);
+    }
+
+    .slide-thumb.active {
+      border-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+    }
+
+    .slide-thumb.is-locked {
+      opacity: 0.34;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .slide-thumb.is-locked:hover {
+      transform: none;
+      border-color: rgba(255, 255, 255, 0.38);
+    }
+
+    .slide-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      padding-bottom: var(--space-1);
+    }
+
+    .nav-arrow {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      color: var(--lesson-deep);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.88) 100%);
+      box-shadow:
+        0 14px 36px rgba(15, 23, 42, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      cursor: pointer;
+      font: inherit;
+      transition:
+        transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 200ms ease,
+        opacity 200ms ease;
+    }
+
+    .nav-arrow svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nav-arrow:hover:not(:disabled) {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow:
+        0 18px 44px rgba(15, 23, 42, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    }
+
+    .nav-arrow:active:not(:disabled) {
+      transform: translateY(0) scale(0.96);
+      box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    }
+
+    .nav-arrow:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .nav-arrow:focus-visible {
+      outline: 3px solid rgba(255, 255, 255, 0.72);
+      outline-offset: 3px;
+    }
+
+    .right-panel {
+      display: grid;
+      min-width: 0;
+      min-height: 0;
+      align-content: start;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: var(--space-3);
+    }
+
+    .tutor-module {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 2px;
+    }
+
+    .avatar-card {
+      display: grid;
+      width: min(112px, 100%);
+      aspect-ratio: 1;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.58));
+      box-shadow:
+        var(--shadow-soft),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+    }
+
+    .avatar-card img {
+      width: 82%;
+      height: 82%;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+
+    .avatar-card.is-speaking {
+      animation: avatar-speak 1.15s ease-in-out infinite;
+    }
+
+    @keyframes avatar-speak {
+      0%,
+      100% {
+        box-shadow:
+          var(--shadow-soft),
+          inset 0 1px 0 rgba(255, 255, 255, 0.92),
+          0 0 0 0 rgba(49, 87, 223, 0.18);
+      }
+
+      50% {
+        box-shadow:
+          var(--shadow-soft),
+          inset 0 1px 0 rgba(255, 255, 255, 0.92),
+          0 0 0 10px rgba(49, 87, 223, 0);
+      }
+    }
+
+    .chat-card {
+      display: grid;
+      min-height: 0;
+      grid-template-rows: auto auto minmax(0, 1fr) auto;
+      padding: clamp(18px, 2.4vw, 22px);
+      color: var(--ink);
+      background: var(--surface-elevated);
+      backdrop-filter: blur(24px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .chat-card h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 1.28rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .chat-card p {
+      margin: 8px 0 0;
+      color: var(--ink-muted);
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
+    .chat-context {
+      margin-top: var(--space-2);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .chat-thread {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      min-height: 0;
+      margin-top: var(--space-3);
+      padding: var(--space-3);
+      border: 0;
+      border-radius: var(--radius-md);
+      background: rgba(248, 251, 255, 0.92);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      overflow-y: auto;
+      scrollbar-color: #93b4ff #e8eefc;
+      scrollbar-width: thin;
+    }
+
+    .chat-message {
+      max-width: 92%;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      line-height: 1.45;
+      font-size: 0.94rem;
+    }
+
+    .chat-message strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .chat-message.tutor {
+      align-self: flex-start;
+      color: var(--ink);
+      background: #ffffff;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+    }
+
+    .chat-message.user {
+      align-self: flex-end;
+      color: #ffffff;
+      background: linear-gradient(180deg, #3d63e8 0%, var(--accent) 100%);
+      box-shadow: 0 10px 24px rgba(49, 87, 223, 0.22);
+    }
+
+    .chat-message.tutor strong {
+      color: var(--accent);
+    }
+
+    .chat-message.user strong {
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .quiz-card {
+      display: grid;
+      gap: 10px;
+      align-self: stretch;
+      padding: 14px;
+      border: 0;
+      border-radius: var(--radius-sm);
+      background: #ffffff;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    }
+
+    .quiz-card strong {
+      color: var(--accent);
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .quiz-card p {
+      margin: 0;
+      color: #334155;
+      line-height: 1.45;
+    }
+
+    .quiz-card textarea {
+      width: 100%;
+      min-height: 86px;
+      padding: 12px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: var(--radius-sm);
+      color: var(--ink);
+      background: #fbfdff;
+      resize: vertical;
+      font: inherit;
+    }
+
+    .quiz-submit,
+    .send-button {
+      min-height: 42px;
+      padding: 0 16px;
+      border: 0;
+      border-radius: var(--radius-sm);
+      color: #ffffff;
+      background: linear-gradient(180deg, #3d63e8 0%, var(--accent) 100%);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(49, 87, 223, 0.2);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .quiz-submit {
+      width: max-content;
+    }
+
+    .quiz-submit:hover,
+    .send-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(49, 87, 223, 0.24);
+    }
+
+    .quiz-feedback {
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      color: #1e3a8a;
+      background: var(--accent-soft);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .chat-entry {
+      display: flex;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+
+    .chat-entry input {
+      min-width: 0;
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.96);
+      font: inherit;
+    }
+
+    .chat-entry input:focus-visible {
+      outline: 3px solid rgba(49, 87, 223, 0.18);
+      outline-offset: 1px;
+      border-color: rgba(49, 87, 223, 0.28);
+    }
+
+    @media (max-width: 900px) {
+      .lesson-page {
+        grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+        gap: var(--space-3);
+        padding: 18px;
+      }
+
+      .nav-arrow {
+        width: 58px;
+        height: 58px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      body {
+        overflow: auto;
+      }
+
+      .lesson-page {
+        height: auto;
+        min-height: 100vh;
+        grid-template-columns: 1fr;
+      }
+
+      .lesson-card {
+        min-height: 62vh;
+      }
+
+      .slide-body {
+        padding-bottom: var(--space-3);
+      }
+
+      .slide-footer {
+        padding-top: var(--space-4);
+        gap: var(--space-4);
+      }
+
+      .right-panel {
+        grid-template-rows: auto minmax(360px, auto);
+      }
+
+      .avatar-card {
+        width: min(120px, 100%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="lesson-page">
+    <section class="lesson-card" aria-label="Main lesson slide">
+      <header class="lesson-top">
+        <a class="back-link" href="student.html">Back</a>
+        <span class="slide-number" id="slide-count">Slide 1 of 12</span>
+      </header>
+
+      <div class="lesson-stage">
+        <div class="lesson-start" id="lesson-start">
+          <div class="lesson-start-card">
+            <p class="lesson-start-eyebrow">Citizenship lesson</p>
+            <h2>Rights and Responsibilities</h2>
+            <p class="lesson-start-copy" id="lesson-start-copy">Press start to begin. Nova will guide you through each slide.</p>
+            <button class="start-lesson-button" type="button" id="start-lesson">Start Lesson</button>
+          </div>
+        </div>
+
+        <article class="slide-body">
+          <div class="slide-frame">
+            <img id="slide-image" src="assets/slides/citizenship-rights/slide-01.png" alt="Rights and Responsibilities title slide">
+          </div>
+        </article>
+
+        <footer class="slide-footer">
+          <div class="slide-thumbs" id="slide-thumbs" aria-label="Slide thumbnails"></div>
+          <div class="slide-nav" aria-label="Slide navigation">
+            <button class="nav-arrow" type="button" id="prev-slide" aria-label="Previous slide">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+            </button>
+            <button class="nav-arrow" type="button" id="next-slide" aria-label="Next slide">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+            </button>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <aside class="right-panel" aria-label="Tutor and chat panel">
+      <div class="tutor-module">
+        <section class="avatar-card" id="avatar-card" aria-label="Nova avatar">
+          <img id="tutor-avatar" src="assets/tutors/nova.png" alt="Nova tutor avatar">
+        </section>
+      </div>
+
+      <section class="chat-card" id="chat-card" aria-label="Ask Nova chat">
+        <header>
+          <h2 id="chat-heading">Ask Nova</h2>
+          <p id="chat-subheading">Nova explains this lesson at Access level.</p>
+        </header>
+        <div class="chat-context" id="chat-context"></div>
+        <div class="chat-thread" id="chat-thread" aria-live="polite"></div>
+        <div class="chat-entry">
+          <input id="chat-input" type="text" placeholder="Ask Nova a question">
+          <button class="send-button" type="button" id="chat-send">Send</button>
+        </div>
+      </section>
+    </aside>
+  </main>
+  <audio id="slide-audio" preload="auto" hidden></audio>
+
+  <script src="assets/js/tutor-branding.js"></script>
+  <script>
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
+    const slides = [
+      {
+        title: "Rights and Responsibilities",
+        image: "assets/slides/citizenship-rights/slide-01.png",
+        audio: "assets/audio/slide-01.mp3",
+        summary: "This lesson is about citizenship, rights, and responsibilities.",
+        points: ["A right is something a person should have or be able to do.", "A responsibility is something a person should do to help keep things fair and safe."],
+        prompt: "By the end, you should understand that rights and responsibilities work together."
+      },
+      {
+        title: "Lesson Objectives",
+        image: "assets/slides/citizenship-rights/slide-02.png",
+        audio: "assets/audio/slide-02.mp3",
+        summary: "The lesson objectives are to understand rights and responsibilities, spot responsibilities in school and society, and reflect on personal behaviour.",
+        points: ["Understand what rights and responsibilities are.", "Identify responsibilities in school and society.", "Reflect on behaviour and choices."],
+        prompt: "A good goal is to give one example of a right and one example of a matching responsibility."
+      },
+      {
+        title: "Starter Question",
+        image: "assets/slides/citizenship-rights/slide-03.png",
+        audio: "assets/audio/slide-03.mp3",
+        summary: "The starter asks what rights every young person should have.",
+        points: ["Young people should have rights such as education, safety, respect, and being listened to.", "A right is not just something we want. It is something important for wellbeing and fairness."],
+        prompt: "Try naming one right and explaining why it matters."
+      },
+      {
+        title: "What Is A Right?",
+        image: "assets/slides/citizenship-rights/slide-04.png",
+        audio: "assets/audio/slide-04.mp3",
+        summary: "A right is something you are entitled to.",
+        points: ["Examples include the right to education.", "Examples include the right to feel safe.", "Examples include the right to be respected."],
+        prompt: "Think of a right as something people should receive so they can learn, be safe, and be treated fairly."
+      },
+      {
+        title: "What Is A Responsibility?",
+        image: "assets/slides/citizenship-rights/slide-05.png",
+        summary: "A responsibility is something you are expected to do because your choices affect yourself and other people.",
+        points: ["Following rules is a responsibility.", "Respecting others is a responsibility.", "Taking responsibility for actions means being honest about choices.", "Being accountable means accepting consequences and trying to improve."],
+        prompt: "A simple way to remember it: rights are what we should have, responsibilities are what we should do."
+      },
+      {
+        title: "Rights Vs Responsibilities",
+        image: "assets/slides/citizenship-rights/slide-06.png",
+        summary: "Rights and responsibilities are connected.",
+        points: ["If students have the right to education, they also have the responsibility to follow rules so everyone can learn.", "If students have the right to feel safe, they also have the responsibility to respect others."],
+        prompt: "Match each right with a responsibility that protects it."
+      },
+      {
+        title: "Why Do Schools Have Rules?",
+        image: "assets/slides/citizenship-rights/slide-07.png",
+        summary: "Schools have rules to keep learning safe, fair, and organised.",
+        points: ["Without rules, learning can be disrupted.", "Rules should be fair and clear.", "Consequences exist to help people understand choices and repair harm."],
+        prompt: "Ask yourself: what would happen to learning if nobody followed rules?"
+      },
+      {
+        title: "Scenario Discussion",
+        image: "assets/slides/citizenship-rights/slide-08.png",
+        summary: "The scenario is about a student refusing instructions and disrupting learning.",
+        points: ["The student is affected because they may miss learning.", "Other students are affected because their lesson is interrupted.", "The teacher is affected because they need to manage the situation.", "A better choice could be asking for help, taking a reset, or following the instruction first and discussing it later."],
+        prompt: "Think about who is affected, what the consequence is, and what could be done differently."
+      },
+      {
+        title: "Positive Responsibilities",
+        image: "assets/slides/citizenship-rights/slide-09.png",
+        summary: "Positive responsibilities are actions that help the community.",
+        points: ["Helping others shows responsibility.", "Respecting staff helps school feel safe and fair.", "Supporting peers helps everyone feel included.", "Looking after the environment shows care for shared spaces."],
+        prompt: "Pick one positive responsibility you could practise today."
+      },
+      {
+        title: "Reflection Task",
+        image: "assets/slides/citizenship-rights/slide-10.png",
+        summary: "The reflection asks which responsibility is most important and why.",
+        points: ["Choose one responsibility.", "Explain why it matters.", "Give an example of what it looks like in real life."],
+        prompt: "A strong answer uses because and an example."
+      },
+      {
+        title: "Class Discussion",
+        image: "assets/slides/citizenship-rights/slide-11.png",
+        summary: "The class discussion asks what makes a responsible person.",
+        points: ["A responsible person thinks about how their choices affect others.", "They try to be fair, respectful, honest, and accountable.", "They do not need to be perfect, but they should try to repair mistakes."],
+        prompt: "Try finishing this sentence: A responsible person is someone who..."
+      },
+      {
+        title: "Key Message",
+        image: "assets/slides/citizenship-rights/slide-12.png",
+        summary: "The key message is that rights and responsibilities work together.",
+        points: ["Rights help protect people.", "Responsibilities help protect everyone else's rights too.", "Good citizenship means understanding both."],
+        prompt: "Remember: if I want my rights respected, I should also respect other people's rights."
+      }
+    ];
+
+    const slideQuizzes = [
+      {
+        question: "In your own words, what do rights and responsibilities mean?",
+        sample: "Rights are things people should have. Responsibilities are things people should do to keep things fair and safe.",
+        keywords: ["right", "responsibilit", "fair", "safe"]
+      },
+      {
+        question: "Name one lesson objective and explain why it matters.",
+        sample: "One objective is to understand rights and responsibilities because it helps us make better choices.",
+        keywords: ["understand", "right", "responsibilit", "choice"]
+      },
+      {
+        question: "What right should every young person have, and why?",
+        sample: "Every young person should have the right to feel safe because they need safety to learn and be themselves.",
+        keywords: ["safe", "education", "respect", "because"]
+      },
+      {
+        question: "Give one example of a right from the slide.",
+        sample: "One example is the right to education, which means young people should be able to learn.",
+        keywords: ["education", "safe", "respected", "right"]
+      },
+      {
+        question: "Give one example of a responsibility from the slide.",
+        sample: "One responsibility is respecting others, because our behaviour affects other people.",
+        keywords: ["rules", "respect", "actions", "choices"]
+      },
+      {
+        question: "Match one right with one responsibility that protects it.",
+        sample: "The right to feel safe links to the responsibility to respect others.",
+        keywords: ["safe", "respect", "education", "rules"]
+      },
+      {
+        question: "Why do schools have rules?",
+        sample: "Schools have rules so people can learn, stay safe, and be treated fairly.",
+        keywords: ["learn", "safe", "fair", "rules"]
+      },
+      {
+        question: "In the scenario, who is affected when learning is disrupted?",
+        sample: "The student, classmates, and teacher are affected because learning is interrupted.",
+        keywords: ["student", "classmates", "teacher", "learning"]
+      },
+      {
+        question: "Choose one positive responsibility and explain it.",
+        sample: "Helping others is a positive responsibility because it supports the school community.",
+        keywords: ["helping", "respecting", "supporting", "environment"]
+      },
+      {
+        question: "Which responsibility do you think is most important, and why?",
+        sample: "Respecting others is important because it helps everyone feel safe and ready to learn.",
+        keywords: ["respect", "important", "because", "safe"]
+      },
+      {
+        question: "What makes someone a responsible person?",
+        sample: "A responsible person thinks about how their choices affect others and tries to repair mistakes.",
+        keywords: ["choices", "others", "repair", "respect"]
+      },
+      {
+        question: "What is the key message of the lesson?",
+        sample: "Rights and responsibilities work together because our responsibilities help protect everyone's rights.",
+        keywords: ["rights", "responsibilit", "together", "protect"]
+      }
+    ];
+
+    let currentSlide = 0;
+    let quizId = 0;
+    let lessonStarted = false;
+    let activeAudioToken = 0;
+    let activeTutor = {
+      id: "nova",
+      name: "Nova",
+      level: "Access",
+      image: "assets/tutors/nova.png"
+    };
+    let chatHistory = [];
+    const audioCompleted = slides.map((slide) => !slide.audio);
+    const slideImage = document.querySelector("#slide-image");
+    const slideCount = document.querySelector("#slide-count");
+    const slideThumbs = document.querySelector("#slide-thumbs");
+    const avatarCard = document.querySelector("#avatar-card");
+    const slideAudio = document.querySelector("#slide-audio");
+    const prevButton = document.querySelector("#prev-slide");
+    const nextButton = document.querySelector("#next-slide");
+    const startOverlay = document.querySelector("#lesson-start");
+    const startLessonButton = document.querySelector("#start-lesson");
+    const chatContext = document.querySelector("#chat-context");
+    const chatThread = document.querySelector("#chat-thread");
+    const chatInput = document.querySelector("#chat-input");
+
+    function initChatHistory() {
+      chatHistory = slides.map((slide, index) => ([
+        {
+          type: "message",
+          sender: "tutor",
+          text: `You're on Slide ${index + 1}: ${slide.title}${/[?!.]$/.test(slide.title) ? "" : "."} ${slide.prompt} Use the buttons above or ask me a question.`
+        }
+      ]));
+    }
+
+    slides.forEach((slide, index) => {
+      const thumb = document.createElement("button");
+      thumb.className = "slide-thumb";
+      thumb.type = "button";
+      thumb.style.backgroundImage = `url("${slide.image}")`;
+      thumb.setAttribute("aria-label", `Go to slide ${index + 1}: ${slide.title}`);
+      thumb.addEventListener("click", () => {
+        goToSlide(index, true);
+      });
+      slideThumbs.appendChild(thumb);
+    });
+
+    const thumbs = document.querySelectorAll(".slide-thumb");
+
+    function setAvatarSpeaking(isSpeaking) {
+      avatarCard.classList.toggle("is-speaking", isSpeaking);
+    }
+
+    function stopSlideAudio() {
+      activeAudioToken += 1;
+      slideAudio.pause();
+      slideAudio.currentTime = 0;
+      setAvatarSpeaking(false);
+    }
+
+    function canAdvanceFromCurrent() {
+      return audioCompleted[currentSlide];
+    }
+
+    function shouldPlayOnArrival(slideIndex) {
+      return Boolean(slides[slideIndex]?.audio) && !audioCompleted[slideIndex];
+    }
+
+    function markSlideAudioComplete(slideIndex) {
+      if (!slides[slideIndex]?.audio) {
+        return;
+      }
+
+      audioCompleted[slideIndex] = true;
+      updateNavButtons();
+      updateThumbStates();
+    }
+
+    function playSlideAudio(slide, fromUserGesture) {
+      if (!slide?.audio || !fromUserGesture) {
+        return;
+      }
+
+      activeAudioToken += 1;
+      const token = activeAudioToken;
+      slideAudio.src = slide.audio;
+
+      const playAttempt = slideAudio.play();
+
+      if (!playAttempt) {
+        return;
+      }
+
+      playAttempt.catch(() => {
+        if (token === activeAudioToken) {
+          setAvatarSpeaking(false);
+        }
+      });
+    }
+
+    slideAudio.addEventListener("playing", () => {
+      setAvatarSpeaking(true);
+    });
+
+    slideAudio.addEventListener("pause", () => {
+      setAvatarSpeaking(false);
+    });
+
+    slideAudio.addEventListener("ended", () => {
+      setAvatarSpeaking(false);
+      markSlideAudioComplete(currentSlide);
+    });
+
+    function updateNavButtons() {
+      prevButton.disabled = !lessonStarted || currentSlide === 0;
+      nextButton.disabled = !lessonStarted || currentSlide === slides.length - 1 || !canAdvanceFromCurrent();
+    }
+
+    function updateThumbStates() {
+      if (!lessonStarted) {
+        thumbs.forEach((thumb) => {
+          thumb.disabled = true;
+          thumb.classList.add("is-locked");
+        });
+        return;
+      }
+
+      thumbs.forEach((thumb, index) => {
+        const isPast = index < currentSlide;
+        const isNext = index === currentSlide + 1;
+        const isLocked = index > currentSlide + 1 || (isNext && !canAdvanceFromCurrent());
+
+        thumb.disabled = !isPast && index !== currentSlide && isLocked;
+        thumb.classList.toggle("is-locked", thumb.disabled);
+      });
+    }
+
+    function renderSlide(fromUserGesture = false, previousSlideIndex = currentSlide) {
+      const isInitial = previousSlideIndex < 0;
+      const slide = slides[currentSlide];
+      const movedBack = !isInitial && currentSlide < previousSlideIndex;
+      const movedForward = !isInitial && currentSlide > previousSlideIndex;
+
+      slideImage.src = slide.image;
+      slideImage.alt = slide.title;
+      slideCount.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+      thumbs.forEach((thumb, index) => thumb.classList.toggle("active", index === currentSlide));
+
+      if (!slide.audio) {
+        audioCompleted[currentSlide] = true;
+      }
+
+      updateNavButtons();
+      updateThumbStates();
+      renderChat();
+
+      if (movedBack) {
+        stopSlideAudio();
+        return;
+      }
+
+      if ((movedForward || isInitial) && shouldPlayOnArrival(currentSlide) && fromUserGesture) {
+        playSlideAudio(slide, true);
+      }
+    }
+
+    function goToSlide(targetIndex, fromUserGesture = true) {
+      if (!lessonStarted) {
+        return;
+      }
+
+      if (targetIndex === currentSlide) {
+        return;
+      }
+
+      if (targetIndex < currentSlide) {
+        const previousSlideIndex = currentSlide;
+        currentSlide = targetIndex;
+        renderSlide(fromUserGesture, previousSlideIndex);
+        return;
+      }
+
+      if (!canAdvanceFromCurrent() || targetIndex !== currentSlide + 1) {
+        return;
+      }
+
+      const previousSlideIndex = currentSlide;
+      currentSlide = targetIndex;
+      renderSlide(fromUserGesture, previousSlideIndex);
+    }
+
+    function changeSlide(offset, fromUserGesture = true) {
+      goToSlide(currentSlide + offset, fromUserGesture);
+    }
+
+    function normalise(text) {
+      return text.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+    }
+
+    function getRelevantSlide(question) {
+      const query = normalise(question);
+      const keywordMap = [
+        { words: ["objective", "goal", "aim"], index: 1 },
+        { words: ["starter", "young person", "young people"], index: 2 },
+        { words: ["right", "entitled", "education", "safe", "respected"], index: 3 },
+        { words: ["responsibilit", "accountable", "accountability", "actions", "choices"], index: 4 },
+        { words: ["versus", "vs", "difference", "match", "together"], index: 5 },
+        { words: ["rules", "fair", "consequence", "consequences"], index: 6 },
+        { words: ["scenario", "disrupt", "refuses", "affected"], index: 7 },
+        { words: ["positive", "helping", "staff", "peers", "environment"], index: 8 },
+        { words: ["reflect", "reflection", "important", "why"], index: 9 },
+        { words: ["responsible person", "class discussion", "discussion"], index: 10 },
+        { words: ["key message", "remember", "citizenship"], index: 11 }
+      ];
+
+      const match = keywordMap.find((item) => item.words.some((word) => query.includes(word)));
+      return match ? slides[match.index] : slides[currentSlide];
+    }
+
+    function buildTutorResponse(question) {
+      const query = normalise(question);
+      const slide = getRelevantSlide(question);
+      const tipLabel = `${activeTutor.name} tip`;
+
+      if (!query) {
+        return "Type a question and I will help you with this Citizenship lesson.";
+      }
+
+      if (query.includes("important here") || query.includes("key point")) {
+        const current = slides[currentSlide];
+        return `The key point on this slide is: ${current.summary} ${tipLabel}: ${current.prompt}`;
+      }
+
+      if (query.includes("quiz") || query.includes("test me")) {
+        return `Quick check: ${slide.prompt} Can you answer that in one or two sentences?`;
+      }
+
+      if (query.includes("this slide") || query.includes("summarise") || query.includes("summarize") || query.includes("explain slide")) {
+        return `This slide is about ${slide.title}. ${slide.summary} In simple terms: ${slide.prompt}`;
+      }
+
+      if (query.includes("example")) {
+        return `Here is an example for ${slide.title}: ${slide.points[0]} ${slide.points[1] || ""}`;
+      }
+
+      if (query.includes("right") && query.includes("responsibilit")) {
+        return "A right is something people should have, like education or feeling safe. A responsibility is something people should do, like following rules or respecting others. They work together because my choices can affect other people's rights.";
+      }
+
+      if (query.includes("right")) {
+        return "A right is something you are entitled to. In this lesson, examples are the right to education, the right to feel safe, and the right to be respected.";
+      }
+
+      if (query.includes("responsibilit")) {
+        return "A responsibility is something you are expected to do. For example: following rules, respecting others, taking responsibility for your actions, and being accountable for your choices.";
+      }
+
+      if (query.includes("rules")) {
+        return "Schools have rules so people can learn, feel safe, and be treated fairly. Rules work best when they are clear, fair, and help everyone understand their responsibilities.";
+      }
+
+      if (query.includes("consequence")) {
+        return "A consequence is what happens after a choice. It should help someone understand what went wrong, repair the problem, and make a better choice next time.";
+      }
+
+      return `I think this links to ${slide.title}. ${slide.summary} ${tipLabel}: ${slide.prompt}`;
+    }
+
+    function createMessageElement(entry) {
+      const bubble = document.createElement("div");
+      bubble.className = `chat-message ${entry.sender}`;
+
+      const label = document.createElement("strong");
+      label.textContent = entry.sender === "user" ? "You" : activeTutor.name;
+
+      const text = document.createElement("span");
+      text.textContent = entry.text;
+
+      bubble.append(label, text);
+      return bubble;
+    }
+
+    function createQuizElement(entry) {
+      const card = document.createElement("div");
+      card.className = "quiz-card";
+
+      const label = document.createElement("strong");
+      label.textContent = `${activeTutor.name} quiz`;
+
+      const question = document.createElement("p");
+      question.textContent = entry.question;
+
+      card.append(label, question);
+
+      if (entry.submitted) {
+        const answer = document.createElement("p");
+        answer.textContent = `Your answer: ${entry.answer}`;
+
+        const feedback = document.createElement("div");
+        feedback.className = "quiz-feedback";
+        feedback.textContent = entry.feedback;
+
+        card.append(answer, feedback);
+        return card;
+      }
+
+      const textarea = document.createElement("textarea");
+      textarea.id = `quiz-answer-${entry.id}`;
+      textarea.placeholder = "Type your answer here";
+
+      const submit = document.createElement("button");
+      submit.className = "quiz-submit";
+      submit.type = "button";
+      submit.textContent = "Submit answer";
+      submit.addEventListener("click", () => submitQuiz(entry.id));
+
+      card.append(textarea, submit);
+      return card;
+    }
+
+    function renderChat(stickToBottom = false) {
+      const slide = slides[currentSlide];
+      chatContext.textContent = `Slide ${currentSlide + 1}: ${slide.title}`;
+
+      chatThread.innerHTML = "";
+      chatHistory[currentSlide].forEach((entry) => {
+        chatThread.appendChild(entry.type === "quiz" ? createQuizElement(entry) : createMessageElement(entry));
+      });
+
+      if (stickToBottom) {
+        chatThread.scrollTop = chatThread.scrollHeight;
+      } else {
+        chatThread.scrollTop = 0;
+      }
+    }
+
+    function addMessage(sender, text) {
+      chatHistory[currentSlide].push({
+        type: "message",
+        sender,
+        text
+      });
+    }
+
+    function startQuiz() {
+      const quiz = slideQuizzes[currentSlide];
+      chatHistory[currentSlide].push({
+        type: "quiz",
+        id: quizId,
+        question: quiz.question,
+        sample: quiz.sample,
+        keywords: quiz.keywords,
+        submitted: false,
+        answer: "",
+        feedback: ""
+      });
+      quizId += 1;
+    }
+
+    function evaluateQuizAnswer(answer, quiz) {
+      const cleanAnswer = normalise(answer);
+      const wordCount = cleanAnswer ? cleanAnswer.split(" ").length : 0;
+      const keywordHits = quiz.keywords.filter((keyword) => cleanAnswer.includes(keyword)).length;
+
+      if (wordCount < 5) {
+        return `Good start. Add a little more detail. For example: ${quiz.sample}`;
+      }
+
+      if (keywordHits >= 2) {
+        return "Nice work. You have linked your answer to the key idea from the slide. To improve it, add one clear example.";
+      }
+
+      if (keywordHits === 1) {
+        return `You're close. Try using one more key idea from the slide. Example answer: ${quiz.sample}`;
+      }
+
+      return `Try connecting your answer more closely to the slide. Example answer: ${quiz.sample}`;
+    }
+
+    function submitQuiz(id) {
+      const quizEntry = chatHistory[currentSlide].find((entry) => entry.type === "quiz" && entry.id === id);
+      const answerBox = document.querySelector(`#quiz-answer-${id}`);
+
+      if (!quizEntry || !answerBox) {
+        return;
+      }
+
+      const answer = answerBox.value.trim();
+
+      if (!answer) {
+        answerBox.focus();
+        return;
+      }
+
+      quizEntry.answer = answer;
+      quizEntry.feedback = evaluateQuizAnswer(answer, quizEntry);
+      quizEntry.submitted = true;
+      renderChat(true);
+    }
+
+    function sendChatMessage(promptText) {
+      const question = (promptText || chatInput.value).trim();
+
+      if (!question) {
+        return;
+      }
+
+      addMessage("user", question);
+
+      if (normalise(question).includes("quiz") || normalise(question).includes("test me")) {
+        startQuiz();
+      } else {
+        addMessage("tutor", buildTutorResponse(question));
+      }
+
+      chatInput.value = "";
+      renderChat(true);
+    }
+
+    function startLesson() {
+      if (lessonStarted) {
+        return;
+      }
+
+      lessonStarted = true;
+      startOverlay.classList.add("is-hidden");
+      updateNavButtons();
+      updateThumbStates();
+
+      if (shouldPlayOnArrival(currentSlide)) {
+        playSlideAudio(slides[currentSlide], true);
+        return;
+      }
+
+      audioCompleted[currentSlide] = true;
+      updateNavButtons();
+      updateThumbStates();
+    }
+
+    prevButton.addEventListener("click", () => changeSlide(-1));
+
+    nextButton.addEventListener("click", () => changeSlide(1));
+
+    startLessonButton.addEventListener("click", startLesson);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.target.closest("input, textarea, select")) {
+        return;
+      }
+
+      if (!lessonStarted && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        startLesson();
+        return;
+      }
+
+      if (!lessonStarted) {
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        changeSlide(-1);
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        changeSlide(1);
+      }
+    });
+
+    document.querySelector("#chat-send").addEventListener("click", () => sendChatMessage());
+
+    chatInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        sendChatMessage();
+      }
+    });
+
+    async function bootLessonPage() {
+      try {
+        const tutors = await EvoTutorBranding.loadTutorsConfig();
+        activeTutor = EvoTutorBranding.resolveActiveTutor(tutors);
+      } catch {
+        /* keep Nova fallback */
+      }
+
+      EvoTutorBranding.applyLessonBranding(activeTutor);
+      initChatHistory();
+      renderSlide(false, -1);
+    }
+
+    bootLessonPage();
+  </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+/**
+ * Premium student dashboard theme — glass depth, blue/gold Evolution palette.
+ * No 3D classroom; subtle elevation only.
+ */
+:root {
+  --evo-blue: #2563eb;
+  --evo-blue-dark: #1d4ed8;
+  --evo-blue-soft: rgba(37, 99, 235, 0.12);
+  --evo-gold: #c9a227;
+  --evo-gold-soft: rgba(201, 162, 39, 0.18);
+  --evo-gold-glow: rgba(251, 191, 36, 0.35);
+  --evo-ink: #07111f;
+  --evo-muted: #64748b;
+  --evo-glass: rgba(255, 255, 255, 0.72);
+  --evo-glass-border: rgba(255, 255, 255, 0.65);
+}
+
+body.student-premium {
+  overflow-x: hidden;
+  color: var(--evo-ink);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(37, 99, 235, 0.14), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(201, 162, 39, 0.08), transparent 50%),
+    linear-gradient(180deg, #f8fbff 0%, #eef4ff 48%, #f5f7fb 100%);
+}
+
+body.student-premium main {
+  perspective: none;
+}
+
+body.student-premium .page-header h1,
+body.student-premium .dashboard > h1 {
+  text-shadow: none;
+  background: linear-gradient(135deg, var(--evo-ink) 0%, var(--evo-blue-dark) 55%, #1e3a8a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.student-premium .page-header {
+  margin-bottom: 4px;
+}
+
+body.student-premium .panel {
+  border: 1px solid var(--evo-glass-border);
+  border-radius: 22px;
+  background: var(--evo-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 24px 60px rgba(37, 99, 235, 0.1),
+    0 8px 24px rgba(15, 23, 42, 0.06);
+  transform: none;
+  transition: box-shadow 0.25s ease;
+}
+
+body.student-premium .welcome-band {
+  width: 100%;
+  margin-bottom: 26px;
+  padding: 22px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(201, 162, 39, 0.06) 100%),
+    rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.08);
+  text-align: left;
+}
+
+body.student-premium .welcome-kicker {
+  margin: 0;
+  color: var(--evo-gold);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body.student-premium .welcome-title {
+  margin: 8px 0 0;
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+  letter-spacing: -0.02em;
+  color: var(--evo-ink);
+}
+
+body.student-premium .welcome-copy {
+  margin: 10px 0 0;
+  max-width: 560px;
+  color: var(--evo-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+body.student-premium .subjects-heading {
+  position: relative;
+  display: inline-block;
+}
+
+body.student-premium .subjects-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 36px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--evo-blue), var(--evo-gold));
+}
+
+body.student-premium .subject-card {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 36px rgba(37, 99, 235, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+body.student-premium .subject-card:hover,
+body.student-premium .subject-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(37, 99, 235, 0.28);
+  box-shadow: 0 20px 44px rgba(37, 99, 235, 0.14);
+}
+
+body.student-premium .subject-card.is-active {
+  border-color: rgba(201, 162, 39, 0.45);
+  background:
+    linear-gradient(145deg, rgba(37, 99, 235, 0.06) 0%, rgba(201, 162, 39, 0.08) 100%),
+    rgba(255, 255, 255, 0.88);
+  box-shadow:
+    0 0 0 1px rgba(201, 162, 39, 0.2),
+    0 18px 40px rgba(37, 99, 235, 0.12);
+}
+
+body.student-premium .subject-badge.is-active {
+  color: #1e3a2f;
+  background: linear-gradient(135deg, #fde68a 0%, var(--evo-gold) 100%);
+  box-shadow: 0 4px 12px var(--evo-gold-glow);
+}
+
+body.student-premium .tab-list {
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 16px 48px rgba(15, 23, 42, 0.12);
+  transform: none;
+}
+
+body.student-premium .tab.active {
+  background: linear-gradient(160deg, var(--evo-blue) 0%, var(--evo-blue-dark) 100%);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
+  transform: none;
+}
+
+body.student-premium .tab:not(.active):hover,
+body.student-premium .tab:not(.active):focus-visible {
+  transform: none;
+  background: var(--evo-blue-soft);
+}
+
+body.student-premium .quiz-button,
+body.student-premium .lesson-launch-button,
+body.student-premium .demo-progress-button {
+  background: linear-gradient(160deg, var(--evo-blue) 0%, var(--evo-blue-dark) 100%);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.28);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+body.student-premium .quiz-button:hover,
+body.student-premium .lesson-launch-button:hover,
+body.student-premium .demo-progress-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(37, 99, 235, 0.34);
+}
+
+body.student-premium .demo-session-card,
+body.student-premium .progress-demo-card,
+body.student-premium .tutor-card {
+  transform: none;
+}
+
+body.student-premium .demo-session-card {
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.08);
+}
+
+body.student-premium .demo-session-number {
+  color: var(--evo-blue-dark);
+  background: linear-gradient(135deg, var(--evo-blue-soft), var(--evo-gold-soft));
+  box-shadow: none;
+}
+
+body.student-premium .logout-button {
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.08);
+}
+
+body.student-premium .login-card {
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 24px 60px rgba(37, 99, 235, 0.12);
+  transform: none;
+}
+
+body.student-premium .demo-credentials {
+  border: 1px solid rgba(201, 162, 39, 0.22);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.04), rgba(201, 162, 39, 0.06));
+}
+
+body.student-premium .demo-credentials h2 {
+  color: var(--evo-blue-dark);
+}
+
+body.student-premium .submit-button {
+  background: linear-gradient(160deg, var(--evo-blue), var(--evo-blue-dark));
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
+}

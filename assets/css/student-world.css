@@ -1,0 +1,159 @@
+body.student-ui-3d {
+  overflow: hidden;
+  background: #0a1628;
+}
+
+#world-root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+#world-root canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#world-hud {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+#world-start-prompt,
+#world-interact-hint {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 18px;
+  border-radius: 14px;
+  color: #ffffff;
+  background: rgba(7, 17, 31, 0.72);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+#world-start-prompt {
+  top: 50%;
+  margin-top: 40px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+#world-interact-hint {
+  bottom: 120px;
+  display: none;
+}
+
+#world-interact-hint.is-visible {
+  display: block;
+}
+
+#world-crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.45);
+  display: none;
+}
+
+#world-crosshair.is-visible {
+  display: block;
+}
+
+#world-controls-help {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: #e2e8f0;
+  background: rgba(7, 17, 31, 0.55);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+#student-ui-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+#student-ui-layer.is-open {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+#student-ui-layer.is-open::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 17, 31, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+#student-ui-layer main {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 24px 24px 104px;
+}
+
+#student-ui-layer .bottom-tabs {
+  z-index: 2;
+}
+
+.world-explore-button {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 25;
+  padding: 10px 16px;
+  border: none;
+  border-top: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  color: #ffffff;
+  background: #2563eb;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 4px 0 #1d4ed8,
+    0 8px 20px rgba(37, 99, 235, 0.35);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: none;
+}
+
+.world-explore-button.is-visible {
+  display: inline-flex;
+}
+
+@media (max-width: 640px) {
+  #world-controls-help {
+    max-width: calc(100% - 32px);
+    font-size: 0.68rem;
+  }
+
+  #world-interact-hint {
+    bottom: 100px;
+    width: min(92%, 360px);
+  }
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evolution Platform</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: #07111f;
+      background:
+        linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+        #ffffff;
+      background-size: 42px 42px;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .login-screen {
+      width: min(520px, 100%);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 8vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 14px 0 0;
+      color: #64748b;
+      font-size: 1rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .login-button {
+      display: inline-flex;
+      width: min(280px, 100%);
+      min-height: 56px;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border: 1px solid #2563eb;
+      border-radius: 12px;
+      color: #ffffff;
+      background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 100%);
+      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.28);
+      font: inherit;
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .login-button:hover,
+    .login-button:focus-visible {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.38);
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="login-screen" aria-label="Evolution Platform login">
+      <h1>Evolution Platform</h1>
+      <p class="subtitle">Choose how you would like to sign in.</p>
+      <div class="actions">
+        <a class="login-button" href="login-staff.html">Staff Login</a>
+        <a class="login-button" href="login-student.html">Student Login</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

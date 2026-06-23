@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evolution Platform</title>
+  <link rel="stylesheet" href="assets/css/intro.css">
+</head>
+<body class="intro-body">
+  <main class="intro-screen" id="intro-screen" tabindex="-1" aria-label="Platform entrance">
+    <header class="intro-copy">
+      <h1>Evolution Platform</h1>
+      <p>Step through the open door to begin.</p>
+    </header>
+
+    <div class="threshold" aria-hidden="true">
+      <div class="door-frame">
+        <div class="doorway">
+          <div class="beyond"></div>
+        </div>
+        <div class="door door-left"></div>
+        <div class="door door-right"></div>
+        <div class="floor-line"></div>
+      </div>
+    </div>
+
+    <p class="enter-hint is-ready" id="enter-hint">
+      <kbd>Enter</kbd>
+      <span>Press Enter to enter the platform</span>
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      const screen = document.getElementById("intro-screen");
+      let leaving = false;
+
+      function enterPlatform() {
+        if (leaving) return;
+        leaving = true;
+        screen.classList.add("is-exiting");
+        window.setTimeout(function () {
+          window.location.href = "login.html";
+        }, 520);
+      }
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" && !event.repeat) {
+          event.preventDefault();
+          enterPlatform();
+        }
+      });
+
+      screen.focus();
+    })();
+  </script>
+</body>
+</html>

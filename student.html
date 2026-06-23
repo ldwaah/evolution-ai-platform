@@ -1,0 +1,3989 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: #07111f;
+      background:
+        linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+        #ffffff;
+      background-size: 42px 42px;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: 32px 24px 104px;
+    }
+
+    .dashboard {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .panel {
+      display: grid;
+      min-height: 360px;
+      place-items: center;
+      margin-top: 28px;
+      padding: 24px;
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 24px 70px rgba(37, 99, 235, 0.1);
+    }
+
+    .panel-content {
+      width: min(520px, 100%);
+    }
+
+    .panel-content.is-wide {
+      width: 100%;
+    }
+
+    .panel h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .panel p {
+      margin: 8px 0 0;
+      color: #64748b;
+    }
+
+    .tutor-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+      text-align: center;
+    }
+
+    .tutor-card {
+      display: grid;
+      min-height: clamp(164px, 22vw, 230px);
+      align-content: center;
+      justify-items: center;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 18px;
+      color: #ffffff;
+      background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 58%, #183a96 100%);
+      box-shadow: 0 16px 36px rgba(37, 99, 235, 0.2);
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .tutor-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 44px rgba(37, 99, 235, 0.28);
+    }
+
+    .tutor-card-header {
+      display: grid;
+      justify-items: center;
+      gap: 9px;
+      width: 100%;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      display: inline-grid;
+      width: 100%;
+      place-items: center;
+    }
+
+    .avatar-wrap::after {
+      content: attr(data-level);
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      z-index: 5;
+      padding: 7px 10px;
+      border-radius: 8px;
+      color: #ffffff;
+      background: #07111f;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+      font-size: 0.78rem;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(4px);
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      white-space: nowrap;
+    }
+
+    .avatar-wrap:hover::after,
+    .avatar-wrap:focus-visible::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .tutor-avatar {
+      display: grid;
+      width: 100%;
+      height: clamp(110px, 16vw, 178px);
+      flex: 0 0 auto;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 14px;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.95);
+      font-weight: 900;
+    }
+
+    .tutor-avatar.is-image {
+      border: 0;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+    }
+
+    .tutor-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      transform: none;
+    }
+
+    .tutor-avatar svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .tutor-card h3 {
+      margin: 0;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .quiz-action {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .quiz-action.is-prominent {
+      margin-top: 0;
+      margin-bottom: 22px;
+    }
+
+    .tutor-grid.is-quiz-gated {
+      opacity: 0.38;
+      pointer-events: none;
+      filter: grayscale(0.35);
+    }
+
+    .quiz-gate-message {
+      margin: 14px 0 0;
+      color: #64748b;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .tutor-panel-intro {
+      margin: 8px 0 0;
+      color: #64748b;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .quiz-button {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border: 0;
+      border-radius: 14px;
+      color: #ffffff;
+      background: #2563eb;
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.24);
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .quiz-button:hover,
+    .quiz-button:focus-visible {
+      background: #1d4ed8;
+      outline: 4px solid rgba(37, 99, 235, 0.18);
+      outline-offset: 3px;
+    }
+
+    .lesson-launch {
+      display: grid;
+      justify-items: center;
+      margin-top: 22px;
+    }
+
+    .lesson-launch-button {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 14px;
+      color: #ffffff;
+      background: #2563eb;
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.24);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .demo-sessions-section {
+      margin-top: 28px;
+      text-align: left;
+    }
+
+    .demo-sessions-heading {
+      margin: 0;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .demo-sessions-note {
+      margin: 8px 0 0;
+      color: #64748b;
+      font-size: 0.84rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .demo-sessions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .demo-session-card {
+      display: grid;
+      gap: 8px;
+      padding: 16px 14px;
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.96);
+      text-align: center;
+      cursor: default;
+      user-select: none;
+    }
+
+    .demo-session-number {
+      display: inline-flex;
+      min-width: 28px;
+      min-height: 28px;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      border-radius: 999px;
+      color: #2563eb;
+      background: rgba(37, 99, 235, 0.1);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .demo-session-card strong {
+      display: block;
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 960px) {
+      .demo-sessions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .demo-sessions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bottom-tabs {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 14px 16px;
+      background: transparent;
+    }
+
+    .tab-list {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 4px;
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      padding: 8px;
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.12);
+      backdrop-filter: blur(18px);
+    }
+
+    .tab {
+      display: inline-flex;
+      position: relative;
+      min-height: 56px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border: 0;
+      border-radius: 18px;
+      color: #64748b;
+      background: transparent;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .tab::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      z-index: 5;
+      padding: 7px 10px;
+      border-radius: 8px;
+      color: #ffffff;
+      background: #07111f;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+      font-size: 0.78rem;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(4px);
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      white-space: nowrap;
+    }
+
+    .tab.active,
+    .tab:hover,
+    .tab:focus-visible {
+      color: #2563eb;
+      background: rgba(37, 99, 235, 0.08);
+      outline: none;
+    }
+
+    .tab.active {
+      color: #ffffff;
+      background: #2563eb;
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.24);
+    }
+
+    .tab:hover::after,
+    .tab:focus-visible::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding: 24px 16px 96px;
+      }
+
+      .tab-list {
+        gap: 2px;
+        padding: 6px;
+      }
+
+      .tab {
+        min-height: 48px;
+        padding: 8px 4px;
+        font-size: 0.82rem;
+      }
+
+      .tutor-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .tutor-card {
+        min-height: 148px;
+        padding: 8px;
+      }
+
+      .tutor-card-header {
+        gap: 8px;
+      }
+
+      .tutor-avatar {
+        height: 92px;
+        border-radius: 12px;
+      }
+
+      .tutor-card h3 {
+        font-size: 0.92rem;
+      }
+
+    }
+
+    @media (min-width: 641px) and (max-width: 920px) {
+      .tutor-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .panel-content.is-progress {
+      width: 100%;
+      text-align: left;
+    }
+
+    .progress-intro {
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      padding: 28px 12px;
+      text-align: center;
+    }
+
+    .progress-intro h2 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .progress-intro p {
+      margin: 0;
+      max-width: 420px;
+      color: #64748b;
+    }
+
+    .demo-progress-button {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 8px;
+      padding: 14px 28px;
+      border: 0;
+      border-radius: 14px;
+      color: #ffffff;
+      background: #2563eb;
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.24);
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .demo-progress-button:hover,
+    .demo-progress-button:focus-visible {
+      transform: translateY(-2px);
+      background: #1d4ed8;
+      box-shadow: 0 20px 44px rgba(37, 99, 235, 0.28);
+      outline: 4px solid rgba(37, 99, 235, 0.18);
+      outline-offset: 3px;
+    }
+
+    .progress-demo {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-soft: rgba(37, 99, 235, 0.12);
+      --ink: #07111f;
+      --muted: #64748b;
+      display: grid;
+      gap: 18px;
+      color: var(--ink);
+      animation: progress-fade-in 0.45s ease;
+    }
+
+    @keyframes progress-fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .progress-demo-card {
+      padding: 20px;
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.1);
+    }
+
+    .progress-hero {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent 42%),
+        linear-gradient(160deg, rgba(37, 99, 235, 0.06) 0%, rgba(255, 255, 255, 0.96) 100%);
+      box-shadow: 0 20px 48px rgba(37, 99, 235, 0.12);
+    }
+
+    .progress-ring {
+      --size: 96px;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--primary-dark);
+      background:
+        radial-gradient(circle, #ffffff 58%, transparent 59%),
+        conic-gradient(var(--primary) 0 68%, rgba(37, 99, 235, 0.12) 68% 100%);
+      box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.1);
+    }
+
+    .progress-ring strong {
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .progress-hero-copy h3 {
+      margin: 0;
+      font-size: clamp(1.35rem, 3vw, 1.8rem);
+      letter-spacing: -0.03em;
+    }
+
+    .progress-hero-copy p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .progress-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .progress-pill {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .progress-pill.is-gold {
+      color: #ffffff;
+      background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 100%);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+    }
+
+    .progress-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .progress-span-2 {
+      grid-column: 1 / -1;
+    }
+
+    .progress-section-title {
+      margin: 0 0 14px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .journey-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .journey-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(37, 99, 235, 0.05);
+      border: 1px solid rgba(37, 99, 235, 0.08);
+    }
+
+    .journey-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.2);
+    }
+
+    .journey-item.is-complete .journey-dot {
+      background: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-soft);
+    }
+
+    .journey-item.is-active .journey-dot {
+      background: var(--primary-dark);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
+    }
+
+    .journey-item.is-locked {
+      opacity: 0.48;
+    }
+
+    .journey-item strong {
+      display: block;
+      font-size: 0.94rem;
+    }
+
+    .journey-item span {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .journey-status {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .journey-item.is-complete .journey-status {
+      color: var(--primary);
+    }
+
+    .journey-item.is-active .journey-status {
+      color: var(--primary-dark);
+    }
+
+    .confidence-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .confidence-row {
+      display: grid;
+      gap: 8px;
+    }
+
+    .confidence-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .confidence-bar {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .confidence-fill {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+      animation: confidence-grow 0.9s ease forwards;
+    }
+
+    @keyframes confidence-grow {
+      to {
+        width: var(--value);
+      }
+    }
+
+    .nova-feedback {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .nova-feedback img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.12);
+    }
+
+    .nova-feedback p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .badge-chip span {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      background: var(--primary);
+      font-size: 0.72rem;
+    }
+
+    .time-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .time-stat {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(37, 99, 235, 0.06);
+      border: 1px solid rgba(37, 99, 235, 0.1);
+      text-align: center;
+    }
+
+    .time-stat strong {
+      display: block;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+      color: var(--primary);
+    }
+
+    .time-stat span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .insight-card {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(37, 99, 235, 0.05);
+      border: 1px solid rgba(37, 99, 235, 0.1);
+    }
+
+    .insight-card h4 {
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .insight-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .insight-card.is-practice h4 {
+      color: var(--muted);
+    }
+
+    .insight-card p.placeholder-copy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+
+    .progress-summary-line {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .progress-summary-line strong {
+      color: var(--ink);
+    }
+
+    .journey-empty {
+      padding: 24px 16px;
+      border-radius: 14px;
+      background: rgba(37, 99, 235, 0.04);
+      border: 1px dashed rgba(37, 99, 235, 0.18);
+      text-align: center;
+    }
+
+    .journey-empty p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .achievements-empty {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .tutor-comment-block {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .tutor-comment-block img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.12);
+    }
+
+    .tutor-comment-block p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .next-step-button {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      width: 100%;
+      min-height: 62px;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 22px;
+      border: 0;
+      border-radius: 14px;
+      color: #ffffff;
+      background: #2563eb;
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.24);
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 900;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .next-step-button:hover,
+    .next-step-button:focus-visible {
+      transform: translateY(-2px);
+      background: #1d4ed8;
+      box-shadow: 0 20px 44px rgba(37, 99, 235, 0.28);
+      outline: 4px solid rgba(37, 99, 235, 0.18);
+      outline-offset: 3px;
+    }
+
+    .next-step-button small {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    @media (max-width: 820px) {
+      .progress-grid,
+      .insight-grid,
+      .time-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .progress-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+      }
+
+      .progress-hero-meta {
+        justify-content: center;
+      }
+    }
+
+    .panel-content.is-home,
+    .panel-content.is-subjects {
+      width: 100%;
+      text-align: left;
+    }
+
+    .subjects-section {
+      margin-top: 22px;
+    }
+
+    .subjects-heading {
+      margin: 0 0 14px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #2563eb;
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .subject-card {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.08);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+
+    .subject-card:hover,
+    .subject-card:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(37, 99, 235, 0.32);
+      box-shadow: 0 18px 44px rgba(37, 99, 235, 0.14);
+      outline: none;
+    }
+
+    .subject-card.is-active {
+      border-color: #2563eb;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent 48%),
+        linear-gradient(160deg, rgba(37, 99, 235, 0.06) 0%, rgba(255, 255, 255, 0.98) 100%);
+      box-shadow: 0 18px 44px rgba(37, 99, 235, 0.16);
+    }
+
+    .subject-card.is-coming-soon {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .subject-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .subject-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border-radius: 12px;
+      color: #ffffff;
+      background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 100%);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.22);
+    }
+
+    .subject-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .subject-badge {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.1);
+      color: #2563eb;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .subject-badge.is-active {
+      color: #ffffff;
+      background: #2563eb;
+    }
+
+    .subject-card.is-minimal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 0;
+      padding: 20px 22px;
+    }
+
+    .subject-card.is-minimal h3 {
+      margin: 0;
+      font-size: 1.12rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subject-card.is-minimal .subject-card-top {
+      display: none;
+    }
+
+    .syllabus-accordion {
+      display: grid;
+      gap: 10px;
+    }
+
+    .unit-accordion {
+      overflow: hidden;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .unit-accordion.is-open {
+      border-color: rgba(37, 99, 235, 0.22);
+      box-shadow: 0 10px 28px rgba(37, 99, 235, 0.08);
+    }
+
+    .unit-accordion-trigger {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+      width: 100%;
+      padding: 14px 16px;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .unit-accordion-trigger:hover,
+    .unit-accordion-trigger:focus-visible {
+      background: rgba(37, 99, 235, 0.04);
+      outline: none;
+    }
+
+    .unit-accordion-trigger strong {
+      display: block;
+      font-size: 0.96rem;
+    }
+
+    .unit-accordion-trigger span {
+      display: block;
+      margin-top: 4px;
+      color: #64748b;
+      font-size: 0.78rem;
+      line-height: 1.4;
+    }
+
+    .unit-progress-pill {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+      font-size: 0.72rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .unit-chevron {
+      width: 20px;
+      height: 20px;
+      color: #64748b;
+      transition: transform 0.2s ease;
+    }
+
+    .unit-accordion.is-open .unit-chevron {
+      transform: rotate(180deg);
+      color: #2563eb;
+    }
+
+    .unit-accordion-panel {
+      display: none;
+      padding: 0 16px 14px;
+    }
+
+    .unit-accordion.is-open .unit-accordion-panel {
+      display: block;
+    }
+
+    .lesson-slot-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .lesson-slot {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.04);
+      border: 1px solid rgba(37, 99, 235, 0.08);
+    }
+
+    .lesson-slot.is-complete .lesson-slot-dot {
+      background: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+    }
+
+    .lesson-slot.is-active .lesson-slot-dot {
+      background: #1d4ed8;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .lesson-slot.is-planned {
+      opacity: 0.72;
+    }
+
+    .lesson-slot-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.22);
+    }
+
+    .lesson-slot strong {
+      font-size: 0.86rem;
+    }
+
+    .lesson-slot-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+
+    .lesson-slot.is-complete .lesson-slot-tag {
+      color: #2563eb;
+    }
+
+    .lesson-slot.is-active .lesson-slot-tag {
+      color: #1d4ed8;
+    }
+
+    .progress-subject-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.1);
+      color: #2563eb;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      .subject-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .unit-accordion-trigger {
+        grid-template-columns: 1fr auto;
+      }
+
+      .unit-progress-pill {
+        grid-column: 1 / -1;
+        justify-self: start;
+      }
+    }
+
+    .tutor-assignment {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .assigned-tutor-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      background: rgba(37, 99, 235, 0.08);
+      color: #07111f;
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .assigned-tutor-badge img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.12);
+    }
+
+    .assigned-tutor-badge span {
+      color: #2563eb;
+    }
+
+    .retake-quiz-link {
+      padding: 8px 14px;
+      border: 0;
+      border-radius: 999px;
+      color: #2563eb;
+      background: transparent;
+      font: inherit;
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+
+    .retake-quiz-link:hover,
+    .retake-quiz-link:focus-visible {
+      color: #1d4ed8;
+      outline: none;
+    }
+
+    .tutor-card.is-assigned {
+      box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.95),
+        0 0 0 6px rgba(37, 99, 235, 0.55),
+        0 20px 44px rgba(37, 99, 235, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .tutor-card.is-assigned::after {
+      content: "Your tutor";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      color: #2563eb;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .tutor-card.is-suggested::after {
+      content: "Suggested";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(254, 243, 199, 0.92);
+      color: #92400e;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .tutor-card {
+      position: relative;
+    }
+
+    .quiz-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(7, 17, 31, 0.42);
+      backdrop-filter: blur(10px);
+    }
+
+    .quiz-modal-overlay.is-open {
+      display: flex;
+    }
+
+    .quiz-modal {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      width: min(640px, 100%);
+      max-height: min(92vh, 760px);
+      overflow: hidden;
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      border-radius: 22px;
+      background: #ffffff;
+      box-shadow: 0 28px 80px rgba(37, 99, 235, 0.22);
+      animation: quiz-modal-in 0.28s ease;
+    }
+
+    @keyframes quiz-modal-in {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .quiz-modal-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+      padding: 20px 20px 12px;
+    }
+
+    .quiz-modal-intro {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .quiz-progress-label {
+      margin: 4px 0 0;
+      color: #07111f;
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .quiz-progress-track {
+      height: 6px;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.12);
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+      transition: width 0.35s ease;
+    }
+
+    .quiz-close-button {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 0;
+      border-radius: 12px;
+      color: #64748b;
+      background: rgba(37, 99, 235, 0.06);
+      cursor: pointer;
+      transition: color 0.16s ease, background 0.16s ease;
+    }
+
+    .quiz-close-button:hover,
+    .quiz-close-button:focus-visible {
+      color: #2563eb;
+      background: rgba(37, 99, 235, 0.12);
+      outline: none;
+    }
+
+    .quiz-close-button svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+    }
+
+    .quiz-modal-body {
+      overflow-y: auto;
+      padding: 8px 20px 20px;
+    }
+
+    .quiz-step {
+      animation: quiz-step-in 0.32s ease;
+    }
+
+    @keyframes quiz-step-in {
+      from {
+        opacity: 0;
+        transform: translateX(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .quiz-topic-tag {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .quiz-question-text {
+      margin: 0 0 20px;
+      font-size: clamp(1.25rem, 4vw, 1.65rem);
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+
+    .quiz-options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .quiz-option {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: center;
+      width: 100%;
+      padding: 16px 18px;
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.96);
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+      font: inherit;
+    }
+
+    .quiz-option:hover,
+    .quiz-option:focus-visible {
+      border-color: rgba(37, 99, 235, 0.32);
+      background: rgba(37, 99, 235, 0.04);
+      outline: none;
+    }
+
+    .quiz-option.is-selected {
+      border-color: #2563eb;
+      background: rgba(37, 99, 235, 0.08);
+      box-shadow: 0 10px 28px rgba(37, 99, 235, 0.12);
+    }
+
+    .quiz-option-marker {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 50%;
+      border: 2px solid rgba(37, 99, 235, 0.22);
+      color: #2563eb;
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .quiz-option.is-selected .quiz-option-marker {
+      border-color: #2563eb;
+      color: #ffffff;
+      background: #2563eb;
+    }
+
+    .quiz-option-label {
+      color: #07111f;
+      font-size: 0.96rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .quiz-result {
+      display: grid;
+      justify-items: center;
+      gap: 16px;
+      padding: 8px 0 12px;
+      text-align: center;
+      animation: quiz-step-in 0.32s ease;
+    }
+
+    .quiz-result-avatar {
+      width: 120px;
+      height: 120px;
+      padding: 10px;
+      border-radius: 20px;
+      background: rgba(37, 99, 235, 0.06);
+      box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.12);
+    }
+
+    .quiz-result-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .quiz-result-level {
+      margin: 0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      color: #2563eb;
+      background: rgba(37, 99, 235, 0.1);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .quiz-result h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+    }
+
+    .quiz-result p {
+      margin: 0;
+      max-width: 420px;
+      color: #64748b;
+      line-height: 1.55;
+    }
+
+    .quiz-result-score {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #07111f;
+    }
+
+    .quiz-modal-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 20px 20px;
+      border-top: 1px solid rgba(37, 99, 235, 0.1);
+    }
+
+    .quiz-nav-button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.16s ease, color 0.16s ease, opacity 0.16s ease;
+    }
+
+    .quiz-nav-button.is-back {
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      color: #2563eb;
+      background: transparent;
+    }
+
+    .quiz-nav-button.is-back:hover:not(:disabled),
+    .quiz-nav-button.is-back:focus-visible:not(:disabled) {
+      background: rgba(37, 99, 235, 0.06);
+      outline: none;
+    }
+
+    .quiz-nav-button.is-next {
+      margin-left: auto;
+      border: 0;
+      color: #ffffff;
+      background: #2563eb;
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.22);
+    }
+
+    .quiz-nav-button.is-next:hover:not(:disabled),
+    .quiz-nav-button.is-next:focus-visible:not(:disabled) {
+      background: #1d4ed8;
+      outline: 4px solid rgba(37, 99, 235, 0.18);
+      outline-offset: 2px;
+    }
+
+    .quiz-nav-button:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+    }
+
+    .quiz-start-screen {
+      display: grid;
+      gap: 14px;
+      padding: 8px 0 12px;
+      animation: quiz-step-in 0.32s ease;
+    }
+
+    .quiz-start-screen p {
+      margin: 0;
+      color: #64748b;
+      line-height: 1.55;
+    }
+
+    .quiz-stage-label {
+      display: inline-flex;
+      margin-bottom: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.12);
+      color: #1d4ed8;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .quiz-question-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .quiz-command-badge {
+      display: inline-flex;
+      padding: 5px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(37, 99, 235, 0.28);
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: capitalize;
+    }
+
+    .quiz-response-hint {
+      margin: 0 0 12px;
+      color: #64748b;
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .quiz-short-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.96);
+      color: #07111f;
+      font: inherit;
+      font-size: 0.92rem;
+    }
+
+    .quiz-short-input:focus {
+      outline: 4px solid rgba(37, 99, 235, 0.14);
+      border-color: #2563eb;
+    }
+
+    .quiz-result-breakdown {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      background: rgba(37, 99, 235, 0.04);
+      text-align: left;
+    }
+
+    .quiz-result-breakdown h4 {
+      margin: 0 0 8px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #1d4ed8;
+    }
+
+    .quiz-result-breakdown p {
+      margin: 0 0 6px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .quiz-result-breakdown p:last-child {
+      margin-bottom: 0;
+    }
+
+    .quiz-result-ao {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.82rem;
+      color: #64748b;
+    }
+
+    .quiz-scenario-box {
+      margin-bottom: 18px;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      background: rgba(37, 99, 235, 0.04);
+      color: #07111f;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .quiz-textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 14px 16px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.96);
+      color: #07111f;
+      font: inherit;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      resize: vertical;
+    }
+
+    .quiz-textarea:focus {
+      outline: 4px solid rgba(37, 99, 235, 0.14);
+      border-color: #2563eb;
+    }
+
+    .quiz-char-hint {
+      margin-top: 8px;
+      color: #64748b;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .quiz-char-hint.is-valid {
+      color: #2563eb;
+    }
+
+    .quiz-field-error {
+      margin-top: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.22);
+      background: rgba(255, 255, 255, 0.96);
+      color: #1e40af;
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .quiz-field-error[hidden] {
+      display: none;
+    }
+
+    .pending-confirmation-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 179, 8, 0.35);
+      background: rgba(254, 243, 199, 0.5);
+      color: #92400e;
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .suggested-tutor-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      background: rgba(37, 99, 235, 0.08);
+      color: #07111f;
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .suggested-tutor-badge img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .suggested-tutor-badge span {
+      color: #2563eb;
+    }
+
+    @media (max-width: 640px) {
+      .quiz-modal {
+        max-height: 94vh;
+        border-radius: 18px;
+      }
+
+      .quiz-modal-header,
+      .quiz-modal-body,
+      .quiz-modal-footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .quiz-option {
+        padding: 14px;
+      }
+
+      .quiz-modal-footer {
+        flex-direction: column;
+      }
+
+      .quiz-nav-button.is-next {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .quiz-nav-button.is-back {
+        width: 100%;
+      }
+    }
+
+    .page-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: min(1080px, 100%);
+      margin: 0 auto 8px;
+    }
+
+    .logout-button {
+      padding: 8px 14px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 999px;
+      color: #64748b;
+      background: rgba(255, 255, 255, 0.96);
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: color 0.16s ease, border-color 0.16s ease;
+    }
+
+    .logout-button:hover,
+    .logout-button:focus-visible {
+      color: #2563eb;
+      border-color: rgba(37, 99, 235, 0.32);
+      outline: none;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/student-premium.css">
+  <script src="assets/js/auth.js"></script>
+  <script>EvoAuth.requireAuth("student");</script>
+</head>
+<body class="student-premium">
+  <main>
+    <section class="dashboard" aria-label="Student dashboard">
+      <div class="page-header">
+        <h1>Student Dashboard</h1>
+        <button class="logout-button" type="button" id="student-logout">Log out</button>
+      </div>
+      <div class="panel">
+        <div class="panel-content">
+          <h2 id="panel-title">Home</h2>
+          <p id="panel-copy">Student home content area.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-tabs" aria-label="Student dashboard tabs">
+    <div class="tab-list">
+      <button class="tab active" type="button" aria-label="Home" title="Home" data-label="Home" data-title="Home" data-copy="Choose a subject to begin your learning journey." data-view="home">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 11 12 3l9 8"></path>
+          <path d="M5 10v10h14V10"></path>
+          <path d="M9 20v-6h6v6"></path>
+        </svg>
+      </button>
+      <button class="tab" type="button" aria-label="Tutor" title="Tutor" data-label="Tutor" data-title="Choose Your Tutor" data-copy="Complete the citizenship placement assessment first so we can suggest the right tutor for you." data-view="tutors">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12a8 8 0 0 1-8 8H7l-4 3v-5a8 8 0 1 1 18-6z"></path>
+          <path d="M8 11h8"></path>
+          <path d="M8 15h5"></path>
+        </svg>
+      </button>
+      <button class="tab" type="button" aria-label="Lessons" title="Lessons" data-label="Lessons" data-title="Lessons" data-copy="Student lessons content area." data-view="lesson">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"></path>
+          <path d="M4 5.5v16"></path>
+          <path d="M8 7h8"></path>
+        </svg>
+      </button>
+      <button class="tab" type="button" aria-label="Progress" title="Progress" data-label="Progress" data-title="Progress" data-copy="Track your Citizenship learning journey." data-view="progress">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 19V5"></path>
+          <path d="M4 19h16"></path>
+          <path d="m7 15 4-4 3 3 5-7"></path>
+        </svg>
+      </button>
+      <button class="tab" type="button" aria-label="Profile" title="Profile" data-label="Profile" data-title="Profile" data-copy="Profile content area.">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4 21a8 8 0 0 1 16 0"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="quiz-modal-overlay" id="tutor-quiz-overlay" hidden aria-hidden="true">
+    <div class="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-modal-title">
+      <header class="quiz-modal-header">
+        <div>
+          <p class="quiz-modal-intro">GCSE Citizenship placement assessment</p>
+          <p class="quiz-progress-label" id="quiz-progress-label">Getting started</p>
+          <div class="quiz-progress-track" aria-hidden="true">
+            <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+          </div>
+        </div>
+        <button class="quiz-close-button" type="button" id="quiz-close-button" aria-label="Close quiz">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+      </header>
+      <div class="quiz-modal-body" id="quiz-modal-body"></div>
+      <footer class="quiz-modal-footer" id="quiz-modal-footer">
+        <button class="quiz-nav-button is-back" type="button" id="quiz-back-button" disabled>Back</button>
+        <button class="quiz-nav-button is-next" type="button" id="quiz-next-button" disabled>Next</button>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const panelContent = document.querySelector(".panel-content");
+
+    const tutors = [
+      // Keep in sync with assets/data/tutors.json
+      {
+        name: "Nova",
+        image: "assets/tutors/nova.png",
+        level: "Access",
+        support: "Gentle help when you want to take things one small step at a time."
+      },
+      {
+        name: "Milo",
+        image: "assets/tutors/milo.png",
+        level: "Foundation",
+        support: "Straightforward tasks that show you exactly what to do next."
+      },
+      {
+        name: "Ava",
+        image: "assets/tutors/ava.png",
+        level: "Building Confidence",
+        support: "Encouragement when you know some things but do not feel sure yet."
+      },
+      {
+        name: "Kai",
+        image: "assets/tutors/kai.png",
+        level: "Developing",
+        support: "Clear rules, simple steps, and calm practice."
+      },
+      {
+        name: "Zara",
+        image: "assets/tutors/zara.png",
+        level: "Secure",
+        support: "Stronger challenges with clear examples of what good work looks like."
+      },
+      {
+        name: "Theo",
+        image: "assets/tutors/theo.png",
+        level: "Confident",
+        support: "Lively questions that help you think deeper and explain your ideas."
+      },
+      {
+        name: "Nia",
+        image: "assets/tutors/nia.png",
+        level: "Exam Ready",
+        support: "Exam tips, mark scheme thinking, and ways to get more marks."
+      },
+      {
+        name: "Elias",
+        image: "assets/tutors/elias.png",
+        level: "Advanced",
+        support: "Big ideas, careful thinking, and more detailed discussion."
+      },
+      {
+        name: "Athena",
+        image: "assets/tutors/athena.png",
+        level: "Mastery",
+        support: "High-level coaching when you are ready to produce your best work."
+      }
+    ];
+
+    /*
+     * ASSESSMENT FRAMEWORK — keep in sync with dashboard.html
+     * Maps GCSE Citizenship Assessment Objectives (AOs) to tutor bands and quiz stages.
+     * Full grade/command-word/AO detail: TUTOR-LEVEL-FRAMEWORK.md
+     * Machine-readable bands: assets/data/tutor-level-framework.json
+     * AO1: Knowledge and understanding of citizenship concepts, terms, and issues
+     * AO2: Application of knowledge to citizenship issues and contexts
+     * AO3: Analysis, evaluation, and reflection on citizenship issues and actions
+     */
+    const assessmentFramework = {
+      // Tutor bands map to GCSE Citizenship requirements (AOs, command words, mark-scheme behaviours).
+      // Full profiles: TUTOR-LEVEL-FRAMEWORK.md | JSON v2: assets/data/tutor-level-framework.json | Tables: CITIZENSHIP-ASSESSMENT-MAP.md
+      frameworkRef: "TUTOR-LEVEL-FRAMEWORK.md",
+      frameworkData: "assets/data/tutor-level-framework.json",
+      assessmentMapRef: "CITIZENSHIP-ASSESSMENT-MAP.md",
+      stages: ["diagnostic", "baseline", "unit_checkpoint", "summative"],
+      stageLabels: {
+        diagnostic: "Diagnostic placement (command-word screening plus written tasks)",
+        baseline: "Baseline tutor band after teacher confirmation",
+        unit_checkpoint: "Unit checkpoint quizzes (roadmap)",
+        summative: "End-of-unit or mock assessments (roadmap)"
+      },
+      tutorBands: [
+        // markScheme: point ID only | scaffolding: maximum | see JSON markSchemeBehaviours per level
+        { tutorIndex: 0, tutorName: "Nova", level: "Access", gradeRange: [1], commandWords: ["identify", "name", "state", "give"], aoFocus: "AO1 entry recall with heavy scaffolding", combinedRange: "0.0-0.9", scaffolding: "maximum" },
+        { tutorIndex: 1, tutorName: "Milo", level: "Foundation", gradeRange: [1, 2], commandWords: ["identify", "name", "define", "describe"], aoFocus: "AO1 core terms with guided examples", combinedRange: "1.0-1.9", scaffolding: "high" },
+        { tutorIndex: 2, tutorName: "Ava", level: "Building Confidence", gradeRange: [2, 3], commandWords: ["describe", "outline", "explain", "apply"], aoFocus: "AO1 plus early AO2 in familiar contexts", combinedRange: "2.0-2.9", scaffolding: "medium_high" },
+        { tutorIndex: 3, tutorName: "Kai", level: "Developing", gradeRange: [3, 4], commandWords: ["explain", "apply", "describe", "outline", "consider"], aoFocus: "AO1 and AO2 with structured practice", combinedRange: "3.0-3.9", scaffolding: "medium" },
+        { tutorIndex: 4, tutorName: "Zara", level: "Secure", gradeRange: [4, 5], commandWords: ["explain", "apply", "discuss", "compare", "consider"], aoFocus: "AO2 application with AO1 reinforcement", combinedRange: "4.0-4.9", scaffolding: "medium_low" },
+        { tutorIndex: 5, tutorName: "Theo", level: "Confident", gradeRange: [5, 6], commandWords: ["explain", "apply", "analyse", "discuss", "evaluate"], aoFocus: "AO2 and AO3 in scenario responses", combinedRange: "5.0-5.9", scaffolding: "low_medium" },
+        { tutorIndex: 6, tutorName: "Nia", level: "Exam Ready", gradeRange: [6, 7], commandWords: ["explain", "apply", "analyse", "discuss", "evaluate", "assess", "justify"], aoFocus: "AO2 and AO3 with mark-scheme thinking", combinedRange: "6.0-6.9", scaffolding: "low" },
+        { tutorIndex: 7, tutorName: "Elias", level: "Advanced", gradeRange: [7, 8], commandWords: ["analyse", "discuss", "debate", "evaluate", "assess", "justify", "conclude"], aoFocus: "AO3 evaluation plus strong AO2", combinedRange: "7.0-7.9", scaffolding: "minimal" },
+        { tutorIndex: 8, tutorName: "Athena", level: "Mastery", gradeRange: [8, 9], commandWords: ["analyse", "discuss", "debate", "evaluate", "assess", "argue", "justify", "conclude"], aoFocus: "AO3 synthesis across themes", combinedRange: "8.0-10.0", scaffolding: "none" }
+      ],
+      placementPolicy: {
+        requiresTeacherConfirm: true,
+        diagnosticStage1Weight: 0.6,
+        diagnosticStage2Weight: 0.4,
+        studentLabel: "Suggested tutor",
+        staffLabel: "Confirmed tutor band",
+        notClaimed: "This is not an official exam grade, certification, or DfE or Ofsted approval."
+      },
+      aoDefinitions: {
+        AO1: "Knowledge and understanding of citizenship concepts, terms, and issues",
+        AO2: "Applying knowledge to citizenship issues and contexts",
+        AO3: "Analysing, evaluating, and reflecting on citizenship issues and actions"
+      }
+    };
+
+    function tutorIcon(type) {
+      const icons = {
+        spark: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2v5"></path>
+            <path d="M12 17v5"></path>
+            <path d="M4.2 4.2 7.8 7.8"></path>
+            <path d="M16.2 16.2l3.6 3.6"></path>
+            <path d="M2 12h5"></path>
+            <path d="M17 12h5"></path>
+            <path d="M4.2 19.8 7.8 16.2"></path>
+            <path d="M16.2 7.8l3.6-3.6"></path>
+          </svg>
+        `,
+        steps: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 18h5v-5h5V8h6"></path>
+            <path d="M4 22h16"></path>
+            <path d="M4 18v4"></path>
+            <path d="M9 13v9"></path>
+            <path d="M14 8v14"></path>
+            <path d="M20 8v14"></path>
+          </svg>
+        `,
+        tool: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14.7 6.3a4 4 0 0 0-5 5L3 18v3h3l6.7-6.7a4 4 0 0 0 5-5l-2.8 2.8-2.9-2.9z"></path>
+          </svg>
+        `,
+        heart: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.8 5.6a5.1 5.1 0 0 0-7.2 0L12 7.2l-1.6-1.6a5.1 5.1 0 1 0-7.2 7.2L12 21l8.8-8.2a5.1 5.1 0 0 0 0-7.2z"></path>
+          </svg>
+        `,
+        bolt: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13 2 4 14h7l-1 8 10-13h-7z"></path>
+          </svg>
+        `,
+        shield: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-5"></path>
+          </svg>
+        `,
+        target: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <circle cx="12" cy="12" r="5"></circle>
+            <circle cx="12" cy="12" r="1"></circle>
+          </svg>
+        `,
+        network: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="6" cy="6" r="3"></circle>
+            <circle cx="18" cy="6" r="3"></circle>
+            <circle cx="12" cy="18" r="3"></circle>
+            <path d="M8.5 7.5 10.5 15.5"></path>
+            <path d="M15.5 7.5 13.5 15.5"></path>
+            <path d="M9 6h6"></path>
+          </svg>
+        `,
+        crown: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m3 8 5 4 4-7 4 7 5-4-2 11H5z"></path>
+            <path d="M5 19h14"></path>
+          </svg>
+        `
+      };
+
+      return icons[type] || icons.spark;
+    }
+
+    function tutorAvatar(tutor) {
+      if (tutor.image) {
+        return `
+          <div class="avatar-wrap" data-level="${tutor.level}" tabindex="0" aria-label="${tutor.name}, ${tutor.level}">
+            <div class="tutor-avatar is-image"><img src="${tutor.image}" alt=""></div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="avatar-wrap" data-level="${tutor.level}" tabindex="0" aria-label="${tutor.name}, ${tutor.level}">
+          <div class="tutor-avatar">${tutorIcon(tutor.icon)}</div>
+        </div>
+      `;
+    }
+
+    /*
+     * SUBJECT FRAMEWORK
+     * -----------------
+     * To add a new subject (e.g. Maths):
+     * 1. Add an entry to `subjects` below (set available: true when ready).
+     * 2. Create a syllabus object like `citizenshipSyllabus` with a units array.
+     * 3. Each unit needs: id, title, specArea, description, lessons[].
+     * 4. Each lesson slot: id, title, status ("complete" | "active" | "planned" | "locked"), hasContent (optional).
+     * 5. Add a progress block to `subjectProgress` keyed by subject id.
+     * 6. Home and Progress panels will pick up available subjects automatically.
+     */
+
+    const subjects = {
+      citizenship: {
+        id: "citizenship",
+        name: "Citizenship",
+        qualification: "GCSE",
+        description: "Rights, democracy, law, and active citizenship, structured for GCSE study.",
+        available: true,
+        icon: "shield"
+      }
+      // maths: { id: "maths", name: "Maths", qualification: "GCSE", description: "...", available: false, icon: "calculator" }
+    };
+
+    const citizenshipSyllabus = {
+      subjectId: "citizenship",
+      examBoard: "GCSE Citizenship Studies",
+      units: [
+        {
+          id: "rights-responsibilities",
+          title: "Rights & Responsibilities",
+          specArea: "Life in modern Britain · Rights & responsibilities",
+          description: "Understanding rights, responsibilities, and how they shape school and community life.",
+          lessons: [
+            { id: "rr-01", title: "Rights and Responsibilities", status: "complete", hasContent: true },
+            { id: "rr-02", title: "Lesson Objectives", status: "complete", hasContent: true },
+            { id: "rr-03", title: "Starter Question", status: "complete", hasContent: true },
+            { id: "rr-04", title: "What Is A Right?", status: "complete", hasContent: true },
+            { id: "rr-05", title: "What Is A Responsibility?", status: "complete", hasContent: true },
+            { id: "rr-06", title: "Rights Vs Responsibilities", status: "complete", hasContent: true },
+            { id: "rr-07", title: "Why Do Schools Have Rules?", status: "complete", hasContent: true },
+            { id: "rr-08", title: "Scenario Discussion", status: "complete", hasContent: true },
+            { id: "rr-09", title: "Positive Responsibilities", status: "active", hasContent: true },
+            { id: "rr-10", title: "Reflection Task", status: "locked", hasContent: true },
+            { id: "rr-11", title: "Class Discussion", status: "locked", hasContent: true },
+            { id: "rr-12", title: "Key Message", status: "locked", hasContent: true }
+          ]
+        },
+        {
+          id: "life-modern-britain",
+          title: "Life in Modern Britain",
+          specArea: "Theme A · Living together in the UK",
+          description: "Identity, diversity, community cohesion, and the shared values of life in the UK.",
+          lessons: [
+            { id: "lmb-01", title: "What Makes Up Modern Britain?", status: "planned" },
+            { id: "lmb-02", title: "Identity and Diversity", status: "planned" },
+            { id: "lmb-03", title: "Community and Belonging", status: "planned" },
+            { id: "lmb-04", title: "Shared Values and Mutual Respect", status: "planned" },
+            { id: "lmb-05", title: "Extremism and Challenging Prejudice", status: "planned" }
+          ]
+        },
+        {
+          id: "democracy-participation",
+          title: "Democracy & Political Participation",
+          specArea: "Theme B · Democracy at work in the UK",
+          description: "How democracy works, voting, political parties, and making your voice heard.",
+          lessons: [
+            { id: "dp-01", title: "What Is Democracy?", status: "planned" },
+            { id: "dp-02", title: "Parliament, Government & Monarchy", status: "planned" },
+            { id: "dp-03", title: "Elections and Voting Systems", status: "planned" },
+            { id: "dp-04", title: "Political Parties and Pressure Groups", status: "planned" },
+            { id: "dp-05", title: "Media Influence and Fake News", status: "planned" },
+            { id: "dp-06", title: "Local and Devolved Government", status: "planned" }
+          ]
+        },
+        {
+          id: "law-justice",
+          title: "Law & Justice",
+          specArea: "Theme C · Law and justice",
+          description: "How laws are made, the justice system, and the role of courts and police.",
+          lessons: [
+            { id: "lj-01", title: "Why Do We Have Laws?", status: "planned" },
+            { id: "lj-02", title: "How Laws Are Made", status: "planned" },
+            { id: "lj-03", title: "The Criminal Justice System", status: "planned" },
+            { id: "lj-04", title: "Youth Justice and Sentencing", status: "planned" },
+            { id: "lj-05", title: "Rights in the Justice System", status: "planned" }
+          ]
+        },
+        {
+          id: "active-citizenship",
+          title: "Active Citizenship",
+          specArea: "Theme D · Taking citizenship action",
+          description: "Planning, carrying out, and evaluating a citizenship action project.",
+          lessons: [
+            { id: "ac-01", title: "What Is Active Citizenship?", status: "planned" },
+            { id: "ac-02", title: "Identifying a Citizenship Issue", status: "planned" },
+            { id: "ac-03", title: "Planning Your Action", status: "planned" },
+            { id: "ac-04", title: "Carrying Out Your Action", status: "planned" },
+            { id: "ac-05", title: "Evaluating Impact and Reflection", status: "planned" }
+          ]
+        }
+      ]
+    };
+
+    const subjectSyllabi = {
+      citizenship: citizenshipSyllabus
+    };
+
+    const subjectProgress = {
+      citizenship: {
+        percent: 0,
+        lessonsCompleted: 0,
+        learningTime: { thisWeek: "0h 0m", streak: "0 days" },
+        confidence: [
+          { topic: "Rights & Responsibilities", value: 0 },
+          { topic: "Life in Modern Britain", value: 0 },
+          { topic: "Democracy & Participation", value: 0 },
+          { topic: "Law & Justice", value: 0 },
+          { topic: "Active Citizenship", value: 0 }
+        ],
+        tutorComment: null,
+        strength: null,
+        weakness: null,
+        badges: []
+      }
+    };
+
+    let activeSubjectId = "citizenship";
+
+    function getAvailableSubjects() {
+      return Object.values(subjects).filter((subject) => subject.available);
+    }
+
+    function getActiveSubject() {
+      return subjects[activeSubjectId] || getAvailableSubjects()[0];
+    }
+
+    function getActiveSyllabus() {
+      return subjectSyllabi[activeSubjectId];
+    }
+
+    function getActiveProgress() {
+      return subjectProgress[activeSubjectId];
+    }
+
+    function countSyllabusLessons(syllabus) {
+      const all = syllabus.units.flatMap((unit) => unit.lessons);
+      const completed = all.filter((lesson) => lesson.status === "complete").length;
+      return { completed, total: all.length };
+    }
+
+    function countUnitProgress(unit) {
+      const completed = unit.lessons.filter((lesson) => lesson.status === "complete").length;
+      return { completed, total: unit.lessons.length };
+    }
+
+    function subjectIcon(type) {
+      const icons = {
+        shield: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-5"></path>
+          </svg>
+        `,
+        calculator: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+            <path d="M8 6h8"></path>
+            <path d="M8 10h.01"></path>
+            <path d="M12 10h.01"></path>
+            <path d="M16 10h.01"></path>
+            <path d="M8 14h.01"></path>
+            <path d="M12 14h.01"></path>
+            <path d="M16 14h.01"></path>
+            <path d="M8 18h8"></path>
+          </svg>
+        `
+      };
+
+      return icons[type] || icons.shield;
+    }
+
+    function lessonSlotTag(status) {
+      if (status === "complete") return "Done";
+      if (status === "active") return "In progress";
+      if (status === "locked") return "Locked";
+      return "Placeholder";
+    }
+
+    function getTutorCommentContent() {
+      const progress = getActiveProgress();
+      const assignment = loadAssignedTutor();
+      const suggestion = loadSuggestedTutor();
+
+      if (progress && progress.tutorComment) {
+        const tutor = assignment ? tutors[assignment.tutorIndex] : null;
+        return {
+          text: progress.tutorComment,
+          tutorName: assignment ? assignment.tutorName : "Your tutor",
+          image: tutor ? tutor.image : null
+        };
+      }
+
+      if (assignment) {
+        const tutor = tutors[assignment.tutorIndex];
+        return {
+          text: "Your tutor will share feedback here as you complete lessons.",
+          tutorName: assignment.tutorName,
+          image: tutor ? tutor.image : null
+        };
+      }
+
+      if (suggestion) {
+        return {
+          text: "Your teacher is reviewing your tutor placement. Feedback will appear once your tutor is confirmed.",
+          tutorName: null,
+          image: null
+        };
+      }
+
+      return {
+        text: "Complete the citizenship placement assessment to get feedback from your tutor.",
+        tutorName: null,
+        image: null
+      };
+    }
+
+    function formatLessonsCompleted(progress) {
+      const count = progress && typeof progress.lessonsCompleted === "number" ? progress.lessonsCompleted : 0;
+      return count > 0 ? String(count) : "None yet";
+    }
+
+    function formatPlaceholder(value, fallback) {
+      return value && String(value).trim() ? value : fallback;
+    }
+
+    function activateTab(viewName) {
+      tabs.forEach((item) => {
+        item.classList.toggle("active", item.dataset.view === viewName);
+      });
+    }
+
+    function openLessonsForSubject(subjectId) {
+      activeSubjectId = subjectId;
+      activateTab("lesson");
+      renderLessonPanel();
+    }
+
+    function bindUnitAccordions(root) {
+      root.querySelectorAll(".unit-accordion-trigger").forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          const unit = trigger.closest(".unit-accordion");
+          const isOpen = unit.classList.contains("is-open");
+          root.querySelectorAll(".unit-accordion").forEach((item) => item.classList.remove("is-open"));
+          if (!isOpen) {
+            unit.classList.add("is-open");
+          }
+        });
+      });
+    }
+
+    function renderHomePanel() {
+      panelContent.classList.remove("is-progress");
+      panelContent.classList.add("is-wide", "is-home");
+      const available = getAvailableSubjects();
+
+      panelContent.innerHTML = `
+        <section class="welcome-band" aria-label="Welcome">
+          <p class="welcome-kicker">Welcome back</p>
+          <h2 class="welcome-title">Your GCSE Citizenship learning pathway</h2>
+          <p class="welcome-copy">Work with your AI tutor, complete lessons, and track your progress. Citizenship is your active subject for this trial.</p>
+        </section>
+        <h2 id="panel-title">Home</h2>
+        <p id="panel-copy">Choose a subject to begin your learning journey.</p>
+        <section class="subjects-section" aria-label="Your subjects">
+          <h3 class="subjects-heading">Your Subjects</h3>
+          <div class="subject-grid">
+            ${available.map((subject) => {
+              const isActive = subject.id === activeSubjectId;
+              return `
+                <article
+                  class="subject-card is-minimal${isActive ? " is-active" : ""}"
+                  tabindex="0"
+                  role="button"
+                  aria-pressed="${isActive}"
+                  data-subject-id="${subject.id}"
+                  aria-label="${subject.name}${isActive ? ", active subject" : ""}"
+                >
+                  <h3>${subject.name}</h3>
+                  <span class="subject-badge${isActive ? " is-active" : ""}">${isActive ? "Active" : "Available"}</span>
+                </article>
+              `;
+            }).join("")}
+          </div>
+        </section>
+      `;
+
+      panelContent.querySelectorAll(".subject-card").forEach((card) => {
+        const selectSubject = () => {
+          activeSubjectId = card.dataset.subjectId;
+          openLessonsForSubject(activeSubjectId);
+        };
+
+        card.addEventListener("click", selectSubject);
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            selectSubject();
+          }
+        });
+      });
+    }
+
+    function renderProgressPanel() {
+      const subject = getActiveSubject();
+      const syllabus = getActiveSyllabus();
+      const progress = getActiveProgress();
+
+      if (!subject || !syllabus || !progress) {
+        panelContent.classList.add("is-progress");
+        panelContent.innerHTML = `
+          <div class="progress-intro">
+            <h2 id="panel-title">Progress</h2>
+            <p id="panel-copy">No subject selected yet. Choose a subject from Home.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const tutorComment = getTutorCommentContent();
+      const lessonsCompletedLabel = formatLessonsCompleted(progress);
+      const hasBadges = progress.badges && progress.badges.length > 0;
+      const strengthText = formatPlaceholder(progress.strength, "None yet");
+      const weaknessText = formatPlaceholder(progress.weakness, "None yet");
+
+      panelContent.classList.remove("is-home");
+      panelContent.classList.add("is-wide", "is-progress");
+      panelContent.innerHTML = `
+        <div class="progress-demo" aria-label="${subject.name} progress dashboard">
+          <section class="progress-demo-card">
+            <h3 class="progress-section-title">Your ${subject.name} progress</h3>
+            <p class="progress-summary-line">Lessons completed: <strong>${lessonsCompletedLabel}</strong></p>
+          </section>
+
+          <div class="progress-grid">
+            <section class="progress-demo-card progress-span-2">
+              <h3 class="progress-section-title">Lesson journey</h3>
+              ${progress.lessonsCompleted > 0 ? `
+                <div class="journey-list">
+                  ${syllabus.units.map((unit) => `
+                    <article class="journey-item">
+                      <span class="journey-dot" aria-hidden="true"></span>
+                      <div>
+                        <strong>${unit.title}</strong>
+                        <span>Not started</span>
+                      </div>
+                      <span class="journey-status">Not started</span>
+                    </article>
+                  `).join("")}
+                </div>
+              ` : `
+                <div class="journey-empty">
+                  <p>Your journey will appear here once you start lessons.</p>
+                </div>
+              `}
+            </section>
+
+            <section class="progress-demo-card progress-span-2">
+              <h3 class="progress-section-title">Comment from your tutor</h3>
+              <div class="tutor-comment-block">
+                ${tutorComment.image ? `<img src="${tutorComment.image}" alt="">` : ""}
+                <div>
+                  ${tutorComment.tutorName ? `<strong>${tutorComment.tutorName}</strong>` : "<strong>Your tutor</strong>"}
+                  <p>${tutorComment.text}</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="progress-demo-card progress-span-2">
+              <h3 class="progress-section-title">See how you are getting on</h3>
+              <div class="confidence-list">
+                ${progress.confidence.map((item) => `
+                  <div class="confidence-row">
+                    <div class="confidence-top">
+                      <span>${item.topic}</span>
+                      <span>${item.value > 0 ? `${item.value}%` : "—"}</span>
+                    </div>
+                    <div class="confidence-bar">
+                      <div class="confidence-fill" style="--value: ${item.value}%;"></div>
+                    </div>
+                  </div>
+                `).join("")}
+              </div>
+            </section>
+
+            <section class="progress-demo-card">
+              <h3 class="progress-section-title">One strength</h3>
+              <article class="insight-card">
+                <p class="placeholder-copy">${strengthText}</p>
+              </article>
+            </section>
+
+            <section class="progress-demo-card">
+              <h3 class="progress-section-title">One weakness</h3>
+              <article class="insight-card is-practice">
+                <p class="placeholder-copy">${weaknessText}</p>
+              </article>
+            </section>
+
+            <section class="progress-demo-card">
+              <h3 class="progress-section-title">Achievements</h3>
+              ${hasBadges ? `
+                <div class="badge-grid">
+                  ${progress.badges.map((badge) => `
+                    <span class="badge-chip"><span>${badge.icon}</span>${badge.label}</span>
+                  `).join("")}
+                </div>
+              ` : `<p class="achievements-empty">None yet</p>`}
+            </section>
+
+            <section class="progress-demo-card">
+              <h3 class="progress-section-title">Learning time</h3>
+              <div class="time-stats">
+                <div class="time-stat">
+                  <strong>${progress.learningTime.thisWeek}</strong>
+                  <span>This week</span>
+                </div>
+                <div class="time-stat">
+                  <strong>${progress.learningTime.streak}</strong>
+                  <span>Current streak</span>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderStandardPanel(title, copy) {
+      panelContent.classList.remove("is-wide", "is-progress", "is-home");
+      panelContent.innerHTML = `
+        <h2 id="panel-title">${title}</h2>
+        <p id="panel-copy">${copy}</p>
+      `;
+    }
+
+    /*
+     * TUTOR PLACEMENT ASSESSMENT & ASSIGNMENT
+     * ---------------------------------
+     * localStorage keys (keep in sync with dashboard.html):
+     *   evoSuggestedTutor     - pending placement after diagnostic quiz (awaiting teacher)
+     *   evoAssignedTutor      - confirmed tutor band (teacher confirmed or adjusted)
+     *   evoTutorQuizHistory   - audit trail of quiz attempts
+     *   evoPendingPlacements  - staff queue of pending reviews (demo plus live entries)
+     *
+     * Flow: diagnostic quiz -> evoSuggestedTutor -> staff confirms -> evoAssignedTutor
+     */
+
+    const STORAGE_KEYS = {
+      suggestedTutor: "evoSuggestedTutor",
+      assignedTutor: "evoAssignedTutor",
+      quizHistory: "evoTutorQuizHistory",
+      pendingPlacements: "evoPendingPlacements"
+    };
+
+    const CURRENT_STUDENT_NAME = "Demo Student";
+
+    const COMMAND_WORD_TIERS = {
+      identify: 1, name: 1, state: 1, give: 1, define: 1,
+      describe: 2, outline: 2, summarise: 2,
+      explain: 3,
+      apply: 4, suggest: 4,
+      analyse: 5, examine: 5,
+      discuss: 6, debate: 6, compare: 6, consider: 6, contrast: 6,
+      evaluate: 7, assess: 7, justify: 7, argue: 7,
+      conclude: 8
+    };
+
+    const TIER_SCORE_WEIGHTS = {
+      1: 1,
+      2: 1.5,
+      3: 2,
+      4: 2.5,
+      5: 3,
+      6: 3.5,
+      7: 4,
+      8: 4
+    };
+
+    const RESPONSE_HINTS = {
+      mc: "Select the best answer.",
+      short: "Write a short phrase or one word only.",
+      paragraph: "Write in full sentences. Use citizenship vocabulary where you can.",
+      list: "Enter each point on a new line. Aim for the number of points requested.",
+      discuss: "Present both sides briefly, then give your view with a reason.",
+      evaluate: "Make a judgement using evidence or examples from the scenario.",
+      conclude: "Write one concluding statement that follows from your reasoning."
+    };
+
+    function getCommandWordTier(commandWord) {
+      return COMMAND_WORD_TIERS[commandWord] || 1;
+    }
+
+    function getItemMarkWeight(item) {
+      return TIER_SCORE_WEIGHTS[getCommandWordTier(item.commandWord)] || 1;
+    }
+
+    function capitalizeCommandWord(word) {
+      if (!word) return "";
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+
+    function renderQuestionMeta(item) {
+      return `
+        <div class="quiz-question-meta">
+          <span class="quiz-command-badge">${capitalizeCommandWord(item.commandWord)}</span>
+          <span class="quiz-topic-tag">${item.topic} · ${item.ao}</span>
+        </div>
+      `;
+    }
+
+    function getResponseHint(item) {
+      if (item.responseHint) return item.responseHint;
+      if (item.responseType === "list") return RESPONSE_HINTS.list;
+      if (item.commandWord === "discuss") return RESPONSE_HINTS.discuss;
+      if (item.commandWord === "evaluate" || item.commandWord === "assess") return RESPONSE_HINTS.evaluate;
+      if (item.commandWord === "conclude") return RESPONSE_HINTS.conclude;
+      if (item.responseType === "short") return RESPONSE_HINTS.short;
+      if (item.responseType === "paragraph" || item.type === "short_answer") return RESPONSE_HINTS.paragraph;
+      return RESPONSE_HINTS.mc;
+    }
+
+    const stage1ScreeningQuestions = [
+      {
+        id: "s1-identify-right",
+        commandWord: "identify",
+        topic: "Rights & Responsibilities",
+        ao: "AO1",
+        responseType: "mc",
+        question: "Identify which of the following is a right protected in UK citizenship law.",
+        options: [
+          "Freedom of expression within legal limits",
+          "Choosing which laws apply to you personally",
+          "Avoiding all school rules you disagree with",
+          "Voting before the legal minimum age"
+        ],
+        correct: 0
+      },
+      {
+        id: "s1-name-responsibility",
+        commandWord: "name",
+        topic: "Rights & Responsibilities",
+        ao: "AO1",
+        responseType: "mc",
+        question: "Name the best example of a responsibility at school.",
+        options: [
+          "Treating others with respect and following reasonable rules",
+          "Deciding which lessons are optional for you",
+          "Choosing national tax rates",
+          "Appointing the headteacher"
+        ],
+        correct: 0
+      },
+      {
+        id: "s1-state-democracy",
+        commandWord: "state",
+        topic: "Democracy & Participation",
+        ao: "AO1",
+        responseType: "mc",
+        question: "State the minimum age to vote in a UK general election.",
+        options: ["18", "16", "21", "14"],
+        correct: 0
+      },
+      {
+        id: "s1-identify-law",
+        commandWord: "identify",
+        topic: "Law & Justice",
+        ao: "AO1",
+        responseType: "mc",
+        question: "Identify which institution is mainly responsible for making new laws in the UK.",
+        options: ["Parliament", "The police", "Magistrates courts only", "Local supermarkets"],
+        correct: 0
+      },
+      {
+        id: "s1-define-democracy",
+        commandWord: "define",
+        topic: "Democracy & Participation",
+        ao: "AO1",
+        responseType: "mc",
+        question: "Define the term democracy.",
+        options: [
+          "A system where people have a say in how they are governed, often through voting",
+          "A system where one ruler makes every decision without consultation",
+          "A system with no elections or representation",
+          "A system where only judges run the country"
+        ],
+        correct: 0
+      },
+      {
+        id: "s1-name-law",
+        commandWord: "name",
+        topic: "Law & Justice",
+        ao: "AO1",
+        responseType: "mc",
+        question: "Name one aim of punishment in the youth justice system.",
+        options: [
+          "To prevent reoffending and protect the public",
+          "To remove all rights from young people permanently",
+          "To stop courts from hearing youth cases",
+          "To replace education with fines only"
+        ],
+        correct: 0
+      },
+      {
+        id: "s1-identify-active",
+        commandWord: "identify",
+        topic: "Active Citizenship",
+        ao: "AO1",
+        responseType: "mc",
+        question: "Identify the best example of active citizenship.",
+        options: [
+          "Running a campaign to improve litter problems near school",
+          "Ignoring community issues because they seem small",
+          "Breaking rules to get attention online",
+          "Waiting for others to solve every local problem"
+        ],
+        correct: 0
+      }
+    ];
+
+    const stage2TaskBank = [
+      {
+        id: "s2-describe-parliament",
+        type: "short_answer",
+        commandWord: "describe",
+        responseType: "paragraph",
+        topic: "Democracy & Participation",
+        ao: "AO1",
+        minScreeningScore: 0,
+        question: "Describe two features of the UK Parliament.",
+        minChars: 45,
+        keywords: ["house", "commons", "lords", "law", "debate", "elect", "mp", "government", "legislation"],
+        minKeywords: 2
+      },
+      {
+        id: "s2-explain-rights",
+        type: "short_answer",
+        commandWord: "explain",
+        responseType: "paragraph",
+        topic: "Rights & Responsibilities",
+        ao: "AO2",
+        minScreeningScore: 0,
+        question: "Explain one reason why rights and responsibilities are linked in a democracy.",
+        minChars: 50,
+        keywords: ["because", "balance", "community", "respect", "law", "vote", "duty", "fair", "society"],
+        minKeywords: 2,
+        requiresLinkWord: true
+      },
+      {
+        id: "s2-list-responsibilities",
+        type: "short_answer",
+        commandWord: "list",
+        responseType: "list",
+        topic: "Rights & Responsibilities",
+        ao: "AO1",
+        minScreeningScore: 0,
+        question: "List three responsibilities of a UK citizen.",
+        minItems: 3,
+        minChars: 30,
+        keywords: ["vote", "law", "jury", "tax", "respect", "community", "school", "environment", "obey"],
+        minKeywords: 2
+      },
+      {
+        id: "s2-apply-law",
+        type: "scenario",
+        commandWord: "apply",
+        responseType: "paragraph",
+        topic: "Law & Justice",
+        ao: "AO2",
+        minScreeningScore: 3,
+        scenario: "A student posts hurtful comments about a new classmate in a group chat. The comments are not violent but they are repeated and upsetting.",
+        question: "Apply the idea of rights and responsibilities to explain the most responsible first step.",
+        minChars: 55,
+        keywords: ["report", "safeguard", "adult", "respect", "right", "responsibility", "harm", "online", "school"],
+        minKeywords: 2
+      },
+      {
+        id: "s2-discuss-voting",
+        type: "short_answer",
+        commandWord: "discuss",
+        responseType: "discuss",
+        topic: "Democracy & Participation",
+        ao: "AO3",
+        minScreeningScore: 5,
+        question: "Discuss one advantage and one disadvantage of lowering the voting age to 16.",
+        minChars: 70,
+        keywords: ["advantage", "disadvantage", "vote", "16", "participation", "however", "mature", "interest", "view"],
+        minKeywords: 3,
+        requiresBothSides: true
+      }
+    ];
+
+    const TUTOR_SCORE_BANDS = assessmentFramework.tutorBands.map((band) => {
+      const parts = band.combinedRange.split("-").map(Number);
+      return { min: parts[0], max: parts[1], tutorIndex: band.tutorIndex };
+    });
+
+    const quizOverlay = document.getElementById("tutor-quiz-overlay");
+    const quizModalBody = document.getElementById("quiz-modal-body");
+    const quizProgressLabel = document.getElementById("quiz-progress-label");
+    const quizProgressFill = document.getElementById("quiz-progress-fill");
+    const quizBackButton = document.getElementById("quiz-back-button");
+    const quizNextButton = document.getElementById("quiz-next-button");
+    const quizCloseButton = document.getElementById("quiz-close-button");
+
+    let quizState = {
+      screen: "start",
+      stage: 1,
+      questionIndex: 0,
+      stage1Answers: [],
+      stage2Tasks: [],
+      stage2Answers: [],
+      pendingResult: null,
+      failedValidations: []
+    };
+
+    function getStage1MaxScore() {
+      return stage1ScreeningQuestions.reduce((total, question) => total + getItemMarkWeight(question), 0);
+    }
+
+    function getStage2MaxScore(tasks) {
+      return tasks.reduce((total, task) => total + getItemMarkWeight(task), 0);
+    }
+
+    function selectStage2Tasks(stage1Score) {
+      return stage2TaskBank.filter((task) => stage1Score >= task.minScreeningScore);
+    }
+
+    function getTotalQuizSteps() {
+      return stage1ScreeningQuestions.length + quizState.stage2Tasks.length;
+    }
+
+    function loadSuggestedTutor() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.suggestedTutor);
+        if (!raw) return null;
+        const data = JSON.parse(raw);
+        if (data.status !== "pending") return null;
+        return data;
+      } catch {
+        return null;
+      }
+    }
+
+    function loadAssignedTutor() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.assignedTutor);
+        if (!raw) return null;
+        const data = JSON.parse(raw);
+        if (typeof data.tutorIndex !== "number" || !data.tutorName) return null;
+        return data;
+      } catch {
+        return null;
+      }
+    }
+
+    function saveSuggestedTutor(suggestion) {
+      localStorage.setItem(STORAGE_KEYS.suggestedTutor, JSON.stringify(suggestion));
+      appendQuizHistory(suggestion);
+      addToPendingPlacements(suggestion);
+    }
+
+    function clearSuggestedTutor() {
+      localStorage.removeItem(STORAGE_KEYS.suggestedTutor);
+    }
+
+    function saveAssignedTutor(assignment) {
+      localStorage.setItem(STORAGE_KEYS.assignedTutor, JSON.stringify(assignment));
+    }
+
+    function addToPendingPlacements(suggestion) {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.pendingPlacements);
+        const queue = raw ? JSON.parse(raw) : [];
+        const entry = {
+          id: suggestion.id || `live-${Date.now()}`,
+          studentName: suggestion.studentName || CURRENT_STUDENT_NAME,
+          suggestedTutorIndex: suggestion.tutorIndex,
+          suggestedTutorName: suggestion.tutorName,
+          suggestedLevel: suggestion.level,
+          stage1Score: suggestion.stage1Score,
+          stage1Max: suggestion.stage1Max,
+          stage2Score: suggestion.stage2Score,
+          stage2Max: suggestion.stage2Max,
+          combinedScore: suggestion.combinedScore,
+          commandWordBreakdown: suggestion.commandWordBreakdown,
+          itemResults: suggestion.itemResults,
+          completedAt: suggestion.completedAt,
+          isDemo: false
+        };
+        const filtered = queue.filter((item) => item.id !== entry.id && item.studentName !== entry.studentName);
+        filtered.unshift(entry);
+        localStorage.setItem(STORAGE_KEYS.pendingPlacements, JSON.stringify(filtered.slice(0, 20)));
+      } catch {
+        /* optional queue */
+      }
+    }
+
+    function appendQuizHistory(entry) {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.quizHistory);
+        const history = raw ? JSON.parse(raw) : [];
+        history.push({
+          tutorIndex: entry.tutorIndex,
+          tutorName: entry.tutorName,
+          stage1Score: entry.stage1Score,
+          stage2Score: entry.stage2Score,
+          combinedScore: entry.combinedScore,
+          status: entry.status || "pending",
+          completedAt: entry.completedAt,
+          items: entry.itemResults || []
+        });
+        localStorage.setItem(STORAGE_KEYS.quizHistory, JSON.stringify(history.slice(-20)));
+      } catch {
+        /* history is optional */
+      }
+    }
+
+    function scoreMultipleChoice(answerIndex, item) {
+      const maxScore = getItemMarkWeight(item);
+      return answerIndex === item.correct ? maxScore : 0;
+    }
+
+    function countKeywordHits(text, keywords) {
+      const lower = (text || "").toLowerCase();
+      return keywords.filter((word) => lower.includes(word.toLowerCase())).length;
+    }
+
+    const WRITTEN_LINK_WORD_PATTERN = /\bbecause\b|\btherefore\b|\bso that\b|\bthis means\b/i;
+    const WRITTEN_BOTH_SIDES_CONTRAST = /\bhowever\b|\bon the other hand\b|\bdisadvantage\b|\bdrawback\b|\bwhereas\b|\bbut\b/i;
+    const WRITTEN_BOTH_SIDES_POSITIVE = /\badvantage\b|\bbenefit\b|\bstrength\b/i;
+
+    const WRITTEN_MIN_WORDS = {
+      describe: 8,
+      explain: 10,
+      apply: 10,
+      discuss: 12,
+      list: 6
+    };
+
+    function tokenizeAnswerWords(text) {
+      return (text || "").toLowerCase().match(/\b[a-z']{2,}\b/g) || [];
+    }
+
+    function isGibberishWord(word) {
+      if (word.length >= 5 && !/[aeiouy]/i.test(word)) return true;
+      if (/(.)\1{3,}/.test(word)) return true;
+      if (word.length >= 8 && /[^aeiouy]{4,}/i.test(word)) return true;
+      if (word.length > 12) {
+        const uniqueChars = new Set(word.split("")).size;
+        if (uniqueChars / word.length < 0.55) return true;
+      }
+      return false;
+    }
+
+    function hasGibberishContent(text) {
+      const words = tokenizeAnswerWords(text);
+      if (!words.length) return true;
+
+      const gibberishCount = words.filter(isGibberishWord).length;
+      if (gibberishCount >= 2 || (words.length >= 4 && gibberishCount / words.length >= 0.35)) {
+        return true;
+      }
+
+      const unique = new Set(words);
+      if (words.length >= 6 && unique.size / words.length < 0.45) return true;
+
+      const counts = {};
+      words.forEach((word) => {
+        counts[word] = (counts[word] || 0) + 1;
+      });
+      const maxRepeat = Math.max(...Object.values(counts));
+      if (maxRepeat >= 3 && maxRepeat / words.length >= 0.5) return true;
+
+      return false;
+    }
+
+    function countMeaningfulWords(text) {
+      return tokenizeAnswerWords(text).filter((word) => !isGibberishWord(word)).length;
+    }
+
+    function parseListAnswerLines(text) {
+      return (text || "")
+        .split("\n")
+        .map((line) => line.replace(/^[\-\*•]\s*/, "").trim())
+        .filter(Boolean);
+    }
+
+    function meetsWrittenLengthGate(task, trimmed) {
+      if (task.responseType === "list") {
+        const lines = parseListAnswerLines(trimmed);
+        return lines.length >= (task.minItems || 2) && trimmed.length >= (task.minChars || 20);
+      }
+      return trimmed.length >= (task.minChars || 20);
+    }
+
+    function getWrittenQualityError(text, task) {
+      const trimmed = (text || "").trim();
+      if (!meetsWrittenLengthGate(task, trimmed)) return null;
+
+      const defaultMessage = "Please write a real answer in full sentences before continuing.";
+
+      if (task.responseType === "list") {
+        const lines = parseListAnswerLines(trimmed);
+        const normalizedLines = lines.map((line) => line.toLowerCase());
+        if (new Set(normalizedLines).size < lines.length) {
+          return "Each point should be different. Add separate lines for each responsibility.";
+        }
+
+        const weakLines = lines.filter((line) => countMeaningfulWords(line) < 2 || hasGibberishContent(line));
+        if (weakLines.length) {
+          return "Each point needs a short real phrase, not random letters. Put one responsibility on each line.";
+        }
+
+        if (countMeaningfulWords(trimmed) < (WRITTEN_MIN_WORDS.list || 6)) {
+          return defaultMessage;
+        }
+
+        return null;
+      }
+
+      const minWords = WRITTEN_MIN_WORDS[task.commandWord] || 6;
+      if (countMeaningfulWords(trimmed) < minWords) {
+        return defaultMessage;
+      }
+
+      if (hasGibberishContent(trimmed)) {
+        return defaultMessage;
+      }
+
+      if (task.requiresLinkWord && !WRITTEN_LINK_WORD_PATTERN.test(trimmed)) {
+        return "Explain your reasoning using because, therefore, or a similar linking word.";
+      }
+
+      if (task.requiresBothSides) {
+        const hasContrast = WRITTEN_BOTH_SIDES_CONTRAST.test(trimmed);
+        const hasBothSides = WRITTEN_BOTH_SIDES_POSITIVE.test(trimmed) && hasContrast;
+        if (!hasBothSides) {
+          return "Discuss both an advantage and a disadvantage before continuing.";
+        }
+      }
+
+      return null;
+    }
+
+    function isWrittenTask(task) {
+      if (task.responseType === "mc" || task.type === "multiple_choice") return false;
+      if (task.responseType === "short") return false;
+      return task.type === "short_answer" || task.type === "scenario" || task.responseType === "paragraph"
+        || task.responseType === "list" || task.responseType === "discuss";
+    }
+
+    function logFailedWrittenValidation(task, answer, reason) {
+      if (!quizState.failedValidations) {
+        quizState.failedValidations = [];
+      }
+      quizState.failedValidations.push({
+        taskId: task.id,
+        commandWord: task.commandWord,
+        reason,
+        answerLength: (answer || "").trim().length,
+        at: new Date().toISOString()
+      });
+    }
+
+    function scoreWrittenAnswer(text, task) {
+      const trimmed = (text || "").trim();
+      const maxScore = getItemMarkWeight(task);
+      if (!trimmed) return 0;
+
+      if (task.responseType === "list") {
+        const lines = trimmed.split("\n").map((line) => line.replace(/^[\-\*•]\s*/, "").trim()).filter(Boolean);
+        if (lines.length < (task.minItems || 2)) return 0;
+        const hits = countKeywordHits(trimmed, task.keywords || []);
+        if (hits >= (task.minKeywords || 2)) return maxScore;
+        if (hits >= 1 || lines.length >= (task.minItems || 2)) return Math.max(maxScore * 0.5, 0.5);
+        return 0;
+      }
+
+      if (trimmed.length < (task.minChars || 20)) return 0;
+
+      const hits = countKeywordHits(trimmed, task.keywords || []);
+      let score = 0;
+
+      if (hits >= (task.minKeywords || 2)) {
+        score = maxScore;
+      } else if (hits >= 1) {
+        score = Math.max(maxScore * 0.5, 0.5);
+      }
+
+      if (task.requiresLinkWord && !/\bbecause\b|\btherefore\b|\bso that\b|\bthis means\b/i.test(trimmed)) {
+        score = Math.min(score, maxScore * 0.5);
+      }
+
+      if (task.requiresBothSides) {
+        const hasContrast = /\bhowever\b|\bon the other hand\b|\bdisadvantage\b|\bdrawback\b|\bwhereas\b|\bbut\b/i.test(trimmed);
+        const hasBothSides = /\badvantage\b|\bbenefit\b|\bstrength\b/i.test(trimmed) && hasContrast;
+        if (!hasBothSides && score > 0) {
+          score = Math.min(score, maxScore * 0.6);
+        }
+      }
+
+      return score;
+    }
+
+    function scoreAssessmentItem(item, answer) {
+      const maxScore = getItemMarkWeight(item);
+      let score = 0;
+
+      if (item.responseType === "mc" || item.type === "multiple_choice") {
+        score = scoreMultipleChoice(answer, item);
+      } else if (item.type === "scenario" || item.type === "short_answer") {
+        score = scoreWrittenAnswer(answer, item);
+      }
+
+      return {
+        id: item.id,
+        stage: item.stage,
+        commandWord: item.commandWord,
+        commandTier: getCommandWordTier(item.commandWord),
+        ao: item.ao,
+        topic: item.topic,
+        score,
+        maxScore,
+        pct: maxScore > 0 ? Math.round((score / maxScore) * 100) : 0
+      };
+    }
+
+    function buildItemResults(stage1Answers, stage2Tasks, stage2Answers) {
+      const stage1Results = stage1ScreeningQuestions.map((question, index) => {
+        return scoreAssessmentItem({ ...question, stage: 1 }, stage1Answers[index]);
+      });
+      const stage2Results = stage2Tasks.map((task, index) => {
+        return scoreAssessmentItem({ ...task, stage: 2 }, stage2Answers[index]);
+      });
+      return stage1Results.concat(stage2Results);
+    }
+
+    function buildCommandWordBreakdown(itemResults) {
+      const byCommand = {};
+      itemResults.forEach((item) => {
+        if (!byCommand[item.commandWord]) {
+          byCommand[item.commandWord] = { earned: 0, max: 0 };
+        }
+        byCommand[item.commandWord].earned += item.score;
+        byCommand[item.commandWord].max += item.maxScore;
+      });
+
+      const strong = [];
+      const developing = [];
+
+      Object.keys(byCommand).sort((a, b) => getCommandWordTier(b) - getCommandWordTier(a)).forEach((word) => {
+        const bucket = byCommand[word];
+        const pct = bucket.max > 0 ? bucket.earned / bucket.max : 0;
+        if (pct >= 0.7) {
+          strong.push(word);
+        } else {
+          developing.push(word);
+        }
+      });
+
+      return { strong, developing, byCommand };
+    }
+
+    function buildAoBreakdown(itemResults) {
+      const aos = { AO1: { earned: 0, max: 0 }, AO2: { earned: 0, max: 0 }, AO3: { earned: 0, max: 0 } };
+      itemResults.forEach((item) => {
+        if (!aos[item.ao]) return;
+        aos[item.ao].earned += item.score;
+        aos[item.ao].max += item.maxScore;
+      });
+      return aos;
+    }
+
+    function calculateStage1Score(answers) {
+      return stage1ScreeningQuestions.reduce((total, question, index) => {
+        return total + scoreMultipleChoice(answers[index], question);
+      }, 0);
+    }
+
+    function calculateStage2Score(tasks, answers) {
+      return tasks.reduce((total, task, index) => {
+        if (task.responseType === "mc" || task.type === "multiple_choice") {
+          return total + scoreMultipleChoice(answers[index], task);
+        }
+        return total + scoreWrittenAnswer(answers[index], task);
+      }, 0);
+    }
+
+    function calculateCombinedScore(stage1Score, stage2Score, stage2Tasks) {
+      const stage1Max = getStage1MaxScore();
+      const stage2Max = getStage2MaxScore(stage2Tasks);
+      const w1 = assessmentFramework.placementPolicy.diagnosticStage1Weight;
+      const w2 = assessmentFramework.placementPolicy.diagnosticStage2Weight;
+      const normalized = (stage1Score / stage1Max) * w1 + (stage2Max > 0 ? (stage2Score / stage2Max) * w2 : 0);
+      return Math.round(normalized * 100) / 10;
+    }
+
+    function buildSuggestionFromScores(stage1Score, stage2Score, stage2Tasks, itemResults) {
+      const combinedScore = calculateCombinedScore(stage1Score, stage2Score, stage2Tasks);
+      const tutorIndex = getTutorIndexForCombinedScore(combinedScore);
+      const tutor = tutors[tutorIndex];
+      const commandWordBreakdown = buildCommandWordBreakdown(itemResults);
+      const aoBreakdown = buildAoBreakdown(itemResults);
+      return {
+        id: `placement-${Date.now()}`,
+        studentName: CURRENT_STUDENT_NAME,
+        tutorIndex,
+        tutorName: tutor.name,
+        level: tutor.level,
+        image: tutor.image,
+        support: tutor.support,
+        stage1Score,
+        stage1Max: getStage1MaxScore(),
+        stage2Score,
+        stage2Max: getStage2MaxScore(stage2Tasks),
+        combinedScore,
+        commandWordBreakdown,
+        aoBreakdown,
+        itemResults,
+        status: "pending",
+        assessmentStage: "diagnostic",
+        completedAt: new Date().toISOString(),
+        source: "placement-assessment"
+      };
+    }
+
+    function getTutorIndexForCombinedScore(combinedScore) {
+      const band = TUTOR_SCORE_BANDS.find((item) => combinedScore >= item.min && combinedScore <= item.max);
+      return band ? band.tutorIndex : 0;
+    }
+
+    function getAssignedTutorPanelCopy(assignment) {
+      return `Your tutor is ${assignment.tutorName} (${assignment.level}). Your teacher confirmed this tutor band after reviewing your placement assessment.`;
+    }
+
+    function getSuggestedTutorPanelCopy(suggestion) {
+      return `Suggested tutor: ${suggestion.tutorName} (${suggestion.level}). Your teacher will review this placement before it is confirmed.`;
+    }
+
+    function renderAssignedTutorBanner(assignment) {
+      const tutor = tutors[assignment.tutorIndex];
+      return `
+        <div class="tutor-assignment" aria-live="polite">
+          <div class="assigned-tutor-badge">
+            <img src="${tutor.image}" alt="">
+            Confirmed tutor: <span>${assignment.tutorName}</span> · ${assignment.level}
+          </div>
+          <button class="retake-quiz-link" type="button" id="retake-tutor-quiz">Retake placement assessment</button>
+        </div>
+      `;
+    }
+
+    function renderSuggestedTutorBanner(suggestion) {
+      const tutor = tutors[suggestion.tutorIndex];
+      return `
+        <div class="tutor-assignment" aria-live="polite">
+          <div class="suggested-tutor-badge">
+            <img src="${tutor.image}" alt="">
+            Suggested tutor: <span>${suggestion.tutorName}</span> · ${suggestion.level}
+          </div>
+          <span class="pending-confirmation-badge">Pending teacher confirmation</span>
+          <button class="retake-quiz-link" type="button" id="retake-tutor-quiz">Retake placement assessment</button>
+        </div>
+      `;
+    }
+
+    function bindTutorPanelActions() {
+      const quizButton = panelContent.querySelector(".quiz-button");
+      const retakeButton = panelContent.querySelector("#retake-tutor-quiz");
+
+      if (quizButton) {
+        quizButton.addEventListener("click", () => openTutorQuiz());
+      }
+
+      if (retakeButton) {
+        retakeButton.addEventListener("click", () => openTutorQuiz(true));
+      }
+    }
+
+    function renderTutorPanel(title, copy) {
+      panelContent.classList.remove("is-progress", "is-home");
+      panelContent.classList.add("is-wide");
+      const assignment = loadAssignedTutor();
+      const suggestion = loadSuggestedTutor();
+      const isPreQuiz = !assignment && !suggestion;
+
+      let panelCopy = copy;
+      let bannerHtml = "";
+      let quizButtonLabel = "Take Citizenship Placement Assessment";
+      let quizActionClass = "quiz-action is-prominent";
+      let gridClass = "";
+      let gateMessage = "";
+
+      if (assignment) {
+        panelCopy = getAssignedTutorPanelCopy(assignment);
+        bannerHtml = renderAssignedTutorBanner(assignment);
+        quizButtonLabel = "Retake Placement Assessment";
+        quizActionClass = "quiz-action";
+      } else if (suggestion) {
+        panelCopy = getSuggestedTutorPanelCopy(suggestion);
+        bannerHtml = renderSuggestedTutorBanner(suggestion);
+        quizButtonLabel = "Retake Placement Assessment";
+        quizActionClass = "quiz-action";
+      } else {
+        panelCopy = "Complete the citizenship placement assessment first so we can suggest the right tutor for you.";
+        gridClass = " is-quiz-gated";
+        gateMessage = `<p class="quiz-gate-message">Complete the placement assessment first to see tutor options.</p>`;
+      }
+
+      const highlightIndex = assignment ? assignment.tutorIndex : suggestion ? suggestion.tutorIndex : null;
+      const highlightClass = assignment ? " is-assigned" : suggestion ? " is-suggested" : "";
+
+      panelContent.innerHTML = `
+        <h2 id="panel-title">${title}</h2>
+        <p id="panel-copy" class="tutor-panel-intro">${panelCopy}</p>
+        ${isPreQuiz ? `
+          <div class="${quizActionClass}">
+            <button class="quiz-button" type="button">${quizButtonLabel}</button>
+          </div>
+        ` : ""}
+        ${bannerHtml}
+        <div class="tutor-grid${gridClass}"${isPreQuiz ? ' aria-hidden="true"' : ""}>
+          ${tutors.map((tutor, index) => `
+            <article class="tutor-card${highlightIndex === index ? highlightClass : ""}">
+              <div class="tutor-card-header">
+                ${tutorAvatar(tutor)}
+                <h3>${tutor.name}</h3>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+        ${gateMessage}
+        ${!isPreQuiz ? `
+          <div class="${quizActionClass}">
+            <button class="quiz-button" type="button">${quizButtonLabel}</button>
+          </div>
+        ` : ""}
+      `;
+
+      bindTutorPanelActions();
+    }
+
+    function setQuizProgress(currentStep, totalSteps, labelText) {
+      const percent = totalSteps > 0 ? Math.round((currentStep / totalSteps) * 100) : 0;
+      quizProgressLabel.textContent = labelText;
+      quizProgressFill.style.width = `${percent}%`;
+    }
+
+    function resetQuizState() {
+      quizState = {
+        screen: "start",
+        stage: 1,
+        questionIndex: 0,
+        stage1Answers: new Array(stage1ScreeningQuestions.length).fill(null),
+        stage2Tasks: [],
+        stage2Answers: [],
+        pendingResult: null,
+        failedValidations: []
+      };
+    }
+
+    function openTutorQuiz(isRetake) {
+      resetQuizState();
+      quizOverlay.hidden = false;
+      quizOverlay.classList.add("is-open");
+      quizOverlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      renderQuizScreen(isRetake ? "retake" : "start");
+    }
+
+    function closeTutorQuiz() {
+      quizOverlay.classList.remove("is-open");
+      quizOverlay.hidden = true;
+      quizOverlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function renderQuizScreen(mode) {
+      quizState.screen = mode === "retake" ? "start" : mode;
+
+      if (quizState.screen === "start") {
+        renderQuizStart(mode === "retake");
+        return;
+      }
+
+      if (quizState.screen === "stage1") {
+        renderStage1Question();
+        return;
+      }
+
+      if (quizState.screen === "stage2") {
+        renderStage2Task();
+        return;
+      }
+
+      if (quizState.screen === "result") {
+        renderQuizResult();
+      }
+    }
+
+    function renderQuizStart(isRetake) {
+      const totalSteps = stage1ScreeningQuestions.length + 3;
+      setQuizProgress(0, totalSteps, "Ready to begin");
+      quizModalBody.innerHTML = `
+        <div class="quiz-start-screen">
+          <span class="quiz-topic-tag">Citizenship placement assessment</span>
+          <h3 class="quiz-question-text" id="quiz-modal-title">${isRetake ? "Retake placement assessment" : "GCSE Citizenship placement assessment"}</h3>
+          <p>This is a two-stage GCSE Citizenship placement assessment using exam-style command words (identify, describe, explain, apply, discuss, and others). Stage 1 screens knowledge across core themes. Stage 2 adds written tasks matched to your Stage 1 performance.</p>
+          <p>${assessmentFramework.placementPolicy.notClaimed} Your teacher will confirm or adjust your suggested tutor band after reviewing your responses.</p>
+        </div>
+      `;
+      quizBackButton.disabled = true;
+      quizBackButton.hidden = true;
+      quizNextButton.disabled = false;
+      quizNextButton.textContent = "Start Stage 1";
+    }
+
+    function renderStage1Question() {
+      const question = stage1ScreeningQuestions[quizState.questionIndex];
+      const selected = quizState.stage1Answers[quizState.questionIndex];
+      const step = quizState.questionIndex + 1;
+      const totalSteps = getTotalQuizSteps() || stage1ScreeningQuestions.length + 3;
+
+      setQuizProgress(step, totalSteps, `Stage 1 · Screening · ${step} of ${stage1ScreeningQuestions.length}`);
+
+      quizModalBody.innerHTML = `
+        <div class="quiz-step">
+          <span class="quiz-stage-label">Stage 1 · AO1 screening</span>
+          ${renderQuestionMeta(question)}
+          <p class="quiz-response-hint">${getResponseHint(question)}</p>
+          <h3 class="quiz-question-text" id="quiz-modal-title">${question.question}</h3>
+          <div class="quiz-options" role="listbox" aria-label="Answer options">
+            ${question.options.map((option, index) => `
+              <button
+                class="quiz-option${selected === index ? " is-selected" : ""}"
+                type="button"
+                data-option-index="${index}"
+                role="option"
+                aria-selected="${selected === index}"
+              >
+                <span class="quiz-option-marker">${String.fromCharCode(65 + index)}</span>
+                <span class="quiz-option-label">${option}</span>
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      `;
+
+      quizBackButton.hidden = false;
+      quizBackButton.disabled = quizState.questionIndex === 0;
+      quizNextButton.disabled = selected === null;
+      quizNextButton.textContent = quizState.questionIndex === stage1ScreeningQuestions.length - 1 ? "Continue to Stage 2" : "Next";
+
+      quizModalBody.querySelectorAll(".quiz-option").forEach((button) => {
+        button.addEventListener("click", () => {
+          quizState.stage1Answers[quizState.questionIndex] = Number(button.dataset.optionIndex);
+          renderStage1Question();
+        });
+      });
+    }
+
+    function isStage2AnswerValid(task, answer) {
+      if (task.responseType === "mc" || task.type === "multiple_choice") {
+        return answer !== null && answer !== undefined;
+      }
+      if (task.responseType === "short") {
+        return Boolean((answer || "").trim());
+      }
+      const trimmed = (answer || "").trim();
+      if (!meetsWrittenLengthGate(task, trimmed)) return false;
+      return getWrittenQualityError(trimmed, task) === null;
+    }
+
+    function showStage2FieldError(message) {
+      const errorEl = quizModalBody.querySelector(".quiz-field-error");
+      if (!errorEl) return;
+      if (message) {
+        errorEl.textContent = message;
+        errorEl.hidden = false;
+      } else {
+        errorEl.textContent = "";
+        errorEl.hidden = true;
+      }
+    }
+
+    function renderStage2Task() {
+      const task = quizState.stage2Tasks[quizState.questionIndex];
+      const answer = quizState.stage2Answers[quizState.questionIndex];
+      const step = stage1ScreeningQuestions.length + quizState.questionIndex + 1;
+      const totalSteps = getTotalQuizSteps();
+
+      setQuizProgress(step, totalSteps, `Stage 2 · Written tasks · ${quizState.questionIndex + 1} of ${quizState.stage2Tasks.length}`);
+
+      let bodyHtml = `
+        <div class="quiz-step">
+          <span class="quiz-stage-label">Stage 2 · Command-word tasks</span>
+          ${renderQuestionMeta(task)}
+      `;
+
+      if (task.scenario) {
+        bodyHtml += `<div class="quiz-scenario-box">${task.scenario}</div>`;
+      }
+
+      bodyHtml += `
+          <p class="quiz-response-hint">${getResponseHint(task)}</p>
+          <h3 class="quiz-question-text" id="quiz-modal-title">${task.question}</h3>
+      `;
+
+      if (task.responseType === "mc" || task.type === "multiple_choice") {
+        bodyHtml += `
+          <div class="quiz-options" role="listbox" aria-label="Answer options">
+            ${task.options.map((option, index) => `
+              <button
+                class="quiz-option${answer === index ? " is-selected" : ""}"
+                type="button"
+                data-option-index="${index}"
+                role="option"
+                aria-selected="${answer === index}"
+              >
+                <span class="quiz-option-marker">${String.fromCharCode(65 + index)}</span>
+                <span class="quiz-option-label">${option}</span>
+              </button>
+            `).join("")}
+          </div>
+        `;
+      } else if (task.responseType === "short") {
+        bodyHtml += `
+          <input class="quiz-short-input" id="quiz-short-answer" type="text" value="${answer || ""}" placeholder="Type your answer here" aria-label="Your answer">
+          <p class="quiz-char-hint">Short phrase or one word only</p>
+        `;
+      } else {
+        const charCount = (answer || "").trim().length;
+        const isValid = isStage2AnswerValid(task, answer);
+        const listPlaceholder = task.responseType === "list"
+          ? "Point 1\nPoint 2\nPoint 3"
+          : "Write your answer in full sentences...";
+        bodyHtml += `
+          <textarea class="quiz-textarea" id="quiz-short-answer" placeholder="${listPlaceholder}" aria-label="Your answer">${answer || ""}</textarea>
+          <p class="quiz-char-hint${isValid ? " is-valid" : ""}">${charCount} / ${task.minChars} characters minimum${task.responseType === "list" ? ` · ${(answer || "").split("\n").filter((line) => line.trim()).length} / ${task.minItems || 3} points` : ""}</p>
+          <p class="quiz-field-error" hidden role="alert"></p>
+        `;
+      }
+
+      bodyHtml += `</div>`;
+      quizModalBody.innerHTML = bodyHtml;
+
+      quizBackButton.hidden = false;
+      quizBackButton.disabled = false;
+
+      const isMc = task.responseType === "mc" || task.type === "multiple_choice";
+      if (isMc) {
+        quizNextButton.disabled = answer === null || answer === undefined;
+        quizModalBody.querySelectorAll(".quiz-option").forEach((button) => {
+          button.addEventListener("click", () => {
+            quizState.stage2Answers[quizState.questionIndex] = Number(button.dataset.optionIndex);
+            renderStage2Task();
+          });
+        });
+      } else {
+        const field = quizModalBody.querySelector("#quiz-short-answer");
+        const updateAnswer = () => {
+          quizState.stage2Answers[quizState.questionIndex] = field.value;
+          const trimmed = field.value.trim();
+          const lengthReady = meetsWrittenLengthGate(task, trimmed);
+          const qualityError = lengthReady ? getWrittenQualityError(trimmed, task) : null;
+          const valid = isStage2AnswerValid(task, field.value);
+          quizNextButton.disabled = !valid;
+          const hint = quizModalBody.querySelector(".quiz-char-hint");
+          if (task.responseType === "list") {
+            const lineCount = field.value.split("\n").filter((line) => line.trim()).length;
+            hint.textContent = `${field.value.trim().length} / ${task.minChars} characters minimum · ${lineCount} / ${task.minItems || 3} points`;
+          } else if (task.responseType !== "short") {
+            hint.textContent = `${field.value.trim().length} / ${task.minChars} characters minimum`;
+          }
+          hint.classList.toggle("is-valid", valid);
+          if (valid || !lengthReady) {
+            showStage2FieldError(null);
+          } else if (qualityError) {
+            showStage2FieldError(qualityError);
+          }
+        };
+        field.addEventListener("input", updateAnswer);
+        quizNextButton.disabled = !isStage2AnswerValid(task, answer);
+        if (isWrittenTask(task) && answer) {
+          const trimmed = (answer || "").trim();
+          const qualityError = meetsWrittenLengthGate(task, trimmed) ? getWrittenQualityError(trimmed, task) : null;
+          if (qualityError) showStage2FieldError(qualityError);
+        }
+      }
+
+      quizNextButton.textContent = quizState.questionIndex === quizState.stage2Tasks.length - 1 ? "View placement result" : "Next";
+    }
+
+    function formatCommandWordList(words) {
+      if (!words.length) return "None recorded yet";
+      return words.map((word) => capitalizeCommandWord(word)).join(", ");
+    }
+
+    function renderQuizResult() {
+      const stage1Score = calculateStage1Score(quizState.stage1Answers);
+      const stage2Score = calculateStage2Score(quizState.stage2Tasks, quizState.stage2Answers);
+      const itemResults = buildItemResults(quizState.stage1Answers, quizState.stage2Tasks, quizState.stage2Answers);
+      const suggestion = buildSuggestionFromScores(stage1Score, stage2Score, quizState.stage2Tasks, itemResults);
+      quizState.pendingResult = suggestion;
+
+      const { strong, developing } = suggestion.commandWordBreakdown;
+      const aoLines = ["AO1", "AO2", "AO3"].map((ao) => {
+        const bucket = suggestion.aoBreakdown[ao];
+        if (!bucket || bucket.max === 0) return `${ao}: not assessed`;
+        return `${ao}: ${Math.round(bucket.earned)}/${Math.round(bucket.max)} marks`;
+      }).join(" · ");
+
+      setQuizProgress(getTotalQuizSteps(), getTotalQuizSteps(), "Assessment complete");
+
+      quizModalBody.innerHTML = `
+        <div class="quiz-result">
+          <div class="quiz-result-avatar">
+            <img src="${suggestion.image}" alt="">
+          </div>
+          <p class="quiz-result-level">${suggestion.level}</p>
+          <h3 id="quiz-modal-title">Suggested tutor: ${suggestion.tutorName}</h3>
+          <p class="quiz-result-score">
+            Stage 1: ${stage1Score}/${suggestion.stage1Max} · Stage 2: ${stage2Score}/${suggestion.stage2Max} · Combined: ${suggestion.combinedScore}/10
+          </p>
+          <div class="quiz-result-breakdown">
+            <h4>Command word performance</h4>
+            <p><strong>Strong at:</strong> ${formatCommandWordList(strong)}</p>
+            <p><strong>Developing:</strong> ${formatCommandWordList(developing)}</p>
+            <p class="quiz-result-ao">${aoLines}</p>
+          </div>
+          <p>${suggestion.support}</p>
+          <p>This is a suggested tutor band, not an official GCSE grade. Your teacher will confirm or adjust your placement on the staff dashboard.</p>
+        </div>
+      `;
+
+      quizBackButton.hidden = false;
+      quizBackButton.disabled = false;
+      quizNextButton.disabled = false;
+      quizNextButton.textContent = "Submit for teacher review";
+    }
+
+    function handleQuizNext() {
+      if (quizState.screen === "start") {
+        quizState.screen = "stage1";
+        quizState.stage = 1;
+        renderStage1Question();
+        return;
+      }
+
+      if (quizState.screen === "stage1") {
+        if (quizState.questionIndex < stage1ScreeningQuestions.length - 1) {
+          quizState.questionIndex += 1;
+          renderStage1Question();
+          return;
+        }
+
+        const stage1Score = calculateStage1Score(quizState.stage1Answers);
+        quizState.stage2Tasks = selectStage2Tasks(stage1Score);
+        quizState.stage2Answers = new Array(quizState.stage2Tasks.length).fill(null);
+        quizState.stage = 2;
+        quizState.screen = "stage2";
+        quizState.questionIndex = 0;
+        renderStage2Task();
+        return;
+      }
+
+      if (quizState.screen === "stage2") {
+        const task = quizState.stage2Tasks[quizState.questionIndex];
+        const answer = quizState.stage2Answers[quizState.questionIndex];
+
+        if (isWrittenTask(task)) {
+          const trimmed = (answer || "").trim();
+          const qualityError = meetsWrittenLengthGate(task, trimmed)
+            ? getWrittenQualityError(trimmed, task)
+            : "Please write a real answer in full sentences before continuing.";
+          if (!isStage2AnswerValid(task, answer)) {
+            if (qualityError) {
+              showStage2FieldError(qualityError);
+              logFailedWrittenValidation(task, answer, qualityError);
+            }
+            return;
+          }
+        }
+
+        if (quizState.questionIndex < quizState.stage2Tasks.length - 1) {
+          quizState.questionIndex += 1;
+          renderStage2Task();
+          return;
+        }
+
+        quizState.screen = "result";
+        renderQuizResult();
+        return;
+      }
+
+      if (quizState.screen === "result" && quizState.pendingResult) {
+        saveSuggestedTutor(quizState.pendingResult);
+        closeTutorQuiz();
+        const tutorTab = document.querySelector('.tab[data-view="tutors"]');
+        if (tutorTab) {
+          tabs.forEach((item) => item.classList.remove("active"));
+          tutorTab.classList.add("active");
+          renderTutorPanel(tutorTab.dataset.title, tutorTab.dataset.copy);
+        }
+      }
+    }
+
+    function handleQuizBack() {
+      if (quizState.screen === "result") {
+        quizState.screen = "stage2";
+        quizState.questionIndex = quizState.stage2Tasks.length - 1;
+        renderStage2Task();
+        return;
+      }
+
+      if (quizState.screen === "stage2") {
+        if (quizState.questionIndex > 0) {
+          quizState.questionIndex -= 1;
+          renderStage2Task();
+          return;
+        }
+
+        quizState.screen = "stage1";
+        quizState.stage = 1;
+        quizState.questionIndex = stage1ScreeningQuestions.length - 1;
+        renderStage1Question();
+        return;
+      }
+
+      if (quizState.screen === "stage1" && quizState.questionIndex > 0) {
+        quizState.questionIndex -= 1;
+        renderStage1Question();
+      }
+    }
+
+    quizNextButton.addEventListener("click", handleQuizNext);
+    quizBackButton.addEventListener("click", handleQuizBack);
+    quizCloseButton.addEventListener("click", () => {
+      const hasProgress = quizState.stage1Answers.some((a) => a !== null)
+        || quizState.stage2Answers.some((a) => a !== null && a !== "");
+      if (quizState.screen !== "start" && quizState.screen !== "result" && hasProgress) {
+        const shouldClose = window.confirm("Close the assessment? Your current answers will be lost.");
+        if (!shouldClose) return;
+      }
+      closeTutorQuiz();
+    });
+
+    quizOverlay.addEventListener("click", (event) => {
+      if (event.target === quizOverlay) {
+        quizCloseButton.click();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!quizOverlay.classList.contains("is-open")) return;
+      if (event.key === "Escape") {
+        quizCloseButton.click();
+      }
+    });
+
+    function getActiveTutorSlug() {
+      const assignment = loadAssignedTutor();
+      if (assignment && tutors[assignment.tutorIndex]) {
+        return tutors[assignment.tutorIndex].name.toLowerCase();
+      }
+
+      const suggestion = loadSuggestedTutor();
+      if (suggestion && tutors[suggestion.tutorIndex]) {
+        return tutors[suggestion.tutorIndex].name.toLowerCase();
+      }
+
+      return "nova";
+    }
+
+    function getLessonTemplateHref() {
+      return `lesson.html?tutor=${encodeURIComponent(getActiveTutorSlug())}`;
+    }
+
+    const demoTrialSessions = [
+      { id: 1, title: "Rights in School: What Is a Right?" },
+      { id: 2, title: "School Rules: Rights vs Responsibilities" },
+      { id: 3, title: "What Is Democracy?" },
+      { id: 4, title: "Elections and Voting" },
+      { id: 5, title: "Identity and Diversity in Modern Britain" },
+      { id: 6, title: "Why Do We Have Laws?" },
+      { id: 7, title: "Youth Justice and Sentencing" },
+      { id: 8, title: "Active Citizenship: Choose Your Issue" }
+    ];
+
+    function renderDemoSessionCards() {
+      return demoTrialSessions.map((session) => `
+        <div class="demo-session-card" aria-disabled="true">
+          <span class="demo-session-number">${session.id}</span>
+          <strong>${session.title}</strong>
+        </div>
+      `).join("");
+    }
+
+    function renderLessonPanel() {
+      panelContent.classList.remove("is-progress", "is-home");
+      panelContent.classList.add("is-wide");
+      panelContent.innerHTML = `
+        <h2 id="panel-title">Lessons</h2>
+        <p id="panel-copy">Open the full-screen lesson template.</p>
+        <div class="lesson-launch">
+          <a class="lesson-launch-button" href="${getLessonTemplateHref()}" target="_blank" rel="noopener">View Lesson Template</a>
+        </div>
+        <section class="demo-sessions-section" aria-label="Demo trial schedule">
+          <h3 class="demo-sessions-heading">Demo trial schedule</h3>
+          <p class="demo-sessions-note">Eight 40-minute sessions across four weeks. Sessions will unlock for the trial.</p>
+          <div class="demo-sessions-grid">
+            ${renderDemoSessionCards()}
+          </div>
+        </section>
+      `;
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((item) => item.classList.remove("active"));
+        tab.classList.add("active");
+
+        if (tab.dataset.view === "home") {
+          renderHomePanel();
+          return;
+        }
+
+        if (tab.dataset.view === "tutors") {
+          renderTutorPanel(tab.dataset.title, tab.dataset.copy);
+          return;
+        }
+
+        if (tab.dataset.view === "lesson") {
+          renderLessonPanel();
+          return;
+        }
+
+        if (tab.dataset.view === "progress") {
+          renderProgressPanel();
+          return;
+        }
+
+        renderStandardPanel(tab.dataset.title, tab.dataset.copy);
+      });
+    });
+
+    renderHomePanel();
+
+    document.getElementById("student-logout").addEventListener("click", () => {
+      EvoAuth.logout("student");
+    });
+  </script>
+</body>
+</html>
