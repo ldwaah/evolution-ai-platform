@@ -22,7 +22,7 @@ Session keys (browser `sessionStorage`):
 
 - **Staff dashboard** (`dashboard.html`): requires staff login. Includes lesson catalogue, student placement reviews, and staff tabs.
 - **Student dashboard** (`student.html`): requires student login. Includes tutor selection, citizenship placement assessment, lessons, and progress.
-- **Entry** (`index.html`): public. Simple open-door intro; press **Enter** to continue to the login chooser.
+- **Entry** (`index.html`): public. Cinematic school entrance intro (video fly-through); press **Enter** to play the door sequence, then continue to the login chooser. Assets: `assets/video/intro-door.mp4`, `assets/images/intro-poster.png`.
 - **Login chooser** (`login.html`): public. Links route to login pages, not directly to dashboards.
 
 ## Auth note

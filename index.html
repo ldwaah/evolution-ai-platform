@@ -3,26 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Evolution Platform</title>
+  <title>100% Sports &amp; Education Centre</title>
   <link rel="stylesheet" href="assets/css/intro.css">
 </head>
 <body class="intro-body">
-  <main class="intro-screen" id="intro-screen" tabindex="-1" aria-label="Platform entrance">
-    <header class="intro-copy">
-      <h1>Evolution Platform</h1>
-      <p>Step through the open door to begin.</p>
-    </header>
-
-    <div class="threshold" aria-hidden="true">
-      <div class="door-frame">
-        <div class="doorway">
-          <div class="beyond"></div>
-        </div>
-        <div class="door door-left"></div>
-        <div class="door door-right"></div>
-        <div class="floor-line"></div>
-      </div>
+  <main class="intro-screen is-idle" id="intro-screen" tabindex="-1" aria-label="School entrance">
+    <div class="intro-media" aria-hidden="true">
+      <img class="intro-poster" src="assets/images/intro-poster.png" alt="">
+      <video
+        class="intro-video"
+        id="intro-video"
+        preload="auto"
+        muted
+        playsinline
+        poster="assets/images/intro-poster.png"
+      >
+        <source src="assets/video/intro-door.mp4" type="video/mp4">
+      </video>
+      <div class="intro-vignette"></div>
     </div>
+
+    <header class="intro-copy">
+      <h1>
+        100% Sports
+        <span class="brand-accent">&amp; Education Centre</span>
+      </h1>
+      <p>Press Enter to step through the doors.</p>
+    </header>
 
     <p class="enter-hint is-ready" id="enter-hint">
       <kbd>Enter</kbd>
@@ -33,9 +40,12 @@
   <script>
     (function () {
       const screen = document.getElementById("intro-screen");
+      const video = document.getElementById("intro-video");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       let leaving = false;
+      let playing = false;
 
-      function enterPlatform() {
+      function goToLogin() {
         if (leaving) return;
         leaving = true;
         screen.classList.add("is-exiting");
@@ -44,10 +54,31 @@
         }, 520);
       }
 
+      function startFlythrough() {
+        if (leaving || playing) return;
+        playing = true;
+        screen.classList.remove("is-idle");
+        screen.classList.add("is-playing");
+
+        if (reducedMotion || !video) {
+          goToLogin();
+          return;
+        }
+
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(function () {
+            goToLogin();
+          });
+        }
+      }
+
+      video.addEventListener("ended", goToLogin);
+
       document.addEventListener("keydown", function (event) {
         if (event.key === "Enter" && !event.repeat) {
           event.preventDefault();
-          enterPlatform();
+          startFlythrough();
         }
       });
 
