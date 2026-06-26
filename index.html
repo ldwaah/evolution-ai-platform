@@ -20,6 +20,7 @@
       >
         <source src="assets/video/intro-door.mp4" type="video/mp4">
       </video>
+      <p class="intro-fallback" id="intro-fallback" hidden>Video unavailable. Press Enter to continue.</p>
       <div class="intro-vignette"></div>
     </div>
 
@@ -41,6 +42,7 @@
     (function () {
       const screen = document.getElementById("intro-screen");
       const video = document.getElementById("intro-video");
+      const fallback = document.getElementById("intro-fallback");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       let leaving = false;
       let playing = false;
@@ -74,6 +76,10 @@
       }
 
       video.addEventListener("ended", goToLogin);
+
+      video.addEventListener("error", function () {
+        if (fallback) fallback.hidden = false;
+      });
 
       document.addEventListener("keydown", function (event) {
         if (event.key === "Enter" && !event.repeat) {
