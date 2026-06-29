@@ -12,6 +12,8 @@
   const LABEL_LESSON = "Lesson";
   const LABEL_QUIZ = "End quiz";
   const LABEL_REVISION = "Revision";
+  const LABEL_READING = "Read & practise";
+  const READING_PAGE = "lessons/citizenship/reading.html";
   const DEFAULT_MISSING_AUDIO_MS = 400;
   const DEFAULT_REVISION_PLAYBACK_RATE = 1.5;
   const PROGRESS_STORE = "evolearn-progress";
@@ -368,7 +370,67 @@
     };
   }
 
+  /**
+   * Build URL for the slide reading page (opens in a new tab).
+   * @param {object} options
+   * @param {string} options.lessonRelPath - e.g. citizenship/module-1/lesson-1
+   * @param {number} options.slideIndex - 0-based slide index
+   * @param {string} [options.basePath] - relative prefix from lesson HTML
+   */
+  function buildReadingPageUrl({ lessonRelPath, slideIndex = 0, basePath = "" } = {}) {
+    const prefix = String(basePath || "").replace(/\/?$/, "/");
+    const lesson = String(lessonRelPath || "").replace(/^\/+/, "");
+    const slide = Math.max(1, (Number(slideIndex) || 0) + 1);
+    const params = new URLSearchParams({
+      lesson,
+      slide: String(slide),
+    });
+    return `${prefix}${READING_PAGE}?${params.toString()}`;
+  }
+
+  /**
+   * Mount or update a "Read & practise" link on the slide frame (top-right).
+   * Call update() whenever the slide changes.
+   */
+  function mountReadingButton(options = {}) {
+    const {
+      containerEl = null,
+      lessonRelPath = "",
+      basePath = "",
+      getSlideIndex = () => 0,
+      label = LABEL_READING,
+      hidden = false,
+    } = options;
+
+    const host = containerEl || document.getElementById("slide-frame");
+    if (!host || !lessonRelPath) return null;
+
+    let link = host.querySelector(".slide-reading-btn");
+    if (!link) {
+      link = document.createElement("a");
+      link.className = "slide-reading-btn";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      host.appendChild(link);
+    }
+
+    function update() {
+      const index = typeof getSlideIndex === "function" ? getSlideIndex() : 0;
+      link.href = buildReadingPageUrl({ lessonRelPath, slideIndex: index, basePath });
+      link.textContent = label;
+      link.setAttribute("aria-label", `${label} — opens written version in a new tab`);
+      link.hidden = !!hidden;
+    }
+
+    update();
+    return { el: link, update };
+  }
+
   const api = {
+    buildReadingPageUrl,
+    mountReadingButton,
+    LABEL_READING,
+    READING_PAGE,
     isStudentMode,
     studentContextLabel,
     updateStudentChatBadge,

@@ -1,0 +1,34 @@
+{
+  "lessonId": "lesson-2",
+  "topicId": "equality-act-discrimination",
+  "slides": {
+    "0": [
+      {
+        "id": "r2-s0-mcq1",
+        "type": "mcq",
+        "text": "What does this lesson move on to after identity?",
+        "options": [
+          "The rules and legal rights that protect us every day",
+          "How to cook British food",
+          "Ancient Roman history only"
+        ],
+        "correctIndex": 0,
+        "tutorHint": "Today we look at legal rights and responsibilities in a fair society."
+      }
+    ],
+    "1": [
+      {
+        "id": "r2-s1-mcq1",
+        "type": "mcq",
+        "text": "Which law is central to this lesson?",
+        "options": [
+          "The Highway Code",
+          "The Equality Act 2010",
+          "The Magna Carta only"
+        ],
+        "correctIndex": 1,
+        "tutorHint": "The Equality Act 2010 protects people from discrimination."
+      }
+    ]
+  }
+}

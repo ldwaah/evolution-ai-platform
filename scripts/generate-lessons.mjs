@@ -71,6 +71,7 @@ function buildLessonHtml(topic, moduleId, lessonId) {
             <div class="lesson-content-card">
               <h2>Lesson content</h2>
               <p>Teaching slides and activities for this lesson are being prepared. Your tutor uses stored knowledge from this topic — ask about anything that feels unclear.</p>
+              <a class="lesson-content-reading-link" href="${prefix}lessons/citizenship/reading.html?lesson=${encodeURIComponent(`citizenship/${moduleId}/${lessonId}`)}&amp;slide=1" target="_blank" rel="noopener noreferrer">Read &amp; practise — written version</a>
             </div>
 
             <div class="lesson-content-card lesson-content-card--quiz">

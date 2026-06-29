@@ -1,0 +1,17 @@
+{
+  "description": "Comprehension questions for slide reading pages. Keys are 0-based slide indices.",
+  "banks": [
+    {
+      "lessonId": "lesson-1",
+      "topicId": "british-identity-values",
+      "file": "lesson-1.json",
+      "title": "Lesson 1 — British Identity and Values"
+    },
+    {
+      "lessonId": "lesson-2",
+      "topicId": "equality-act-discrimination",
+      "file": "lesson-2.json",
+      "title": "Lesson 2 — Respect, Discrimination and the Equality Act"
+    }
+  ]
+}

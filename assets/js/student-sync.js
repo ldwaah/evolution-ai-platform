@@ -27,6 +27,7 @@
     "evoTutorQuizHistory",
     "evoEndQuizAnswers",
     "evoWorksheetAnswers",
+    "evoReadingAnswers",
     "evolearn-progress",
     "evoLessonCheckpoints",
     "evolearn-stats",

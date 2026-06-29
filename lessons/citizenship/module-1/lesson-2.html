@@ -289,7 +289,7 @@
   <script src="../../../assets/js/firebase-config.js?v=progress-sync-1"></script>
   <script src="../../../assets/js/student-auth.js?v=progress-sync-1"></script>
   <script src="../../../assets/js/student-sync.js?v=progress-sync-1"></script>
-  <script src="../../../assets/js/lesson-ppt-viewer.js?v=revision-recap-2"></script>
+  <script src="../../../assets/js/lesson-ppt-viewer.js?v=reading-1"></script>
   <script src="../../../assets/js/lesson-worksheet.js?v=revision-recap-2"></script>
   <script src="../../../assets/js/student-profile.js?v=revision-recap-3"></script>
   <script src="../../../assets/js/lesson-revision-recap.js?v=revision-recap-3"></script>
@@ -544,6 +544,13 @@
     }
 
     const narrateBtn = document.getElementById("slide-narrate");
+    const readingBtn = window.EvoLessonPptViewer?.mountReadingButton?.({
+      containerEl: document.getElementById("slide-frame"),
+      lessonRelPath: "citizenship/module-1/lesson-2",
+      basePath: "../../../",
+      getSlideIndex: () => currentSlide,
+      hidden: !lessonStarted,
+    });
     let worksheetCtrl = null;
     const slideProgressBar = window.EvoLessonPptViewer?.createSlideProgressBar?.({
       mountEl: document.getElementById("slide-frame"),
@@ -622,6 +629,7 @@
       updateSlideProgress();
       updateNav();
       updateChatContext();
+      readingBtn?.update?.();
       if (lessonChat?.onSlideChanged) lessonChat.onSlideChanged();
     }
 
@@ -711,6 +719,7 @@
       visitedSlides.add(currentSlide);
       highestUnlockedSlide = Math.max(highestUnlockedSlide, currentSlide);
       startOverlay.classList.add("is-hidden");
+      readingBtn?.update?.();
       renderSlide();
       scheduleProgressSave();
     }

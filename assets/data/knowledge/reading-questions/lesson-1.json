@@ -1,0 +1,81 @@
+{
+  "lessonId": "lesson-1",
+  "topicId": "british-identity-values",
+  "slides": {
+    "0": [
+      {
+        "id": "r1-s0-mcq1",
+        "type": "mcq",
+        "text": "What is this Citizenship lesson mainly about?",
+        "options": [
+          "Only laws and politics in Parliament",
+          "Who we are, where we belong, and life in modern Britain",
+          "How to pass a driving test"
+        ],
+        "correctIndex": 1,
+        "tutorHint": "This lesson is about you — your story, your community, and your identity."
+      }
+    ],
+    "1": [
+      {
+        "id": "r1-s1-mcq1",
+        "type": "mcq",
+        "text": "According to the slide, how can identity be described?",
+        "options": [
+          "In just one sentence",
+          "Only by your name and address",
+          "As many parts that come together to tell your story"
+        ],
+        "correctIndex": 2,
+        "tutorHint": "Identity is made up of family, culture, hobbies, beliefs, friends, and more."
+      },
+      {
+        "id": "r1-s1-mcq2",
+        "type": "mcq",
+        "text": "Which of these might you mention when describing who you are?",
+        "options": [
+          "Only your shoe size",
+          "Your family, culture, hobbies, beliefs, or friends",
+          "Nothing — identity cannot be described"
+        ],
+        "correctIndex": 1,
+        "tutorHint": "Pick one piece: family, a hobby, or someone who matters to you."
+      },
+      {
+        "id": "r1-s1-short1",
+        "type": "short",
+        "text": "In your own words, what does the question \"Who are we?\" ask you to think about?",
+        "accept": ["identity", "who i am", "who you are", "family", "culture", "hobbies", "beliefs", "friends", "story", "parts", "myself", "yourself"],
+        "tutorHint": "Think about the different parts of your life that shape who you are."
+      }
+    ],
+    "2": [
+      {
+        "id": "r1-s2-mcq1",
+        "type": "mcq",
+        "text": "Why might identical twins have different identities?",
+        "options": [
+          "They always share exactly the same personality",
+          "Identity is only about DNA",
+          "They have different personalities, interests, and experiences"
+        ],
+        "correctIndex": 2,
+        "tutorHint": "Twins can look the same but still be different people inside."
+      }
+    ],
+    "3": [
+      {
+        "id": "r1-s3-mcq1",
+        "type": "mcq",
+        "text": "If someone asked \"Who are you?\" in the street, what would be a good approach?",
+        "options": [
+          "There is only one correct answer everyone must give",
+          "You might talk about your name, family, hobbies, or culture — many pieces fit together",
+          "You must only give your full address"
+        ],
+        "correctIndex": 1,
+        "tutorHint": "There is no single correct answer. Identity has many pieces."
+      }
+    ]
+  }
+}
