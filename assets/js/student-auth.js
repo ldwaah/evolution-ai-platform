@@ -111,6 +111,10 @@
     } catch { /* storage blocked */ }
   }
 
+  function ensureIntroGatePassed() {
+    try { global.sessionStorage.setItem("evolearn-entered", "1"); } catch { /* storage blocked */ }
+  }
+
   function getDisplayName() {
     if (currentUser?.displayName) return currentUser.displayName;
     if (currentUser?.email) return currentUser.email.split("@")[0];
@@ -350,6 +354,7 @@
       return { mode: isGuest() ? "guest" : "offline" };
     }
     if (isGuest()) {
+      ensureIntroGatePassed();
       return { mode: "guest" };
     }
 
@@ -358,6 +363,8 @@
       global.location.replace("login.html");
       return { mode: "redirect" };
     }
+
+    ensureIntroGatePassed();
 
     if (global.EvoStudentSync?.loadProgressIntoLocal) {
       try {
@@ -416,6 +423,7 @@
     hasAppAccess,
     continueAsGuest,
     markSessionEntered,
+    ensureIntroGatePassed,
     onAuthStateChanged,
     waitForAuthReady,
     waitForAuthGate,
