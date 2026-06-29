@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EVOlearn: Citizenship Assessment</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/evolearn-3d.css" />
+  <link rel="stylesheet" href="assessment.css" />
+</head>
+<body class="evo-3d assessment-page">
+  <div class="assessment-layout">
+    <header class="assessment-topbar">
+      <a class="home-logo" href="../index.html" aria-label="Home">
+        <img class="brand-logo" src="../assets/logo.svg" alt="EVOlearn" />
+      </a>
+      <a class="assessment-back-link" href="../index.html#citizenship">← Back to Citizenship</a>
+    </header>
+
+    <main class="assessment-shell">
+      <div class="assessment-card">
+        <header class="assessment-header">
+          <p class="assessment-intro">GCSE Citizenship placement assessment</p>
+          <p class="assessment-progress-label" id="assessment-progress-label">Getting started</p>
+          <div class="assessment-progress-track" aria-hidden="true">
+            <div class="assessment-progress-fill" id="assessment-progress-fill"></div>
+          </div>
+        </header>
+
+        <div class="assessment-body" id="assessment-body"></div>
+
+        <footer class="assessment-footer">
+          <button class="assessment-nav is-back" type="button" id="assessment-back" disabled>Back</button>
+          <button class="assessment-nav is-next" type="button" id="assessment-next" disabled>Next</button>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/firebase-config.js?v=progress-sync-1"></script>
+  <script src="../assets/js/student-auth.js?v=progress-sync-1"></script>
+  <script src="../assets/js/student-sync.js?v=progress-sync-1"></script>
+  <script src="../assets/js/student-profile.js?v=lesson-quiz-profile-2"></script>
+  <script src="assessment.js?v=clipboard-lock-1"></script>
+  <script src="citizenship-assessment.js?v=clipboard-lock-1"></script>
+</body>
+</html>

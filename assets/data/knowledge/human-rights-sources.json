@@ -1,0 +1,91 @@
+{
+  "topicId": "human-rights-sources",
+  "topicTitle": "Human Rights: Sources and Protection",
+  "moduleId": "module-1",
+  "lessonIds": [
+    "lesson-3"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Human rights are basic freedoms every person should have, like being safe and treated fairly.",
+      "keyPoints": [
+        "Rights belong to people because they are human — not because a government gives them.",
+        "Examples: right to life, not to be hurt, to go to school.",
+        "Governments should protect these rights."
+      ],
+      "explainLike": "One small step: human rights are rules about how everyone should be treated, everywhere."
+    },
+    "2": {
+      "summary": "The Universal Declaration of Human Rights (1948) lists rights after the Second World War. The UK also protects rights in law.",
+      "keyPoints": [
+        "UDHR is international — it influenced many countries.",
+        "European Convention on Human Rights (ECHR, 1950) protects rights in Europe.",
+        "Human Rights Act 1998 brings ECHR rights into UK law."
+      ],
+      "explainLike": "Copy the pattern: global rights (UDHR) → European rights (ECHR) → UK law (HRA)."
+    },
+    "3": {
+      "summary": "Key ECHR rights include life, liberty, fair trial, privacy, and freedom of expression. Rights can be limited in a democratic society.",
+      "keyPoints": [
+        "Article 10 protects free speech but allows limits for public safety and others' rights.",
+        "Article 8 protects private and family life.",
+        "Limitations must be lawful, necessary, and proportionate."
+      ],
+      "explainLike": "Link one right to one limit: you can speak freely, but not to threaten violence — that is proportionate."
+    },
+    "4": {
+      "summary": "The Human Rights Act lets UK courts apply ECHR rights. Public bodies must respect rights in their decisions.",
+      "keyPoints": [
+        "Courts can issue a declaration of incompatibility if UK law breaches rights.",
+        "Parliament remains sovereign — it can change law after such a declaration.",
+        "Rights apply to NHS care, policing, schools, and local councils."
+      ],
+      "explainLike": "Four steps: name the right, name the public body, describe the breach, say what court can do."
+    },
+    "5": {
+      "summary": "Explain why human rights matter in democracy and how UK law balances rights with community safety.",
+      "keyPoints": [
+        "HRA strengthens accountability of state power.",
+        "Rights protect minorities against majority opinion.",
+        "Debate continues on reform or a British Bill of Rights."
+      ],
+      "explainLike": "GCSE vocabulary: proportionality, public authority, ECHR Article — apply each to a real UK example."
+    },
+    "6": {
+      "summary": "Discuss tensions between security and liberty using counter-terrorism, surveillance, or protest scenarios.",
+      "keyPoints": [
+        "TPIMs and terrorism legislation restrict some freedoms for security.",
+        "Courts and Parliament debate whether limits are proportionate.",
+        "Civil liberties groups argue rights should not be permanently eroded."
+      ],
+      "explainLike": "Theo style: security need on one side, liberty on the other — which evidence tips your judgement?"
+    },
+    "7": {
+      "summary": "AO labels: state Article number (AO1), apply to scenario facts (AO2), evaluate whether balance is fair (AO3).",
+      "keyPoints": [
+        "'State' questions: Article 10 freedom of expression, Article 6 fair trial.",
+        "Develop: right + legal limit + example from case or news.",
+        "Evaluate starter: 'To a significant extent, however…'"
+      ],
+      "explainLike": "Examiner thinking: generic 'human rights are good' earns little — tie Article to the scenario given."
+    },
+    "8": {
+      "summary": "Analyse UK human rights architecture post-Brexit: retained EU law, ECHR membership, and reform proposals.",
+      "keyPoints": [
+        "UK remains in ECHR — not an EU requirement.",
+        "European Court of Human Rights in Strasbourg hears individual applications.",
+        "Reform debates weigh sovereignty against protection standards."
+      ],
+      "explainLike": "Challenge assumptions: leaving the EU did not automatically leave the ECHR — analyse each institution separately."
+    },
+    "9": {
+      "summary": "Evaluate whether the UK's human rights framework delivers justice for all citizens, with selective cross-theme synthesis.",
+      "keyPoints": [
+        "Compare UDHR ideals with detention, asylum, and digital privacy practice.",
+        "Weigh parliamentary sovereignty against judicial protection.",
+        "Grade 8–9: coherent evaluative conclusion without contradiction."
+      ],
+      "explainLike": "Mastery: judge the system using rights theory, institutions, and lived outcomes — not a list of Articles."
+    }
+  }
+}

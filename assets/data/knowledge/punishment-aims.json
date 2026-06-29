@@ -1,0 +1,91 @@
+{
+  "topicId": "punishment-aims",
+  "topicTitle": "Aims and Types of Punishment",
+  "moduleId": "module-3",
+  "lessonIds": [
+    "lesson-17"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Punishment is what happens when someone is found guilty of breaking the law.",
+      "keyPoints": [
+        "Aims include stopping crime and protecting people.",
+        "Types: fines, community service, prison.",
+        "Punishment should be fair for the crime."
+      ],
+      "explainLike": "Punishment tries to protect society and show breaking rules has consequences."
+    },
+    "2": {
+      "summary": "Four main aims: retribution, deterrence, rehabilitation, and protection of the public.",
+      "keyPoints": [
+        "Retribution = deserved payback.",
+        "Deterrence = discourage offender and others.",
+        "Rehabilitation = help change behaviour."
+      ],
+      "explainLike": "Gap-fill each aim with one sentence example."
+    },
+    "3": {
+      "summary": "Sentences must fit crime — proportionality. Judges use sentencing guidelines.",
+      "keyPoints": [
+        "Community orders combine punishment and rehabilitation.",
+        "Suspended sentences avoid immediate custody.",
+        "Life sentences for most serious murders."
+      ],
+      "explainLike": "Link aim to sentence: community service → rehabilitation + some retribution."
+    },
+    "4": {
+      "summary": "Apply aims to scenarios: theft, violent crime, corporate fraud.",
+      "keyPoints": [
+        "Custodial sentences costly — rehabilitation programmes inside.",
+        "Fines proportionate to means where possible.",
+        "Victim statements influence sentencing."
+      ],
+      "explainLike": "Scenario: identify aims judges might prioritise and why."
+    },
+    "5": {
+      "summary": "Explain debates on prison effectiveness and alternatives.",
+      "keyPoints": [
+        "UK prison overcrowding concerns.",
+        "Reoffending rates after short sentences.",
+        "Restorative justice involves victim and offender meeting."
+      ],
+      "explainLike": "Because rehabilitation reduces reoffending, therefore investment in education in prison matters."
+    },
+    "6": {
+      "summary": "Discuss death penalty — UK abolished 1965; global human rights context.",
+      "keyPoints": [
+        "ECHR Protocol 13 abolishes death penalty in Europe.",
+        "Arguments for/against in other countries.",
+        "UK opposes death penalty diplomatically."
+      ],
+      "explainLike": "Human rights lens — irreversible punishment and deterrence evidence debated."
+    },
+    "7": {
+      "summary": "Exam: state aims (AO1), apply to sentence choice (AO2), evaluate prison (AO3).",
+      "keyPoints": [
+        "Define four aims precisely.",
+        "Discuss question structure: paragraph per viewpoint.",
+        "Use reoffending data cautiously."
+      ],
+      "explainLike": "Nia: 'evaluate' needs aim named + evidence + judgement."
+    },
+    "8": {
+      "summary": "Analyse whole-life orders, minimum sentences, and youth sentencing differences.",
+      "keyPoints": [
+        "Mandatory minimums limit judicial discretion.",
+        "Ethics of punishing young adults versus juveniles.",
+        "Private prison debates."
+      ],
+      "explainLike": "Examine whether mandatory sentences improve justice or fairness."
+    },
+    "9": {
+      "summary": "Evaluate whether UK sentencing balances aims of punishment for victims and society.",
+      "keyPoints": [
+        "Synthesis: rule of law, rights, youth justice.",
+        "Judgement on restorative versus punitive culture.",
+        "Substantiated conclusion."
+      ],
+      "explainLike": "Mastery: punishment policy reflects society's values — judge holistically."
+    }
+  }
+}

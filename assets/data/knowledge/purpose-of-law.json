@@ -1,0 +1,91 @@
+{
+  "topicId": "purpose-of-law",
+  "topicTitle": "The Purpose of Law and Legal Age Limits",
+  "moduleId": "module-3",
+  "lessonIds": [
+    "lesson-12"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Laws are rules made by society to keep people safe and treat everyone fairly.",
+      "keyPoints": [
+        "Laws say what you can and cannot do.",
+        "Age limits protect young people — e.g. age to drive, vote, buy alcohol.",
+        "Breaking criminal law can lead to punishment."
+      ],
+      "explainLike": "Laws are like school rules for the whole country — they protect and guide."
+    },
+    "2": {
+      "summary": "Law serves purposes: protect harm, resolve disputes, set standards, and protect rights.",
+      "keyPoints": [
+        "Criminal law punishes behaviour harming society.",
+        "Civil law settles disputes between people or organisations.",
+        "Legal ages reflect when society thinks someone is ready."
+      ],
+      "explainLike": "Copy pattern: purpose → example law → age limit (16 work, 18 vote, 10 criminal responsibility in England)."
+    },
+    "3": {
+      "summary": "Age of criminal responsibility in England and Wales is 10. Other ages mark rights and responsibilities.",
+      "keyPoints": [
+        "16: work, consent, lottery; 17: drive learner; 18: vote, buy alcohol, adult court.",
+        "Laws change as society's views change.",
+        "UN recommends higher minimum age for criminal responsibility."
+      ],
+      "explainLike": "One age, one right: 18 → vote — link number to citizenship duty."
+    },
+    "4": {
+      "summary": "Apply purposes of law to scenarios: harm prevention, contracts, consumer protection, online safety.",
+      "keyPoints": [
+        "Sale of Goods Act protects buyers.",
+        "Employment law sets minimum wage and working hours for young workers.",
+        "Online harms laws aim to protect children."
+      ],
+      "explainLike": "Scenario steps: identify harm → name law purpose → say likely legal outcome."
+    },
+    "5": {
+      "summary": "Explain why societies need law and how it balances freedom with protection.",
+      "keyPoints": [
+        "Without law, stronger groups could dominate.",
+        "Law encodes moral standards but is not identical to morality.",
+        "Reform campaigns change unjust laws over time."
+      ],
+      "explainLike": "GCSE chain: law limits liberty slightly to protect everyone's rights long term."
+    },
+    "6": {
+      "summary": "Discuss whether age 10 for criminal responsibility is appropriate.",
+      "keyPoints": [
+        "Pro low age: accountability for serious harm.",
+        "Con: child development, UNCRC, youth justice welfare.",
+        "Compare with Scotland (12) and other countries."
+      ],
+      "explainLike": "Both sides — child welfare versus public protection — reasoned conclusion."
+    },
+    "7": {
+      "summary": "Exam: state purposes (AO1), apply to age-limit scenario (AO2), evaluate law's role (AO3).",
+      "keyPoints": [
+        "Command 'give' — list purposes with brief expansion.",
+        "Link UNCRC to youth law debates.",
+        "Evaluate whether law always achieves justice."
+      ],
+      "explainLike": "Nia: 2 marks per developed purpose with example."
+    },
+    "8": {
+      "summary": "Analyse how law reflects and shapes social values — slavery abolition, equality reforms.",
+      "keyPoints": [
+        "Law lagging behind social change (historical examples).",
+        "Judges interpret law in changing contexts.",
+        "Parliamentary law-making versus common law."
+      ],
+      "explainLike": "Examine whether law leads or follows public opinion."
+    },
+    "9": {
+      "summary": "Evaluate the extent to which UK law fulfils its purposes for young citizens.",
+      "keyPoints": [
+        "Synthesis: rights, youth justice, participation.",
+        "Judgement on protective versus punitive approach.",
+        "Selective evidence on age limits."
+      ],
+      "explainLike": "Mastery: law as citizenship contract — judge for young people in practice."
+    }
+  }
+}

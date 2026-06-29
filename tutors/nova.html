@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>EVOlearn — Nova, Access tutor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-nova.css" />
+  <style>
+    .nova-profile-page { min-height: 100vh; display: flex; flex-direction: column; }
+    .nova-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 26px; position: relative; z-index: 2;
+    }
+    .nova-topbar .brand-logo { height: 38px; width: auto; display: block; }
+    .nova-back {
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      padding: 8px 14px; border-radius: 999px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); backdrop-filter: blur(10px);
+      transition: color .55s cubic-bezier(.25,.46,.45,.94), border-color .55s cubic-bezier(.25,.46,.45,.94);
+    }
+    .nova-back:hover { color: var(--cyan); border-color: rgba(90,217,255,.5); }
+
+    .nova-shell { flex: 1; max-width: 920px; width: 100%; margin: 0 auto; padding: 14px 26px 48px; position: relative; z-index: 1; }
+
+    .nova-hero {
+      display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center;
+      margin-bottom: 36px;
+    }
+    .nova-hero-photo {
+      position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 1;
+      border: 1px solid var(--glass-line); background: var(--navy-deep);
+    }
+    .nova-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .nova-hero-badge {
+      position: absolute; top: 10px; left: 10px;
+      font-size: 12px; font-weight: 700; letter-spacing: .5px;
+      padding: 4px 10px; border-radius: 999px;
+      background: rgba(13,22,30,.75); color: var(--cyan-soft);
+      border: 1px solid var(--glass-line); backdrop-filter: blur(6px);
+    }
+    .nova-hero-copy h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -.5px; }
+    .nova-hero-role { font-size: 14px; color: var(--cyan); letter-spacing: .4px; margin-top: 4px; }
+    .nova-catchphrase {
+      font-size: 16px; color: var(--cyan-soft); margin-top: 14px; font-style: italic;
+    }
+    .nova-hero-support { font-size: 15px; color: var(--muted); margin-top: 10px; line-height: 1.55; max-width: 520px; }
+
+    .nova-section { margin-bottom: 32px; }
+    .nova-section h2 {
+      font-size: 13px; letter-spacing: 1.6px; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 14px; font-weight: 600;
+    }
+    .nova-section p, .nova-section li { font-size: 15px; line-height: 1.65; color: #cfe1ec; }
+    .nova-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .nova-section ul li::before { content: "·"; color: var(--cyan); margin-right: 10px; }
+
+    .nova-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .nova-tag {
+      font-size: 13px; padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--glass-line); background: var(--glass);
+      color: var(--cyan-soft); backdrop-filter: blur(8px);
+    }
+
+    .nova-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .nova-card {
+      border-radius: 16px; border: 1px solid var(--glass-line);
+      background: var(--glass); backdrop-filter: blur(12px); padding: 18px 20px;
+    }
+    .nova-card h3 { font-size: 14px; color: var(--cyan); margin-bottom: 10px; font-weight: 600; }
+
+    .nova-examples { display: flex; flex-direction: column; gap: 14px; }
+    .nova-example-card {
+      border-radius: 14px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); padding: 16px 18px;
+    }
+    .nova-example-label {
+      font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px; display: block;
+    }
+    .nova-example-text { font-size: 14.5px; line-height: 1.6; color: #d8e8f2; }
+
+    .nova-dialogue { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .nova-dialogue-line {
+      padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.55;
+    }
+    .nova-dialogue-line--nova {
+      align-self: flex-start; max-width: 92%;
+      background: rgba(90,217,255,.1); border: 1px solid rgba(90,217,255,.2); color: #e8f4fb;
+    }
+    .nova-dialogue-line--student {
+      align-self: flex-end; max-width: 72%;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: #eaf4fb;
+    }
+    .nova-dialogue-role {
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 4px; display: block;
+    }
+
+    .nova-footer-cta {
+      margin-top: 12px; text-align: center;
+    }
+    .nova-cta {
+      display: inline-block; padding: 14px 30px; border-radius: 999px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      background: linear-gradient(120deg, var(--cyan), var(--blue)); color: #06222e;
+      box-shadow: 0 14px 36px rgba(90,217,255,.22);
+      transition: transform .55s cubic-bezier(.25,.46,.45,.94), box-shadow .55s cubic-bezier(.25,.46,.45,.94);
+    }
+    .nova-cta:hover { transform: translateY(-2px); box-shadow: 0 18px 44px rgba(90,217,255,.32); }
+
+    @media (max-width: 680px) {
+      .nova-hero { grid-template-columns: 1fr; text-align: center; }
+      .nova-hero-photo { max-width: 180px; margin: 0 auto; }
+      .nova-hero-support { margin-left: auto; margin-right: auto; }
+      .nova-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="agent-nova nova-profile-page">
+  <canvas id="particles"></canvas>
+  <div class="ambient-glow"></div>
+
+  <div class="nova-profile-page">
+    <header class="nova-topbar">
+      <a href="../index.html#citizenship" aria-label="Home">
+        <img class="brand-logo" src="../assets/logo.svg" alt="EVOlearn" />
+      </a>
+      <a class="nova-back" href="citizenship.html">← All tutors</a>
+    </header>
+
+    <main class="nova-shell" id="nova-profile-root">
+      <p style="color:var(--muted);text-align:center;padding:40px 0;">Loading Nova's profile…</p>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById("nova-profile-root");
+
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function render(profile) {
+        const ex = profile.examples || {};
+        const bio = profile.biography || {};
+        const style = profile.supportStyle || {};
+        const dialogue = ex.lessonDialogue || [];
+
+        root.innerHTML = `
+          <section class="nova-hero">
+            <div class="nova-hero-photo tutor-nova">
+              <span class="nova-hero-badge">Lvl ${profile.level}</span>
+              <img src="../${profile.image}" alt="${escapeHtml(profile.name)}, ${escapeHtml(profile.levelName)} tutor" />
+            </div>
+            <div class="nova-hero-copy">
+              <h1>${escapeHtml(profile.name)}</h1>
+              <p class="nova-hero-role">Level ${profile.level} · ${escapeHtml(profile.levelName)} · ${escapeHtml(profile.role)}</p>
+              <p class="nova-catchphrase">"${escapeHtml(profile.catchphrase)}"</p>
+              <p class="nova-hero-support">${escapeHtml(profile.description)}</p>
+            </div>
+          </section>
+
+          <section class="nova-section">
+            <h2>About Nova</h2>
+            <p>${escapeHtml(bio.expanded || bio.short || "")}</p>
+          </section>
+
+          <section class="nova-section">
+            <h2>Personality</h2>
+            <div class="nova-tags">
+              ${(profile.personalityTags || []).map((tag) => `<span class="nova-tag">${escapeHtml(tag)}</span>`).join("")}
+            </div>
+          </section>
+
+          <div class="nova-grid-2 nova-section">
+            <div class="nova-card">
+              <h3>Best for</h3>
+              <ul>${(profile.bestFor || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+            <div class="nova-card">
+              <h3>Support style</h3>
+              <p style="margin-bottom:12px;font-size:14px;color:var(--cyan-soft);">${escapeHtml(style.headline || profile.supportStyle || "")}</p>
+              <ul>${(style.approaches || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+          </div>
+
+          <section class="nova-section">
+            <h2>Voice in action</h2>
+            <div class="nova-examples">
+              <div class="nova-example-card">
+                <span class="nova-example-label">Greeting</span>
+                <p class="nova-example-text">${escapeHtml(ex.greeting || "")}</p>
+              </div>
+              <div class="nova-example-card">
+                <span class="nova-example-label">Feedback</span>
+                <p class="nova-example-text">${escapeHtml(ex.feedback || "")}</p>
+              </div>
+              <div class="nova-example-card">
+                <span class="nova-example-label">Hint</span>
+                <p class="nova-example-text">${escapeHtml(ex.hint || "")}</p>
+              </div>
+              <div class="nova-example-card">
+                <span class="nova-example-label">Encouragement</span>
+                <p class="nova-example-text">${escapeHtml(ex.encouragement || "")}</p>
+              </div>
+              <div class="nova-example-card">
+                <span class="nova-example-label">Assessment introduction</span>
+                <p class="nova-example-text">${escapeHtml(ex.assessmentIntroduction || "")}</p>
+              </div>
+              <div class="nova-example-card">
+                <span class="nova-example-label">Lesson dialogue</span>
+                <div class="nova-dialogue">
+                  ${dialogue.map((line) => `
+                    <div class="nova-dialogue-line nova-dialogue-line--${escapeHtml(line.role === "nova" ? "nova" : "student")}">
+                      <span class="nova-dialogue-role">${escapeHtml(line.role === "nova" ? profile.name : "Student")}</span>
+                      ${escapeHtml(line.text)}
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+              <div class="nova-example-card">
+                <span class="nova-example-label">End of lesson</span>
+                <p class="nova-example-text">${escapeHtml(ex.endOfLesson || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <div class="nova-footer-cta">
+            <a class="nova-cta" href="../assessment/citizenship.html">Start your assessment →</a>
+          </div>
+        `;
+      }
+
+      fetch("../assets/data/tutors/nova.json")
+        .then((r) => r.json())
+        .then(render)
+        .catch(() => {
+          root.innerHTML = "<p style=\"color:var(--muted);text-align:center;\">Could not load Nova's profile.</p>";
+        });
+    })();
+  </script>
+  <script>
+    const cv = document.getElementById("particles"), cx = cv.getContext("2d");
+    let dots = [];
+    function size(){ cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+    function init(){ size(); dots = Array.from({length:55},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*0.8+0.2,r:Math.random()*1.4+0.4,tw:Math.random()*6.28})); }
+    function draw(){ cx.clearRect(0,0,innerWidth,innerHeight); for(const d of dots){ d.y-=d.z*0.25; d.tw+=0.02; if(d.y<-5){d.y=innerHeight+5;d.x=Math.random()*innerWidth;} const a=(0.25+Math.sin(d.tw)*0.2)*d.z; cx.beginPath(); cx.arc(d.x,d.y,d.r*d.z+0.4,0,6.28); cx.fillStyle=`rgba(120,210,255,${a})`; cx.fill(); } requestAnimationFrame(draw); }
+    addEventListener("resize", size);
+    addEventListener("pointermove",(e)=>{ document.body.style.setProperty("--mx",(e.clientX/innerWidth*100)+"%"); document.body.style.setProperty("--my",(e.clientY/innerHeight*100)+"%"); });
+    init(); draw();
+  </script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>EVOlearn — Kai, Developing tutor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-kai.css" />
+  <style>
+    .kai-profile-page { min-height: 100vh; display: flex; flex-direction: column; }
+    .kai-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 26px; position: relative; z-index: 2;
+    }
+    .kai-topbar .brand-logo { height: 38px; width: auto; display: block; }
+    .kai-back {
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      padding: 8px 14px; border-radius: 999px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); backdrop-filter: blur(10px);
+      transition: color .38s cubic-bezier(.32,.72,0,1), border-color .38s cubic-bezier(.32,.72,0,1);
+    }
+
+    .kai-shell { flex: 1; max-width: 920px; width: 100%; margin: 0 auto; padding: 14px 26px 48px; position: relative; z-index: 1; }
+
+    .kai-hero {
+      display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center;
+      margin-bottom: 36px;
+    }
+    .kai-hero-photo {
+      position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 1;
+      border: 1px solid var(--glass-line); background: var(--navy-deep);
+    }
+    .kai-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .kai-hero-badge {
+      position: absolute; top: 10px; left: 10px;
+      font-size: 12px; font-weight: 700; letter-spacing: .5px;
+      padding: 4px 10px; border-radius: 999px;
+      background: rgba(13,22,30,.75); color: var(--kai-accent-soft, #8bb4d4);
+      border: 1px solid var(--glass-line); backdrop-filter: blur(6px);
+    }
+    .kai-hero-copy h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -.5px; }
+    .kai-hero-role { font-size: 14px; letter-spacing: .4px; margin-top: 4px; }
+    .kai-catchphrase {
+      font-size: 16px; margin-top: 14px; font-style: italic;
+    }
+    .kai-hero-support { font-size: 15px; color: var(--muted); margin-top: 10px; line-height: 1.55; max-width: 520px; }
+
+    .kai-section { margin-bottom: 32px; }
+    .kai-section h2 {
+      font-size: 13px; letter-spacing: 1.6px; text-transform: uppercase;
+      margin-bottom: 14px; font-weight: 600;
+    }
+    .kai-section p, .kai-section li { font-size: 15px; line-height: 1.65; color: #cfe1ec; }
+    .kai-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .kai-section ul li::before { content: "·"; margin-right: 10px; }
+
+    .kai-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .kai-tag {
+      font-size: 13px; padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--glass-line); background: var(--glass);
+      color: var(--kai-accent-soft, #8bb4d4); backdrop-filter: blur(8px);
+    }
+
+    .kai-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .kai-card {
+      border-radius: 16px; border: 1px solid var(--glass-line);
+      background: var(--glass); backdrop-filter: blur(12px); padding: 18px 20px;
+    }
+    .kai-card h3 { font-size: 14px; margin-bottom: 10px; font-weight: 600; }
+
+    .kai-examples { display: flex; flex-direction: column; gap: 14px; }
+    .kai-example-card, .kai-step-card {
+      border-radius: 14px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); padding: 16px 18px;
+    }
+    .kai-example-label {
+      font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px; display: block;
+    }
+    .kai-example-text { font-size: 14.5px; line-height: 1.6; color: #d8e8f2; }
+    .kai-example-sub { font-size: 13px; color: var(--muted); margin-bottom: 8px; line-height: 1.5; }
+
+    .kai-steps { display: flex; flex-direction: column; gap: 12px; }
+    .kai-step-card { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; }
+    .kai-step-num {
+      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
+      font-size: 14px; font-weight: 700; border: 1px solid;
+    }
+    .kai-step-title { font-size: 14px; font-weight: 600; color: #e0edf5; margin-bottom: 4px; }
+    .kai-step-detail { font-size: 14px; line-height: 1.55; color: #c8dcea; }
+
+    .kai-hint-levels { display: flex; flex-direction: column; gap: 10px; }
+    .kai-hint-row {
+      display: grid; grid-template-columns: 88px 1fr; gap: 12px; align-items: start;
+      padding: 12px 14px; border-radius: 12px;
+      border: 1px solid var(--glass-line); background: rgba(255,255,255,.03);
+    }
+    .kai-hint-level-label {
+      font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--kai-accent-soft, #8bb4d4); font-weight: 600;
+    }
+
+    .kai-dialogue { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .kai-dialogue-line {
+      padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.55;
+    }
+    .kai-dialogue-line--kai {
+      align-self: flex-start; max-width: 92%;
+    }
+    .kai-dialogue-line--student {
+      align-self: flex-end; max-width: 72%;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: #eaf4fb;
+    }
+    .kai-dialogue-role {
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 4px; display: block;
+    }
+
+    .kai-footer-cta { margin-top: 12px; text-align: center; }
+    .kai-cta {
+      display: inline-block; padding: 14px 30px; border-radius: 999px;
+      font-size: 15px; font-weight: 600; text-decoration: none; color: #0a1a24;
+      transition: transform .38s cubic-bezier(.32,.72,0,1), box-shadow .38s cubic-bezier(.32,.72,0,1);
+    }
+    .kai-cta:hover { transform: translateY(-2px); }
+
+    @media (max-width: 680px) {
+      .kai-hero { grid-template-columns: 1fr; text-align: center; }
+      .kai-hero-photo { max-width: 180px; margin: 0 auto; }
+      .kai-hero-support { margin-left: auto; margin-right: auto; }
+      .kai-grid-2 { grid-template-columns: 1fr; }
+      .kai-hint-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="agent-kai kai-profile-page">
+  <canvas id="particles"></canvas>
+  <div class="ambient-glow"></div>
+
+  <div class="kai-profile-page">
+    <header class="kai-topbar">
+      <a href="../index.html#citizenship" aria-label="Home">
+        <img class="brand-logo" src="../assets/logo.svg" alt="EVOlearn" />
+      </a>
+      <a class="kai-back" href="citizenship.html">← All tutors</a>
+    </header>
+
+    <main class="kai-shell" id="kai-profile-root">
+      <p style="color:var(--muted);text-align:center;padding:40px 0;">Loading Kai's profile…</p>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById("kai-profile-root");
+
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function renderExampleCards(items, renderItem) {
+        if (!items || !items.length) return "";
+        return items.map(renderItem).join("");
+      }
+
+      function render(profile) {
+        const ex = profile.examples || {};
+        const bio = profile.biography || {};
+        const style = profile.supportStyle || {};
+        const coaching = profile.practiceCoaching || {};
+        const guided = profile.guidedExamples || {};
+        const hints = profile.structuredHints || {};
+        const walkthrough = profile.lessonWalkthroughs || {};
+        const assessment = profile.assessmentSupport || {};
+        const progress = profile.progressFeedback || {};
+        const dialogue = walkthrough.dialogue || ex.lessonDialogue || [];
+
+        root.innerHTML = `
+          <section class="kai-hero">
+            <div class="kai-hero-photo tutor-kai">
+              <span class="kai-hero-badge">Lvl ${profile.level}</span>
+              <img src="../${profile.image}" alt="${escapeHtml(profile.name)}, ${escapeHtml(profile.levelName)} tutor" />
+            </div>
+            <div class="kai-hero-copy">
+              <h1>${escapeHtml(profile.name)}</h1>
+              <p class="kai-hero-role">Level ${profile.level} · ${escapeHtml(profile.levelName)} · ${escapeHtml(profile.role)}</p>
+              <p class="kai-catchphrase">"${escapeHtml(profile.catchphrase)}"</p>
+              <p class="kai-hero-support">${escapeHtml(profile.description)}</p>
+            </div>
+          </section>
+
+          <section class="kai-section">
+            <h2>About Kai</h2>
+            <p>${escapeHtml(bio.expanded || bio.short || "")}</p>
+          </section>
+
+          <section class="kai-section">
+            <h2>Personality</h2>
+            <div class="kai-tags">
+              ${(profile.personalityTags || []).map((tag) => `<span class="kai-tag">${escapeHtml(tag)}</span>`).join("")}
+            </div>
+          </section>
+
+          <div class="kai-grid-2 kai-section">
+            <div class="kai-card">
+              <h3>Best for</h3>
+              <ul>${(profile.bestFor || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+            <div class="kai-card">
+              <h3>Support style</h3>
+              <p style="margin-bottom:12px;font-size:14px;color:var(--kai-accent-soft,#8bb4d4);">${escapeHtml(style.headline || "")}</p>
+              <ul>${(style.approaches || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+          </div>
+
+          <section class="kai-section">
+            <h2>Voice in action</h2>
+            <div class="kai-examples">
+              <div class="kai-example-card">
+                <span class="kai-example-label">Greeting</span>
+                <p class="kai-example-text">${escapeHtml(ex.greeting || "")}</p>
+              </div>
+              <div class="kai-example-card">
+                <span class="kai-example-label">Encouragement</span>
+                <p class="kai-example-text">${escapeHtml(ex.encouragement || "")}</p>
+              </div>
+              <div class="kai-example-card">
+                <span class="kai-example-label">End of lesson</span>
+                <p class="kai-example-text">${escapeHtml(ex.endOfLesson || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="kai-section">
+            <h2>Practice coaching</h2>
+            ${coaching.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(coaching.headline)}</p>` : ""}
+            <div class="kai-examples">
+              ${renderExampleCards(coaching.examples, (item) => `
+                <div class="kai-example-card">
+                  <span class="kai-example-label">${escapeHtml(item.label || "Example")}</span>
+                  <p class="kai-example-sub">${escapeHtml(item.scenario || "")}</p>
+                  <p class="kai-example-text">${escapeHtml(item.kaiSays || "")}</p>
+                </div>
+              `)}
+            </div>
+          </section>
+
+          <section class="kai-section">
+            <h2>Guided examples</h2>
+            ${guided.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(guided.headline)}</p>` : ""}
+            <div class="kai-examples">
+              ${renderExampleCards(guided.examples, (item) => `
+                <div class="kai-example-card">
+                  <span class="kai-example-label">${escapeHtml(item.label || "Model")}</span>
+                  <p class="kai-example-sub">${escapeHtml(item.prompt || "")}</p>
+                  <p class="kai-example-text">${escapeHtml(item.model || "")}</p>
+                </div>
+              `)}
+            </div>
+          </section>
+
+          <section class="kai-section">
+            <h2>Structured hints</h2>
+            ${hints.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(hints.headline)}</p>` : ""}
+            <div class="kai-hint-levels">
+              ${renderExampleCards(hints.levels, (item) => `
+                <div class="kai-hint-row">
+                  <span class="kai-hint-level-label">${escapeHtml(item.title || ("Level " + item.level))}</span>
+                  <p class="kai-example-text" style="margin:0;">${escapeHtml(item.example || "")}</p>
+                </div>
+              `)}
+            </div>
+          </section>
+
+          <section class="kai-section">
+            <h2>Lesson walkthrough</h2>
+            ${walkthrough.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(walkthrough.headline)}</p>` : ""}
+            <div class="kai-steps" style="margin-bottom:18px;">
+              ${renderExampleCards(walkthrough.steps, (item) => `
+                <div class="kai-step-card">
+                  <span class="kai-step-num">${escapeHtml(String(item.step))}</span>
+                  <div>
+                    <p class="kai-step-title">${escapeHtml(item.title || "")}</p>
+                    <p class="kai-step-detail">${escapeHtml(item.detail || "")}</p>
+                  </div>
+                </div>
+              `)}
+            </div>
+            <div class="kai-example-card">
+              <span class="kai-example-label">Sample dialogue</span>
+              <div class="kai-dialogue">
+                ${dialogue.map((line) => `
+                  <div class="kai-dialogue-line kai-dialogue-line--${escapeHtml(line.role === "kai" ? "kai" : "student")}">
+                    <span class="kai-dialogue-role">${escapeHtml(line.role === "kai" ? profile.name : "Student")}</span>
+                    ${escapeHtml(line.text)}
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          </section>
+
+          <section class="kai-section">
+            <h2>Assessment support</h2>
+            ${assessment.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(assessment.headline)}</p>` : ""}
+            <div class="kai-examples">
+              <div class="kai-example-card">
+                <span class="kai-example-label">Introduction</span>
+                <p class="kai-example-text">${escapeHtml(assessment.introduction || ex.assessmentIntroduction || "")}</p>
+              </div>
+              <div class="kai-example-card">
+                <span class="kai-example-label">During the task</span>
+                <p class="kai-example-text">${escapeHtml(assessment.duringTask || "")}</p>
+              </div>
+              <div class="kai-example-card">
+                <span class="kai-example-label">Checking your work</span>
+                <p class="kai-example-text">${escapeHtml(assessment.checkingWork || "")}</p>
+              </div>
+              <div class="kai-example-card">
+                <span class="kai-example-label">After submit</span>
+                <p class="kai-example-text">${escapeHtml(assessment.afterSubmit || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="kai-section">
+            <h2>Progress feedback</h2>
+            ${progress.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(progress.headline)}</p>` : ""}
+            <div class="kai-examples">
+              ${renderExampleCards(progress.messages, (item) => `
+                <div class="kai-example-card">
+                  <span class="kai-example-label">${escapeHtml(item.situation || "Feedback")}</span>
+                  <p class="kai-example-text">${escapeHtml(item.message || "")}</p>
+                </div>
+              `)}
+            </div>
+          </section>
+
+          <section class="kai-section">
+            <h2>More voice samples</h2>
+            <div class="kai-examples">
+              <div class="kai-example-card">
+                <span class="kai-example-label">Feedback</span>
+                <p class="kai-example-text">${escapeHtml(ex.feedback || "")}</p>
+              </div>
+              <div class="kai-example-card">
+                <span class="kai-example-label">Hint</span>
+                <p class="kai-example-text">${escapeHtml(ex.hint || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <div class="kai-footer-cta">
+            <a class="kai-cta" href="../assessment/citizenship.html">Start your assessment →</a>
+          </div>
+        `;
+      }
+
+      fetch("../assets/data/tutors/kai.json")
+        .then((r) => r.json())
+        .then(render)
+        .catch(() => {
+          root.innerHTML = "<p style=\"color:var(--muted);text-align:center;\">Could not load Kai's profile.</p>";
+        });
+    })();
+  </script>
+  <script>
+    const cv = document.getElementById("particles"), cx = cv.getContext("2d");
+    let dots = [];
+    function size(){ cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+    function init(){ size(); dots = Array.from({length:55},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*0.8+0.2,r:Math.random()*1.4+0.4,tw:Math.random()*6.28})); }
+    function draw(){ cx.clearRect(0,0,innerWidth,innerHeight); for(const d of dots){ d.y-=d.z*0.25; d.tw+=0.02; if(d.y<-5){d.y=innerHeight+5;d.x=Math.random()*innerWidth;} const a=(0.25+Math.sin(d.tw)*0.2)*d.z; cx.beginPath(); cx.arc(d.x,d.y,d.r*d.z+0.4,0,6.28); cx.fillStyle=`rgba(106,159,196,${a})`; cx.fill(); } requestAnimationFrame(draw); }
+    addEventListener("resize", size);
+    addEventListener("pointermove",(e)=>{ document.body.style.setProperty("--mx",(e.clientX/innerWidth*100)+"%"); document.body.style.setProperty("--my",(e.clientY/innerHeight*100)+"%"); });
+    init(); draw();
+  </script>
+</body>
+</html>

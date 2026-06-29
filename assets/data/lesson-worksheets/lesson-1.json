@@ -1,0 +1,115 @@
+{
+  "lessonId": "lesson-1",
+  "worksheets": [
+    {
+      "id": "ws-identity-roles",
+      "triggerAfterSlideIndex": 8,
+      "title": "Quick check: identity",
+      "type": "word-bank-pick",
+      "instruction": "You can hold more than one role at the same time. Pick three roles from the word bank that could describe one person.",
+      "options": [
+        "Londoner",
+        "Football fan",
+        "Gamer",
+        "Sibling",
+        "Student",
+        "Neighbour",
+        "British citizen",
+        "Parent",
+        "Friend",
+        "Musician",
+        "Volunteer",
+        "Shop worker"
+      ],
+      "pickCount": 3,
+      "levels": {
+        "1": {
+          "instruction": "One person can have lots of roles. Tap three words that could all describe the same person."
+        },
+        "6": {
+          "instruction": "Multiple identity means holding several roles or communities at once. Select three roles that could belong to one person."
+        }
+      },
+      "submitMessage": "Nice. Different roles matter more in different places, and that is multiple identity."
+    },
+    {
+      "id": "ws-push-pull",
+      "triggerAfterSlideIndex": 13,
+      "title": "Quick check: migration",
+      "type": "binary-sort",
+      "instruction": "Is each factor a push (makes people leave) or a pull (attracts people to a new country)? Tap the best label for each item.",
+      "categories": [
+        { "id": "push", "label": "Push factor" },
+        { "id": "pull", "label": "Pull factor" }
+      ],
+      "items": [
+        {
+          "id": "war",
+          "text": "War or conflict in someone's home country",
+          "correctCategory": "push"
+        },
+        {
+          "id": "jobs",
+          "text": "Better job opportunities in another country",
+          "correctCategory": "pull"
+        },
+        {
+          "id": "poverty",
+          "text": "Poverty and lack of work at home",
+          "correctCategory": "push"
+        },
+        {
+          "id": "safety",
+          "text": "Safety, stability, and a fresh start",
+          "correctCategory": "pull"
+        }
+      ],
+      "levels": {
+        "1": {
+          "instruction": "Push means people are pushed away from home. Pull means a new place attracts them. Tap push or pull for each line."
+        },
+        "6": {
+          "instruction": "Classify each factor as push (forces people to leave) or pull (draws people to a new country)."
+        }
+      },
+      "submitMessage": "Well done. Most migration happens because of both push and pull factors together."
+    },
+    {
+      "id": "ws-local-uk",
+      "triggerAfterSlideIndex": 24,
+      "title": "Quick check: belonging",
+      "type": "binary-sort",
+      "instruction": "Does each example belong mainly to your local community or to the wider UK? Tap the best fit.",
+      "categories": [
+        { "id": "local", "label": "Local community" },
+        { "id": "uk", "label": "Wider UK" }
+      ],
+      "items": [
+        {
+          "id": "youth-club",
+          "text": "Your local youth club on your street",
+          "correctCategory": "local"
+        },
+        {
+          "id": "parliament",
+          "text": "Laws made by UK Parliament for the whole country",
+          "correctCategory": "uk"
+        },
+        {
+          "id": "nhs",
+          "text": "NHS healthcare available across the UK",
+          "correctCategory": "uk"
+        }
+      ],
+      "levels": {
+        "1": {
+          "instruction": "Local means your street, borough, or neighbourhood. Wider UK means the whole country. Tap local or UK for each one."
+        },
+        "6": {
+          "instruction": "Decide whether each example is mainly about local belonging or belonging to wider UK society."
+        }
+      },
+      "submitMessage": "Good thinking. We belong in our local area and as part of the wider UK."
+    }
+  ]
+}

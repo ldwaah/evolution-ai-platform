@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EVOlearn — Select your tutor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-nova.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-milo.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-ava.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-kai.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-zara.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-theo.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-nia.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-elias.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-athena.css" />
+  <style>
+    .tutors-layout { min-height:100vh; display:flex; flex-direction:column; }
+    .tutors-topbar {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:
+        max(14px, env(safe-area-inset-top, 0px))
+        max(18px, env(safe-area-inset-right, 0px))
+        14px
+        max(18px, env(safe-area-inset-left, 0px));
+      position:relative; z-index:2;
+    }
+    .tutors-topbar .brand-logo { height:38px; width:auto; display:block; }
+    .tutors-back {
+      color:var(--muted); font-size:14px; text-decoration:none;
+      padding:8px 14px; border-radius:999px; border:1px solid var(--glass-line);
+      background:rgba(255,255,255,.04); backdrop-filter:blur(10px); transition:color .2s,border-color .2s;
+    }
+    .tutors-back:hover { color:var(--cyan); border-color:rgba(90,217,255,.5); }
+
+    .tutors-shell { flex:1; max-width:1080px; width:100%; margin:0 auto; padding:14px 26px 40px; position:relative; z-index:1; }
+    .tutors-head { text-align:center; margin-bottom:30px; }
+    .tutors-head h1 { font-size:clamp(28px,4vw,42px); font-weight:600; letter-spacing:-.5px; }
+    .tutors-head p { color:var(--muted); margin-top:8px; font-size:16px; }
+
+    .tutors-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    }
+    .tutor-card {
+      position:relative; text-align:center; cursor:pointer;
+      border-radius:18px; border:1px solid var(--glass-line);
+      background:var(--glass); backdrop-filter:blur(12px);
+      padding:14px 14px 18px; overflow:hidden;
+      transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
+    }
+    .tutor-card:hover {
+      transform:translateY(-6px);
+      border-color:rgba(90,217,255,.55);
+      box-shadow:0 22px 50px rgba(0,0,0,.45), 0 0 30px rgba(90,217,255,.18);
+    }
+    .tutor-photo {
+      position:relative; border-radius:14px; overflow:hidden;
+      aspect-ratio:1; margin-bottom:12px; background:var(--navy-deep);
+    }
+    .tutor-photo img {
+      width:100%; height:100%; object-fit:cover; display:block;
+      transition:transform .55s var(--ease);
+    }
+    /* hover = zoom closer */
+    .tutor-card:hover .tutor-photo img { transform:scale(1.14); }
+
+    .tutor-badge {
+      position:absolute; top:10px; left:10px;
+      font-size:12px; font-weight:700; letter-spacing:.5px;
+      padding:4px 10px; border-radius:999px;
+      background:rgba(13,22,30,.7); color:var(--cyan-soft);
+      border:1px solid var(--glass-line); backdrop-filter:blur(6px);
+    }
+    .tutor-name { font-size:19px; font-weight:600; }
+    .tutor-level { font-size:12.5px; color:var(--cyan); letter-spacing:.4px; margin-top:2px; }
+    .tutor-support { font-size:12.5px; color:var(--muted); margin-top:8px; line-height:1.45; }
+
+    .tutor-profile-link {
+      display: inline-block; margin-top: 10px; font-size: 12px; color: var(--cyan-soft);
+      text-decoration: none; letter-spacing: .3px;
+      transition: color .55s cubic-bezier(.25,.46,.45,.94);
+    }
+    .tutor-profile-link:hover { color: var(--cyan); }
+
+    .tutor-card.is-selected {
+      border-color:var(--cyan);
+      box-shadow:0 0 0 2px rgba(90,217,255,.4), 0 22px 50px rgba(0,0,0,.45);
+    }
+    .tutor-card .tutor-check {
+      position:absolute; top:10px; right:10px; width:26px; height:26px;
+      border-radius:50%; display:grid; place-items:center; font-size:14px; font-weight:700;
+      background:linear-gradient(120deg,var(--cyan),var(--blue)); color:#06222e;
+      opacity:0; transform:scale(.6); transition:opacity .25s, transform .25s var(--ease);
+    }
+    .tutor-card.is-selected .tutor-check { opacity:1; transform:scale(1); }
+
+    .tutors-footer {
+      position:sticky; bottom:0; margin-top:32px;
+      display:flex; flex-direction:column; align-items:center; gap:10px;
+      padding:28px 0 14px;
+      background:linear-gradient(to top, rgba(22,36,47,.98) 30%, rgba(22,36,47,.85) 60%, rgba(22,36,47,0));
+    }
+    .tutors-cta {
+      display:inline-block; padding:15px 34px; border-radius:999px;
+      min-height:44px;
+      font-size:16px; font-weight:600; text-decoration:none;
+      background:linear-gradient(120deg,var(--cyan),var(--blue)); color:#06222e;
+      box-shadow:0 14px 36px rgba(90,217,255,.25);
+      transition:transform .2s var(--ease), box-shadow .2s;
+    }
+    .tutors-cta:hover { transform:translateY(-2px); box-shadow:0 18px 44px rgba(90,217,255,.35); }
+    .tutors-foot-note { font-size:13px; color:var(--muted); text-align:center; }
+
+    /* always a 3x3 grid */
+    @media (max-width:760px) {
+      .tutors-grid { gap:12px; }
+      .tutor-support { display:none; }
+    }
+    @media (max-width:440px) {
+      .tutors-grid { gap:8px; }
+      .tutor-card { padding:8px 8px 12px; }
+      .tutor-name { font-size:15px; }
+      .tutor-level { font-size:11px; }
+    }
+  </style>
+</head>
+<body class="tutors-page">
+  <canvas id="particles"></canvas>
+  <div class="ambient-glow"></div>
+
+  <div class="tutors-layout">
+    <header class="tutors-topbar">
+      <a href="../index.html#citizenship" aria-label="Home">
+        <img class="brand-logo" src="../assets/logo.svg" alt="EVOlearn" />
+      </a>
+      <a class="tutors-back" href="../index.html#citizenship">← Back</a>
+    </header>
+
+    <main class="tutors-shell">
+      <div class="tutors-head">
+        <h1>Select your tutor</h1>
+        <p>Meet your nine guides — hover to take a closer look, then start your assessment.</p>
+      </div>
+
+      <div class="tutors-grid" id="tutors-grid"></div>
+
+      <div class="tutors-footer">
+        <a class="tutors-cta" href="../assessment/citizenship.html">Start your assessment →</a>
+        <p class="tutors-foot-note">Your assessment places you with the tutor that fits you best.</p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const TUTORS = [
+      { id:"nova",   name:"Nova",   level:1, levelName:"Access",              support:"Gentle help, one small step at a time.", profileUrl:"nova.html" },
+      { id:"milo",   name:"Milo",   level:2, levelName:"Foundation",          support:"Straightforward tasks that show what to do next.", profileUrl:"milo.html" },
+      { id:"ava",    name:"Ava",    level:3, levelName:"Building Confidence",  support:"Encouragement when you're not sure yet.", profileUrl:"ava.html" },
+      { id:"kai",    name:"Kai",    level:4, levelName:"Developing",           support:"Clear rules, simple steps, calm practice.", profileUrl:"kai.html" },
+      { id:"zara",   name:"Zara",   level:5, levelName:"Secure",              support:"Stronger challenges with clear examples.", profileUrl:"zara.html" },
+      { id:"theo",   name:"Theo",   level:6, levelName:"Confident",           support:"Lively questions that make you think deeper.", profileUrl:"theo.html" },
+      { id:"nia",    name:"Nia",    level:7, levelName:"Exam Ready",          support:"Exam tips and mark-scheme thinking.", profileUrl:"nia.html" },
+      { id:"elias",  name:"Elias",  level:8, levelName:"Advanced",            support:"Big ideas and more detailed discussion.", profileUrl:"elias.html" },
+      { id:"athena", name:"Athena", level:9, levelName:"Mastery",            support:"High-level coaching for your best work.", profileUrl:"athena.html" },
+    ];
+
+    const grid = document.getElementById("tutors-grid");
+    TUTORS.forEach((t) => {
+      const card = document.createElement("button");
+      card.className = "tutor-card tutor-" + t.id;
+      card.type = "button";
+      card.innerHTML = `
+        <div class="tutor-photo">
+          <span class="tutor-badge">Lvl ${t.level}</span>
+          <span class="tutor-check">✓</span>
+          <img src="../assets/tutors/${t.id}.png" alt="${t.name}, ${t.levelName} tutor" loading="lazy" />
+        </div>
+        <div class="tutor-name">${t.name}</div>
+        <div class="tutor-level">${t.levelName}</div>
+        <div class="tutor-support">${t.support}</div>`;
+      card.addEventListener("click", () => {
+        [...grid.children].forEach((c) => c.classList.remove("is-selected"));
+        card.classList.add("is-selected");
+        try { sessionStorage.setItem("evolearn-preferred-tutor", t.id); } catch {}
+      });
+      if (t.profileUrl) {
+        const profileLink = document.createElement("a");
+        profileLink.className = "tutor-profile-link";
+        profileLink.href = t.profileUrl;
+        profileLink.textContent = "View profile";
+        profileLink.addEventListener("click", (e) => e.stopPropagation());
+        card.appendChild(profileLink);
+      }
+      grid.appendChild(card);
+    });
+  </script>
+  <script>
+    // lightweight ambient particles + cursor glow (self-contained)
+    const cv = document.getElementById("particles"), cx = cv.getContext("2d");
+    let dots = [];
+    function size(){ cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+    function init(){ size(); dots = Array.from({length:55},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*0.8+0.2,r:Math.random()*1.4+0.4,tw:Math.random()*6.28})); }
+    function draw(){ cx.clearRect(0,0,innerWidth,innerHeight); for(const d of dots){ d.y-=d.z*0.25; d.tw+=0.02; if(d.y<-5){d.y=innerHeight+5;d.x=Math.random()*innerWidth;} const a=(0.25+Math.sin(d.tw)*0.2)*d.z; cx.beginPath(); cx.arc(d.x,d.y,d.r*d.z+0.4,0,6.28); cx.fillStyle=`rgba(120,210,255,${a})`; cx.fill(); } requestAnimationFrame(draw); }
+    addEventListener("resize", size);
+    addEventListener("pointermove",(e)=>{ document.body.style.setProperty("--mx",(e.clientX/innerWidth*100)+"%"); document.body.style.setProperty("--my",(e.clientY/innerHeight*100)+"%"); });
+    init(); draw();
+  </script>
+</body>
+</html>

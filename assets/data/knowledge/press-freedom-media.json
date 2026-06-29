@@ -1,0 +1,91 @@
+{
+  "topicId": "press-freedom-media",
+  "topicTitle": "Free Press and Media Power",
+  "moduleId": "module-4",
+  "lessonIds": [
+    "lesson-20"
+  ],
+  "levels": {
+    "1": {
+      "summary": "A free press can report news and criticise government without being stopped.",
+      "keyPoints": [
+        "Newspapers, TV, and websites inform the public.",
+        "Media can investigate wrongdoing.",
+        "Fake news means false stories spread as if true."
+      ],
+      "explainLike": "Free press is like a watchdog — it barks when powerful people do wrong."
+    },
+    "2": {
+      "summary": "UK media includes BBC (public service), private press, and social platforms. Regulation varies.",
+      "keyPoints": [
+        "Ofcom regulates broadcasters.",
+        "IPSO regulates most newspapers.",
+        "BBC charter sets independence duties."
+      ],
+      "explainLike": "Model: source → regulator → why independence matters for democracy."
+    },
+    "3": {
+      "summary": "Media influences voting, opinions, and stereotypes. Bias can be political or commercial.",
+      "keyPoints": [
+        "Tabloid versus broadsheet traditions.",
+        "Ownership concentration — few companies own many titles.",
+        "Social algorithms personalise news feeds."
+      ],
+      "explainLike": "One effect: media sets agenda — tells people what to think about."
+    },
+    "4": {
+      "summary": "Apply media literacy: check sources, compare reports, spot propaganda techniques.",
+      "keyPoints": [
+        "Defamation law limits false harmful claims.",
+        "Official Secrets Act protects some state information.",
+        "Leveson Inquiry examined press ethics after phone hacking."
+      ],
+      "explainLike": "Steps to test a story: who wrote it, evidence, other outlets, expert checks."
+    },
+    "5": {
+      "summary": "Explain why free press supports democracy but needs ethical limits.",
+      "keyPoints": [
+        "Informs voters before elections.",
+        "Holds government to account.",
+        "Harms: intrusion, hate, misinformation."
+      ],
+      "explainLike": "Therefore press freedom must balance with privacy and accuracy duties."
+    },
+    "6": {
+      "summary": "Discuss whether social media companies should regulate content more strictly.",
+      "keyPoints": [
+        "Pro: reduce harm, foreign interference.",
+        "Con: free speech, censorship fears.",
+        "Online Safety Act duties on platforms."
+      ],
+      "explainLike": "Weigh harm prevention against open debate."
+    },
+    "7": {
+      "summary": "Exam: define free press (AO1), analyse source (AO2), evaluate media role (AO3).",
+      "keyPoints": [
+        "Source questions: bias, purpose, audience.",
+        "Command 'analyse' — effect on democracy.",
+        "Use Leveson or BBC impartiality examples."
+      ],
+      "explainLike": "Nia: source answer = content + purpose + reliability judgement."
+    },
+    "8": {
+      "summary": "Analyse public service broadcasting versus commercial incentives.",
+      "keyPoints": [
+        "BBC licence fee debate.",
+        "Local news decline.",
+        "Global streaming changes UK media landscape."
+      ],
+      "explainLike": "Examine whether market delivers informed citizenship."
+    },
+    "9": {
+      "summary": "Evaluate whether UK media serves democratic citizenship in the digital age.",
+      "keyPoints": [
+        "Synthesis: participation, rights, globalisation.",
+        "Judgement on misinformation resilience.",
+        "Coherent conclusion."
+      ],
+      "explainLike": "Mastery: media ecology shapes democracy — judge with evidence."
+    }
+  }
+}

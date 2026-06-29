@@ -1,0 +1,245 @@
+/**
+ * Elias (Level 8 Advanced) — scoped tutor theme
+ * Apply via .tutor-elias on cards or .agent-elias on pages where Elias is active.
+ * Sophisticated navy layers with platinum and deep steel blue accents.
+ * Does not affect other tutor styles.
+ */
+
+:root {
+  --elias-ease: cubic-bezier(0.33, 0.52, 0.35, 0.98);
+  --elias-accent: #b4c2d4;
+  --elias-accent-soft: #c8d4e2;
+  --elias-accent-deep: #3d5a78;
+  --elias-glow: rgba(180, 194, 212, 0.24);
+  --elias-glow-strong: rgba(180, 194, 212, 0.38);
+  --elias-glow-soft: rgba(61, 90, 120, 0.14);
+  --elias-line: rgba(180, 194, 212, 0.2);
+  --elias-navy: rgba(18, 28, 42, 0.92);
+}
+
+/* ---------- Tutor selection card ---------- */
+.tutor-card.tutor-elias {
+  transition:
+    transform 0.62s var(--elias-ease),
+    box-shadow 0.62s var(--elias-ease),
+    border-color 0.62s var(--elias-ease);
+}
+
+.tutor-card.tutor-elias::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.4;
+  background: linear-gradient(168deg, var(--elias-glow-soft) 0%, transparent 58%);
+  transition: opacity 0.62s var(--elias-ease);
+}
+
+.tutor-card.tutor-elias:hover {
+  transform: translateY(-4px);
+  border-color: var(--elias-line);
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.4),
+    0 0 26px var(--elias-glow);
+}
+
+.tutor-card.tutor-elias:hover::before {
+  opacity: 0.78;
+}
+
+.tutor-card.tutor-elias:hover .tutor-photo img {
+  transform: scale(1.05);
+  transition: transform 0.62s var(--elias-ease);
+}
+
+.tutor-card.tutor-elias .tutor-photo img {
+  transition: transform 0.62s var(--elias-ease);
+}
+
+.tutor-card.tutor-elias.is-selected {
+  border-color: var(--elias-accent);
+  box-shadow:
+    0 0 0 2px rgba(180, 194, 212, 0.34),
+    0 0 30px var(--elias-glow-strong),
+    0 0 56px var(--elias-glow-soft),
+    0 22px 50px rgba(0, 0, 0, 0.45);
+  animation: elias-card-glow 3.2s var(--elias-ease) infinite alternate;
+}
+
+.tutor-card.tutor-elias.is-selected::before {
+  opacity: 1;
+}
+
+@keyframes elias-card-glow {
+  from {
+    box-shadow:
+      0 0 0 2px rgba(180, 194, 212, 0.28),
+      0 0 24px var(--elias-glow),
+      0 22px 50px rgba(0, 0, 0, 0.45);
+  }
+  to {
+    box-shadow:
+      0 0 0 2px rgba(180, 194, 212, 0.44),
+      0 0 36px var(--elias-glow-strong),
+      0 22px 50px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* ---------- Home carousel chip ---------- */
+.tutor-chip.tutor-elias {
+  transition: transform 0.62s var(--elias-ease), box-shadow 0.62s var(--elias-ease);
+}
+
+.tutor-chip.tutor-elias:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 20px var(--elias-glow);
+}
+
+/* ---------- Active agent: map panel, dashboard, lessons ---------- */
+body.agent-elias .nova-btn,
+body.agent-elias .nova-panel {
+  transition: transform 0.62s var(--elias-ease), box-shadow 0.62s var(--elias-ease), border-color 0.62s var(--elias-ease);
+}
+
+body.agent-elias .nova-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px var(--elias-glow);
+}
+
+body.agent-elias .nova-orb {
+  box-shadow: 0 0 18px var(--elias-glow);
+  animation: elias-orb-pulse 3.6s var(--elias-ease) infinite alternate;
+}
+
+@keyframes elias-orb-pulse {
+  from { box-shadow: 0 0 12px var(--elias-glow-soft); }
+  to   { box-shadow: 0 0 22px var(--elias-glow); }
+}
+
+body.agent-elias .nova-panel {
+  border-color: var(--elias-line);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42), 0 0 22px var(--elias-glow-soft);
+}
+
+body.agent-elias .dashboard-agent-strip {
+  box-shadow: inset 0 0 22px var(--elias-glow-soft);
+  border-color: rgba(180, 194, 212, 0.18);
+}
+
+body.agent-elias .lesson-sidebar {
+  box-shadow: inset 0 0 30px var(--elias-glow-soft);
+}
+
+body.agent-elias .lesson-avatar-frame {
+  box-shadow: 0 0 20px var(--elias-glow);
+  transition: box-shadow 0.62s var(--elias-ease);
+}
+
+body.agent-elias .chat-msg--agent,
+body.agent-elias .lesson-tutor-preview {
+  border-color: var(--elias-line);
+  box-shadow: 0 0 16px var(--elias-glow-soft);
+}
+
+/* ---------- Elias profile page ---------- */
+.elias-profile-page .elias-hero-photo {
+  box-shadow: 0 0 40px var(--elias-glow);
+  transition: box-shadow 0.62s var(--elias-ease);
+}
+
+.elias-profile-page .elias-hero-photo:hover {
+  box-shadow: 0 0 52px var(--elias-glow-strong);
+}
+
+.elias-profile-page .elias-tag {
+  transition: border-color 0.62s var(--elias-ease), box-shadow 0.62s var(--elias-ease);
+}
+
+.elias-profile-page .elias-tag:hover {
+  border-color: var(--elias-line);
+  box-shadow: 0 0 14px var(--elias-glow-soft);
+}
+
+.elias-profile-page .elias-example-card,
+.elias-profile-page .elias-step-card,
+.elias-profile-page .elias-connection-card {
+  transition: border-color 0.62s var(--elias-ease), box-shadow 0.62s var(--elias-ease);
+}
+
+.elias-profile-page .elias-example-card:hover,
+.elias-profile-page .elias-step-card:hover,
+.elias-profile-page .elias-connection-card:hover {
+  border-color: rgba(180, 194, 212, 0.26);
+  box-shadow: 0 0 20px var(--elias-glow-soft);
+}
+
+.elias-profile-page .elias-catchphrase {
+  color: var(--elias-accent-soft);
+  animation: elias-catchphrase-glow 3.4s var(--elias-ease) infinite alternate;
+}
+
+@keyframes elias-catchphrase-glow {
+  from { text-shadow: 0 0 6px var(--elias-glow-soft); }
+  to   { text-shadow: 0 0 16px var(--elias-glow); }
+}
+
+.elias-profile-page .elias-section h2 {
+  color: var(--elias-accent-soft);
+}
+
+.elias-profile-page .elias-hero-role {
+  color: var(--elias-accent);
+}
+
+.elias-profile-page .elias-card h3 {
+  color: var(--elias-accent-soft);
+}
+
+.elias-profile-page .elias-step-num {
+  color: var(--elias-accent);
+  border-color: var(--elias-line);
+  background: rgba(61, 90, 120, 0.18);
+}
+
+.elias-profile-page .elias-dialogue-line--elias {
+  background: rgba(61, 90, 120, 0.16);
+  border: 1px solid var(--elias-line);
+}
+
+.elias-profile-page .elias-dialogue-line--student {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.elias-profile-page .elias-cta {
+  background: linear-gradient(120deg, var(--elias-accent), var(--elias-accent-deep));
+  box-shadow: 0 14px 36px var(--elias-glow);
+  color: #0c1520;
+}
+
+.elias-profile-page .elias-cta:hover {
+  box-shadow: 0 18px 44px var(--elias-glow-strong);
+}
+
+.elias-profile-page .elias-back:hover {
+  color: var(--elias-accent-soft);
+  border-color: var(--elias-line);
+}
+
+.elias-profile-page .elias-section ul li::before {
+  color: var(--elias-accent);
+}
+
+.elias-profile-page .elias-connection-arrow {
+  color: var(--elias-accent-deep);
+  font-size: 13px;
+  letter-spacing: 0.4px;
+}
+
+.elias-profile-page .elias-connection-topics {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e0eaf4;
+  margin-bottom: 6px;
+}

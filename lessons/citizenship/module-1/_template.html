@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EVOlearn: Lesson Template</title>
+  <link rel="stylesheet" href="../../../style.css" />
+</head>
+<body class="lesson-body" data-lesson-id="lesson-N" data-module-id="module-1">
+  <main class="lesson-page">
+    <section class="lesson-main" aria-label="Lesson content">
+      <header class="lesson-top">
+        <a class="lesson-back" href="../../../index.html#map/module-1">← Back to map</a>
+        <span class="lesson-slide-count">Lesson</span>
+      </header>
+
+      <div class="lesson-stage">
+        <article class="lesson-slide-body lesson-slide-body--scroll">
+          <div class="lesson-content">
+            <p class="lesson-content-eyebrow">Citizenship · Module 1 · Lesson N</p>
+            <h1>Lesson title goes here</h1>
+            <p class="lesson-content-lede">Add lesson content, activities, and questions in this column. Use cards, headings, and lists as needed.</p>
+          </div>
+        </article>
+
+        <footer class="lesson-slide-footer">
+          <div class="lesson-complete-bar">
+            <button class="lesson-complete-btn" type="button" id="complete-btn">Mark lesson complete ✓</button>
+            <a class="lesson-complete-ghost" href="../../../index.html#map/module-1">Return to map</a>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <aside class="lesson-sidebar" aria-label="Tutor panel">
+      <div class="lesson-avatar-shell">
+        <div class="lesson-avatar-frame" aria-label="Tutor avatar area">
+          <span class="lesson-avatar-orb" aria-hidden="true"></span>
+        </div>
+        <p class="lesson-avatar-label">Your tutor</p>
+      </div>
+
+      <section class="lesson-chat-shell" aria-label="Chat area">
+        <header class="lesson-chat-head">
+          <h2>Ask Nova</h2>
+          <span class="lesson-chat-badge">Coming soon</span>
+        </header>
+        <div class="lesson-chat-body" aria-label="Chat messages will appear here"></div>
+        <div class="lesson-chat-input-shell">
+          <input type="text" disabled placeholder="Chat coming soon" aria-disabled="true" />
+          <button type="button" disabled aria-disabled="true">Send</button>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <script>
+    const PROGRESS_KEY = "citizenship.module-1.lesson-N";
+    const STORE = "evolearn-progress";
+    const btn = document.getElementById("complete-btn");
+
+    function getDone() {
+      try { return new Set(JSON.parse(localStorage.getItem(STORE)) || []); }
+      catch { return new Set(); }
+    }
+
+    function refresh() {
+      if (getDone().has(PROGRESS_KEY)) {
+        btn.textContent = "Lesson complete ✓";
+        btn.classList.add("is-done");
+        btn.disabled = true;
+      }
+    }
+
+    btn.addEventListener("click", () => {
+      if (getDone().has(PROGRESS_KEY)) return;
+      const done = getDone();
+      done.add(PROGRESS_KEY);
+      localStorage.setItem(STORE, JSON.stringify([...done]));
+      refresh();
+      setTimeout(() => { location.href = "../../../index.html#map/module-1"; }, 450);
+    });
+
+    refresh();
+  </script>
+  <script src="../../../assets/js/student-profile.js"></script>
+  <script src="../../../assets/js/agent-knowledge.js"></script>
+  <script src="../../../assets/js/lesson-tutor.js"></script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+{
+  "version": "1.1.0",
+  "description": "Topic index for level-differentiated Citizenship knowledge. Each topic file holds content keyed by tutor band (levels 1–9). One topic per lesson across 5 modules.",
+  "topics": [
+    {
+      "topicId": "british-identity-values",
+      "topicTitle": "British Identity and Values",
+      "file": "british-identity-values.json",
+      "moduleId": "module-1",
+      "lessonIds": [
+        "lesson-1"
+      ],
+      "themes": [
+        "Life in modern Britain",
+        "identity",
+        "British values"
+      ]
+    },
+    {
+      "topicId": "equality-act-discrimination",
+      "topicTitle": "Respect, Discrimination, and the Equality Act 2010",
+      "file": "equality-act-discrimination.json",
+      "moduleId": "module-1",
+      "lessonIds": [
+        "lesson-2"
+      ],
+      "themes": [
+        "Life in modern Britain",
+        "equality",
+        "discrimination"
+      ]
+    },
+    {
+      "topicId": "human-rights-sources",
+      "topicTitle": "Human Rights: Sources and Protection",
+      "file": "human-rights-sources.json",
+      "moduleId": "module-1",
+      "lessonIds": [
+        "lesson-3"
+      ],
+      "themes": [
+        "Rights and responsibilities",
+        "Human Rights Act",
+        "ECHR"
+      ]
+    },
+    {
+      "topicId": "rights-responsibilities",
+      "topicTitle": "Rights and Responsibilities",
+      "file": "rights-responsibilities.json",
+      "moduleId": "module-1",
+      "lessonIds": [
+        "lesson-4"
+      ],
+      "themes": [
+        "Rights and responsibilities",
+        "citizenship in practice"
+      ]
+    },
+    {
+      "topicId": "local-councils",
+      "topicTitle": "Local Councils: Democracy in Your Area",
+      "file": "local-councils.json",
+      "moduleId": "module-1",
+      "lessonIds": [
+        "lesson-5"
+      ],
+      "themes": [
+        "Democracy and participation",
+        "local government"
+      ]
+    },
+    {
+      "topicId": "elections-voting",
+      "topicTitle": "Elections and Voting",
+      "file": "elections-voting.json",
+      "moduleId": "module-2",
+      "lessonIds": [
+        "lesson-6"
+      ],
+      "themes": [
+        "Democracy and participation",
+        "electoral systems"
+      ]
+    },
+    {
+      "topicId": "political-parties-government",
+      "topicTitle": "Political Parties and Forming a Government",
+      "file": "political-parties-government.json",
+      "moduleId": "module-2",
+      "lessonIds": [
+        "lesson-7"
+      ],
+      "themes": [
+        "Democracy and participation",
+        "political parties"
+      ]
+    },
+    {
+      "topicId": "parliament-law-making",
+      "topicTitle": "Parliament and How Laws Are Made",
+      "file": "parliament-law-making.json",
+      "moduleId": "module-2",
+      "lessonIds": [
+        "lesson-8"
+      ],
+      "themes": [
+        "Democracy and participation",
+        "Parliament",
+        "legislation"
+      ]
+    },
+    {
+      "topicId": "uk-constitution-monarchy",
+      "topicTitle": "The UK Constitution and the Monarchy",
+      "file": "uk-constitution-monarchy.json",
+      "moduleId": "module-2",
+      "lessonIds": [
+        "lesson-9"
+      ],
+      "themes": [
+        "Democracy and participation",
+        "constitution",
+        "monarchy"
+      ]
+    },
+    {
+      "topicId": "devolution",
+      "topicTitle": "Devolution: Scotland, Wales, and Northern Ireland",
+      "file": "devolution.json",
+      "moduleId": "module-2",
+      "lessonIds": [
+        "lesson-10"
+      ],
+      "themes": [
+        "Democracy and participation",
+        "devolution"
+      ]
+    },
+    {
+      "topicId": "taxation-budget",
+      "topicTitle": "Taxation and Government Spending",
+      "file": "taxation-budget.json",
+      "moduleId": "module-2",
+      "lessonIds": [
+        "lesson-11"
+      ],
+      "themes": [
+        "Democracy and participation",
+        "taxation",
+        "budget"
+      ]
+    },
+    {
+      "topicId": "purpose-of-law",
+      "topicTitle": "The Purpose of Law and Legal Age Limits",
+      "file": "purpose-of-law.json",
+      "moduleId": "module-3",
+      "lessonIds": [
+        "lesson-12"
+      ],
+      "themes": [
+        "Law and justice",
+        "legal ages"
+      ]
+    },
+    {
+      "topicId": "rule-of-law",
+      "topicTitle": "The Rule of Law",
+      "file": "rule-of-law.json",
+      "moduleId": "module-3",
+      "lessonIds": [
+        "lesson-13"
+      ],
+      "themes": [
+        "Law and justice",
+        "fair trial",
+        "constitutional principles"
+      ]
+    },
+    {
+      "topicId": "police-courts",
+      "topicTitle": "Police, Magistrates, and Judges",
+      "file": "police-courts.json",
+      "moduleId": "module-3",
+      "lessonIds": [
+        "lesson-14"
+      ],
+      "themes": [
+        "Law and justice",
+        "courts",
+        "police"
+      ]
+    },
+    {
+      "topicId": "civil-criminal-law",
+      "topicTitle": "Civil Law and Criminal Law",
+      "file": "civil-criminal-law.json",
+      "moduleId": "module-3",
+      "lessonIds": [
+        "lesson-15"
+      ],
+      "themes": [
+        "Law and justice",
+        "civil and criminal law"
+      ]
+    },
+    {
+      "topicId": "youth-justice",
+      "topicTitle": "The Youth Justice System",
+      "file": "youth-justice.json",
+      "moduleId": "module-3",
+      "lessonIds": [
+        "lesson-16"
+      ],
+      "themes": [
+        "Law and justice",
+        "youth justice"
+      ]
+    },
+    {
+      "topicId": "punishment-aims",
+      "topicTitle": "Aims and Types of Punishment",
+      "file": "punishment-aims.json",
+      "moduleId": "module-3",
+      "lessonIds": [
+        "lesson-17"
+      ],
+      "themes": [
+        "Law and justice",
+        "sentencing"
+      ]
+    },
+    {
+      "topicId": "petitions-boycotts-media",
+      "topicTitle": "Petitions, Boycotts, and Digital Participation",
+      "file": "petitions-boycotts-media.json",
+      "moduleId": "module-4",
+      "lessonIds": [
+        "lesson-18"
+      ],
+      "themes": [
+        "Power and influence",
+        "participation",
+        "digital citizenship"
+      ]
+    },
+    {
+      "topicId": "pressure-groups-unions",
+      "topicTitle": "Pressure Groups and Trade Unions",
+      "file": "pressure-groups-unions.json",
+      "moduleId": "module-4",
+      "lessonIds": [
+        "lesson-19"
+      ],
+      "themes": [
+        "Power and influence",
+        "pressure groups",
+        "trade unions"
+      ]
+    },
+    {
+      "topicId": "press-freedom-media",
+      "topicTitle": "Free Press and Media Power",
+      "file": "press-freedom-media.json",
+      "moduleId": "module-4",
+      "lessonIds": [
+        "lesson-20"
+      ],
+      "themes": [
+        "Power and influence",
+        "media",
+        "free press"
+      ]
+    },
+    {
+      "topicId": "un-nato-commonwealth",
+      "topicTitle": "The UN, NATO, and the Commonwealth",
+      "file": "un-nato-commonwealth.json",
+      "moduleId": "module-4",
+      "lessonIds": [
+        "lesson-21"
+      ],
+      "themes": [
+        "Power and influence",
+        "international organisations"
+      ]
+    },
+    {
+      "topicId": "council-of-europe",
+      "topicTitle": "Council of Europe and the European Convention on Human Rights",
+      "file": "council-of-europe.json",
+      "moduleId": "module-4",
+      "lessonIds": [
+        "lesson-22"
+      ],
+      "themes": [
+        "Rights and responsibilities",
+        "Council of Europe",
+        "ECHR"
+      ]
+    },
+    {
+      "topicId": "global-conflict-uk-response",
+      "topicTitle": "Global Conflict: UK Foreign Policy Responses",
+      "file": "global-conflict-uk-response.json",
+      "moduleId": "module-4",
+      "lessonIds": [
+        "lesson-23"
+      ],
+      "themes": [
+        "Power and influence",
+        "foreign policy",
+        "conflict"
+      ]
+    },
+    {
+      "topicId": "issue-selection-research",
+      "topicTitle": "Active Citizenship: Choosing and Researching an Issue",
+      "file": "issue-selection-research.json",
+      "moduleId": "module-5",
+      "lessonIds": [
+        "lesson-24"
+      ],
+      "themes": [
+        "Active citizenship",
+        "investigation",
+        "research"
+      ]
+    },
+    {
+      "topicId": "campaigning-teamwork",
+      "topicTitle": "Campaigning, Teamwork, and Goals",
+      "file": "campaigning-teamwork.json",
+      "moduleId": "module-5",
+      "lessonIds": [
+        "lesson-25"
+      ],
+      "themes": [
+        "Active citizenship",
+        "campaigning"
+      ]
+    },
+    {
+      "topicId": "social-action-project",
+      "topicTitle": "Running a Social Action Project",
+      "file": "social-action-project.json",
+      "moduleId": "module-5",
+      "lessonIds": [
+        "lesson-26"
+      ],
+      "themes": [
+        "Active citizenship",
+        "social action"
+      ]
+    },
+    {
+      "topicId": "evaluating-impact",
+      "topicTitle": "Reviewing Impact and Learning from Citizenship Action",
+      "file": "evaluating-impact.json",
+      "moduleId": "module-5",
+      "lessonIds": [
+        "lesson-27"
+      ],
+      "themes": [
+        "Active citizenship",
+        "evaluation",
+        "impact"
+      ]
+    }
+  ]
+}

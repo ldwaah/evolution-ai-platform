@@ -1,0 +1,10 @@
+VIDEO SLOT — not PowerPoint
+
+This lesson plays the starter video when the learner clicks "Start lesson".
+Do not add a .pptx here.
+
+Video file (already in repo):
+  assets/video/citizenship/lesson-1/lesson-1-starter-who-are-you.mp4
+
+Optional poster/thumbnail:
+  assets/slides/citizenship-identity/slide-02-hook.jpg

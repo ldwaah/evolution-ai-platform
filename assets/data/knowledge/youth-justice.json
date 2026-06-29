@@ -1,0 +1,91 @@
+{
+  "topicId": "youth-justice",
+  "topicTitle": "The Youth Justice System",
+  "moduleId": "module-3",
+  "lessonIds": [
+    "lesson-16"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Young people who break the law are often treated differently from adults to help them change.",
+      "keyPoints": [
+        "Youth Offending Teams work with young offenders.",
+        "Courts aim to prevent reoffending.",
+        "Parents may be involved in hearings."
+      ],
+      "explainLike": "The system tries to guide young people back on track, not only punish."
+    },
+    "2": {
+      "summary": "Youth courts handle most cases against 10–17 year olds. Sentences include referrals, fines, and youth rehabilitation orders.",
+      "keyPoints": [
+        "Youth court for less serious cases.",
+        "Crown Court for very serious youth crimes.",
+        "Anonymity protects young defendants."
+      ],
+      "explainLike": "Model: offence → youth court → sentence focused on rehabilitation."
+    },
+    "3": {
+      "summary": "Welfare principle: youth justice should consider child's best interests and UNCRC.",
+      "keyPoints": [
+        "ASBOs largely replaced by civil injunctions.",
+        "Diversion schemes avoid court for low-level cases.",
+        "Custody is last resort for youth."
+      ],
+      "explainLike": "Because children are developing, therefore law emphasises support and education."
+    },
+    "4": {
+      "summary": "Apply youth justice stages: arrest, interview (appropriate adult), charge, bail, trial, sentence.",
+      "keyPoints": [
+        "Appropriate adult required during police interview.",
+        "Youth Detention Accommodation for custody.",
+        "Victim-offender mediation in some cases."
+      ],
+      "explainLike": "Step through process — name each safeguard for young people."
+    },
+    "5": {
+      "summary": "Explain aims of youth justice: reduce reoffending, protect public, help rehabilitation.",
+      "keyPoints": [
+        "Youth Justice Board oversees system in England/Wales.",
+        "Education in custody matters for outcomes.",
+        "Knife crime orders and prevention programmes."
+      ],
+      "explainLike": "GCSE therefore chain: rehabilitate → fewer future victims → safer communities."
+    },
+    "6": {
+      "summary": "Discuss whether young offenders should receive lighter treatment than adults.",
+      "keyPoints": [
+        "Pro: maturity, education, lower reoffending if rehabilitated.",
+        "Con: serious harm requires strong response.",
+        "Age of criminal responsibility debate links here."
+      ],
+      "explainLike": "Both sides with examples — serious violence versus first minor offence."
+    },
+    "7": {
+      "summary": "Exam: describe youth court (AO1), apply process (AO2), evaluate effectiveness (AO3).",
+      "keyPoints": [
+        "Name YOT and appropriate adult roles.",
+        "Scenario: identify likely sentence.",
+        "Evaluate reoffending rates and racial disproportionality."
+      ],
+      "explainLike": "Nia: link welfare principle to sentence choice in scenario."
+    },
+    "8": {
+      "summary": "Analyse disproportionality — BAME youth in stop and search and custody.",
+      "keyPoints": [
+        "Lammy Review recommendations on youth justice.",
+        "School exclusion links to criminalisation debates.",
+        "Restorative justice models."
+      ],
+      "explainLike": "Examine whether system treats all young people equally."
+    },
+    "9": {
+      "summary": "Evaluate whether UK youth justice balances welfare and justice for society.",
+      "keyPoints": [
+        "Synthesis: law purposes, punishment, rights.",
+        "Judgement on prevention versus punishment.",
+        "Selective statistics."
+      ],
+      "explainLike": "Mastery: youth justice as citizenship test — how society treats its young."
+    }
+  }
+}

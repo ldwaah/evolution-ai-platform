@@ -1,0 +1,12 @@
+{
+  "description": "Pre-empted student questions per lesson. Loaded by the tutor engine before topic FAQs.",
+  "banks": [
+    {
+      "lessonId": "lesson-1",
+      "topicId": "british-identity-values",
+      "file": "lesson-1.json",
+      "title": "Lesson 1. British Identity and Values",
+      "questionCount": 56
+    }
+  ]
+}

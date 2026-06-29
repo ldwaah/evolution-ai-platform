@@ -1,0 +1,91 @@
+{
+  "topicId": "council-of-europe",
+  "topicTitle": "Council of Europe and the European Convention on Human Rights",
+  "moduleId": "module-4",
+  "lessonIds": [
+    "lesson-22"
+  ],
+  "levels": {
+    "1": {
+      "summary": "The Council of Europe protects human rights in Europe. It is separate from the European Union.",
+      "keyPoints": [
+        "46 member states including UK.",
+        "Created ECHR — European Convention on Human Rights.",
+        "European Court of Human Rights in Strasbourg."
+      ],
+      "explainLike": "Council of Europe = rights club; EU = different economic/political union."
+    },
+    "2": {
+      "summary": "UK helped draft ECHR after WWII. Human Rights Act 1998 embeds Convention rights in UK courts.",
+      "keyPoints": [
+        "Individuals can take UK to ECtHR after UK remedies exhausted.",
+        "Not the same as European Court of Justice (EU — historical).",
+        "Brexit did not end UK Council of Europe membership."
+      ],
+      "explainLike": "Pattern: ECHR rights → HRA in UK → Strasbourg court as backstop."
+    },
+    "3": {
+      "summary": "Key rights: life, torture ban, fair trial, privacy, expression. Margin of appreciation allows national variation.",
+      "keyPoints": [
+        "Article 3 absolute ban on torture.",
+        "Article 8 family life cases.",
+        "Parliament must consider Strasbourg judgments."
+      ],
+      "explainLike": "One Article, one case type: Article 6 → unfair trial claims."
+    },
+    "4": {
+      "summary": "Apply distinction: Council of Europe (rights), EU (was economic union), UN (global).",
+      "keyPoints": [
+        "ECHR enforcement via ECtHR judgments.",
+        "UK compliance sometimes requires law change.",
+        "Reform debates: British Bill of Rights."
+      ],
+      "explainLike": "Scenario: identify which body handles human rights breach claim."
+    },
+    "5": {
+      "summary": "Explain why UK remains in ECHR system and debates on leaving.",
+      "keyPoints": [
+        "HRA allows domestic human rights cases.",
+        "Some politicians criticise 'foreign court' overrides.",
+        "Northern Ireland Good Friday Agreement references ECHR."
+      ],
+      "explainLike": "Therefore leaving ECHR would have constitutional and diplomatic consequences."
+    },
+    "6": {
+      "summary": "Discuss whether Strasbourg court should override UK Parliament.",
+      "keyPoints": [
+        "Sovereignty arguments.",
+        "Protection for minorities arguments.",
+        "Examples: prisoner voting, deportation cases."
+      ],
+      "explainLike": "Weigh democracy versus rights protection."
+    },
+    "7": {
+      "summary": "Exam: define Council of Europe (AO1), apply HRA (AO2), evaluate membership (AO3).",
+      "keyPoints": [
+        "Common confusion: Council of Europe ≠ EU Council.",
+        "State difference between ECtHR and UK Supreme Court.",
+        "Evaluate with NI peace process link."
+      ],
+      "explainLike": "Nia: precision on institution names earns AO1."
+    },
+    "8": {
+      "summary": "Analyse proposed HRA repeal/replace and impact on devolution settlements.",
+      "keyPoints": [
+        "Scottish and Welsh continuity bills on rights.",
+        "International reputation and trade deals.",
+        "Select committee evidence on reforms."
+      ],
+      "explainLike": "Examine unintended consequences of rights reform."
+    },
+    "9": {
+      "summary": "Evaluate whether ECHR membership serves UK citizens and rule of law.",
+      "keyPoints": [
+        "Synthesis: constitution, devolution, global role.",
+        "Judgement on reform versus retention.",
+        "Grade 8–9 argument."
+      ],
+      "explainLike": "Mastery: rights architecture as political choice — judge substantively."
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "description": "Citizenship term synonyms for local tutor matching. Keys expand to alternate phrases during token scoring.",
+  "terms": {
+    "mp": ["member of parliament", "member of Parliament", "Members of Parliament"],
+    "hra": ["human rights act", "Human Rights Act", "Human Rights Act 1998"],
+    "ehrc": ["equality and human rights commission", "Equality and Human Rights Commission"],
+    "echr": ["european convention on human rights", "European Convention on Human Rights"],
+    "uk": ["united kingdom", "United Kingdom", "Great Britain"],
+    "ni": ["northern ireland", "Northern Ireland"],
+    "og": ["original", "original gangster"],
+    "fbv": ["fundamental british values", "British values", "british values"],
+    "devolution": ["scottish parliament", "welsh senedd", "northern ireland assembly"],
+    "cohesion": ["community cohesion", "living together"],
+    "discrimination": ["unfair treatment", "treating unfairly"],
+    "equality act": ["Equality Act 2010", "equality act 2010"],
+    "local council": ["local authority", "council tax", "borough council"],
+    "voting": ["elections", "electoral", "ballot", "franchise"],
+    "parliament": ["House of Commons", "House of Lords", "Westminster"],
+    "rule of law": ["everyone follows the law", "fair trial", "legal system"],
+    "youth justice": ["young offender", "youth court", "youth offending team"],
+    "pressure group": ["campaign group", "lobby group", "interest group"],
+    "trade union": ["union", "workers union", "industrial action"],
+    "petition": ["online petition", "sign a petition"],
+    "boycott": ["refuse to buy", "consumer boycott"],
+    "un": ["united nations", "United Nations"],
+    "nato": ["North Atlantic Treaty Organisation", "North Atlantic Treaty Organization"],
+    "commonwealth": ["Commonwealth of Nations"],
+    "multiple identity": ["more than one identity", "dual identity", "mixed identity"]
+  }
+}

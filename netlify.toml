@@ -1,0 +1,15 @@
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/api/chat"
+  to = "https://europe-west2-student-portal-9de85.cloudfunctions.net/chat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EVOlearn: Lesson 10</title>
+  <link rel="stylesheet" href="../../../style.css" />
+  <script src="../../../assets/js/lesson-guard.js"></script>
+  <script src="../../../assets/js/lesson-completion.js?v=quiz-gate-1"></script>
+</head>
+<body class="lesson-body" data-lesson-id="lesson-10" data-module-id="module-2" data-chat-mode="ai">
+  <main class="lesson-page">
+    <section class="lesson-main" aria-label="Lesson content">
+      <header class="lesson-top">
+        <a class="lesson-back" href="../../../index.html#map/module-2">← Back to map</a>
+        <span class="lesson-slide-count" id="chat-context">Lesson 10</span>
+      </header>
+
+      <div class="lesson-stage">
+        <article class="lesson-slide-body lesson-slide-body--scroll">
+          <div class="lesson-content">
+            <p class="lesson-content-eyebrow">Citizenship · Module 2 · Lesson 10</p>
+            <h1>Devolution: Scotland, Wales, and Northern Ireland</h1>
+            <p class="lesson-content-lede">Explore this topic with your tutor. Content will expand here — live chat uses stored knowledge at your level.</p>
+
+            <div class="lesson-content-card">
+              <h2>What you'll explore</h2>
+              <ul>
+                <li>Democracy and participation</li>
+                <li>devolution</li>
+              </ul>
+            </div>
+
+            <div class="lesson-content-card">
+              <h2>Lesson content</h2>
+              <p class="lesson-content-placeholder">Teaching slides and activities for this lesson are being prepared. Ask your tutor about any word or idea while you wait.</p>
+            </div>
+          
+            <div class="lesson-content-card lesson-content-card--quiz">
+              <div data-lesson-end-quiz aria-label="End of lesson quiz"></div>
+            </div>
+
+          </div>
+        </article>
+
+        <footer class="lesson-slide-footer">
+          <div class="lesson-complete-bar">
+            <button class="lesson-complete-btn" type="button" id="complete-btn">Mark lesson complete ✓</button>
+            <a class="lesson-complete-ghost" href="../../../index.html#map/module-2">Return to map without completing</a>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <aside class="lesson-sidebar" aria-label="Tutor panel">
+      <div class="lesson-avatar-shell">
+        <div class="lesson-avatar-frame" aria-label="Tutor avatar area">
+          <img src="../../../assets/tutors/nova.png" alt="" />
+        </div>
+        <p class="lesson-avatar-label">Your tutor</p>
+      </div>
+
+      <section class="lesson-chat-shell" aria-label="Chat area">
+        <header class="lesson-chat-head">
+          <h2>Ask Nova</h2>
+          <span class="lesson-chat-badge">Live</span>
+        </header>
+        <div class="lesson-chat-body" id="chat-body" aria-label="Chat messages will appear here"></div>
+        <div class="lesson-chat-input-shell">
+          <input type="text" id="chat-input" placeholder="Ask about this lesson…" aria-label="Chat message" />
+          <button type="button" id="chat-send">Send</button>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <script>
+    const PROGRESS_KEY = "citizenship.module-2.lesson-10";
+    const LESSON_ID = "lesson-10";
+    const btn = document.getElementById("complete-btn");
+
+    const completion = window.EvoLessonCompletion?.bind({
+      progressKey: PROGRESS_KEY,
+      lessonId: LESSON_ID,
+      btn,
+      mapUrl: "../../../index.html#map/module-2",
+    });
+
+    function refresh() {
+      completion?.refresh();
+    }
+
+    window.addEventListener("load", () => {
+      globalThis.__evoLessonChat = null;
+      if (window.EvoLessonLiveChat) {
+        window.EvoLessonLiveChat.init({
+          lessonId: LESSON_ID,
+          basePath: "../../../",
+          getSlideContext: () => window.EvoLessonLiveChat.scrollSlideContext(),
+        });
+      }
+      globalThis.__evoLessonChat = globalThis.__evoLessonChat || window.__evoLessonChat;
+      refresh();
+    });
+  </script>
+  <script src="../../../assets/js/student-profile.js?v=kb-expand-1"></script>
+  <script src="../../../assets/js/agent-knowledge.js?v=kb-expand-1"></script>
+  <script src="../../../assets/js/tutor-engine.js?v=kb-expand-1"></script>
+  <script src="../../../assets/js/lesson-live-chat.js?v=kb-expand-1"></script>
+    <script src="../../../assets/js/lesson-end-quiz.js?v=quiz-gate-1" data-auto-init></script>
+  <script src="../../../assets/js/lesson-tutor.js"></script>
+</body>
+</html>

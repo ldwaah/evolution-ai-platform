@@ -1,0 +1,267 @@
+/**
+ * Milo (Level 2 Foundation) — scoped tutor theme
+ * Apply via .tutor-milo on cards or .agent-milo on pages where Milo is active.
+ * Uses EVOlearn blue (#7c9cff), not Nova cyan. Does not affect other tutor styles.
+ */
+
+:root {
+  --milo-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --milo-blue: #7c9cff;
+  --milo-blue-soft: #9ab4ff;
+  --milo-glow: rgba(124, 156, 255, 0.28);
+  --milo-glow-strong: rgba(124, 156, 255, 0.42);
+  --milo-glow-soft: rgba(124, 156, 255, 0.14);
+}
+
+/* ---------- Tutor selection card ---------- */
+.tutor-card.tutor-milo {
+  transition:
+    transform 0.55s var(--milo-ease),
+    box-shadow 0.55s var(--milo-ease),
+    border-color 0.55s var(--milo-ease);
+}
+
+.tutor-card.tutor-milo::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.4;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--milo-glow-soft), transparent 70%);
+  transition: opacity 0.55s var(--milo-ease);
+}
+
+.tutor-card.tutor-milo:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 156, 255, 0.45);
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.38),
+    0 0 28px var(--milo-glow);
+}
+
+.tutor-card.tutor-milo:hover::before {
+  opacity: 0.85;
+}
+
+.tutor-card.tutor-milo:hover .tutor-photo img {
+  transform: scale(1.06);
+  transition: transform 0.75s var(--milo-ease);
+}
+
+.tutor-card.tutor-milo .tutor-photo img {
+  transition: transform 0.75s var(--milo-ease);
+}
+
+.tutor-card.tutor-milo.is-selected {
+  border-color: var(--milo-blue);
+  box-shadow:
+    0 0 0 2px rgba(124, 156, 255, 0.35),
+    0 0 32px var(--milo-glow-strong),
+    0 0 64px var(--milo-glow-soft),
+    0 22px 50px rgba(0, 0, 0, 0.45);
+  animation: milo-card-glow 3.5s var(--milo-ease) infinite alternate;
+}
+
+.tutor-card.tutor-milo.is-selected::before {
+  opacity: 1;
+}
+
+@keyframes milo-card-glow {
+  from { box-shadow: 0 0 0 2px rgba(124, 156, 255, 0.32), 0 0 28px var(--milo-glow), 0 22px 50px rgba(0, 0, 0, 0.45); }
+  to   { box-shadow: 0 0 0 2px rgba(124, 156, 255, 0.48), 0 0 40px var(--milo-glow-strong), 0 22px 50px rgba(0, 0, 0, 0.45); }
+}
+
+/* ---------- Home carousel chip ---------- */
+.tutor-chip.tutor-milo {
+  transition: transform 0.55s var(--milo-ease), box-shadow 0.55s var(--milo-ease);
+}
+
+.tutor-chip.tutor-milo:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 22px var(--milo-glow);
+}
+
+.tutor-chip.tutor-milo:hover img {
+  border-color: var(--milo-blue);
+  box-shadow: 0 12px 30px var(--milo-glow);
+}
+
+/* ---------- Active agent: map panel, dashboard, lessons ---------- */
+body.agent-milo .milo-btn,
+body.agent-milo .milo-panel {
+  transition: transform 0.55s var(--milo-ease), box-shadow 0.55s var(--milo-ease), border-color 0.55s var(--milo-ease);
+}
+
+body.agent-milo .milo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px var(--milo-glow);
+}
+
+body.agent-milo .milo-orb {
+  box-shadow: 0 0 18px var(--milo-glow);
+  animation: milo-orb-pulse 4s var(--milo-ease) infinite alternate;
+}
+
+@keyframes milo-orb-pulse {
+  from { box-shadow: 0 0 12px var(--milo-glow-soft); }
+  to   { box-shadow: 0 0 22px var(--milo-glow); }
+}
+
+body.agent-milo .milo-panel {
+  border-color: rgba(124, 156, 255, 0.28);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42), 0 0 24px var(--milo-glow-soft);
+}
+
+body.agent-milo .dashboard-agent-strip {
+  box-shadow: inset 0 0 24px var(--milo-glow-soft);
+  border-color: rgba(124, 156, 255, 0.22);
+}
+
+body.agent-milo .lesson-sidebar {
+  box-shadow: inset 0 0 32px var(--milo-glow-soft);
+}
+
+body.agent-milo .lesson-avatar-frame {
+  box-shadow: 0 0 20px var(--milo-glow);
+  transition: box-shadow 0.55s var(--milo-ease);
+}
+
+body.agent-milo .chat-msg--agent,
+body.agent-milo .lesson-tutor-preview {
+  border-color: rgba(124, 156, 255, 0.24);
+  box-shadow: 0 0 16px var(--milo-glow-soft);
+}
+
+/* ---------- Milo profile page ---------- */
+.milo-profile-page {
+  --milo-accent: var(--milo-blue);
+  --milo-accent-soft: var(--milo-blue-soft);
+}
+
+.milo-profile-page .milo-hero-photo {
+  box-shadow: 0 0 40px var(--milo-glow);
+  transition: box-shadow 0.55s var(--milo-ease);
+}
+
+.milo-profile-page .milo-hero-photo:hover {
+  box-shadow: 0 0 52px var(--milo-glow-strong);
+}
+
+.milo-profile-page .milo-hero-role,
+.milo-profile-page .milo-section h2,
+.milo-profile-page .milo-card h3 {
+  color: var(--milo-blue);
+}
+
+.milo-profile-page .milo-catchphrase {
+  color: var(--milo-blue-soft);
+  animation: milo-catchphrase-glow 4s var(--milo-ease) infinite alternate;
+}
+
+@keyframes milo-catchphrase-glow {
+  from { text-shadow: 0 0 8px var(--milo-glow-soft); }
+  to   { text-shadow: 0 0 18px var(--milo-glow); }
+}
+
+.milo-profile-page .milo-tag {
+  transition: border-color 0.55s var(--milo-ease), box-shadow 0.55s var(--milo-ease);
+  color: var(--milo-blue-soft);
+}
+
+.milo-profile-page .milo-tag:hover {
+  border-color: rgba(124, 156, 255, 0.45);
+  box-shadow: 0 0 14px var(--milo-glow-soft);
+}
+
+.milo-profile-page .milo-card,
+.milo-profile-page .milo-example-card,
+.milo-profile-page .milo-step-card {
+  transition: border-color 0.55s var(--milo-ease), box-shadow 0.55s var(--milo-ease);
+}
+
+.milo-profile-page .milo-card:hover,
+.milo-profile-page .milo-example-card:hover,
+.milo-profile-page .milo-step-card:hover {
+  border-color: rgba(124, 156, 255, 0.3);
+  box-shadow: 0 0 20px var(--milo-glow-soft);
+}
+
+.milo-profile-page .milo-section ul li::before {
+  color: var(--milo-blue);
+}
+
+/* Structured step cards */
+.milo-profile-page .milo-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  counter-reset: milo-step;
+}
+
+.milo-profile-page .milo-step-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  align-items: start;
+  border-radius: 14px;
+  border: 1px solid var(--glass-line);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 16px 18px;
+}
+
+.milo-profile-page .milo-step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a2840;
+  background: linear-gradient(135deg, var(--milo-blue-soft), var(--milo-blue));
+  box-shadow: 0 4px 14px var(--milo-glow-soft);
+  flex-shrink: 0;
+}
+
+.milo-profile-page .milo-step-label {
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--milo-blue);
+  margin-bottom: 4px;
+  display: block;
+  font-weight: 600;
+}
+
+.milo-profile-page .milo-step-text {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #d8e8f2;
+}
+
+.milo-profile-page .milo-dialogue-line--milo {
+  align-self: flex-start;
+  max-width: 92%;
+  background: rgba(124, 156, 255, 0.1);
+  border: 1px solid rgba(124, 156, 255, 0.22);
+  color: #e8f0fb;
+}
+
+.milo-profile-page .milo-cta {
+  background: linear-gradient(120deg, var(--milo-blue-soft), var(--milo-blue));
+  box-shadow: 0 14px 36px var(--milo-glow);
+}
+
+.milo-profile-page .milo-cta:hover {
+  box-shadow: 0 18px 44px var(--milo-glow-strong);
+}
+
+.milo-profile-page .milo-back:hover {
+  color: var(--milo-blue);
+  border-color: rgba(124, 156, 255, 0.5);
+}
+
+.milo-profile-page .milo-hero-badge {
+  color: var(--milo-blue-soft);
+}

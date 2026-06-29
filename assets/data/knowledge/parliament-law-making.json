@@ -1,0 +1,91 @@
+{
+  "topicId": "parliament-law-making",
+  "topicTitle": "Parliament and How Laws Are Made",
+  "moduleId": "module-2",
+  "lessonIds": [
+    "lesson-8"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Parliament is where MPs meet to debate and make laws for the UK.",
+      "keyPoints": [
+        "House of Commons = elected MPs.",
+        "House of Lords = appointed and hereditary members (being reformed).",
+        "A bill becomes law when both Houses agree and the King gives Royal Assent."
+      ],
+      "explainLike": "A law starts as an idea (bill), gets debated, voted on, then the King signs it — then it is an Act."
+    },
+    "2": {
+      "summary": "Most new laws start as bills introduced by government ministers. MPs and Lords can amend bills during readings and committee stages.",
+      "keyPoints": [
+        "First Reading = bill introduced.",
+        "Second Reading = principle debated.",
+        "Committee Stage = detailed line-by-line scrutiny."
+      ],
+      "explainLike": "Follow the stages in order — each stage is a chance to change or block the bill."
+    },
+    "3": {
+      "summary": "Private Members' Bills allow backbench MPs to propose laws. The Lords can delay but not permanently block most bills.",
+      "keyPoints": [
+        "Parliamentary ping-pong when Houses disagree.",
+        "Salisbury convention: Lords rarely block manifesto bills.",
+        "Statutory instruments make detailed rules under Acts."
+      ],
+      "explainLike": "Because Commons is elected, therefore it has final say on money and most legislation."
+    },
+    "4": {
+      "summary": "Law-making involves government, Parliament, and sometimes devolved legislatures. The Supreme Court interprets Acts.",
+      "keyPoints": [
+        "Devolved matters: Scotland/Wales/NI make own laws in transferred areas.",
+        "Reserved matters stay at Westminster.",
+        "Judicial review checks lawfulness of government action."
+      ],
+      "explainLike": "Four-step law journey: proposal → draft bill → Parliament stages → Royal Assent → enforcement."
+    },
+    "5": {
+      "summary": "Explain how Parliament holds government to account during law-making through debate, votes, and committees.",
+      "keyPoints": [
+        "Opposition days and urgent questions.",
+        "Public Bill Committees hear expert evidence.",
+        "Lords expertise can improve draft law quality."
+      ],
+      "explainLike": "GCSE chain: scrutiny improves law because flaws are found before Royal Assent."
+    },
+    "6": {
+      "summary": "Discuss whether the House of Lords should be elected or abolished.",
+      "keyPoints": [
+        "Current strengths: experience, revision, less party pressure.",
+        "Weaknesses: lack of democratic mandate, size, appointments.",
+        "Reform attempts: Blair partial reform, ongoing debate."
+      ],
+      "explainLike": "Both-sides thinking with a reasoned conclusion — not just 'elect everyone'."
+    },
+    "7": {
+      "summary": "Exam: outline legislative process (AO1), apply stages to a scenario bill (AO2), evaluate democratic legitimacy (AO3).",
+      "keyPoints": [
+        "Command 'outline' — ordered stages with brief detail.",
+        "Ping-pong as AO2 vocabulary.",
+        "Evaluate: how much backbench influence is real?"
+      ],
+      "explainLike": "Nia: list stages for AO1 marks; add one example amendment for AO2."
+    },
+    "8": {
+      "summary": "Analyse executive dominance in law-making — manifesto pledges, whips, and limited time for backbench bills.",
+      "keyPoints": [
+        "Government controls timetable in Commons.",
+        "Henry VIII powers in some bills allow ministers to change law without full debate.",
+        "Parliament Acts 1911/1949 restrict Lords blocking power."
+      ],
+      "explainLike": "Examine whether Parliament legislates or mainly ratifies government plans."
+    },
+    "9": {
+      "summary": "Evaluate the effectiveness of UK parliamentary law-making for representative democracy and rights protection.",
+      "keyPoints": [
+        "Integrate HRA, devolution, and rule of law.",
+        "Judgement on scrutiny versus speed in crises.",
+        "Selective case: e.g. Online Safety Act passage."
+      ],
+      "explainLike": "Synthesis across democracy theme — law-making as heart of citizenship participation."
+    }
+  }
+}

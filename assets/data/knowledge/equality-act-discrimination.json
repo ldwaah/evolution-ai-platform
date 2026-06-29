@@ -1,0 +1,391 @@
+{
+  "topicId": "equality-act-discrimination",
+  "topicTitle": "Respect, Discrimination, and the Equality Act 2010",
+  "moduleId": "module-1",
+  "lessonIds": [
+    "lesson-2"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Discrimination means treating someone unfairly because of who they are. In the UK, the law says this is wrong.",
+      "keyPoints": [
+        "Everyone deserves respect at school and in public.",
+        "Bullying someone because of their skin, faith, or disability is unfair.",
+        "Teachers and adults should help stop discrimination."
+      ],
+      "explainLike": "One idea: being mean to someone because they are different is not okay. The law agrees with that."
+    },
+    "2": {
+      "summary": "The Equality Act 2010 protects people from discrimination. Protected characteristics include age, disability, gender, race, religion, and sexual orientation.",
+      "keyPoints": [
+        "Direct discrimination = treating someone worse because of a protected characteristic.",
+        "Indirect discrimination = a rule that looks fair but hurts one group more.",
+        "Schools must follow equality law in admissions and behaviour policies."
+      ],
+      "explainLike": "Here is the pattern: name the unfair treatment, name the protected characteristic, say why the law protects them."
+    },
+    "3": {
+      "summary": "The Equality Act helps people live together fairly. Harassment and victimisation are also illegal under the Act.",
+      "keyPoints": [
+        "Harassment = unwanted behaviour that violates dignity or creates a hostile environment.",
+        "Victimisation = punishing someone for complaining about discrimination.",
+        "Positive action (not positive discrimination) can help disadvantaged groups access opportunities."
+      ],
+      "explainLike": "Because the Act lists protected characteristics, you can link one example to one legal term — that builds a clear answer."
+    },
+    "4": {
+      "summary": "Apply the Equality Act to school, work, and service scenarios. Distinguish lawful positive action from unlawful positive discrimination.",
+      "keyPoints": [
+        "Employers must make reasonable adjustments for disabled workers.",
+        "Service providers (shops, hospitals) cannot refuse service based on protected characteristics.",
+        "Gender pay gap reporting is one way law tackles workplace inequality."
+      ],
+      "explainLike": "Step 1: What happened? Step 2: Which protected characteristic? Step 3: Direct or indirect? That earns AO2 marks."
+    },
+    "5": {
+      "summary": "Explain how anti-discrimination law supports community cohesion and individual rights in modern Britain.",
+      "keyPoints": [
+        "Equality law backs British values of mutual respect and tolerance.",
+        "Trade unions and citizens can challenge discrimination through tribunals and courts.",
+        "Media representation affects whether minority groups feel included."
+      ],
+      "explainLike": "Use because/therefore: discrimination divides communities; therefore the Equality Act protects cohesion by giving legal remedies."
+    },
+    "6": {
+      "summary": "Discuss whether UK equality law is effective, considering enforcement gaps, unconscious bias, and online hate.",
+      "keyPoints": [
+        "EHRC (Equality and Human Rights Commission) promotes and enforces equality.",
+        "Online abuse can be a hate crime when motivated by hostility to a protected group.",
+        "Critics argue law alone cannot change attitudes without education."
+      ],
+      "explainLike": "Both sides: law gives rights and courts, but prejudice can persist — your judgement weighs evidence."
+    },
+    "7": {
+      "summary": "Exam focus: define discrimination types (AO1), apply Equality Act to a scenario (AO2), evaluate effectiveness (AO3).",
+      "keyPoints": [
+        "Command word 'explain' — point plus developed example from UK context.",
+        "Use case-style facts: workplace, school uniform, service refusal.",
+        "Sentence starter: 'This may constitute direct discrimination because…'"
+      ],
+      "explainLike": "Nia tip: 4-mark explain = one legal term + one fact from the scenario + one sentence development."
+    },
+    "8": {
+      "summary": "Analyse intersectionality — how overlapping characteristics (e.g. race and gender) shape discrimination experiences and policy responses.",
+      "keyPoints": [
+        "Intersectional analysis examines compound disadvantage not visible in single-category law.",
+        "Institutional racism (Macpherson report) showed systemic failures in public bodies.",
+        "Evaluate whether single-characteristic law captures lived experience."
+      ],
+      "explainLike": "Weigh whether the Equality Act's structure fully addresses complex inequality — use evidence, not slogans."
+    },
+    "9": {
+      "summary": "Evaluate the extent to which legal equality secures social equality in the UK, integrating British values, media, and active citizenship.",
+      "keyPoints": [
+        "Substantiated judgement: law necessary but insufficient without cultural change.",
+        "Compare formal rights with outcomes in employment, policing, and education data.",
+        "Synthesis: link Equality Act to HRA, Prevent, and community cohesion debates."
+      ],
+      "explainLike": "Athena level: sustained argument across themes — rights on paper versus equality experienced — conclude with precision."
+    }
+  },
+  "slides": {
+    "0": {
+      "title": "Welcome",
+      "terms": [
+        "legal rights",
+        "responsibilities",
+        "citizenship",
+        "fair society",
+        "rules",
+        "migration",
+        "identity"
+      ],
+      "hint": "Welcome back. We move from identity to the rules that protect us every day. You have legal rights, but you also have responsibilities.",
+      "script": "Welcome back to Citizenship. In our last lesson, we explored who we are, how our identities are formed, and how migration has helped shape modern Britain. Today, we're taking the next step. We're moving from understanding ourselves to understanding the rules that protect us every day. Whether you're at school, out with friends, or walking through your local community, you have legal rights, but you also have responsibilities. By the end of this lesson, you'll understand how both work together to create a fair society.",
+      "opener": "Welcome back to Citizenship. Today we move from identity to the rules that protect you every day. You have legal rights and responsibilities."
+    },
+    "1": {
+      "title": "Learning Objectives",
+      "terms": [
+        "legal right",
+        "Equality Act 2010",
+        "Rule of Law",
+        "learning goals",
+        "Prime Minister",
+        "police officer"
+      ],
+      "hint": "Today's goals: define a legal right, learn about the Equality Act 2010, and explore the Rule of Law and how it affects everyone.",
+      "script": "Let's begin by looking at today's learning goals. By the end of this lesson, you'll be able to explain what a legal right actually is and understand how it's different from something you simply want. You'll learn about the Equality Act 2010 and the people it protects. Finally, we'll explore one of the most important principles in British democracy: the Rule of Law. You'll see why it matters and how it affects everyone, whether you're a student, a police officer, or even the Prime Minister.",
+      "opener": "By the end of this lesson you will explain legal rights, learn about the Equality Act 2010, and explore the Rule of Law."
+    },
+    "2": {
+      "title": "Part One: What Are Rights?",
+      "terms": [
+        "rights",
+        "protected by law",
+        "citizen",
+        "earn",
+        "give",
+        "recognise"
+      ],
+      "hint": "What is a right? Something you earn, something someone gives you, or something protected by law? Every citizen should know their rights.",
+      "script": "Let's start with a simple question. What exactly is a right? Is it something you earn? Is it something someone gives you? Or is it something protected by law? Before we look at the different laws that protect people in the UK, we first need to understand what rights actually are and why every citizen should know about them. Once you understand your rights, you're much better equipped to recognise when they're being respected, and when they might not be.",
+      "opener": "What exactly is a right? Before we look at UK laws, we need to understand what rights are and why every citizen should know them."
+    },
+    "3": {
+      "title": "Rights vs Wants",
+      "terms": [
+        "wants",
+        "legal rights",
+        "dignity",
+        "freedom",
+        "safety",
+        "phone",
+        "trainers",
+        "games console"
+      ],
+      "hint": "Wants like a new phone are not legal requirements. Legal rights protect your freedom, safety, and dignity. They apply to everyone in the UK.",
+      "script": "People often confuse rights with things they simply want. Imagine you want the latest phone, expensive trainers, or a new games console. They might be nice to have, but nobody is legally required to give them to you. Those are wants. Rights are completely different. A legal right is something protected by law. It's there to protect your freedom, your safety, and your dignity. Rights aren't rewards for good behaviour, and they aren't gifts from the government. They're legal protections that apply to everyone living in the UK.",
+      "opener": "Rights are not the same as wants. Legal rights protect your freedom, safety, and dignity for everyone living in the UK."
+    },
+    "4": {
+      "title": "Dignity, Liberty and Justice",
+      "terms": [
+        "dignity",
+        "liberty",
+        "justice",
+        "respect",
+        "evidence",
+        "fair",
+        "interference"
+      ],
+      "hint": "Three ideas at the heart of rights: dignity (respect for every person), liberty (freedom without unnecessary interference), and justice (fair treatment on evidence).",
+      "script": "If rights exist to protect us, what exactly are they protecting? Think of three important ideas: dignity, liberty, and justice. Dignity means every person deserves to be treated with respect, regardless of who they are. Liberty means you have the freedom to make choices and live your life without unnecessary interference. Justice means the law should treat people fairly, giving everyone the opportunity to be heard and judged on the evidence. These three ideas sit at the heart of many of the rights we enjoy today.",
+      "opener": "Rights protect dignity, liberty, and justice. These three ideas sit at the heart of the rights we enjoy today."
+    },
+    "5": {
+      "title": "The Human Rights Act 1998",
+      "terms": [
+        "Human Rights Act 1998",
+        "public bodies",
+        "schools",
+        "police",
+        "hospitals",
+        "councils",
+        "UK law"
+      ],
+      "hint": "The Human Rights Act 1998 brought fundamental rights into UK law. Schools, hospitals, councils, and the police must respect your rights in decisions that affect you.",
+      "script": "So where do many of these rights come from? One of the most important laws is the Human Rights Act 1998. This law brought fundamental human rights directly into UK law, making them easier for people to rely on. It means that public organisations, including schools, hospitals, councils, and the police, must respect your rights whenever they make decisions that affect you. The Act helps make sure that people are treated fairly, lawfully, and with respect, no matter who they are.",
+      "opener": "The Human Rights Act 1998 brought fundamental human rights directly into UK law."
+    },
+    "6": {
+      "title": "Giving Rights Real Power",
+      "terms": [
+        "enforce",
+        "courts",
+        "challenge",
+        "Parliament",
+        "legislation",
+        "public body"
+      ],
+      "hint": "Rights must be enforceable. You can challenge public bodies in court. Parliament must consider human rights when making new laws.",
+      "script": "A right only matters if it can actually be enforced. That's why the Human Rights Act is so important. If a public body fails to respect your rights, there are legal ways to challenge that decision through the courts. The Act also influences how new laws are made, encouraging Parliament to consider whether proposed legislation respects people's human rights. In other words, it doesn't just describe rights. It helps make sure they have real meaning and real protection in everyday life.",
+      "opener": "A right only matters if it can be enforced. You can challenge public bodies in court when your rights are not respected."
+    },
+    "7": {
+      "title": "Your Fundamental Liberties",
+      "terms": [
+        "liberty",
+        "fair trial",
+        "arrest",
+        "detained",
+        "evidence",
+        "independent court",
+        "police"
+      ],
+      "hint": "Liberty means no arrest without lawful reason. A fair trial means an independent court decides on evidence, not assumptions or appearance.",
+      "script": "Let's look at two important rights in a little more detail. First is the right to liberty. This means people can't simply be arrested or detained without a lawful reason. The police must act within the law. Second is the right to a fair trial. If someone is accused of committing a crime, they have the right to a fair hearing before an independent court. Decisions should always be based on evidence, not assumptions, appearance, or personal opinions. These protections help ensure that justice is fair for everyone.",
+      "opener": "Two key rights: liberty and a fair trial before an independent court, based on evidence not assumptions."
+    },
+    "8": {
+      "title": "Part Two: Equality and Fairness",
+      "terms": [
+        "equality",
+        "discrimination",
+        "Equality Act 2010",
+        "unfair treatment",
+        "school",
+        "work",
+        "citizenship"
+      ],
+      "hint": "What happens when someone is treated unfairly because of who they are? Equality laws, including the Equality Act 2010, protect people from discrimination.",
+      "script": "Now that we've explored our basic rights, let's move on to another important question. What happens when someone is treated unfairly because of who they are? This is where equality laws become incredibly important. In the next section, we'll explore how the Equality Act 2010 protects people from discrimination and helps make sure everyone has the opportunity to be treated fairly at school, at work, and in everyday life. Understanding equality is an essential part of understanding citizenship.",
+      "opener": "Part Two: equality and fairness. What happens when someone is treated unfairly because of who they are?"
+    },
+    "9": {
+      "title": "The Equality Act 2010",
+      "terms": ["Equality Act 2010", "discrimination", "legislation", "fair treatment"],
+      "hint": "The Equality Act 2010 brought many separate anti-discrimination laws together. It makes it illegal to treat people unfairly because of key parts of their identity.",
+      "script": "Let's begin with one of the most important laws protecting people in modern Britain: the Equality Act 2010. Before this law existed, there were lots of separate laws dealing with different types of discrimination. The Equality Act brought them together into one clear piece of legislation. Its purpose is simple, to make it illegal for people to be treated unfairly because of key parts of their identity. Whether you're applying for a job, attending school, or using public services, this law helps ensure everyone is treated fairly and equally.",
+      "opener": "Let's begin with one of the most important laws protecting people in modern Britain: the Equality Act 2010."
+    },
+    "10": {
+      "title": "Protected Characteristics",
+      "terms": ["protected characteristics", "age", "disability", "race", "religion", "sex", "sexual orientation"],
+      "hint": "Protected characteristics are parts of identity the law safeguards, including age, disability, race, religion, sex, and sexual orientation.",
+      "script": "The Equality Act protects certain parts of a person's identity, known as protected characteristics. These include age, disability, race, religion or belief, sex, and sexual orientation, along with several others. The law recognises that these characteristics should never be used as a reason to treat someone unfairly. Imagine being refused a job simply because of your race or being treated differently because of a disability. The Equality Act exists to prevent that from happening and to promote fairness across society.",
+      "opener": "The Equality Act protects certain parts of a person's identity, known as protected characteristics."
+    },
+    "11": {
+      "title": "Direct and Indirect Discrimination",
+      "terms": ["direct discrimination", "indirect discrimination", "protected characteristic", "unfair disadvantage"],
+      "hint": "Direct discrimination is obvious unfair treatment because of a protected characteristic. Indirect discrimination is when a rule that applies to everyone puts one group at an unfair disadvantage.",
+      "script": "Not all discrimination looks the same. Sometimes it's obvious, and sometimes it's much harder to spot. Direct discrimination happens when someone is treated unfairly because of a protected characteristic. Indirect discrimination is different. It happens when a rule applies to everyone but ends up putting a particular group at an unfair disadvantage. Understanding the difference is important because both forms of discrimination can have a real impact on people's lives, even when the unfairness isn't immediately obvious.",
+      "opener": "Not all discrimination looks the same. Sometimes it's obvious, and sometimes it's much harder to spot."
+    },
+    "12": {
+      "title": "Fairness at Work",
+      "terms": ["equal pay", "reasonable adjustments", "workplace", "disability", "Equality Act"],
+      "hint": "The Equality Act applies at work too. Employers must treat people fairly, pay equally where required, and make reasonable adjustments for disabled staff.",
+      "script": "Equality doesn't stop at school. It also applies in the workplace. The Equality Act helps ensure that people doing the same job are treated fairly, including receiving equal pay where the law requires it. It also requires employers to make reasonable adjustments for people with disabilities, helping remove unnecessary barriers that might stop someone from succeeding. The aim isn't to give people an advantage. It's to create a fair opportunity for everyone to do their best.",
+      "opener": "Equality doesn't stop at school. It also applies in the workplace."
+    },
+    "13": {
+      "title": "Protecting Your Rights",
+      "terms": ["EHRC", "Equality and Human Rights Commission", "Citizens Advice", "discrimination", "rights"],
+      "hint": "Organisations like the EHRC and Citizens Advice investigate discrimination and help citizens understand their rights when treated unfairly.",
+      "script": "Laws are only useful if someone makes sure they're followed. That's why organisations such as the Equality and Human Rights Commission exist. They investigate serious cases of discrimination and help ensure the law is applied fairly. Services like Citizens Advice also provide guidance to people who believe they've been treated unfairly. These organisations play an important role in helping citizens understand their rights and know where to turn if they ever need support.",
+      "opener": "Laws are only useful if someone makes sure they're followed."
+    },
+    "14": {
+      "title": "Freedom of Expression",
+      "terms": ["freedom of expression", "democracy", "peaceful protest", "opinions", "responsibilities"],
+      "hint": "In the UK you can share opinions, criticise those in power, and join peaceful protests. Freedom of expression also comes with responsibilities.",
+      "script": "Living in a democracy means people should be able to express their opinions, even when others disagree with them. In the UK, freedom of expression is an important right. It allows people to share their views, discuss ideas, criticise those in power, and take part in peaceful protests. These freedoms help keep democracy healthy by allowing different voices to be heard. However, like many rights, freedom of expression comes with responsibilities that protect the rights of other people too.",
+      "opener": "Living in a democracy means people should be able to express their opinions, even when others disagree with them."
+    },
+    "15": {
+      "title": "Rights Have Limits",
+      "terms": ["rights limits", "freedom of expression", "hate speech", "violence", "responsible citizen"],
+      "hint": "No right is unlimited. Freedom of expression does not include threats, violence, or hatred towards protected groups.",
+      "script": "No right is completely unlimited. Think about it this way: your rights should never take away someone else's rights. Freedom of expression doesn't include threatening people, encouraging violence, or spreading hatred towards protected groups. The law tries to balance everyone's freedoms so that people can express themselves while still keeping others safe. Understanding where rights begin, and where their limits are, is an important part of being a responsible citizen.",
+      "opener": "No right is completely unlimited. Your rights should never take away someone else's rights."
+    },
+    "16": {
+      "title": "Part Three: Rights and Responsibilities",
+      "terms": ["rights", "responsibilities", "citizenship", "justice system", "the law"],
+      "hint": "Rights come with responsibilities. This section explores what citizens are expected to do and how the justice system keeps communities safe and fair.",
+      "script": "So far we've explored the rights that protect us, but rights are only one side of the story. Every right comes with responsibilities. Living in a society means recognising that our actions affect other people as well as ourselves. In this final section, we'll explore what citizens are expected to do, why following the law matters, and how the justice system helps keep communities safe, fair, and organised for everyone.",
+      "opener": "Rights are only one side of the story. Every right comes with responsibilities."
+    },
+    "17": {
+      "title": "The Rule of Law",
+      "terms": ["rule of law", "justice", "Prime Minister", "fairness", "abuse of power"],
+      "hint": "The Rule of Law means everyone must obey the law, from students to the Prime Minister. No one is above the legal system.",
+      "script": "One of the most important principles in the UK is called the Rule of Law. It simply means that everyone must obey the law, regardless of who they are. It doesn't matter whether someone is wealthy, famous, a police officer, or even the Prime Minister. If they break the law, they are expected to face the same legal system as everyone else. The Rule of Law helps ensure fairness, prevents abuse of power, and gives people confidence that justice should apply equally to every citizen.",
+      "opener": "One of the most important principles in the UK is called the Rule of Law."
+    },
+    "18": {
+      "title": "Police Powers and Stop and Search",
+      "terms": [
+        "stop and search",
+        "reasonable grounds",
+        "suspicion",
+        "rule of law",
+        "police powers",
+        "legal limits"
+      ],
+      "hint": "Police cannot stop and search you whenever they like. They need reasonable grounds for suspicion and must explain who they are, why they're stopping you, and the legal reason for the search.",
+      "script": "Let's bring the Rule of Law into a real-life situation. Imagine you're walking home from school when a police officer asks to stop and search you. Can they do that whenever they like? The answer is no. In the UK, police officers have legal powers, but those powers come with legal limits. In most situations, they must have reasonable grounds for suspicion before carrying out a search. They should explain who they are, why they're stopping you, and the legal reason for the search. The law is designed to protect both the public and the police by making sure everyone follows the same rules.",
+      "opener": "Let's bring the Rule of Law into a real-life situation. Can a police officer stop and search you whenever they like?"
+    },
+    "19": {
+      "title": "Your Rights If You're Arrested",
+      "terms": [
+        "arrested",
+        "solicitor",
+        "legal advice",
+        "free of charge",
+        "innocent until proven guilty",
+        "court"
+      ],
+      "hint": "If arrested, you still have rights: free legal advice from a solicitor, someone can be told you've been arrested, and only a court can decide guilt after hearing evidence.",
+      "script": "If a situation becomes more serious and someone is arrested, they don't lose all of their rights. The law continues to protect them throughout the legal process. For example, they have the right to speak to a solicitor before being questioned, and that legal advice is available free of charge. They can also ask for someone to be informed that they've been arrested. These rights exist to make sure investigations are carried out fairly and that everyone receives proper legal protection. Remember, being arrested does not mean someone is guilty. Only a court can decide that after hearing the evidence.",
+      "opener": "If someone is arrested, they don't lose all of their rights. The law continues to protect them throughout the legal process."
+    },
+    "20": {
+      "title": "Legal Milestones",
+      "terms": [
+        "age 10",
+        "criminal responsibility",
+        "age 16",
+        "age 18",
+        "voting",
+        "jury service",
+        "adulthood"
+      ],
+      "hint": "Key legal ages: 10 (criminal responsibility in England), 16 (greater independence and more legal rights), 18 (vote, jury service, full adult responsibilities).",
+      "script": "As you grow older, your rights and responsibilities change. At the age of 10, children in England reach the age of criminal responsibility, meaning they can be held legally responsible for criminal offences. At 16, you gain greater independence and additional legal rights, including opportunities to work and make more personal decisions. At 18, you become a legal adult. You can vote in General Elections, be called for jury service, and take on the full legal responsibilities of adulthood. Citizenship develops throughout your life as your rights and responsibilities continue to grow.",
+      "opener": "As you grow older, your rights and responsibilities change. Let's look at three important legal milestones."
+    },
+    "21": {
+      "title": "Your Responsibilities",
+      "terms": [
+        "responsibilities",
+        "follow the law",
+        "taxes",
+        "NHS",
+        "jury service",
+        "community"
+      ],
+      "hint": "Citizenship means responsibilities too: following the law, paying taxes to fund public services, and possibly serving on a jury to help courts decide fairly.",
+      "script": "Rights are only one side of being a citizen. The other side is responsibility. Living in a society means recognising that our actions affect the people around us. One responsibility is following the law and helping to keep our communities safe. Another is paying taxes when we earn money, helping to fund services like the NHS, schools, roads, and emergency services. As adults, we may also be called to serve on a jury, helping make fair decisions in court. A strong society depends on people understanding both their rights and their responsibilities.",
+      "opener": "Rights are only one side of being a citizen. The other side is responsibility."
+    },
+    "22": {
+      "title": "The Justice System",
+      "terms": [
+        "justice system",
+        "fairness",
+        "evidence",
+        "judges",
+        "magistrates",
+        "juries",
+        "accountability"
+      ],
+      "hint": "The justice system exists for fairness: protecting innocent people, holding law-breakers accountable, and making decisions based on evidence, not who you are.",
+      "script": "So what's the purpose of the justice system? At its heart, it's about fairness. The justice system exists to protect innocent people, hold those who break the law accountable, and help keep communities safe. Judges, magistrates, juries, lawyers, and the police all have different responsibilities, but they work towards the same goal: making decisions based on evidence and applying the law fairly. While no justice system is perfect, the aim is always to make sure justice is carried out equally, regardless of who you are.",
+      "opener": "What's the purpose of the justice system? At its heart, it's about fairness."
+    },
+    "23": {
+      "title": "GCSE Exam Practice",
+      "terms": [
+        "GCSE",
+        "8-mark",
+        "12-mark",
+        "Equality Act 2010",
+        "evaluate",
+        "PEEEC",
+        "balanced conclusion"
+      ],
+      "hint": "For longer GCSE answers use Point, Explain, Evidence, Evaluate, Conclude. For the 12-mark question, weigh evidence that the Equality Act reduced discrimination against challenges that remain.",
+      "script": "Now it's time to think like a GCSE Citizenship student. Look carefully at the questions on your screen. Remember, examiners don't just reward students who remember facts—they reward students who explain, evaluate, and justify their ideas. For the 8-mark question, make sure you explain both sides of the argument before reaching a balanced conclusion. Support your points with examples from today's lesson. For the 12-mark question, you'll need to evaluate whether the Equality Act 2010 has successfully reduced discrimination. Think about the evidence that supports the law's success, but also consider the challenges that still exist today. The highest marks go to answers that compare different viewpoints before reaching a well-supported judgement. Whenever you're answering longer GCSE questions, remember this simple structure: Point. Explain. Evidence. Evaluate. Conclude. Follow that, and you'll be writing exactly what examiners are looking for.",
+      "opener": "Now it's time to think like a GCSE Citizenship student. Look carefully at the questions on your screen."
+    }
+  },
+  "quizIntro": {
+    "title": "Lesson Reflection",
+    "terms": [
+      "rights",
+      "responsibilities",
+      "Human Rights Act 1998",
+      "Equality Act 2010",
+      "Rule of Law",
+      "citizenship",
+      "reflection"
+    ],
+    "hint": "Before the quiz, bring today's learning together: rights and wants, the Human Rights Act, the Equality Act, responsibilities, and the Rule of Law. Citizenship is about your place in society and respecting others.",
+    "script": "Let's finish by bringing today's learning together. Today you've explored the difference between rights and wants, learned how the Human Rights Act 1998 protects citizens, and discovered how the Equality Act 2010 helps prevent discrimination in modern Britain. You've also seen that rights always come with responsibilities and that the Rule of Law helps ensure everyone is treated equally before the law. But perhaps the biggest message from today's lesson is this: Citizenship isn't just about understanding laws. It's about understanding your place in society, respecting the rights of others, and making positive choices that help your community. Those are the qualities of an informed, responsible citizen. As we move into the next lesson, keep asking questions, thinking critically, and supporting your ideas with evidence. Those skills won't just help you succeed in your GCSE Citizenship exam—they'll stay with you for life.",
+    "note": "Quiz follows slide 24 (index 23). Scene 25 narration plays in the quiz phase, not on a PowerPoint slide."
+  }
+}

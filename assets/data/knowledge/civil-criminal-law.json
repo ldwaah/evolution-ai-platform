@@ -1,0 +1,91 @@
+{
+  "topicId": "civil-criminal-law",
+  "topicTitle": "Civil Law and Criminal Law",
+  "moduleId": "module-3",
+  "lessonIds": [
+    "lesson-15"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Criminal law is about crimes against society. Civil law settles disputes between people or companies.",
+      "keyPoints": [
+        "Criminal: theft, assault — police may be involved.",
+        "Civil: broken contract, divorce, compensation claims.",
+        "Criminal guilt can mean prison; civil usually means paying damages."
+      ],
+      "explainLike": "Criminal = breaking rules that hurt society; civil = disagreement between parties."
+    },
+    "2": {
+      "summary": "Criminal cases: prosecution must prove guilt beyond reasonable doubt. Civil: claimant proves on balance of probabilities.",
+      "keyPoints": [
+        "Prosecution brought by state (CPS).",
+        "Defendant may have solicitor/barrister.",
+        "Civil remedies: compensation, injunctions."
+      ],
+      "explainLike": "Pattern: higher proof bar in criminal because liberty is at stake."
+    },
+    "3": {
+      "summary": "Types of offences: summary, either-way, indictable. Civil areas include tort, contract, family law.",
+      "keyPoints": [
+        "Either-way offences can be heard in magistrates or Crown Court.",
+        "Tort = civil wrong causing harm (e.g. negligence).",
+        "Same act can be criminal and civil (e.g. assault)."
+      ],
+      "explainLike": "One scenario, two systems: attack someone → criminal charges and civil compensation claim."
+    },
+    "4": {
+      "summary": "Apply distinctions to scenarios: shoplifting, libel, unpaid debts, discrimination claims.",
+      "keyPoints": [
+        "Employment tribunal for workplace disputes.",
+        "Small claims track for lower-value civil cases.",
+        "ACAS conciliation before some employment claims."
+      ],
+      "explainLike": "Four steps: facts → criminal or civil? → parties → likely outcome."
+    },
+    "5": {
+      "summary": "Explain why society treats criminal and civil law differently.",
+      "keyPoints": [
+        "State monopoly on punishment protects order.",
+        "Civil allows private dispute resolution.",
+        "Human rights protect defendants in criminal process."
+      ],
+      "explainLike": "Because criminal conviction affects liberty, therefore proof standard is higher."
+    },
+    "6": {
+      "summary": "Discuss whether civil law is accessible enough for ordinary citizens.",
+      "keyPoints": [
+        "Legal costs barrier for many claimants.",
+        "Legal aid limited in civil cases.",
+        "Alternative dispute resolution: mediation, arbitration."
+      ],
+      "explainLike": "Both sides: courts provide justice but cost may block access."
+    },
+    "7": {
+      "summary": "Exam: define terms (AO1), classify scenarios (AO2), evaluate access (AO3).",
+      "keyPoints": [
+        "Beyond reasonable doubt vs balance of probabilities — must define accurately.",
+        "Classify command: match facts to law type.",
+        "Evaluate legal aid policy."
+      ],
+      "explainLike": "Examiner rewards precise vocabulary — do not swap criminal/civil processes."
+    },
+    "8": {
+      "summary": "Analyse overlap: corporate crime, regulatory enforcement, ombudsmen.",
+      "keyPoints": [
+        "FCA, HSE can fine — regulatory not always criminal.",
+        "Ombudsman schemes for public services complaints.",
+        "Class actions emerging in UK civil justice."
+      ],
+      "explainLike": "Examine blurred lines — not every wrong is a crime."
+    },
+    "9": {
+      "summary": "Evaluate whether UK legal distinctions deliver fair outcomes for victims and defendants.",
+      "keyPoints": [
+        "Synthesis: punishment aims, rights, youth justice.",
+        "Judgement on two-tier access to justice.",
+        "Coherent conclusion."
+      ],
+      "explainLike": "Mastery: dual system strengths and structural inequality."
+    }
+  }
+}

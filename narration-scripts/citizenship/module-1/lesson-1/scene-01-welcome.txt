@@ -1,0 +1,9 @@
+Scene 1 – Welcome
+Lesson: Module 1, Lesson 1 – Who Are We?
+
+Welcome to your very first Citizenship lesson. Over the next few weeks, we're going to explore some of the biggest questions about who we are, where we belong, and what it means to live in modern Britain. This isn't just a lesson about politics or laws. It's about you. Every one of us has a unique story, shaped by our family, friends, interests, experiences, and the communities around us. By the end of today's lesson, you'll understand why identity is much more than just your name or where you come from. So, let's begin with one simple question that isn't quite as easy to answer as it sounds: Who are you?
+
+---
+Output filename: scene-01-welcome.mp3
+Duration target: ~60-90 seconds
+Voice: calm UK teacher, GCSE citizenship, clear pace

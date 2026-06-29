@@ -1,0 +1,91 @@
+{
+  "topicId": "local-councils",
+  "topicTitle": "Local Councils: Democracy in Your Area",
+  "moduleId": "module-1",
+  "lessonIds": [
+    "lesson-5"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Your local council runs services near where you live, like bins, parks, and libraries.",
+      "keyPoints": [
+        "Councillors are elected to represent your area.",
+        "Council tax helps pay for local services.",
+        "You can contact your councillor about local problems."
+      ],
+      "explainLike": "Your council is like the team that looks after your neighbourhood — roads, schools support, and leisure."
+    },
+    "2": {
+      "summary": "UK local government includes county, district, and unitary councils. Councillors make decisions in committees and full council meetings.",
+      "keyPoints": [
+        "Mayors (some cities) or council leaders head the executive.",
+        "Council meetings are usually public — transparency in action.",
+        "Local elections use different cycles to general elections."
+      ],
+      "explainLike": "Model answer: councillors are elected → they decide budgets → officers deliver services."
+    },
+    "3": {
+      "summary": "Councils raise money through council tax, business rates, and central government grants. They must balance spending with local needs.",
+      "keyPoints": [
+        "Council tax bands depend on property value.",
+        "Adult social care and children's services are major costs.",
+        "Devolution gives some regions more local spending power."
+      ],
+      "explainLike": "One reason, one example: council tax funds services like waste collection in your street."
+    },
+    "4": {
+      "summary": "Local democracy lets citizens influence planning, transport, and youth services through consultations, petitions, and scrutiny committees.",
+      "keyPoints": [
+        "Planning applications for new buildings go through council processes.",
+        "Overview and scrutiny committees check executive decisions.",
+        "Parish and town councils handle very local issues in some areas."
+      ],
+      "explainLike": "Structured steps: identify the service, name the council body, say how a citizen can respond."
+    },
+    "5": {
+      "summary": "Explain how local government connects citizens to democracy between general elections.",
+      "keyPoints": [
+        "Turnout in local elections is often lower than general elections — a participation challenge.",
+        "Councils must publish spending and decisions for accountability.",
+        "Youth councils give young people a voice before age 18."
+      ],
+      "explainLike": "Because local decisions affect daily life, therefore voting locally matters even when national politics feels distant."
+    },
+    "6": {
+      "summary": "Discuss funding pressures on councils: austerity, social care demand, and whether council tax is fair.",
+      "keyPoints": [
+        "Section 114 notices mean a council cannot balance its budget — rare but serious.",
+        "Council tax rises are capped without referendums in England.",
+        "Debate: richer areas vs deprived areas — equal services?"
+      ],
+      "explainLike": "Both sides: local control is democratic, but uneven funding creates postcode lotteries."
+    },
+    "7": {
+      "summary": "Exam technique: describe council roles (AO1), apply to a local issue scenario (AO2), evaluate democratic accountability (AO3).",
+      "keyPoints": [
+        "Distinguish ceremonial mayor from elected metro mayors with devolved powers.",
+        "Use 'explain' structure: service + council duty + citizen action.",
+        "Evaluate low turnout — causes and solutions."
+      ],
+      "explainLike": "Nia: 2 marks for naming council function + 2 for developed local example."
+    },
+    "8": {
+      "summary": "Analyse metro mayors, combined authorities, and devolution deals reshaping local power in England.",
+      "keyPoints": [
+        "Greater Manchester and West Midlands have elected mayors with transport and skills budgets.",
+        "Tension: central government control vs local autonomy.",
+        "Compare English two-tier system with Scottish/Welsh unitary models."
+      ],
+      "explainLike": "Analyse who gains power — Whitehall, regional mayor, or district council — when structures change."
+    },
+    "9": {
+      "summary": "Evaluate whether local government in the UK delivers effective, accountable democracy for diverse communities.",
+      "keyPoints": [
+        "Integrate finance, representation, and active citizenship themes.",
+        "Judgement on whether local voice is real or symbolic under austerity.",
+        "Selective evidence — answer the question, not everything about councils."
+      ],
+      "explainLike": "Synthesis: local democracy as laboratory for participation — judge with evidence on outcomes, not ideals alone."
+    }
+  }
+}

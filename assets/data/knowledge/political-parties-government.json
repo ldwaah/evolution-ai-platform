@@ -1,0 +1,91 @@
+{
+  "topicId": "political-parties-government",
+  "topicTitle": "Political Parties and Forming a Government",
+  "moduleId": "module-2",
+  "lessonIds": [
+    "lesson-7"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Political parties are groups with shared ideas who try to win elections and run the country.",
+      "keyPoints": [
+        "The main UK parties include Conservatives, Labour, and Liberal Democrats.",
+        "Party members choose policies and leaders.",
+        "The party with most MPs usually forms the government."
+      ],
+      "explainLike": "Parties are teams with plans — voters pick which team's plan they prefer."
+    },
+    "2": {
+      "summary": "After a general election, the monarch invites the leader of the largest party to become Prime Minister and form a government.",
+      "keyPoints": [
+        "MPs from the governing party usually become ministers.",
+        "The opposition parties scrutinise government.",
+        "Coalitions form when no party has a majority."
+      ],
+      "explainLike": "Most MPs wins → their leader becomes PM → they pick a Cabinet to run departments."
+    },
+    "3": {
+      "summary": "Parties raise money through membership, donations, and campaigning. Manifestos set out promises before elections.",
+      "keyPoints": [
+        "Manifesto = policy programme voters can judge.",
+        "Backbench MPs are party members not in the government.",
+        "Whips encourage MPs to vote with party line."
+      ],
+      "explainLike": "Link manifesto promise to voter choice — one reason people pick a party."
+    },
+    "4": {
+      "summary": "The UK party system is dominated by two main parties but includes national parties (SNP, Plaid Cymru) and smaller UK-wide parties.",
+      "keyPoints": [
+        "FPTP helps large parties win seats.",
+        "Hung parliament may need confidence-and-supply deals.",
+        "Opposition holds government to account in PMQs and committees."
+      ],
+      "explainLike": "Step: election result → seat count → government formation → opposition role."
+    },
+    "5": {
+      "summary": "Explain how parties link citizens to law-making and why party discipline affects parliamentary debate.",
+      "keyPoints": [
+        "Parties aggregate diverse views into coherent programmes.",
+        "Rebellions on key votes can threaten government majority.",
+        "Select committees investigate policy across party lines."
+      ],
+      "explainLike": "Because parties organise votes, therefore they shape which laws pass — but MPs can sometimes break ranks."
+    },
+    "6": {
+      "summary": "Discuss whether two-party politics serves UK democracy or whether smaller parties should have more influence.",
+      "keyPoints": [
+        "Pro FPTP: stable government, clear accountability.",
+        "Anti: wasted votes, under-representation (e.g. UKIP 2015 vote share vs seats).",
+        "Reform options: AMS, STV in devolved elections."
+      ],
+      "explainLike": "Probe both sides — stability versus fairness of representation."
+    },
+    "7": {
+      "summary": "AO focus: define hung parliament/coalition (AO1), apply to election scenarios (AO2), evaluate party system (AO3).",
+      "keyPoints": [
+        "Sentence starter: 'A hung parliament occurs when…'",
+        "2010 Conservative–Lib Dem coalition as AO2 example.",
+        "Discuss questions need balanced paragraphs."
+      ],
+      "explainLike": "Turn a good point into full marks: name concept + election fact + consequence for government."
+    },
+    "8": {
+      "summary": "Analyse party funding, lobbying, and media influence on democratic legitimacy.",
+      "keyPoints": [
+        "Electoral Commission regulates party finance.",
+        "Donor transparency debates — undue influence?",
+        "Social media targeting changes campaign strategy."
+      ],
+      "explainLike": "Challenge assumption that more parties automatically means better democracy — examine money and access."
+    },
+    "9": {
+      "summary": "Evaluate whether political parties remain the best vehicle for democratic participation in a fragmented media age.",
+      "keyPoints": [
+        "Synthesis: parties, pressure groups, and direct action.",
+        "Judgement on membership decline vs digital activism rise.",
+        "Substantiated conclusion on representation quality."
+      ],
+      "explainLike": "Grade 8–9: weigh parties' organising role against disengagement and alternative participation channels."
+    }
+  }
+}
