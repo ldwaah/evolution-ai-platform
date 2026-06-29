@@ -33,6 +33,18 @@
       "tutorHint": "Start small: your name, one interest, one person who matters to you. Identity has many pieces."
     },
     {
+      "id": "q-who-are-we",
+      "patterns": [
+        "who are we"
+      ],
+      "slideIndex": 1,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Who are we?",
+      "answer": "Who are we? is about identity. You might begin with your family, culture, hobbies, beliefs, or friends. Identity is made up of many parts that together tell your story. It cannot be explained in just one sentence.",
+      "tutorHint": "Think family, culture, hobbies, beliefs, or friends. Many parts make up who you are."
+    },
+    {
       "id": "q-identity-meaning",
       "patterns": [
         "what is identity",
