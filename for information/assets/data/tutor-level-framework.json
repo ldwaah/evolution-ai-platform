@@ -1,0 +1,922 @@
+{
+  "meta": {
+    "title": "Evolution AI Platform Tutor Level Framework",
+    "subject": "GCSE Citizenship Studies (England, grades 1-9)",
+    "version": "2.0.0",
+    "notClaimed": "This framework supports platform design and teaching placement. It is not an official exam grade, certification, DfE endorsement, or Ofsted approval. Grade boundaries are set by exam boards each year.",
+    "references": [
+      "https://www.gov.uk/government/publications/grade-descriptors-for-gcses-graded-9-to-1/grade-descriptors-for-gcses-graded-9-to-1-citizenship-studies",
+      "https://www.gov.uk/government/publications/assessment-objectives-ancient-languages-geography-and-mfl/gcse-as-and-a-level-assessment-objectives",
+      "https://assets.publishing.service.gov.uk/media/5a7f3806ed915d74e62291c9/gcse-subject-level-guidance-for-citizenship-studies.pdf",
+      "https://www.aqa.org.uk/subjects/citizenship-studies/gcse/citizenship-studies-8100/specification/scheme-of-assessment",
+      "https://www.aqa.org.uk/subjects/citizenship-studies/gcse/citizenship-studies-8100/specification/specification-at-a-glance",
+      "https://www.aqa.org.uk/resources/citizenship-studies/gcse/citizenship-studies/teach/command-words",
+      "https://qualifications.pearson.com/en/qualifications/edexcel-gcses/citizenship-studies-2016.html",
+      "https://www.ocr.org.uk/qualifications/gcse/citizenship-studies-j270-from-2016/assessment/"
+    ],
+    "aoDefinitions": {
+      "ao1": "Demonstrate knowledge and understanding of citizenship concepts, terms, and issues (30%)",
+      "ao2": "Apply knowledge and understanding of citizenship concepts, terms, and issues to contexts and actions (30%)",
+      "ao3": "Analyse and evaluate evidence relating to citizenship issues, debates, and actions, including different viewpoints, to develop reasoned arguments and substantiated judgements (40%)"
+    },
+    "examStructure": {
+      "common": {
+        "totalScaledMarks": 160,
+        "aoWeighting": { "ao1": 30, "ao2": 30, "ao3": 40 },
+        "note": "AOs and weightings are set by Ofqual and identical across AQA, Edexcel, and OCR GCSE Citizenship specifications."
+      },
+      "aqa8100": {
+        "papers": [
+          {
+            "paper": 1,
+            "duration": "1h 45m",
+            "marks": 80,
+            "weight": "50%",
+            "sections": [
+              { "id": "A", "title": "Active citizenship", "marks": 40, "content": "Others' citizenship actions plus student's own investigation (research, action, reflection)" },
+              { "id": "B", "title": "Politics and participation", "marks": 40, "content": "Democracy, political change, participation" }
+            ]
+          },
+          {
+            "paper": 2,
+            "duration": "1h 45m",
+            "marks": 80,
+            "weight": "50%",
+            "sections": [
+              { "id": "A", "title": "Life in modern Britain", "marks": 40, "content": "British values, media, UK global role" },
+              { "id": "B", "title": "Rights and responsibilities", "marks": 40, "content": "Law, rights, international agreements" }
+            ]
+          }
+        ],
+        "activeCitizenshipExamWeight": "15% of total GCSE (Paper 1 Section A)",
+        "questionTypes": ["multiple_choice", "short_answer", "source_based", "extended_answer"]
+      },
+      "edexcel1CS0": {
+        "papers": [
+          {
+            "paper": 1,
+            "duration": "1h 45m",
+            "marks": 80,
+            "weight": "50%",
+            "sections": [
+              { "id": "A", "title": "Living together in the UK", "marks": null },
+              { "id": "B", "title": "Democracy at work in the UK", "marks": null },
+              { "id": "C", "title": "Law and justice", "marks": null },
+              { "id": "D", "title": "Citizenship issues and debates", "marks": 31, "note": "Approx 21% of qualification; includes 12-mark and 15-mark extended parts" }
+            ]
+          },
+          {
+            "paper": 2,
+            "duration": "1h 45m",
+            "marks": 80,
+            "weight": "50%",
+            "sections": [
+              { "id": "A", "title": "Citizenship in perspective", "marks": null },
+              { "id": "B", "title": "Power and influence", "marks": 42, "note": "Approx 26%; includes 10-mark and 12-mark questions" }
+            ]
+          }
+        ],
+        "note": "Edexcel uses levels-based mark schemes with examiner commentary on development beyond simple statements for explain questions."
+      },
+      "ocrJ270": {
+        "papers": [
+          { "paper": "J270/01", "title": "Citizenship in perspective", "marks": 80 },
+          { "paper": "J270/02", "title": "Citizenship in action", "marks": 80 }
+        ],
+        "note": "OCR wording for AOs aligns with Ofqual; Paper 2 focuses on citizenship action planning, taking, and evaluation."
+      }
+    },
+    "markSchemePatterns": {
+      "pointMarking": "Award 1 mark for identifying a valid point; award a second mark for development, explanation, or example linked to context.",
+      "defineExample": "Award 1 mark for correct definition and 1 mark for developed definition or appropriate example.",
+      "levelsBased": {
+        "typical8Mark": {
+          "level4": "7-8: Developed and sustained analysis; wide range of evidence and views; reasoned justifications; coherent argument",
+          "level3": "5-6: Analysis of range of evidence; arguments not always fully developed or evaluated",
+          "level2": "3-4: Basic analysis; limited range; weak arguments; limited viewpoints",
+          "level1": "1-2: Limited evidence; insufficient viewpoints; little analysis or integration"
+        },
+        "typical12MarkActiveCitizenship": {
+          "level4": "10-12: Clear precise analysis with well chosen investigation evidence; developed justified evaluated within citizenship action context",
+          "level3": "7-9: Appropriate evidence; good application; analyses not always fully developed",
+          "level2": "4-6: Some evidence; weak arguments; analysis not always relevant to context",
+          "level1": "1-3: Basic application; little analysis or integration"
+        }
+      },
+      "examinerPrinciples": [
+        "Credit other valid points not listed in indicative content",
+        "Use best-fit approach when answer spans levels",
+        "Explain requires more than a simple statement to access full marks (Edexcel examiner report 2023)",
+        "Active citizenship answers must link aims, research, action, and reflection"
+      ]
+    }
+  },
+  "commandWordLadder": [
+    { "tier": 1, "words": ["identify", "name", "state", "give", "define"], "gradeBands": [1, 2, 3] },
+    { "tier": 2, "words": ["describe", "outline", "summarise"], "gradeBands": [2, 3, 4] },
+    { "tier": 3, "words": ["explain"], "gradeBands": [3, 4, 5, 6] },
+    { "tier": 4, "words": ["apply", "suggest"], "gradeBands": [4, 5, 6] },
+    { "tier": 5, "words": ["analyse", "examine"], "gradeBands": [5, 6, 7, 8] },
+    { "tier": 6, "words": ["discuss", "debate", "compare", "consider", "contrast"], "gradeBands": [5, 6, 7, 8, 9] },
+    { "tier": 7, "words": ["evaluate", "assess", "justify", "argue"], "gradeBands": [6, 7, 8, 9] },
+    { "tier": 8, "words": ["conclude"], "gradeBands": [7, 8, 9] }
+  ],
+  "levels": [
+    {
+      "id": "access",
+      "tutorIndex": 0,
+      "tutor": "Nova",
+      "level": "Access",
+      "gradeRange": [1],
+      "gradeRangeLabel": "1 (U to 1 entry)",
+      "combinedRange": "0.0-0.9",
+      "commandWords": ["identify", "name", "state", "give"],
+      "aoExpectations": {
+        "ao1": "Spot or recall isolated citizenship terms with heavy scaffolding; no full definitions expected",
+        "ao2": "Not expected independently; may select correct option in supported scenario",
+        "ao3": "Not assessed at this band"
+      },
+      "aoFocus": "AO1 entry recall with heavy scaffolding",
+      "studentCapabilities": [
+        "Recognise familiar citizenship words when supported",
+        "Match terms to labels or sentence starters",
+        "Complete one-step tasks with prompting",
+        "Engage with very short activities"
+      ],
+      "mustDemonstrate": [
+        "Recognise at least 3 to 5 high-frequency citizenship terms when given options (vote, law, right, community, government)",
+        "Select a correct label from a word bank or picture match in one attempt with support",
+        "Respond to a single-step prompt without multi-part stacking",
+        "Attempt engagement even when answer is incomplete"
+      ],
+      "markSchemeBehaviours": {
+        "oneMark": "Correct selection or naming from provided options; no development required",
+        "twoMark": "Not targeted; if attempted, credit only the identification half of a point-mark pair",
+        "fourMarkPlus": "Not targeted at this band",
+        "typicalErrors": "Random guessing without reading; copying question stem; no response",
+        "examinerLanguage": "Nothing to credit if off-topic; award mark for each correct identification up to maximum"
+      },
+      "exampleQuestionStems": [
+        "Name one word that describes how people choose their MPs.",
+        "Identify which of these is a right: A) free speech B) paying a fine C) driving only",
+        "Give one example of a rule in school.",
+        "State what a vote is used for."
+      ],
+      "scaffoldingRules": [
+        "One idea per chat message; never stack two questions",
+        "Always offer word bank, visuals, or binary choice",
+        "Read-aloud friendly phrasing; max 8 words per sentence in prompts",
+        "Celebrate any attempt before correcting",
+        "Glossary pinned and always visible",
+        "If wrong, rephrase once with fewer options; do not penalise"
+      ],
+      "worksheetStyle": {
+        "format": "Matching, tick-box, label-the-diagram, two-option MC",
+        "exitTask": "Circle the correct word from three options about rights or rules in school",
+        "markingHint": "1 mark per correct identification; no written sentence required",
+        "timeGuidance": "3 to 5 minutes"
+      },
+      "readinessToMoveUp": {
+        "criteria": [
+          "80%+ accuracy on identification tasks with word bank over 3 sessions",
+          "Can name one term without options in at least 2 topic areas",
+          "Attempts a full sentence when given a stem (e.g. 'A law is...')"
+        ],
+        "blockers": ["Relies on guessing when options removed", "Cannot sustain attention beyond 5 minutes"]
+      },
+      "citizenshipTopics": {
+        "rights": "Match 'right' to everyday examples (speak in class, fair treatment)",
+        "responsibilities": "Identify school rules as responsibilities; follow one-step scenarios",
+        "democracy": "Label voting, election, MP from picture prompts",
+        "law": "Sort 'legal' vs 'not allowed in school' with support",
+        "activeCitizenship": "Recognise words campaign, petition, volunteer from images only"
+      },
+      "teacherPractice": [
+        "Pre-teach 3 to 5 terms per lesson with visuals before any written task",
+        "Use structured talk (think-pair-share) before individual response",
+        "ROG or equivalent colour bands: red tasks = identify/name only",
+        "TA or peer reader for all text-heavy prompts",
+        "Oracy first: student says answer, then selects from options"
+      ],
+      "questionTypes": ["multiple_choice_two_option", "matching", "fill_one_word", "true_false_supported"],
+      "scaffolding": "maximum",
+      "delivery": {
+        "sentenceLengthWords": "5-8",
+        "answerLength": "1 sentence",
+        "vocabulary": "high_frequency_only",
+        "chatbotStyle": "one idea per message; glossaries always visible"
+      },
+      "goodVsNext": {
+        "good": "Selects correct label from given options",
+        "nextLevel": "Recalls term without word bank and describes one feature in a full sentence"
+      }
+    },
+    {
+      "id": "foundation",
+      "tutorIndex": 1,
+      "tutor": "Milo",
+      "level": "Foundation",
+      "gradeRange": [1, 2],
+      "gradeRangeLabel": "1 to 2",
+      "combinedRange": "1.0-1.9",
+      "commandWords": ["identify", "name", "define", "describe"],
+      "aoExpectations": {
+        "ao1": "Demonstrate knowledge of some aspects of concepts, terms, or issues with guided examples",
+        "ao2": "Minimal; may restate an example when given",
+        "ao3": "Not expected"
+      },
+      "aoFocus": "AO1 core terms with guided examples",
+      "studentCapabilities": [
+        "Recall core citizenship terms in familiar topics",
+        "Complete simple definitions with models",
+        "Follow two-step instructions",
+        "Show awareness that citizenship involves rules and participation"
+      ],
+      "mustDemonstrate": [
+        "Define a core term with key word included when a model is shown first",
+        "Name one valid example from a familiar topic (one mark style)",
+        "Describe one characteristic of an institution (school council, police, Parliament) in 1 to 2 sentences",
+        "Follow read-then-answer two-step instructions"
+      ],
+      "markSchemeBehaviours": {
+        "oneMark": "Correct identification or single valid point from recall",
+        "twoMark": "1 mark correct point + 1 mark simple example or keyword in definition (AQA pattern: definition + developed example)",
+        "fourMarkPlus": "Not targeted; maximum 2-mark define/describe items",
+        "typicalErrors": "Vague definitions ('democracy is fair'); lists without selecting one answer",
+        "examinerLanguage": "Award one mark for correct function/point; award second mark for appropriate example"
+      },
+      "exampleQuestionStems": [
+        "Define the term 'democracy'.",
+        "Name one responsibility of a citizen in the UK.",
+        "Describe one feature of the UK Parliament.",
+        "Identify two ways people can take part in society."
+      ],
+      "scaffoldingRules": [
+        "Show model answer before 'your turn' variant",
+        "Gap-fill definitions with keyword bank",
+        "Limit to one new term per activity block",
+        "MC with 3 to 4 options before open response",
+        "Feedback names the mark earned ('that is your identification mark')"
+      ],
+      "worksheetStyle": {
+        "format": "Gap fill, name-one, define-with-word-bank, 2-mark describe one feature",
+        "exitTask": "Define 'right' and give one school example (2 marks)",
+        "markingHint": "1+1 point marking; second mark needs linked example",
+        "timeGuidance": "5 to 8 minutes"
+      },
+      "readinessToMoveUp": {
+        "criteria": [
+          "Secure 1+1 marks on define questions in 2+ topics without model visible",
+          "Describes one feature with own words in full sentence",
+          "Beginning to explain 'why' with one because-clause when prompted"
+        ],
+        "blockers": ["Definitions copied without understanding", "Cannot move beyond single-feature describe"]
+      },
+      "citizenshipTopics": {
+        "rights": "Define human right; name one HRA example; describe one school right",
+        "responsibilities": "Name responsibilities at home/school/nation; define rule of law simply",
+        "democracy": "Define democracy; describe general election in one step; name one way to participate",
+        "law": "Define law; identify magistrates court vs Crown Court at label level",
+        "activeCitizenship": "Define campaign; name one type of action (petition, fundraiser)"
+      },
+      "teacherPractice": [
+        "I do, we do, you do for every define task",
+        "Vocabulary lists on desk; remove gradually across unit",
+        "Foundation tier exit tickets: name/define only, no extended writing",
+        "Pair weaker writers with structured note-taker",
+        "Retrieval drills on 10 core terms weekly"
+      ],
+      "questionTypes": ["multiple_choice", "gap_fill", "name_one", "describe_one_feature"],
+      "scaffolding": "high",
+      "delivery": {
+        "sentenceLengthWords": "8-12",
+        "answerLength": "1-2 sentences",
+        "vocabulary": "core_tier_only",
+        "chatbotStyle": "model answer first, then your turn variant"
+      },
+      "goodVsNext": {
+        "good": "Defines a term including the key word",
+        "nextLevel": "Explains why the term matters in a familiar context without a model"
+      }
+    },
+    {
+      "id": "building_confidence",
+      "tutorIndex": 2,
+      "tutor": "Ava",
+      "level": "Building Confidence",
+      "gradeRange": [2, 3],
+      "gradeRangeLabel": "2 to 3",
+      "combinedRange": "2.0-2.9",
+      "commandWords": ["describe", "outline", "explain", "apply"],
+      "aoExpectations": {
+        "ao1": "Knowledge of some aspects across at least one theme; near grade 2 Ofqual anchor",
+        "ao2": "Early application in familiar local or school contexts",
+        "ao3": "May state an opinion with tutor-prompted because; limited evidence"
+      },
+      "aoFocus": "AO1 plus early AO2 in familiar contexts",
+      "studentCapabilities": [
+        "Describe features of familiar institutions",
+        "Use subject terms with growing accuracy",
+        "Attempt short explanations with sentence starters",
+        "Show some awareness of differing viewpoints"
+      ],
+      "mustDemonstrate": [
+        "Describe 2 linked features of a familiar institution (grade 2: some aspects knowledge)",
+        "Explain one reason using 'because' in a school or local context",
+        "Apply a concept to a given scenario with sentence frame (e.g. rights in school)",
+        "State one other viewpoint when prompted ('Some people think... however...')"
+      ],
+      "markSchemeBehaviours": {
+        "oneMark": "Single valid feature or reason identified",
+        "twoMark": "Describe/explain with one developed link (reason connected to context)",
+        "fourMarkPlus": "Emerging only; 3 to 4 mark explain may score 1 to 2 without development",
+        "typicalErrors": "Opinion without because; describes without citizenship vocabulary",
+        "examinerLanguage": "Basic line of reasoning with some awareness of differing viewpoints; limited reference to evidence"
+      },
+      "exampleQuestionStems": [
+        "Describe how a school council gives students a voice.",
+        "Explain why voting matters in a local election.",
+        "Apply the idea of responsibility to this scenario: litter in the park.",
+        "Outline two features of the UK police service."
+      ],
+      "scaffoldingRules": [
+        "Paragraph frames with Because / This means / For example labels",
+        "Optional stretch: second reason only after first is praised",
+        "Scenarios set in school/local before national",
+        "Viewpoint sentence starters provided but not filled in",
+        "Praise partial answers; one follow-up question maximum"
+      ],
+      "worksheetStyle": {
+        "format": "2-mark short answer; describe + explain two-part; simple scenario box",
+        "exitTask": "Explain one reason why young people might join a youth club (2 marks)",
+        "markingHint": "Identification + development for full 2 marks",
+        "timeGuidance": "8 to 10 minutes"
+      },
+      "readinessToMoveUp": {
+        "criteria": [
+          "Consistent 2/2 on familiar-topic explain questions",
+          "Applies concept to new but similar scenario with 2 linked reasons",
+          "Uses at least one subject term accurately per answer"
+        ],
+        "blockers": ["Needs sentence frame for every answer", "No viewpoint awareness without prompt"]
+      },
+      "citizenshipTopics": {
+        "rights": "Explain why free speech has limits in school; describe student rights",
+        "responsibilities": "Apply responsibilities to scenario (cyberbullying, voting age debate at simple level)",
+        "democracy": "Describe local council role; explain why people vote",
+        "law": "Outline youth justice approach; explain one purpose of law",
+        "activeCitizenship": "Describe one stage of investigation (research or action); explain why consultation helps"
+      },
+      "teacherPractice": [
+        "Grade 2 descriptor as success criteria displayed on board",
+        "Structured talk to rehearse 'because' clauses before writing",
+        "Orange/ROG band: describe + one explain",
+        "Mix closed then open questions within same lesson",
+        "Use familiar contexts exclusively before national examples"
+      ],
+      "questionTypes": ["short_answer_2_mark", "simple_scenario", "describe_and_explain"],
+      "scaffolding": "medium_high",
+      "delivery": {
+        "sentenceLengthWords": "10-15",
+        "answerLength": "2-3 sentences",
+        "vocabulary": "introduce_issue_language",
+        "chatbotStyle": "praise partial answers; optional stretch explain why"
+      },
+      "goodVsNext": {
+        "good": "Describes accurately with one reason",
+        "nextLevel": "Applies concept to a new scenario with two linked reasons"
+      }
+    },
+    {
+      "id": "developing",
+      "tutorIndex": 3,
+      "tutor": "Kai",
+      "level": "Developing",
+      "gradeRange": [3, 4],
+      "gradeRangeLabel": "3 to 4",
+      "combinedRange": "3.0-3.9",
+      "commandWords": ["explain", "apply", "describe", "outline", "consider"],
+      "aoExpectations": {
+        "ao1": "Adequate knowledge of core content; some inaccuracies acceptable",
+        "ao2": "Apply knowledge to local and national contexts with structured practice",
+        "ao3": "Basic consideration of an issue without balanced evaluation"
+      },
+      "aoFocus": "AO1 and AO2 with structured practice",
+      "studentCapabilities": [
+        "Explain causes and effects in straightforward topics",
+        "Apply rights and responsibilities to short scenarios",
+        "Structure templated answers with beginning, middle, end",
+        "Use evidence from a single source when directed"
+      ],
+      "mustDemonstrate": [
+        "Explain with at least one developed reason linked to context (3 to 4 mark questions)",
+        "Apply rights/responsibilities to a short unseen scenario",
+        "Use PEE/PEEL-style structure when template provided",
+        "Reference one line from a source when told which line to use"
+      ],
+      "markSchemeBehaviours": {
+        "oneMark": "Valid point identified but not developed",
+        "twoMark": "Point + development/explanation (Edexcel: explain needs more than simple statement)",
+        "fourMark": "Two developed points OR one well-developed point + application to context",
+        "typicalErrors": "Two sides listed with no link to question; undeveloped explain ('people should vote because it is important')",
+        "examinerLanguage": "Award 1 mark for identifying; 1 mark for developing explanation as to why"
+      },
+      "exampleQuestionStems": [
+        "Explain two ways Parliament holds the government to account.",
+        "Apply the concept of human rights to a scenario about stop and search.",
+        "Consider whether this source supports the view that media is fair.",
+        "Outline the main features of the UK justice system."
+      ],
+      "scaffoldingRules": [
+        "Introduce PEE with citizenship labels (Point, Evidence, Link to citizenship concept)",
+        "Break scenarios into bullet steps; student answers step 1 before step 2",
+        "One follow-up after first answer, not parallel questions",
+        "Source: highlight line numbers before explain task",
+        "Remove sentence stems gradually within unit"
+      ],
+      "worksheetStyle": {
+        "format": "3 to 4 mark explain; scenario apply; source highlight + explain",
+        "exitTask": "Explain two ways a citizen can influence local planning (4 marks)",
+        "markingHint": "2 x (identify + develop) or equivalent point marking",
+        "timeGuidance": "10 to 12 minutes"
+      },
+      "readinessToMoveUp": {
+        "criteria": [
+          "Regular 3+/4 on explain without paragraph frame",
+          "Applies to national context with accurate terms",
+          "Uses source evidence unprompted once per answer"
+        ],
+        "blockers": ["Explain answers remain one mark only", "Cannot structure beyond template"]
+      },
+      "citizenshipTopics": {
+        "rights": "Apply HRA to scenario; explain balanced rights vs security",
+        "responsibilities": "Explain jury service; apply consumer responsibilities",
+        "democracy": "Explain role of MPs vs Lords; consider voter turnout issue",
+        "law": "Outline civil vs criminal; explain one youth sentencing aim",
+        "activeCitizenship": "Explain how primary research assisted investigation; consider one difficulty faced"
+      },
+      "teacherPractice": [
+        "Master foundational knowledge before source analysis (ACT guidance)",
+        "3/4 grade band tasks with writing frames available not mandatory",
+        "Modelling explain with 'this would be 1 mark... this development earns the 2nd'",
+        "Chunk sources: read, highlight, then answer",
+        "Formative marking using point + development language"
+      ],
+      "questionTypes": ["explain_3_4_mark", "scenario_apply", "source_highlight_explain"],
+      "scaffolding": "medium",
+      "delivery": {
+        "sentenceLengthWords": "12-18",
+        "answerLength": "3-4 sentences",
+        "vocabulary": "tier_2_subject_terms",
+        "chatbotStyle": "break scenarios into steps; one follow-up after first answer"
+      },
+      "goodVsNext": {
+        "good": "Explains with one developed reason",
+        "nextLevel": "Applies to unfamiliar context with accurate terminology throughout"
+      }
+    },
+    {
+      "id": "secure",
+      "tutorIndex": 4,
+      "tutor": "Zara",
+      "level": "Secure",
+      "gradeRange": [4, 5],
+      "gradeRangeLabel": "4 to 5",
+      "combinedRange": "4.0-4.9",
+      "commandWords": ["explain", "apply", "discuss", "compare", "consider"],
+      "aoExpectations": {
+        "ao1": "Mostly accurate knowledge of a range of relevant aspects; grade 5 trajectory",
+        "ao2": "Secure application to contexts and citizenship actions",
+        "ao3": "Reasoned arguments with some differing viewpoints; evidence-based conclusions forming"
+      },
+      "aoFocus": "AO2 application with AO1 reinforcement",
+      "studentCapabilities": [
+        "Mostly accurate knowledge across multiple themes",
+        "Apply concepts to national and some global contexts",
+        "Construct reasoned points with some evidence",
+        "Compare two simple viewpoints on familiar issues"
+      ],
+      "mustDemonstrate": [
+        "Mostly accurate knowledge across 2+ themes in one response (grade 5 trajectory)",
+        "Reasoned paragraph with one viewpoint and supporting evidence",
+        "Compare or discuss with brief counter-view",
+        "Link citizenship action example to outcome (basic evaluation)"
+      ],
+      "markSchemeBehaviours": {
+        "oneMark": "Isolated fact correctly stated",
+        "twoMark": "Developed point with citizenship terminology",
+        "fourMark": "Two reasoned points with some evidence OR one point with viewpoint comparison",
+        "sixMark": "Level 2 to 3 on 6-mark source: some evidence selected; arguments not always fully developed",
+        "typicalErrors": "Knowledge list without application; discuss without conclusion",
+        "examinerLanguage": "Reasoned arguments considering some differing viewpoints; evidence-based conclusions"
+      },
+      "exampleQuestionStems": [
+        "Discuss one benefit and one drawback of lowering the voting age to 16.",
+        "Compare how two sources present views on immigration.",
+        "Apply knowledge of pressure groups to explain how Greenpeace influences policy.",
+        "Explain whether your citizenship issue was mainly local, national, or global."
+      ],
+      "scaffoldingRules": [
+        "Structure suggested (intro / point / counter / conclusion) not pre-filled",
+        "Light mark-scheme feedback: 'developed point', 'needs evidence'",
+        "Discuss tasks: require both sides before marking complete",
+        "Encourage precise terms over vague language ('legitimacy' not 'fairness')",
+        "Planning box optional; 1 paragraph minimum expectation"
+      ],
+      "worksheetStyle": {
+        "format": "4 to 6 mark explain/apply; source short answer; discuss with mark hint",
+        "exitTask": "Discuss whether social media helps political participation (6 marks)",
+        "markingHint": "Point marking for short items; levels emerging for 6-mark discuss",
+        "timeGuidance": "12 to 15 minutes"
+      },
+      "readinessToMoveUp": {
+        "criteria": [
+          "Grade 5 descriptor elements in 2+ marked tasks (range of knowledge, some viewpoints)",
+          "Independently weighs two viewpoints in scenario",
+          "6-mark responses reach level 2 to 3 consistently"
+        ],
+        "blockers": ["Counter-argument only present when template given", "Evidence generic not linked to source"]
+      },
+      "citizenshipTopics": {
+        "rights": "Discuss privacy vs security; compare HRA and UDHR application",
+        "responsibilities": "Apply legal aid debate; discuss responsibilities of media",
+        "democracy": "Discuss voting systems; compare participation methods",
+        "law": "Compare roles of courts; discuss stop and search balancing rights",
+        "activeCitizenship": "Discuss most successful investigation stage with evidence; evaluate usefulness of research"
+      },
+      "teacherPractice": [
+        "Grade 5 anchor descriptors as rubric headers",
+        "Green/ROG band: discuss with both sides",
+        "Modelling counter-argument explicitly",
+        "Link Paper 1 active citizenship vocabulary to Paper 2 themes",
+        "Peer assess using 'identify + develop' checklist"
+      ],
+      "questionTypes": ["explain_apply_4_6_mark", "source_short_answer", "discuss_with_mark_hint"],
+      "scaffolding": "medium_low",
+      "delivery": {
+        "sentenceLengthWords": "15-20",
+        "answerLength": "1 paragraph",
+        "vocabulary": "full_gcse_tier",
+        "chatbotStyle": "light mark-scheme language in feedback"
+      },
+      "goodVsNext": {
+        "good": "Reasoned paragraph with one viewpoint and evidence",
+        "nextLevel": "Independently weighs two viewpoints in a scenario response"
+      }
+    },
+    {
+      "id": "confident",
+      "tutorIndex": 5,
+      "tutor": "Theo",
+      "level": "Confident",
+      "gradeRange": [5, 6],
+      "gradeRangeLabel": "5 to 6",
+      "combinedRange": "5.0-5.9",
+      "commandWords": ["explain", "apply", "analyse", "discuss", "evaluate"],
+      "aoExpectations": {
+        "ao1": "Accurate knowledge integrated into answers; grade 5 Ofqual anchor secure",
+        "ao2": "Confident application across local, national, and global contexts",
+        "ao3": "Evidence-based analysis; evaluate participation outcomes; some differing viewpoints"
+      },
+      "aoFocus": "AO2 and AO3 in scenario responses",
+      "studentCapabilities": [
+        "Construct reasoned arguments considering some differing viewpoints",
+        "Apply knowledge fluently to scenario prompts",
+        "Analyse simple sources for bias or purpose",
+        "Link participation actions to outcomes with evidence"
+      ],
+      "mustDemonstrate": [
+        "Balanced discuss with conclusion (grade 5: reasoned arguments, some viewpoints)",
+        "Analyse source for purpose/bias with evidence quote",
+        "Evaluate citizenship action outcome with one criterion",
+        "Integrate knowledge into argument rather than listing facts"
+      ],
+      "markSchemeBehaviours": {
+        "oneMark": "Valid identification in complex question (building block only)",
+        "twoMark": "Developed explain within longer response",
+        "fourMark": "Not typical standalone; subsumed in levels marking",
+        "sixToEightMark": "Level 3 (5-6): analysis of range of evidence; arguments not always fully evaluated; conclusion may lack coherence",
+        "typicalErrors": "Evaluate without criteria; analyse describes rather than separates components",
+        "examinerLanguage": "Evaluate outcomes of participation; credible research enquiries; evidence-based analysis"
+      },
+      "exampleQuestionStems": [
+        "Analyse how Source A presents a biased view of young voters.",
+        "Evaluate how successful a local litter campaign was in meeting its aims.",
+        "Discuss the strengths and weaknesses of the first-past-the-post system.",
+        "Examine why a pressure group campaign might fail to achieve its aims."
+      ],
+      "scaffoldingRules": [
+        "Planning box only; no paragraph frames",
+        "Challenge vague claims: 'what evidence supports that?'",
+        "Require named evaluative criteria before judging success",
+        "Source analysis: must quote or paraphrase specific detail",
+        "Multi-paragraph allowed; coach linking sentences"
+      ],
+      "worksheetStyle": {
+        "format": "6 to 8 mark scenario; source analysis; discuss both sides; extended paragraph",
+        "exitTask": "Evaluate the success of a school citizenship action using evidence (8 marks)",
+        "markingHint": "Levels 2 to 3 target; credit analysis of evidence and participation outcomes",
+        "timeGuidance": "15 to 18 minutes"
+      },
+      "readinessToMoveUp": {
+        "criteria": [
+          "Balanced 8-mark responses at level 3+ in 3 consecutive tasks",
+          "Maps own answer to AO1/AO2/AO3 when asked",
+          "Evaluates with strengths and limitations explicitly"
+        ],
+        "blockers": ["Conclusion absent or contradicts body", "Source analysis is summary not analysis"]
+      },
+      "citizenshipTopics": {
+        "rights": "Evaluate HRA reform proposals; analyse media source on privacy",
+        "responsibilities": "Evaluate corporate social responsibility campaign",
+        "democracy": "Analyse low turnout causes; evaluate e-petitions effectiveness",
+        "law": "Evaluate youth sentencing aims; analyse source on legal aid cuts",
+        "activeCitizenship": "Evaluate investigation methodology; analyse own action against citizenship action definition"
+      },
+      "teacherPractice": [
+        "Secure grade 5 before pushing grade 7 techniques",
+        "Use real mark schemes for 6 and 8 mark questions in lessons",
+        "Remove writing frames; keep planning templates",
+        "Timed sections building to half-exam pace",
+        "Explicit teaching of bias, purpose, reliability in sources"
+      ],
+      "questionTypes": ["scenario_6_8_mark", "source_analysis", "discuss_both_sides", "extended_paragraph"],
+      "scaffolding": "low_medium",
+      "delivery": {
+        "sentenceLengthWords": "18-25",
+        "answerLength": "multi-paragraph possible",
+        "vocabulary": "academic_citizenship_discourse",
+        "chatbotStyle": "challenge vague claims; ask for evidence"
+      },
+      "goodVsNext": {
+        "good": "Balanced discuss with conclusion",
+        "nextLevel": "Explicit mark-scheme targeting across AO1, AO2, AO3"
+      }
+    },
+    {
+      "id": "exam_ready",
+      "tutorIndex": 6,
+      "tutor": "Nia",
+      "level": "Exam Ready",
+      "gradeRange": [6, 7],
+      "gradeRangeLabel": "6 to 7",
+      "combinedRange": "6.0-6.9",
+      "commandWords": ["explain", "apply", "analyse", "discuss", "evaluate", "assess", "justify"],
+      "aoExpectations": {
+        "ao1": "Accurate, relevant knowledge selected for question focus",
+        "ao2": "Strong application including citizenship actions and varied contexts",
+        "ao3": "Reasoned coherent arguments; multiple perspectives; substantiated judgements"
+      },
+      "aoFocus": "AO2 and AO3 with mark-scheme thinking",
+      "studentCapabilities": [
+        "Exam-style timing and response length discipline",
+        "Map answers to AO mark allocations",
+        "Analyse sources selectively for relevance",
+        "Evaluate with criteria and evidence-based conclusions"
+      ],
+      "mustDemonstrate": [
+        "Hit level 2 to 3 descriptors consistently on 8 to 12 mark questions",
+        "Select relevant knowledge for question focus (not everything known)",
+        "Justify judgement with substantiated evidence from source and own knowledge",
+        "Complete active citizenship exam-style linkage: aims, research, action, reflection"
+      ],
+      "markSchemeBehaviours": {
+        "oneMark": "Building block within extended response",
+        "twoMark": "Mini developed point inside 8+ mark answer",
+        "eightMark": "Level 3 (5-6): range of evidence; arguments not always fully developed; conclusion may wobble",
+        "twelveMark": "Level 3 (7-9) on active citizenship: good application; analyses not always fully evaluated",
+        "typicalErrors": "Knowledge dump; running out of time; no substantiated final judgement",
+        "examinerLanguage": "Best fit level then mark within level; coherent arguments; substantiated judgements"
+      },
+      "exampleQuestionStems": [
+        "Assess the importance of the rule of law in a democratic society.",
+        "Analyse the ways your investigation was a good example of taking citizenship action.",
+        "To what extent do you agree that the UK media supports democracy?",
+        "Justify your choice of action in your active citizenship investigation."
+      ],
+      "scaffoldingRules": [
+        "Exam conditions optional mode; timed prompts",
+        "Coaching question: 'What would gain the next mark?'",
+        "Require AO labelling in review only, not in live exam practice",
+        "No hints after first planning message in timed mode",
+        "Feedback references level descriptors verbatim"
+      ],
+      "worksheetStyle": {
+        "format": "8 to 12 mark extended; multi-source; active citizenship evaluation",
+        "exitTask": "12-mark: Analyse how your investigation linked research to action (timed 15 min)",
+        "markingHint": "Best fit level; active citizenship needs AO2 linkage + AO3 justification",
+        "timeGuidance": "15 to 20 minutes per extended question"
+      },
+      "readinessToMoveUp": {
+        "criteria": [
+          "Level 3+ on 8-mark and 12-mark tasks in 4+ papers",
+          "Exam timing: finishes with 2 min review spare",
+          "Self-identifies missing developed point in mark scheme review"
+        ],
+        "blockers": ["Level 2 plateau on evaluate questions", "Active citizenship answers omit reflection"]
+      },
+      "citizenshipTopics": {
+        "rights": "Assess trade-offs in human rights enforcement; multi-source rights debate",
+        "responsibilities": "Justify corporate accountability mechanisms",
+        "democracy": "Assess representation of young people in Parliament",
+        "law": "Evaluate effectiveness of sentencing aims; assess legal aid access",
+        "activeCitizenship": "Full Paper 1 Section A style: summarise research, evaluate usefulness, analyse citizenship action quality"
+      },
+      "teacherPractice": [
+        "Mock marking with level descriptors on desk",
+        "Interleave exam questions across themes (retrieval + application)",
+        "Dedicated active citizenship exam technique sessions",
+        "Peer marking with mark scheme training (ACT/exam board CPD model)",
+        "Fix timing before pushing content breadth"
+      ],
+      "questionTypes": ["extended_8_12_mark", "multi_source", "active_citizenship_evaluation"],
+      "scaffolding": "low",
+      "delivery": {
+        "sentenceLengthWords": "concise_exam_prompts",
+        "answerLength": "2-3 paragraphs",
+        "vocabulary": "command_word_precision",
+        "chatbotStyle": "what would gain the next mark coaching; timed practice"
+      },
+      "goodVsNext": {
+        "good": "Hits level 2-3 mark descriptors consistently",
+        "nextLevel": "Perceptive analysis across themes with minimal prompting"
+      }
+    },
+    {
+      "id": "advanced",
+      "tutorIndex": 7,
+      "tutor": "Elias",
+      "level": "Advanced",
+      "gradeRange": [7, 8],
+      "gradeRangeLabel": "7 to 8",
+      "combinedRange": "7.0-7.9",
+      "commandWords": ["analyse", "discuss", "debate", "evaluate", "assess", "justify", "conclude"],
+      "aoExpectations": {
+        "ao1": "Comprehensive relevant knowledge woven through argument; grade 8 trajectory",
+        "ao2": "Sophisticated application including local and global comparison of actions",
+        "ao3": "Well-substantiated conclusions; critical evaluation; coherent evidence synthesis"
+      },
+      "aoFocus": "AO3 evaluation plus strong AO2",
+      "studentCapabilities": [
+        "Comprehensive knowledge across wide range of concepts, terms, issues",
+        "Perceptive arguments considering variety of viewpoints",
+        "Ambitious enquiry framing with strong evidence-based analysis",
+        "Critical evaluation of citizenship action effectiveness"
+      ],
+      "mustDemonstrate": [
+        "Level 4 descriptors on 8-mark questions (7-8: developed sustained analysis, coherent argument)",
+        "Variety of viewpoints considered (grade 8 anchor)",
+        "Critical evaluation of citizenship action outcomes",
+        "Well-substantiated conclusion that follows from evidence"
+      ],
+      "markSchemeBehaviours": {
+        "eightMark": "Level 4 (7-8): developed sustained analysis; wide range of evidence and views; reasoned justifications; coherent argument",
+        "twelveMark": "Level 4 (10-12): clear precise analysis; well chosen investigation evidence; leads to well-judged coherent conclusion",
+        "sixteenMark": "Level 3 to 4: perceptive arguments; may approach sustained synthesis",
+        "typicalErrors": "Strong opening but drift; evaluation descriptive; viewpoints tokenistic",
+        "examinerLanguage": "Perceptive convincing arguments; well-substantiated conclusions; critical evaluation of participation outcomes"
+      },
+      "exampleQuestionStems": [
+        "Evaluate the extent to which UK citizens can influence government decisions.",
+        "Debate whether economic sanctions are an effective tool of global citizenship.",
+        "Conclude whether your citizenship action achieved its aims, using evidence from all investigation stages.",
+        "Analyse how two campaigns used different strategies to achieve change."
+      ],
+      "scaffoldingRules": [
+        "Minimal scaffolding; student-led essay plan",
+        "Socratic follow-ups only: probe weak links",
+        "Require explicit conclusion matching command word",
+        "Cross-theme links rewarded in feedback",
+        "No sentence starters; optional planning checklist only"
+      ],
+      "worksheetStyle": {
+        "format": "12 to 16 mark evaluation; cross-theme synoptic; compare actions/debates",
+        "exitTask": "16-mark: Evaluate the extent to which protest strengthens democracy (timed 20 min)",
+        "markingHint": "Level 4 requires sustained analysis + coherent substantiated conclusion",
+        "timeGuidance": "18 to 22 minutes"
+      },
+      "readinessToMoveUp": {
+        "criteria": [
+          "Level 4 on 8 and 12 mark questions regularly",
+          "Grade 8 descriptor met in summative mock",
+          "Cross-theme synthesis in at least one response per unit"
+        ],
+        "blockers": ["Conclusion not substantiated", "Viewpoints listed not integrated"]
+      },
+      "citizenshipTopics": {
+        "rights": "Synoptic: link HRA, media freedom, and participation rights in one argument",
+        "responsibilities": "Evaluate global citizenship responsibilities on climate",
+        "democracy": "Debate constitutional reform; evaluate deliberative democracy",
+        "law": "Critical evaluation of justice system reform proposals",
+        "activeCitizenship": "Critically evaluate own action impact with counterfactual (what if different action)"
+      },
+      "teacherPractice": [
+        "Grade 8 descriptor as stretch target for all extended writing",
+        "Synoptic starters linking 2 themes",
+        "Student-led seminars with counter-argument role cards",
+        "Compare exemplar level 3 vs level 4 scripts",
+        "Ambitious enquiry questions for homework reading"
+      ],
+      "questionTypes": ["evaluation_12_16_mark", "cross_theme_synoptic", "compare_actions_debates"],
+      "scaffolding": "minimal",
+      "delivery": {
+        "sentenceLengthWords": "tutor_probes_depth",
+        "answerLength": "full essay architecture",
+        "vocabulary": "nuanced_evaluative_lexis",
+        "chatbotStyle": "Socratic questioning; fewer hints"
+      },
+      "goodVsNext": {
+        "good": "Convincing well-substantiated extended response",
+        "nextLevel": "Exceptional cross-theme synthesis and examiner-level precision"
+      }
+    },
+    {
+      "id": "mastery",
+      "tutorIndex": 8,
+      "tutor": "Athena",
+      "level": "Mastery",
+      "gradeRange": [8, 9],
+      "gradeRangeLabel": "8 to 9",
+      "combinedRange": "8.0-10.0",
+      "commandWords": ["analyse", "discuss", "debate", "evaluate", "assess", "argue", "justify", "conclude"],
+      "aoExpectations": {
+        "ao1": "Wide-ranging precise knowledge deployed selectively; grade 8-9 standard",
+        "ao2": "Transfer application to novel, complex, or cross-context scenarios",
+        "ao3": "Perceptive convincing arguments; multiple viewpoints; highest-band substantiated judgements"
+      },
+      "aoFocus": "AO3 synthesis across themes",
+      "studentCapabilities": [
+        "Exceptional comprehensive knowledge across themes",
+        "Perceptive convincing arguments with examiner-ready structure",
+        "Synthesise themes in unified arguments",
+        "Critically evaluate participation and policy with substantiated judgements"
+      ],
+      "mustDemonstrate": [
+        "Grade 8 descriptor secure plus grade 9 sophistication (insight, precision, no drift)",
+        "Synthesise 2+ themes in unified argument (e.g. rights + media + participation)",
+        "Perceptive evaluation with nuanced trade-offs acknowledged",
+        "Examiner-ready QWC: specialist vocabulary, coherent structure, substantiated judgement"
+      ],
+      "markSchemeBehaviours": {
+        "eightMark": "Top of level 4: as good as can be expected; sustained line without drift",
+        "twelveMark": "Full marks band: analysis developed, justified, evaluated within citizenship action context throughout",
+        "sixteenPlusMark": "Synoptic: selective comprehensive knowledge; perceptive cross-viewpoint synthesis",
+        "typicalErrors": "Over-writing without focus; sophistication without evidence; novelty without substantiation",
+        "examinerLanguage": "Perceptive and convincing; ambitious enquiry; critical evaluation; highest-band substantiated judgements"
+      },
+      "exampleQuestionStems": [
+        "Evaluate the extent to which digital citizenship has transformed political participation in the UK.",
+        "Argue whether the UK should adopt a written constitution, considering rights, democracy, and law.",
+        "Assess how effectively citizenship action can address structural inequality.",
+        "Conclude, with substantiated judgement, whether national interest ever justifies limiting human rights."
+      ],
+      "scaffoldingRules": [
+        "No scaffolding by default; teacher override only",
+        "Extension: counter-argument and meta-reflection on argument quality",
+        "Peer/examiner register in prompts",
+        "Challenge to tighten selective knowledge deployment",
+        "Optional timed full paper sections"
+      ],
+      "worksheetStyle": {
+        "format": "16+ mark synoptic; evaluate extent; cross-unit debate; citizenship action critique",
+        "exitTask": "Synoptic 20-mark style: rights, democracy, and active citizenship in one evaluative essay",
+        "markingHint": "Grade 9: insight and precision beyond secure grade 8; top of level 4 on all extended items",
+        "timeGuidance": "22 to 25 minutes; full paper practice in revision phase"
+      },
+      "readinessToMoveUp": {
+        "criteria": [
+          "This is the top band; readiness = maintain grade 8-9 under full exam conditions",
+          "Consistent top-of-level-4 across papers",
+          "Teacher confirms no further band increase needed"
+        ],
+        "blockers": ["N/A at ceiling band"]
+      },
+      "citizenshipTopics": {
+        "rights": "Grade 9 synoptic: HRA, international law, digital rights, protest rights unified",
+        "responsibilities": "Evaluate competing responsibilities: citizen, consumer, global actor",
+        "democracy": "Perceptive analysis of democratic deficit and reform pathways",
+        "law": "Evaluate interplay of common law, statute, and international treaties",
+        "activeCitizenship": "Critique own and others' actions with methodological and ethical evaluation"
+      },
+      "teacherPractice": [
+        "Extension reading from reputable news and Hansard",
+        "Student as examiner: mark unknown scripts",
+        "Full papers under timed conditions monthly in Y11",
+        "Cross-board question comparison (AQA/Edexcel/OCR style)",
+        "Push selective knowledge not exhaustive listing"
+      ],
+      "questionTypes": ["synoptic_16_plus_mark", "evaluate_extent", "cross_unit_debate", "citizenship_action_critique"],
+      "scaffolding": "none",
+      "delivery": {
+        "sentenceLengthWords": "peer_examiner_register",
+        "answerLength": "sustained essay without drift",
+        "vocabulary": "full_technical_evaluative_range",
+        "chatbotStyle": "extension questions; counter-arguments; meta-reflection"
+      },
+      "goodVsNext": {
+        "good": "Secure grade 8 descriptor performance",
+        "nextLevel": "Grade 9 exceptional insight, precision, and sustained argument"
+      }
+    }
+  ]
+}

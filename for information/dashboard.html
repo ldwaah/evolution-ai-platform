@@ -1,0 +1,1415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: #07111f;
+      background:
+        linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+        #ffffff;
+      background-size: 42px 42px;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: 32px 24px 104px;
+    }
+
+    .dashboard {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .panel {
+      display: grid;
+      min-height: 360px;
+      place-items: center;
+      margin-top: 28px;
+      padding: 24px;
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 24px 70px rgba(37, 99, 235, 0.1);
+    }
+
+    .panel-content {
+      width: min(520px, 100%);
+    }
+
+    .panel-content.is-wide {
+      width: 100%;
+      text-align: left;
+    }
+
+    .panel h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .panel p {
+      margin: 8px 0 0;
+      color: #64748b;
+    }
+
+    .subjects-section {
+      margin-top: 22px;
+    }
+
+    .subjects-heading {
+      margin: 0 0 14px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #2563eb;
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .subject-card {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.08);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+
+    .subject-card:hover,
+    .subject-card:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(37, 99, 235, 0.32);
+      box-shadow: 0 18px 44px rgba(37, 99, 235, 0.14);
+      outline: none;
+    }
+
+    .subject-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .subject-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border-radius: 12px;
+      color: #ffffff;
+      background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 100%);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.22);
+    }
+
+    .subject-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .subject-badge {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.1);
+      color: #2563eb;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .subject-card h3 {
+      margin: 0;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subject-card p {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .subject-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .subject-meta span {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.06);
+      color: #07111f;
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .catalogue-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .catalogue-header-copy h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .catalogue-header-copy p {
+      margin: 6px 0 0;
+      color: #64748b;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 999px;
+      color: #2563eb;
+      background: rgba(255, 255, 255, 0.96);
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.16s ease, border-color 0.16s ease;
+    }
+
+    .back-button:hover,
+    .back-button:focus-visible {
+      background: rgba(37, 99, 235, 0.06);
+      border-color: rgba(37, 99, 235, 0.32);
+      outline: none;
+    }
+
+    .back-button svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .catalogue-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .summary-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+
+    .summary-pill.is-neutral {
+      background: rgba(37, 99, 235, 0.06);
+      color: #07111f;
+    }
+
+    .unit-block {
+      margin-bottom: 16px;
+      padding: 16px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .unit-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .unit-block-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(37, 99, 235, 0.08);
+    }
+
+    .unit-block-header strong {
+      display: block;
+      font-size: 0.96rem;
+    }
+
+    .unit-block-header span {
+      display: block;
+      margin-top: 4px;
+      color: #64748b;
+      font-size: 0.78rem;
+      line-height: 1.4;
+    }
+
+    .unit-lesson-count {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+      font-size: 0.72rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .lesson-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .lesson-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.04);
+      border: 1px solid rgba(37, 99, 235, 0.08);
+    }
+
+    .lesson-row.is-planned {
+      opacity: 0.72;
+    }
+
+    .lesson-row-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.22);
+    }
+
+    .lesson-row.is-complete .lesson-row-dot {
+      background: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+    }
+
+    .lesson-row.is-active .lesson-row-dot {
+      background: #1d4ed8;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .lesson-row-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .lesson-row-id {
+      display: block;
+      margin-top: 2px;
+      color: #94a3b8;
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+
+    .status-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-badge.is-complete {
+      color: #2563eb;
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .status-badge.is-active {
+      color: #1d4ed8;
+      background: rgba(37, 99, 235, 0.14);
+    }
+
+    .status-badge.is-planned {
+      color: #64748b;
+      background: rgba(100, 116, 139, 0.12);
+    }
+
+    .status-badge.is-locked {
+      color: #94a3b8;
+      background: rgba(148, 163, 184, 0.14);
+    }
+
+    .lesson-action {
+      padding: 6px 12px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 999px;
+      color: #2563eb;
+      background: rgba(255, 255, 255, 0.96);
+      font: inherit;
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.16s ease;
+    }
+
+    .lesson-action:hover,
+    .lesson-action:focus-visible {
+      background: rgba(37, 99, 235, 0.08);
+      outline: none;
+    }
+
+    .bottom-tabs {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 14px 16px;
+      background: transparent;
+    }
+
+    .tab-list {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 4px;
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      padding: 8px;
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.12);
+      backdrop-filter: blur(18px);
+    }
+
+    .tab {
+      display: inline-flex;
+      position: relative;
+      min-height: 56px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border: 0;
+      border-radius: 18px;
+      color: #64748b;
+      background: transparent;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .tab::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      z-index: 5;
+      padding: 7px 10px;
+      border-radius: 8px;
+      color: #ffffff;
+      background: #07111f;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+      font-size: 0.78rem;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(4px);
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      white-space: nowrap;
+    }
+
+    .tab.active,
+    .tab:hover,
+    .tab:focus-visible {
+      color: #2563eb;
+      background: rgba(37, 99, 235, 0.08);
+      outline: none;
+    }
+
+    .tab.active {
+      color: #ffffff;
+      background: #2563eb;
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.24);
+    }
+
+    .tab:hover::after,
+    .tab:focus-visible::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding: 24px 16px 96px;
+      }
+
+      .tab-list {
+        gap: 2px;
+        padding: 6px;
+      }
+
+      .tab {
+        min-height: 48px;
+        padding: 8px 4px;
+        font-size: 0.82rem;
+      }
+
+      .subject-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lesson-row {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+      }
+
+      .lesson-row .status-badge {
+        grid-column: 2;
+      }
+
+      .lesson-row .lesson-action {
+        grid-column: 1 / -1;
+        justify-self: start;
+      }
+    }
+
+    .students-header {
+      margin-bottom: 18px;
+    }
+
+    .students-header h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .students-header p {
+      margin: 6px 0 0;
+      color: #64748b;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .policy-card {
+      margin-bottom: 18px;
+      padding: 18px;
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 48%),
+        rgba(255, 255, 255, 0.96);
+    }
+
+    .policy-card h3 {
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #2563eb;
+    }
+
+    .policy-card p {
+      margin: 0 0 10px;
+      color: #64748b;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .policy-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #07111f;
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    .policy-link {
+      display: inline-flex;
+      margin-top: 12px;
+      color: #2563eb;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .pending-section-title {
+      margin: 0 0 14px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #2563eb;
+    }
+
+    .pending-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .pending-card {
+      padding: 16px;
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 10px 28px rgba(37, 99, 235, 0.08);
+    }
+
+    .pending-card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .pending-card-header strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .pending-card-header span {
+      display: block;
+      margin-top: 4px;
+      color: #64748b;
+      font-size: 0.78rem;
+    }
+
+    .pending-demo-tag {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(100, 116, 139, 0.12);
+      color: #64748b;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .pending-scores {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .pending-score-pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: #07111f;
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .pending-suggestion {
+      margin-bottom: 14px;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.05);
+      border: 1px solid rgba(37, 99, 235, 0.1);
+      font-size: 0.88rem;
+    }
+
+    .pending-suggestion strong {
+      color: #2563eb;
+    }
+
+    .pending-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .confirm-button {
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 999px;
+      color: #ffffff;
+      background: #2563eb;
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .confirm-button:hover,
+    .confirm-button:focus-visible {
+      background: #1d4ed8;
+      outline: none;
+    }
+
+    .adjust-select {
+      padding: 10px 12px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 999px;
+      background: #ffffff;
+      color: #07111f;
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .adjust-button {
+      padding: 10px 16px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 999px;
+      color: #2563eb;
+      background: rgba(255, 255, 255, 0.96);
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .empty-pending {
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px dashed rgba(37, 99, 235, 0.2);
+      color: #64748b;
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    .page-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: min(1080px, 100%);
+      margin: 0 auto 8px;
+    }
+
+    .logout-button {
+      padding: 8px 14px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 999px;
+      color: #64748b;
+      background: rgba(255, 255, 255, 0.96);
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: color 0.16s ease, border-color 0.16s ease;
+    }
+
+    .logout-button:hover,
+    .logout-button:focus-visible {
+      color: #2563eb;
+      border-color: rgba(37, 99, 235, 0.32);
+      outline: none;
+    }
+  </style>
+  <script src="assets/js/auth.js"></script>
+  <script>EvoAuth.requireAuth("staff");</script>
+</head>
+<body>
+  <main>
+    <section class="dashboard" aria-label="Staff dashboard">
+      <div class="page-header">
+        <h1>Staff Dashboard</h1>
+        <button class="logout-button" type="button" id="staff-logout">Log out</button>
+      </div>
+      <div class="panel">
+        <div class="panel-content" id="panel-content">
+          <h2 id="panel-title">Dashboard</h2>
+          <p id="panel-copy">Staff overview content area.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-tabs" aria-label="Staff dashboard tabs">
+    <div class="tab-list">
+      <button class="tab active" type="button" aria-label="Dashboard" title="Dashboard" data-label="Dashboard" data-view="dashboard" data-title="Dashboard" data-copy="Staff overview content area.">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+        </svg>
+      </button>
+      <button class="tab" type="button" aria-label="Lessons" title="Lessons" data-label="Lessons" data-view="lessons" data-title="Lessons" data-copy="Select a subject to browse and manage the full lesson catalogue.">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"></path>
+          <path d="M4 5.5v16"></path>
+          <path d="M8 7h8"></path>
+        </svg>
+      </button>
+      <button class="tab" type="button" aria-label="Students" title="Students" data-label="Students" data-view="students" data-title="Students" data-copy="Review placement quiz results and confirm tutor bands.">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M16 21v-2a4 4 0 0 0-8 0v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+      </button>
+      <button class="tab" type="button" aria-label="Reports" title="Reports" data-label="Reports" data-view="reports" data-title="Reports" data-copy="Reports content area.">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 19V5"></path>
+          <path d="M4 19h16"></path>
+          <path d="M8 16v-5"></path>
+          <path d="M12 16V8"></path>
+          <path d="M16 16v-3"></path>
+        </svg>
+      </button>
+      <button class="tab" type="button" aria-label="Settings" title="Settings" data-label="Settings" data-view="settings" data-title="Settings" data-copy="Settings content area.">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M12 2v3"></path>
+          <path d="M12 19v3"></path>
+          <path d="M2 12h3"></path>
+          <path d="M19 12h3"></path>
+          <path d="M4.9 4.9 7 7"></path>
+          <path d="M17 17l2.1 2.1"></path>
+          <path d="M19.1 4.9 17 7"></path>
+          <path d="M7 17l-2.1 2.1"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const panelContent = document.querySelector("#panel-content");
+
+    let activeView = "dashboard";
+    let lessonsView = "subjects";
+    let selectedSubjectId = null;
+
+    const tutors = [
+      { name: "Nova", level: "Access" },
+      { name: "Milo", level: "Foundation" },
+      { name: "Ava", level: "Building Confidence" },
+      { name: "Kai", level: "Developing" },
+      { name: "Zara", level: "Secure" },
+      { name: "Theo", level: "Confident" },
+      { name: "Nia", level: "Exam Ready" },
+      { name: "Elias", level: "Advanced" },
+      { name: "Athena", level: "Mastery" }
+    ];
+
+    /*
+     * ASSESSMENT FRAMEWORK — keep in sync with student.html
+     * Maps GCSE Citizenship Assessment Objectives (AOs) to tutor bands and quiz stages.
+     * Full grade/command-word/AO detail: TUTOR-LEVEL-FRAMEWORK.md
+     * Machine-readable bands: assets/data/tutor-level-framework.json
+     */
+    const assessmentFramework = {
+      frameworkRef: "TUTOR-LEVEL-FRAMEWORK.md",
+      frameworkData: "assets/data/tutor-level-framework.json",
+      stages: ["diagnostic", "baseline", "unit_checkpoint", "summative"],
+      stageLabels: {
+        diagnostic: "Diagnostic placement (screening plus mixed tasks)",
+        baseline: "Baseline tutor band after teacher confirmation",
+        unit_checkpoint: "Unit checkpoint quizzes (roadmap)",
+        summative: "End-of-unit or mock assessments (roadmap)"
+      },
+      tutorBands: [
+        { tutorIndex: 0, tutorName: "Nova", level: "Access", gradeRange: [1], commandWords: ["identify", "name", "state", "give"], aoFocus: "AO1 entry recall with heavy scaffolding", combinedRange: "0.0-0.9" },
+        { tutorIndex: 1, tutorName: "Milo", level: "Foundation", gradeRange: [1, 2], commandWords: ["identify", "name", "define", "describe"], aoFocus: "AO1 core terms with guided examples", combinedRange: "1.0-1.9" },
+        { tutorIndex: 2, tutorName: "Ava", level: "Building Confidence", gradeRange: [2, 3], commandWords: ["describe", "outline", "explain", "apply"], aoFocus: "AO1 plus early AO2 in familiar contexts", combinedRange: "2.0-2.9" },
+        { tutorIndex: 3, tutorName: "Kai", level: "Developing", gradeRange: [3, 4], commandWords: ["explain", "apply", "describe", "outline", "consider"], aoFocus: "AO1 and AO2 with structured practice", combinedRange: "3.0-3.9" },
+        { tutorIndex: 4, tutorName: "Zara", level: "Secure", gradeRange: [4, 5], commandWords: ["explain", "apply", "discuss", "compare", "consider"], aoFocus: "AO2 application with AO1 reinforcement", combinedRange: "4.0-4.9" },
+        { tutorIndex: 5, tutorName: "Theo", level: "Confident", gradeRange: [5, 6], commandWords: ["explain", "apply", "analyse", "discuss", "evaluate"], aoFocus: "AO2 and AO3 in scenario responses", combinedRange: "5.0-5.9" },
+        { tutorIndex: 6, tutorName: "Nia", level: "Exam Ready", gradeRange: [6, 7], commandWords: ["explain", "apply", "analyse", "discuss", "evaluate", "assess", "justify"], aoFocus: "AO2 and AO3 with mark-scheme thinking", combinedRange: "6.0-6.9" },
+        { tutorIndex: 7, tutorName: "Elias", level: "Advanced", gradeRange: [7, 8], commandWords: ["analyse", "discuss", "debate", "evaluate", "assess", "justify", "conclude"], aoFocus: "AO3 evaluation plus strong AO2", combinedRange: "7.0-7.9" },
+        { tutorIndex: 8, tutorName: "Athena", level: "Mastery", gradeRange: [8, 9], commandWords: ["analyse", "discuss", "debate", "evaluate", "assess", "argue", "justify", "conclude"], aoFocus: "AO3 synthesis across themes", combinedRange: "8.0-10.0" }
+      ],
+      placementPolicy: {
+        requiresTeacherConfirm: true,
+        diagnosticStage1Weight: 0.6,
+        diagnosticStage2Weight: 0.4,
+        studentLabel: "Suggested tutor",
+        staffLabel: "Confirmed tutor band",
+        notClaimed: "This is not an official exam grade, certification, or DfE or Ofsted approval."
+      },
+      aoDefinitions: {
+        AO1: "Knowledge and understanding of citizenship concepts, terms, and issues",
+        AO2: "Applying knowledge to citizenship issues and contexts",
+        AO3: "Analysing, evaluating, and reflecting on citizenship issues and actions"
+      }
+    };
+
+    const STORAGE_KEYS = {
+      suggestedTutor: "evoSuggestedTutor",
+      assignedTutor: "evoAssignedTutor",
+      quizHistory: "evoTutorQuizHistory",
+      pendingPlacements: "evoPendingPlacements"
+    };
+
+    const DEMO_PENDING_SEED = [
+      {
+        id: "demo-pending-1",
+        studentName: "Alex Morgan",
+        suggestedTutorIndex: 3,
+        suggestedTutorName: "Kai",
+        suggestedLevel: "Developing",
+        stage1Score: 4,
+        stage1Max: 10,
+        stage2Score: 3,
+        stage2Max: 8,
+        combinedScore: 3.9,
+        completedAt: new Date(Date.now() - 86400000 * 2).toISOString(),
+        isDemo: true
+      },
+      {
+        id: "demo-pending-2",
+        studentName: "Samira Patel",
+        suggestedTutorIndex: 5,
+        suggestedTutorName: "Theo",
+        suggestedLevel: "Confident",
+        stage1Score: 6,
+        stage1Max: 10,
+        stage2Score: 5,
+        stage2Max: 8,
+        combinedScore: 5.4,
+        completedAt: new Date(Date.now() - 86400000).toISOString(),
+        isDemo: true
+      }
+    ];
+
+    /*
+     * SYLLABUS DATA — keep in sync with student.html (subjects, citizenshipSyllabus, subjectSyllabi)
+     */
+    const subjects = {
+      citizenship: {
+        id: "citizenship",
+        name: "Citizenship",
+        qualification: "GCSE",
+        description: "Rights, democracy, law, and active citizenship, structured for GCSE study.",
+        available: true,
+        icon: "shield"
+      }
+    };
+
+    const citizenshipSyllabus = {
+      subjectId: "citizenship",
+      examBoard: "GCSE Citizenship Studies",
+      units: [
+        {
+          id: "rights-responsibilities",
+          title: "Rights & Responsibilities",
+          specArea: "Life in modern Britain · Rights & responsibilities",
+          description: "Understanding rights, responsibilities, and how they shape school and community life.",
+          lessons: [
+            { id: "rr-01", title: "Rights and Responsibilities", status: "complete", hasContent: true },
+            { id: "rr-02", title: "Lesson Objectives", status: "complete", hasContent: true },
+            { id: "rr-03", title: "Starter Question", status: "complete", hasContent: true },
+            { id: "rr-04", title: "What Is A Right?", status: "complete", hasContent: true },
+            { id: "rr-05", title: "What Is A Responsibility?", status: "complete", hasContent: true },
+            { id: "rr-06", title: "Rights Vs Responsibilities", status: "complete", hasContent: true },
+            { id: "rr-07", title: "Why Do Schools Have Rules?", status: "complete", hasContent: true },
+            { id: "rr-08", title: "Scenario Discussion", status: "complete", hasContent: true },
+            { id: "rr-09", title: "Positive Responsibilities", status: "active", hasContent: true },
+            { id: "rr-10", title: "Reflection Task", status: "locked", hasContent: true },
+            { id: "rr-11", title: "Class Discussion", status: "locked", hasContent: true },
+            { id: "rr-12", title: "Key Message", status: "locked", hasContent: true }
+          ]
+        },
+        {
+          id: "life-modern-britain",
+          title: "Life in Modern Britain",
+          specArea: "Theme A · Living together in the UK",
+          description: "Identity, diversity, community cohesion, and the shared values of life in the UK.",
+          lessons: [
+            { id: "lmb-01", title: "What Makes Up Modern Britain?", status: "planned" },
+            { id: "lmb-02", title: "Identity and Diversity", status: "planned" },
+            { id: "lmb-03", title: "Community and Belonging", status: "planned" },
+            { id: "lmb-04", title: "Shared Values and Mutual Respect", status: "planned" },
+            { id: "lmb-05", title: "Extremism and Challenging Prejudice", status: "planned" }
+          ]
+        },
+        {
+          id: "democracy-participation",
+          title: "Democracy & Political Participation",
+          specArea: "Theme B · Democracy at work in the UK",
+          description: "How democracy works, voting, political parties, and making your voice heard.",
+          lessons: [
+            { id: "dp-01", title: "What Is Democracy?", status: "planned" },
+            { id: "dp-02", title: "Parliament, Government & Monarchy", status: "planned" },
+            { id: "dp-03", title: "Elections and Voting Systems", status: "planned" },
+            { id: "dp-04", title: "Political Parties and Pressure Groups", status: "planned" },
+            { id: "dp-05", title: "Media Influence and Fake News", status: "planned" },
+            { id: "dp-06", title: "Local and Devolved Government", status: "planned" }
+          ]
+        },
+        {
+          id: "law-justice",
+          title: "Law & Justice",
+          specArea: "Theme C · Law and justice",
+          description: "How laws are made, the justice system, and the role of courts and police.",
+          lessons: [
+            { id: "lj-01", title: "Why Do We Have Laws?", status: "planned" },
+            { id: "lj-02", title: "How Laws Are Made", status: "planned" },
+            { id: "lj-03", title: "The Criminal Justice System", status: "planned" },
+            { id: "lj-04", title: "Youth Justice and Sentencing", status: "planned" },
+            { id: "lj-05", title: "Rights in the Justice System", status: "planned" }
+          ]
+        },
+        {
+          id: "active-citizenship",
+          title: "Active Citizenship",
+          specArea: "Theme D · Taking citizenship action",
+          description: "Planning, carrying out, and evaluating a citizenship action project.",
+          lessons: [
+            { id: "ac-01", title: "What Is Active Citizenship?", status: "planned" },
+            { id: "ac-02", title: "Identifying a Citizenship Issue", status: "planned" },
+            { id: "ac-03", title: "Planning Your Action", status: "planned" },
+            { id: "ac-04", title: "Carrying Out Your Action", status: "planned" },
+            { id: "ac-05", title: "Evaluating Impact and Reflection", status: "planned" }
+          ]
+        }
+      ]
+    };
+
+    const subjectSyllabi = {
+      citizenship: citizenshipSyllabus
+    };
+
+    function getAvailableSubjects() {
+      return Object.values(subjects).filter((subject) => subject.available);
+    }
+
+    function countSyllabusLessons(syllabus) {
+      const all = syllabus.units.flatMap((unit) => unit.lessons);
+      const byStatus = {
+        complete: all.filter((lesson) => lesson.status === "complete").length,
+        active: all.filter((lesson) => lesson.status === "active").length,
+        planned: all.filter((lesson) => lesson.status === "planned").length,
+        locked: all.filter((lesson) => lesson.status === "locked").length
+      };
+      return { total: all.length, byStatus };
+    }
+
+    function subjectIcon(type) {
+      const icons = {
+        shield: `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-5"></path>
+          </svg>
+        `
+      };
+      return icons[type] || icons.shield;
+    }
+
+    function statusLabel(status) {
+      if (status === "complete") return "Complete";
+      if (status === "active") return "Active";
+      if (status === "locked") return "Locked";
+      return "Planned";
+    }
+
+    function lessonActionLabel(lesson) {
+      if (lesson.status === "complete" || lesson.status === "active") return "Manage";
+      return "View";
+    }
+
+    function renderStandardPanel(title, copy) {
+      panelContent.classList.remove("is-wide");
+      panelContent.innerHTML = `
+        <h2 id="panel-title">${title}</h2>
+        <p id="panel-copy">${copy}</p>
+      `;
+    }
+
+    function renderLessonsSubjectPicker() {
+      lessonsView = "subjects";
+      selectedSubjectId = null;
+      panelContent.classList.add("is-wide");
+
+      const available = getAvailableSubjects();
+
+      panelContent.innerHTML = `
+        <h2 id="panel-title">Lessons</h2>
+        <p id="panel-copy">Select a subject to browse the full lesson catalogue.</p>
+        <section class="subjects-section" aria-label="Available subjects">
+          <h3 class="subjects-heading">Subjects</h3>
+          <div class="subject-grid">
+            ${available.map((subject) => {
+              const syllabus = subjectSyllabi[subject.id];
+              const counts = syllabus ? countSyllabusLessons(syllabus) : { total: 0, byStatus: {} };
+              return `
+                <article
+                  class="subject-card"
+                  tabindex="0"
+                  role="button"
+                  data-subject-id="${subject.id}"
+                  aria-label="${subject.name}, ${subject.qualification}. ${counts.total} lessons across ${syllabus ? syllabus.units.length : 0} units."
+                >
+                  <div class="subject-card-top">
+                    <div class="subject-icon">${subjectIcon(subject.icon)}</div>
+                    <span class="subject-badge">${subject.qualification}</span>
+                  </div>
+                  <h3>${subject.name}</h3>
+                  <p>${subject.description}</p>
+                  <div class="subject-meta">
+                    <span>${counts.total} lessons</span>
+                    <span>${syllabus ? syllabus.units.length : 0} units</span>
+                  </div>
+                </article>
+              `;
+            }).join("")}
+          </div>
+        </section>
+      `;
+
+      panelContent.querySelectorAll(".subject-card").forEach((card) => {
+        const openCatalogue = () => {
+          selectedSubjectId = card.dataset.subjectId;
+          renderLessonsCatalogue(selectedSubjectId);
+        };
+
+        card.addEventListener("click", openCatalogue);
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openCatalogue();
+          }
+        });
+      });
+    }
+
+    function renderLessonsCatalogue(subjectId) {
+      lessonsView = "catalogue";
+      const subject = subjects[subjectId];
+      const syllabus = subjectSyllabi[subjectId];
+
+      if (!subject || !syllabus) {
+        renderLessonsSubjectPicker();
+        return;
+      }
+
+      panelContent.classList.add("is-wide");
+      const counts = countSyllabusLessons(syllabus);
+
+      panelContent.innerHTML = `
+        <div class="catalogue-header">
+          <div class="catalogue-header-copy">
+            <button class="back-button" type="button" id="back-to-subjects">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+              All subjects
+            </button>
+            <h2 id="panel-title">${subject.name}: Lesson Catalogue</h2>
+            <p id="panel-copy">${syllabus.examBoard}. Full syllabus of ${counts.total} lessons across ${syllabus.units.length} units.</p>
+          </div>
+        </div>
+
+        <div class="catalogue-summary" aria-label="Lesson summary">
+          <span class="summary-pill">${counts.total} total lessons</span>
+          <span class="summary-pill is-neutral">${syllabus.units.length} units</span>
+          <span class="summary-pill is-neutral">${counts.byStatus.complete} complete</span>
+          <span class="summary-pill is-neutral">${counts.byStatus.active} active</span>
+          <span class="summary-pill is-neutral">${counts.byStatus.planned} planned</span>
+          <span class="summary-pill is-neutral">${counts.byStatus.locked} locked</span>
+        </div>
+
+        ${syllabus.units.map((unit, index) => `
+          <section class="unit-block" aria-label="Unit ${index + 1}: ${unit.title}">
+            <div class="unit-block-header">
+              <div>
+                <strong>Unit ${index + 1}: ${unit.title}</strong>
+                <span>${unit.specArea} · ${unit.description}</span>
+              </div>
+              <span class="unit-lesson-count">${unit.lessons.length} lessons</span>
+            </div>
+            <ul class="lesson-list">
+              ${unit.lessons.map((lesson, lessonIndex) => `
+                <li class="lesson-row is-${lesson.status}">
+                  <span class="lesson-row-dot" aria-hidden="true"></span>
+                  <div>
+                    <span class="lesson-row-title">${lessonIndex + 1}. ${lesson.title}</span>
+                    <span class="lesson-row-id">${lesson.id}</span>
+                  </div>
+                  <span class="status-badge is-${lesson.status}">${statusLabel(lesson.status)}</span>
+                  <button class="lesson-action" type="button" aria-label="${lessonActionLabel(lesson)} ${lesson.title}">${lessonActionLabel(lesson)}</button>
+                </li>
+              `).join("")}
+            </ul>
+          </section>
+        `).join("")}
+      `;
+
+      document.querySelector("#back-to-subjects").addEventListener("click", renderLessonsSubjectPicker);
+    }
+
+    function renderLessonsPanel() {
+      if (lessonsView === "catalogue" && selectedSubjectId) {
+        renderLessonsCatalogue(selectedSubjectId);
+      } else {
+        renderLessonsSubjectPicker();
+      }
+    }
+
+    function ensurePendingPlacementsSeeded() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.pendingPlacements);
+        const queue = raw ? JSON.parse(raw) : [];
+        if (queue.length === 0) {
+          localStorage.setItem(STORAGE_KEYS.pendingPlacements, JSON.stringify(DEMO_PENDING_SEED));
+          return DEMO_PENDING_SEED;
+        }
+        return queue;
+      } catch {
+        return DEMO_PENDING_SEED;
+      }
+    }
+
+    function loadPendingPlacements() {
+      ensurePendingPlacementsSeeded();
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.pendingPlacements);
+        return raw ? JSON.parse(raw) : DEMO_PENDING_SEED;
+      } catch {
+        return DEMO_PENDING_SEED;
+      }
+    }
+
+    function mergeLiveSuggestedTutor(queue) {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.suggestedTutor);
+        if (!raw) return queue;
+        const suggestion = JSON.parse(raw);
+        if (suggestion.status !== "pending") return queue;
+        const liveEntry = {
+          id: suggestion.id || "live-suggested",
+          studentName: suggestion.studentName || "Demo Student",
+          suggestedTutorIndex: suggestion.tutorIndex,
+          suggestedTutorName: suggestion.tutorName,
+          suggestedLevel: suggestion.level,
+          stage1Score: suggestion.stage1Score,
+          stage1Max: suggestion.stage1Max,
+          stage2Score: suggestion.stage2Score,
+          stage2Max: suggestion.stage2Max,
+          combinedScore: suggestion.combinedScore,
+          completedAt: suggestion.completedAt,
+          isDemo: false
+        };
+        const filtered = queue.filter((item) => item.studentName !== liveEntry.studentName);
+        return [liveEntry, ...filtered];
+      } catch {
+        return queue;
+      }
+    }
+
+    function removePendingPlacement(id) {
+      const queue = loadPendingPlacements().filter((item) => item.id !== id);
+      localStorage.setItem(STORAGE_KEYS.pendingPlacements, JSON.stringify(queue));
+    }
+
+    function confirmPlacement(pending, tutorIndex, adjusted) {
+      const tutor = tutors[tutorIndex];
+      const assignment = {
+        tutorIndex,
+        tutorName: tutor.name,
+        level: tutor.level,
+        stage1Score: pending.stage1Score,
+        stage1Max: pending.stage1Max,
+        stage2Score: pending.stage2Score,
+        stage2Max: pending.stage2Max,
+        combinedScore: pending.combinedScore,
+        suggestedTutorIndex: pending.suggestedTutorIndex,
+        suggestedTutorName: pending.suggestedTutorName,
+        status: "confirmed",
+        assessmentStage: "baseline",
+        confirmedBy: "staff",
+        confirmedAt: new Date().toISOString(),
+        source: adjusted ? "staff-adjustment" : "placement-quiz"
+      };
+
+      if (pending.studentName === "Demo Student" || !pending.isDemo) {
+        localStorage.setItem(STORAGE_KEYS.assignedTutor, JSON.stringify(assignment));
+        localStorage.removeItem(STORAGE_KEYS.suggestedTutor);
+      }
+
+      removePendingPlacement(pending.id);
+      renderStudentsPanel();
+    }
+
+    function formatQuizDate(iso) {
+      try {
+        return new Date(iso).toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+      } catch {
+        return iso;
+      }
+    }
+
+    function renderStudentsPanel() {
+      panelContent.classList.add("is-wide");
+      const pendingList = mergeLiveSuggestedTutor(loadPendingPlacements());
+      const policy = assessmentFramework.placementPolicy;
+
+      panelContent.innerHTML = `
+        <div class="students-header">
+          <h2 id="panel-title">Students</h2>
+          <p id="panel-copy">Review diagnostic placement results and confirm tutor bands before students start tutoring.</p>
+        </div>
+
+        <section class="policy-card" aria-label="Placement policy summary">
+          <h3>Placement policy</h3>
+          <p>Diagnostic placement uses Stage 1 multiple choice screening (60% weight) and Stage 2 mixed tasks (40% weight). Tasks map to GCSE Citizenship AOs: AO1 knowledge, AO2 application, AO3 analysis and evaluation.</p>
+          <ul>
+            <li>Stage: ${assessmentFramework.stageLabels.diagnostic}</li>
+            <li>Teacher confirmation required: ${policy.requiresTeacherConfirm ? "Yes" : "No"}</li>
+            <li>Student sees: ${policy.studentLabel}</li>
+            <li>Staff confirms: ${policy.staffLabel}</li>
+          </ul>
+          <p style="margin-top: 10px; font-size: 0.82rem;">${policy.notClaimed}</p>
+          <a class="policy-link" href="ASSESSMENT-FRAMEWORK.md" target="_blank" rel="noopener">Read the Citizenship assessment framework overview</a>
+        </section>
+
+        <h3 class="pending-section-title">Pending placement reviews (${pendingList.length})</h3>
+        <div class="pending-list">
+          ${pendingList.length === 0 ? `
+            <div class="empty-pending">No pending placements. Students appear here after completing the placement quiz on student.html.</div>
+          ` : pendingList.map((pending) => `
+            <article class="pending-card" data-pending-id="${pending.id}">
+              <div class="pending-card-header">
+                <div>
+                  <strong>${pending.studentName}</strong>
+                  <span>Quiz completed ${formatQuizDate(pending.completedAt)}</span>
+                </div>
+                ${pending.isDemo ? `<span class="pending-demo-tag">Demo data</span>` : `<span class="pending-demo-tag">Live browser</span>`}
+              </div>
+              <div class="pending-scores">
+                <span class="pending-score-pill">Stage 1: ${pending.stage1Score}/${pending.stage1Max}</span>
+                <span class="pending-score-pill">Stage 2: ${pending.stage2Score}/${pending.stage2Max}</span>
+                <span class="pending-score-pill">Combined: ${pending.combinedScore}/10</span>
+              </div>
+              <div class="pending-suggestion">
+                Suggested tutor: <strong>${pending.suggestedTutorName}</strong> (${pending.suggestedLevel})
+              </div>
+              <div class="pending-actions">
+                <button class="confirm-button" type="button" data-action="confirm" data-id="${pending.id}">Confirm suggested</button>
+                <select class="adjust-select" aria-label="Adjust tutor level for ${pending.studentName}" data-id="${pending.id}">
+                  ${tutors.map((tutor, index) => `
+                    <option value="${index}"${index === pending.suggestedTutorIndex ? " selected" : ""}>${tutor.name} · ${tutor.level}</option>
+                  `).join("")}
+                </select>
+                <button class="adjust-button" type="button" data-action="adjust" data-id="${pending.id}">Adjust and confirm</button>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      `;
+
+      panelContent.querySelectorAll('[data-action="confirm"]').forEach((button) => {
+        button.addEventListener("click", () => {
+          const pending = pendingList.find((item) => item.id === button.dataset.id);
+          if (pending) confirmPlacement(pending, pending.suggestedTutorIndex, false);
+        });
+      });
+
+      panelContent.querySelectorAll('[data-action="adjust"]').forEach((button) => {
+        button.addEventListener("click", () => {
+          const pending = pendingList.find((item) => item.id === button.dataset.id);
+          const select = panelContent.querySelector(`.adjust-select[data-id="${button.dataset.id}"]`);
+          if (pending && select) {
+            confirmPlacement(pending, Number(select.value), true);
+          }
+        });
+      });
+    }
+
+    function activateTab(viewName) {
+      activeView = viewName;
+      tabs.forEach((item) => {
+        item.classList.toggle("active", item.dataset.view === viewName);
+      });
+
+      if (viewName === "lessons") {
+        renderLessonsPanel();
+        return;
+      }
+
+      if (viewName === "students") {
+        renderStudentsPanel();
+        return;
+      }
+
+      if (viewName !== "lessons") {
+        lessonsView = "subjects";
+      }
+
+      panelContent.classList.remove("is-wide");
+      const tab = document.querySelector(`.tab[data-view="${viewName}"]`);
+      renderStandardPanel(tab.dataset.title, tab.dataset.copy);
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        activateTab(tab.dataset.view);
+      });
+    });
+
+    document.getElementById("staff-logout").addEventListener("click", () => {
+      EvoAuth.logout("staff");
+    });
+  </script>
+</body>
+</html>

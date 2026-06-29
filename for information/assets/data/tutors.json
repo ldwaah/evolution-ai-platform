@@ -1,0 +1,58 @@
+{
+  "tutors": [
+    {
+      "id": "nova",
+      "name": "Nova",
+      "level": "Access",
+      "image": "assets/tutors/nova.png"
+    },
+    {
+      "id": "milo",
+      "name": "Milo",
+      "level": "Foundation",
+      "image": "assets/tutors/milo.png"
+    },
+    {
+      "id": "ava",
+      "name": "Ava",
+      "level": "Building Confidence",
+      "image": "assets/tutors/ava.png"
+    },
+    {
+      "id": "kai",
+      "name": "Kai",
+      "level": "Developing",
+      "image": "assets/tutors/kai.png"
+    },
+    {
+      "id": "zara",
+      "name": "Zara",
+      "level": "Secure",
+      "image": "assets/tutors/zara.png"
+    },
+    {
+      "id": "theo",
+      "name": "Theo",
+      "level": "Confident",
+      "image": "assets/tutors/theo.png"
+    },
+    {
+      "id": "nia",
+      "name": "Nia",
+      "level": "Exam Ready",
+      "image": "assets/tutors/nia.png"
+    },
+    {
+      "id": "elias",
+      "name": "Elias",
+      "level": "Advanced",
+      "image": "assets/tutors/elias.png"
+    },
+    {
+      "id": "athena",
+      "name": "Athena",
+      "level": "Mastery",
+      "image": "assets/tutors/athena.png"
+    }
+  ]
+}

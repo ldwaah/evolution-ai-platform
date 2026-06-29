@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Citizenship Worksheet</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: #0f172a;
+      background: #eef3ff;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .worksheet-page {
+      display: grid;
+      min-height: 100vh;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 18px;
+      padding: 18px;
+    }
+
+    .worksheet-top,
+    .presentation-card,
+    .support-card,
+    .answer-card {
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
+    }
+
+    .worksheet-top {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+    }
+
+    .back-link,
+    .tab-link,
+    .primary-button,
+    .secondary-button {
+      min-height: 40px;
+      border: 0;
+      border-radius: 999px;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      color: #3157df;
+      background: #eef3ff;
+    }
+
+    .page-tabs {
+      display: inline-flex;
+      width: max-content;
+      justify-self: center;
+      gap: 5px;
+      padding: 5px;
+      border-radius: 999px;
+      background: #eef3ff;
+    }
+
+    .tab-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 16px;
+      color: #64748b;
+      background: transparent;
+    }
+
+    .tab-link.active {
+      color: #ffffff;
+      background: #3157df;
+    }
+
+    .worksheet-status {
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: #54156d;
+      background: #f3e8ff;
+      font-size: 0.84rem;
+      font-weight: 900;
+    }
+
+    .worksheet-layout {
+      display: grid;
+      min-height: 0;
+      grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.14fr);
+      gap: 18px;
+    }
+
+    .presentation-card {
+      display: grid;
+      min-height: 0;
+      grid-template-rows: auto minmax(0, 1fr);
+      overflow: hidden;
+      color: #ffffff;
+      background: linear-gradient(145deg, #56156f 0%, #3d115f 100%);
+    }
+
+    .presentation-brief {
+      display: grid;
+      gap: 12px;
+      padding: clamp(20px, 3vw, 30px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .presentation-brief h1 {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(2rem, 4.4vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .presentation-brief p {
+      max-width: 580px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.02rem;
+      line-height: 1.5;
+    }
+
+    .slide-reference-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      min-height: 0;
+      margin: 0;
+      padding: clamp(18px, 3vw, 26px);
+      overflow-y: auto;
+    }
+
+    .slide-reference {
+      display: grid;
+      gap: 7px;
+      align-content: start;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+    }
+
+    .slide-reference img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #ffffff;
+    }
+
+    .slide-reference strong {
+      font-size: 0.78rem;
+      line-height: 1.25;
+    }
+
+    .workspace-column {
+      display: grid;
+      min-height: 0;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .support-card {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .nova-mini {
+      display: grid;
+      width: 86px;
+      aspect-ratio: 1;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.46));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(16px);
+    }
+
+    .nova-mini img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+
+    .support-card h2 {
+      margin: 0;
+      color: #111827;
+      font-size: 1.05rem;
+    }
+
+    .support-card p {
+      margin: 5px 0 0;
+      color: #64748b;
+      line-height: 1.45;
+    }
+
+    .answer-card {
+      display: grid;
+      min-height: 0;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      overflow: hidden;
+    }
+
+    .answer-head,
+    .answer-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .answer-actions {
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+      border-bottom: 0;
+    }
+
+    .answer-head h2 {
+      margin: 0;
+      color: #111827;
+      font-size: 1.22rem;
+    }
+
+    .answer-head p,
+    .save-note {
+      margin: 4px 0 0;
+      color: #64748b;
+      font-size: 0.92rem;
+    }
+
+    .answer-grid {
+      display: grid;
+      min-height: 0;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      overflow-y: auto;
+      padding: 18px 20px;
+    }
+
+    .answer-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .answer-field label {
+      color: #475569;
+      font-size: 0.83rem;
+      font-weight: 900;
+    }
+
+    .answer-field input,
+    .answer-field textarea {
+      width: 100%;
+      border: 1px solid rgba(15, 23, 42, 0.14);
+      border-radius: 8px;
+      color: #0f172a;
+      background: #fbfdff;
+      resize: vertical;
+    }
+
+    .answer-field input {
+      min-height: 44px;
+      padding: 10px 12px;
+    }
+
+    .answer-field textarea {
+      min-height: 126px;
+      padding: 13px;
+      line-height: 1.5;
+    }
+
+    .full-answer {
+      grid-column: 1 / -1;
+    }
+
+    .primary-button,
+    .secondary-button {
+      padding: 0 16px;
+    }
+
+    .primary-button {
+      color: #ffffff;
+      background: #3157df;
+    }
+
+    .secondary-button {
+      color: #3157df;
+      background: #eef3ff;
+    }
+
+    @media (max-width: 980px) {
+      .worksheet-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .presentation-card {
+        min-height: 620px;
+      }
+
+      .slide-reference-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .worksheet-page {
+        padding: 12px;
+      }
+
+      .support-card,
+      .answer-head,
+      .answer-actions {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .page-tabs {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .answer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .worksheet-top {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+      }
+
+      .slide-reference-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="worksheet-page">
+    <header class="worksheet-top">
+      <a class="back-link" href="lesson.html">Back</a>
+      <nav class="page-tabs" aria-label="Lesson pages">
+        <a class="tab-link" href="lesson.html">Lesson</a>
+        <a class="tab-link active" href="worksheet.html" aria-current="page">Worksheet</a>
+      </nav>
+      <span class="worksheet-status">Citizenship</span>
+    </header>
+
+    <section class="worksheet-layout" aria-label="Citizenship worksheet">
+      <article class="presentation-card">
+        <div class="presentation-brief">
+          <h1>Rights and Responsibilities Worksheet</h1>
+          <p>Use the presentation slides to collect your ideas, answer the scenario, and write your key message.</p>
+        </div>
+
+        <div class="slide-reference-grid" aria-label="Presentation slide references">
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-01.png" alt="">
+            <strong>01 Rights and Responsibilities</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-02.png" alt="">
+            <strong>02 Lesson Objectives</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-03.png" alt="">
+            <strong>03 Starter Question</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-04.png" alt="">
+            <strong>04 What Is A Right?</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-05.png" alt="">
+            <strong>05 What Is A Responsibility?</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-06.png" alt="">
+            <strong>06 Rights Vs Responsibilities</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-07.png" alt="">
+            <strong>07 Why Schools Have Rules</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-08.png" alt="">
+            <strong>08 Scenario Discussion</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-09.png" alt="">
+            <strong>09 Positive Responsibilities</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-10.png" alt="">
+            <strong>10 Reflection Task</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-11.png" alt="">
+            <strong>11 Class Discussion</strong>
+          </a>
+          <a class="slide-reference" href="lesson.html">
+            <img src="assets/slides/citizenship-rights/slide-12.png" alt="">
+            <strong>12 Key Message</strong>
+          </a>
+        </div>
+      </article>
+
+      <div class="workspace-column">
+        <section class="support-card" aria-label="Tutor note">
+          <div class="nova-mini">
+            <img src="assets/tutors/nova.png" alt="">
+          </div>
+          <div>
+            <h2>Nova's Worksheet Check</h2>
+            <p>Use short, clear answers. A strong answer explains what happened, who is affected, and what could be done differently.</p>
+          </div>
+        </section>
+
+        <section class="answer-card" aria-label="Student worksheet answers">
+          <header class="answer-head">
+            <div>
+              <h2>Your Citizenship Work</h2>
+              <p>Answer these using the presentation and Ask Nova if you get stuck.</p>
+            </div>
+            <button class="secondary-button" type="button" id="clear-work">Clear</button>
+          </header>
+
+          <div class="answer-grid">
+            <div class="answer-field">
+              <label for="young-person-right">A right every young person should have</label>
+              <input id="young-person-right" type="text" placeholder="e.g. the right to feel safe">
+            </div>
+
+            <div class="answer-field">
+              <label for="school-responsibility">A responsibility in school</label>
+              <input id="school-responsibility" type="text" placeholder="e.g. respecting others">
+            </div>
+
+            <div class="answer-field full-answer">
+              <label for="rights-link">How rights and responsibilities link together</label>
+              <textarea id="rights-link" placeholder="Explain how one right connects to one responsibility."></textarea>
+            </div>
+
+            <div class="answer-field">
+              <label for="scenario-affected">In the scenario, who is affected?</label>
+              <textarea id="scenario-affected" placeholder="Think about the student, classmates, and teacher."></textarea>
+            </div>
+
+            <div class="answer-field">
+              <label for="scenario-different">What could be done differently?</label>
+              <textarea id="scenario-different" placeholder="Suggest a better choice or repair action."></textarea>
+            </div>
+
+            <div class="answer-field full-answer">
+              <label for="reflection-answer">Reflection: which responsibility is most important and why?</label>
+              <textarea id="reflection-answer" placeholder="Use because and give an example."></textarea>
+            </div>
+
+            <div class="answer-field full-answer">
+              <label for="key-message">Key message from the lesson</label>
+              <textarea id="key-message" placeholder="Rights and responsibilities work together because..."></textarea>
+            </div>
+          </div>
+
+          <footer class="answer-actions">
+            <p class="save-note" id="save-note">No draft saved yet.</p>
+            <button class="primary-button" type="button" id="save-work">Save Draft</button>
+          </footer>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const fields = Array.from(document.querySelectorAll("input, textarea"));
+    const saveNote = document.querySelector("#save-note");
+
+    document.querySelector("#save-work").addEventListener("click", () => {
+      saveNote.textContent = "Draft saved on this screen.";
+    });
+
+    document.querySelector("#clear-work").addEventListener("click", () => {
+      fields.forEach((field) => {
+        field.value = "";
+      });
+      saveNote.textContent = "No draft saved yet.";
+    });
+  </script>
+</body>
+</html>

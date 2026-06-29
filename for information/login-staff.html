@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff Login · AI Platform</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: #07111f;
+      background:
+        linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+        #ffffff;
+      background-size: 42px 42px;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .login-card {
+      width: min(420px, 100%);
+      padding: 32px 28px;
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 24px 70px rgba(37, 99, 235, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.75rem;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin: 10px 0 0;
+      color: #64748b;
+      font-size: 0.92rem;
+    }
+
+    .demo-credentials {
+      margin-top: 20px;
+      padding: 14px 16px;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      border-radius: 10px;
+      background: rgba(37, 99, 235, 0.04);
+      text-align: left;
+      font-size: 0.84rem;
+      color: #334155;
+    }
+
+    .demo-credentials h2 {
+      margin: 0 0 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    .demo-credentials dl {
+      margin: 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 12px;
+    }
+
+    .demo-credentials dt {
+      margin: 0;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .demo-credentials dd {
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: #07111f;
+    }
+
+    .demo-credentials .demo-note {
+      margin: 10px 0 0;
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+
+    form {
+      margin-top: 28px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    input {
+      width: 100%;
+      margin-bottom: 16px;
+      padding: 12px 14px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 10px;
+      font: inherit;
+    }
+
+    input:focus {
+      outline: 3px solid rgba(37, 99, 235, 0.18);
+      border-color: #2563eb;
+    }
+
+    .submit-button {
+      width: 100%;
+      margin-top: 4px;
+      padding: 14px 18px;
+      border: 0;
+      border-radius: 10px;
+      color: #ffffff;
+      background: #2563eb;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .submit-button:hover,
+    .submit-button:focus-visible {
+      background: #1d4ed8;
+    }
+
+    .error {
+      display: none;
+      margin: 0 0 14px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(239, 68, 68, 0.08);
+      color: #b91c1c;
+      font-size: 0.84rem;
+      text-align: center;
+    }
+
+    .error.is-visible { display: block; }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #2563eb;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="login-card" aria-label="Staff login">
+      <h1>Staff Login</h1>
+      <p class="subtitle">Sign in to open the staff dashboard.</p>
+      <aside class="demo-credentials" aria-label="Demo credentials">
+        <h2>Demo credentials</h2>
+        <dl>
+          <dt>Username</dt>
+          <dd>staff</dd>
+          <dt>Password</dt>
+          <dd>EvoStaff2026</dd>
+        </dl>
+        <p class="demo-note">For test and demo use only.</p>
+      </aside>
+      <p class="error" id="login-error" role="alert"></p>
+      <form id="staff-login-form" novalidate>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="submit-button" type="submit">Sign in</button>
+      </form>
+      <a class="back-link" href="login.html">Back to AI Platform</a>
+    </section>
+  </main>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    if (EvoAuth.redirectIfAuthenticated("staff")) {
+      // redirecting
+    } else {
+      const form = document.getElementById("staff-login-form");
+      const errorEl = document.getElementById("login-error");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const username = form.username.value;
+        const password = form.password.value;
+        const result = EvoAuth.attemptLogin("staff", username, password);
+
+        if (result.ok) {
+          EvoAuth.redirectIfAuthenticated("staff");
+          return;
+        }
+
+        errorEl.textContent = result.message;
+        errorEl.classList.add("is-visible");
+      });
+    }
+  </script>
+</body>
+</html>
