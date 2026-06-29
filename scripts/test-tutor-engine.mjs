@@ -9,6 +9,21 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 
+const novaProfile = JSON.parse(readFileSync(join(ROOT, "assets/data/tutors/nova.json"), "utf8"));
+
+function hasSlideSpecificHint(slideChunk, slideContext, scriptLine) {
+  if (slideChunk?.hint) return true;
+  if (scriptLine) return true;
+  if (slideContext?.note) return true;
+  if (slideContext?.title) return true;
+  return false;
+}
+
+function pickProfileHintIfNoSlide(examples, slideChunk, slideContext, scriptLine) {
+  if (hasSlideSpecificHint(slideChunk, slideContext, scriptLine)) return null;
+  return examples?.hint || null;
+}
+
 const tutorsConfig = JSON.parse(readFileSync(join(ROOT, "assets/data/tutors.json"), "utf8"));
 const topic = JSON.parse(readFileSync(join(ROOT, "assets/data/knowledge/british-identity-values.json"), "utf8"));
 const topic2 = JSON.parse(readFileSync(join(ROOT, "assets/data/knowledge/equality-act-discrimination.json"), "utf8"));
@@ -198,6 +213,21 @@ const studentTests = [
 
 let passed = 0;
 try {
+  const badHint = /choosing people to make decisions/i.test(novaProfile.examples?.hint || "");
+  if (badHint) throw new Error("Nova hint still references democracy/voting content");
+  console.log("PASS nova hint: no democracy bleed-through");
+  passed += 1;
+
+  const slide1 = topic.slides?.["1"];
+  const slideCtx = { slideIndex: 1, title: slide1.title, note: "" };
+  const profileHint = pickProfileHintIfNoSlide(novaProfile.examples, slide1, slideCtx, slide1.script?.slice(0, 80));
+  if (profileHint) throw new Error("Profile hint should be suppressed when slide KB exists");
+  console.log("PASS slide priority: profile hint suppressed on Who Are We slide");
+  passed += 1;
+} catch (err) {
+  console.error("FAIL tutor slide alignment:", err.message || err);
+}
+try {
   assertTutorConfigSane();
   console.log("PASS tutor config: level 1–9 mapping is deterministic");
   passed += 1;
@@ -286,7 +316,7 @@ for (const lt of levelTests) {
   passed += 1;
 }
 
-const total = 1 + tests.length + studentTests.length + 1 + levelTests.length * 4;
+const total = 1 + 2 + tests.length + studentTests.length + 1 + levelTests.length * 4;
 console.log(`\n${passed}/${total} checks passed`);
 console.log(`Student question bank: ${studentBank.questions.length} entries`);
 process.exit(passed === total ? 0 : 1);

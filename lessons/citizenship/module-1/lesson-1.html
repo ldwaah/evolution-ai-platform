@@ -294,6 +294,7 @@
   <script src="../../../assets/js/student-profile.js?v=revision-recap-3"></script>
   <script src="../../../assets/js/lesson-revision-recap.js?v=revision-recap-3"></script>
   <script src="../../../assets/js/lesson-completion.js?v=quiz-gate-1"></script>
+  <script src="../../../assets/js/lesson-progress.js?v=checkpoint-1"></script>
   <script>
     const PROGRESS_KEY = "citizenship.module-1.lesson-1";
     const REVISION_URL = `${location.pathname}?revision=1`;
@@ -417,6 +418,19 @@
     ];
     const visitedSlides = new Set();
     let highestUnlockedSlide = 0;
+    let restoreQuizView = false;
+
+    window.EvoLessonProgress?.applyCheckpoint?.(PROGRESS_KEY, {
+      onRestore(checkpoint) {
+        if (!checkpoint.lessonStarted || revisionMode) return;
+        lessonStarted = true;
+        currentSlide = Math.min(checkpoint.slideIndex ?? 0, slides.length - 1);
+        highestUnlockedSlide = Math.max(checkpoint.highestUnlockedSlide ?? 0, currentSlide);
+        (checkpoint.visitedSlides || []).forEach((index) => visitedSlides.add(Number(index)));
+        if (checkpoint.quizActive) restoreQuizView = true;
+        startOverlay?.classList.add("is-hidden");
+      },
+    });
 
     const lessonMain = document.getElementById("lesson-main");
     const presentationView = document.getElementById("presentation-view");
@@ -473,8 +487,16 @@
       mapUrl: MAP_URL,
       requireQuizView: true,
       redirectOnComplete: false, // play the unlock animation first, then navigate
-      getState: () => ({ lessonStarted, quizActive }),
+      getState: () => ({
+        lessonStarted,
+        quizActive,
+        slideIndex: currentSlide,
+        highestUnlockedSlide,
+        visitedSlides: [...visitedSlides],
+      }),
     });
+
+    const scheduleProgressSave = () => completion?.scheduleSave?.();
 
     function refresh() {
       completion?.refresh();
@@ -639,6 +661,7 @@
       updateChatContext();
       showQuizIntroMessage();
       refresh();
+      scheduleProgressSave();
     }
 
     function goToSlide(target) {
@@ -648,6 +671,7 @@
       visitedSlides.add(currentSlide);
       highestUnlockedSlide = Math.max(highestUnlockedSlide, currentSlide);
       renderSlide();
+      scheduleProgressSave();
     }
 
     function changeSlide(offset) {
@@ -677,6 +701,7 @@
       highestUnlockedSlide = Math.max(highestUnlockedSlide, currentSlide);
       startOverlay.classList.add("is-hidden");
       renderSlide();
+      scheduleProgressSave();
     }
 
     prevButton.addEventListener("click", () => changeSlide(-1));
@@ -714,14 +739,17 @@
 
     function getSlideContext() {
       if (quizActive) {
-        return { slideIndex: slides.length, title: "End of Lesson Quiz", note: "" };
+        return { slideIndex: slides.length, title: "End of Lesson Quiz", note: "", slideText: "End of Lesson Quiz" };
       }
       const slide = slides[currentSlide];
       if (!slide) return null;
+      const title = slide.title || "";
+      const note = slide.note || "";
       return {
         slideIndex: currentSlide,
-        title: slide.title || "",
-        note: slide.note || "",
+        title,
+        note,
+        slideText: [title, note].filter(Boolean).join(". "),
         revisionMode,
       };
     }
@@ -789,7 +817,16 @@
       initChatPanel(0);
       initWorksheetController();
       initRevisionRecap();
-      if (revisionMode) startLesson();
+      if (revisionMode) {
+        startLesson();
+        return;
+      }
+      if (restoreQuizView) {
+        restoreQuizView = false;
+        showQuiz();
+        return;
+      }
+      if (lessonStarted) renderSlide();
     });
 
     refresh();

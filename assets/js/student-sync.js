@@ -28,6 +28,7 @@
     "evoEndQuizAnswers",
     "evoWorksheetAnswers",
     "evolearn-progress",
+    "evoLessonCheckpoints",
     "evolearn-stats",
     "evolearn-voice",
     "evolearn-role",
@@ -286,6 +287,7 @@
       localStorage: localStorageSnapshot,
       profile,
       lessonProgress: localStorageSnapshot["evolearn-progress"] || [],
+      lessonCheckpoints: localStorageSnapshot.evoLessonCheckpoints || {},
       endQuizAnswers: localStorageSnapshot.evoEndQuizAnswers || {},
       worksheetAnswers: localStorageSnapshot.evoWorksheetAnswers || {},
       lessonQuizHistory: localStorageSnapshot.evoLessonQuizHistory || [],
@@ -312,6 +314,7 @@
     const keyMap = {
       profile: "evoStudentProfile",
       lessonProgress: "evolearn-progress",
+      lessonCheckpoints: "evoLessonCheckpoints",
       endQuizAnswers: "evoEndQuizAnswers",
       worksheetAnswers: "evoWorksheetAnswers",
       lessonQuizHistory: "evoLessonQuizHistory",

@@ -42,6 +42,7 @@ function buildLessonHtml(topic, moduleId, lessonId) {
   <link rel="stylesheet" href="${prefix}style.css" />
   <script src="${prefix}assets/js/lesson-guard.js?v=assessment-lock-1"></script>
   <script src="${prefix}assets/js/lesson-completion.js?v=quiz-gate-1"></script>
+  <script src="${prefix}assets/js/lesson-progress.js?v=checkpoint-1"></script>
 </head>
 <body class="lesson-body" data-lesson-id="${lessonId}" data-module-id="${moduleId}" data-chat-mode="ai">
   <main class="lesson-page">

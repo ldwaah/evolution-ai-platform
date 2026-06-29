@@ -8,8 +8,8 @@
  * 1. Conversational intents (greetings, confusion, thanks)
  * 2. Quiz wrong-answer / misconception lookup
  * 3. FAQ match (student question bank, slide FAQs, topic FAQs)
- * 4. Stored knowledge lookup (keywords, aliases, token overlap)
- * 5. Slide chunk context
+ * 4. Current slide chunk (when slide context exists)
+ * 5. Stored knowledge lookup (keywords, aliases, token overlap)
  * 6. Tutor persona wrapper
  * 7. Soft fallback (never a dead end)
  */
@@ -142,6 +142,18 @@
     if (!text) return false;
     if (text.includes("?")) return true;
     return /\b(what is|what are|who is|who are|why is|why are|why do|how does|how do|define|describe|tell me about|explain the|explain what)\b/.test(text);
+  }
+
+  function asksAboutScreenContent(message) {
+    const text = normalizeText(message);
+    return /\b(on the screen|on screen|on this slide|this slide|the slide|what (do |does )?(the |these |those )?(words?|ideas?|things?)|words? on|see on|shown|displayed|looking at here|what am i looking at|what is here|what's here|what does this mean|what does that mean|mean on)\b/.test(text);
+  }
+
+  function slideTextFromContext(slideContext, slideChunk) {
+    if (slideContext?.slideText) return String(slideContext.slideText).trim();
+    const title = slideChunk?.title || slideContext?.title || "";
+    const body = slideContext?.note || slideChunk?.hint || "";
+    return [title, body].filter(Boolean).join(". ").trim();
   }
 
   function detectIntent(message) {
@@ -412,6 +424,20 @@
     return pickExampleField(examples, ["hint", "hints"]);
   }
 
+  /** Profile hints are lesson-agnostic; prefer slide KB / PPT note when available. */
+  function hasSlideSpecificHint(slideChunk, slideContext, scriptLine) {
+    if (slideChunk?.hint) return true;
+    if (scriptLine) return true;
+    if (slideContext?.note) return true;
+    if (slideContext?.title) return true;
+    return false;
+  }
+
+  function pickProfileHintIfNoSlide(examples, slideChunk, slideContext, scriptLine) {
+    if (hasSlideSpecificHint(slideChunk, slideContext, scriptLine)) return null;
+    return pickHintExample(examples);
+  }
+
   function pickEndOfLessonExample(examples) {
     return pickExampleField(examples, ["endOfLesson", "completionMessage"]);
   }
@@ -536,6 +562,13 @@
   function buildLevelContentLines(lessonContent, level, slideChunk, synonymMap, message) {
     const band = global.EvoAgentKnowledge?.normalizeLevel(level) || 1;
     const parts = [];
+    if (slideChunk && (slideChunk.hint || slideChunk.script)) {
+      const slideLine = slideScriptSnippet(slideChunk, level) || slideChunk.hint;
+      if (slideLine) {
+        parts.push(slideLine);
+        if (band <= 3) return parts;
+      }
+    }
     const keyPoint = pickSlideLevelKeyPoint(lessonContent, slideChunk, message, synonymMap);
 
     if (band <= 3) {
@@ -636,11 +669,11 @@
     }
   }
 
-  function buildPersonalReply(echo, encouragement, tutorProfile, topicTitle, label, hintLower, style) {
+  function buildPersonalReply(echo, encouragement, tutorProfile, topicTitle, label, hintLower, style, slideChunk, slideContext, scriptLine) {
     const lead = echo
       ? `${echo.charAt(0).toUpperCase() + echo.slice(1)}.`
       : `${(encouragement || "That is a good start.").split(".")[0]}.`;
-    const profileHint = pickHintExample(tutorProfile?.examples);
+    const profileHint = pickProfileHintIfNoSlide(tutorProfile?.examples, slideChunk, slideContext, scriptLine);
     const topicLink = profileHint || `On ${label}, ${hintLower}.`;
 
     switch (style) {
@@ -699,11 +732,14 @@
 
   function pickWordBank(slideChunk, content, level) {
     const terms = slideChunk?.terms || [];
-    if (terms.length >= 2 && level <= 3) {
-      return `Try one of these words: ${terms.slice(0, 4).join(", ")}.`;
+    if (terms.length >= 1) {
+      return `Try one of these words from this slide: ${terms.slice(0, 4).join(", ")}.`;
+    }
+    if (slideChunk?.hint || slideChunk?.script) {
+      return "Pick one idea from this slide and I will explain it.";
     }
     const points = content?.keyPoints || [];
-    if (points.length && level <= 4) {
+    if (points.length && level <= 4 && !slideChunk) {
       const words = points[0].split(/\s+/).filter((w) => w.length > 4).slice(0, 3);
       if (words.length) return `Try asking about: ${words.join(", ")}.`;
     }
@@ -748,7 +784,7 @@
     if (!score) return 0;
     if (slideIndex != null && question.slideIndex != null) {
       if (question.slideIndex === slideIndex) score += 100;
-      else score -= 1;
+      else score -= 50;
     }
     return score;
   }
@@ -880,7 +916,7 @@
           return `Quick recap on ${label}: ${recap}. Ask for a key term if you need one.`;
         }
         const lead = encouragement || "That is okay. We can slow down.";
-        const tutorHint = pickHintExample(examples);
+        const tutorHint = pickProfileHintIfNoSlide(examples, slideChunk, slideContext, scriptLine);
         const extra = styleConfusionExtra(style, lessonContent);
         const slideContextLine = scriptLine
           ? `On ${label}: ${scriptLine}`
@@ -908,7 +944,7 @@
           : buildSmalltalkReply(name, label, style);
       case "personal": {
         const echo = echoUserMessage(message);
-        return buildPersonalReply(echo, encouragement, tutorProfile, topicTitle, label, hintLower, style);
+        return buildPersonalReply(echo, encouragement, tutorProfile, topicTitle, label, hintLower, style, slideChunk, slideContext, scriptLine);
       }
       default:
         return null;
@@ -1128,11 +1164,17 @@
       const cmd = detectCommandWord(message, content.commandWords, band);
       if (cmd && band >= 5) parts.push(`Exam tip (${cmd.word}): ${cmd.template}`);
     } else if (band <= 2) {
-      if (keyPoint) parts.push(keyPoint);
-      else if (content.summary) parts.push(content.summary);
-      const terms = slideChunk?.terms || [];
-      if (terms.length) {
-        parts.push(`Words on this slide: ${terms.slice(0, 4).join(", ")}. Pick one and I will explain it.`);
+      if (slideChunk) {
+        const slideLine = slideScriptSnippet(slideChunk, level) || slideChunk.hint;
+        if (slideLine) parts.push(slideLine);
+        const terms = slideChunk.terms || [];
+        if (terms.length) {
+          parts.push(`Words on this slide: ${terms.slice(0, 4).join(", ")}. Pick one and I will explain it.`);
+        }
+      } else if (keyPoint) {
+        parts.push(keyPoint);
+      } else if (content.summary) {
+        parts.push(content.summary);
       }
     } else if (band <= 5) {
       if (content.summary) parts.push(content.summary);
@@ -1467,14 +1509,26 @@
       return result;
     }
 
+    const slideScore = scoreSlideMatch(message, slideContext, synonymMap, slideChunk);
+    const screenQuestion = asksAboutScreenContent(message);
+    const onSlide = slideChunk && slideContext?.slideIndex != null;
+
+    if (onSlide && (screenQuestion || slideScore >= 1 || !looksLikeAcademicQuestion(message))) {
+      const result = {
+        text: buildSlideChunkReply(message, slideContext, slideChunk, ctx.lessonContent, ctx.agent, ctx.tutorProfile, ctx.level, personaOpts, synonymMap),
+        source: screenQuestion ? "slide:screen" : "slide:chunk",
+        topicId: ctx.lessonContent?.topicId,
+      };
+      recordExchange(message, result, slideContext);
+      return result;
+    }
+
     let match = null;
     if (ctx.lessonId) {
       match = await findBestTopicMatch(message, ctx.lessonId, ctx.level, ctx.basePath, synonymMap);
     }
 
-    const slideScore = scoreSlideMatch(message, slideContext, synonymMap, slideChunk);
-
-    if (match?.content && match.score >= 2) {
+    if (match?.content && match.score >= 2 && !(onSlide && slideScore >= 1)) {
       const memoryRepeat = memory.lastSource === "knowledge"
         && memory.lastTopicId === match.content.topicId
         && normalizeText(memory.lastText || "") === normalizeText(match.content.summary || "");
@@ -1493,7 +1547,7 @@
       return result;
     }
 
-    if (match?.content && (match.score > 0 || looksLikeAcademicQuestion(message))) {
+    if (match?.content && (match.score > 0 || looksLikeAcademicQuestion(message)) && !(onSlide && (screenQuestion || slideScore >= 1))) {
       const result = {
         text: buildKnowledgeReply(message, match.content, ctx.agent, ctx.tutorProfile, ctx.level, synonymMap, slideChunk, personaOpts),
         source: match.score >= 2 ? "knowledge" : "knowledge:partial",
@@ -1503,7 +1557,7 @@
       return result;
     }
 
-    if (slideChunk && !looksLikeAcademicQuestion(message)) {
+    if (onSlide) {
       const result = {
         text: buildSlideChunkReply(message, slideContext, slideChunk, ctx.lessonContent, ctx.agent, ctx.tutorProfile, ctx.level, personaOpts, synonymMap),
         source: "slide:chunk",
@@ -1718,6 +1772,7 @@
           const idToken = await getFirebaseIdToken();
           const history = (loadAiMemory().turns || []).slice(-6);
 
+          const slideText = slideTextFromContext(slideContext, slideChunk);
           const payload = {
             message: message.slice(0, 700),
             history,
@@ -1728,10 +1783,14 @@
               topicTitle: ctx.lessonContent?.topicTitle || null,
               slideIndex: slideContext?.slideIndex ?? null,
               slideTitle: slideChunk?.title || slideContext?.title || "",
+              slideText,
               slideHint: slideHint(slideContext, ctx.lessonContent, slideChunk),
-              slideScript: slideScriptSnippet(slideChunk, ctx.level),
-              lessonSummary: ctx.lessonContent?.summary || "",
-              keyPoints: Array.isArray(ctx.lessonContent?.keyPoints) ? ctx.lessonContent.keyPoints.slice(0, 4) : [],
+              slideScript: slideScriptSnippet(slideChunk, ctx.level) || slideChunk?.script || "",
+              slideTerms: Array.isArray(slideChunk?.terms) ? slideChunk.terms.slice(0, 8) : [],
+              lessonSummary: slideChunk ? "" : (ctx.lessonContent?.summary || ""),
+              keyPoints: slideChunk
+                ? (slideChunk.terms || []).slice(0, 4)
+                : (Array.isArray(ctx.lessonContent?.keyPoints) ? ctx.lessonContent.keyPoints.slice(0, 4) : []),
             },
           };
 
@@ -1872,6 +1931,8 @@
     getSlideChunkFromTopic,
     slideHint,
     slideScriptSnippet,
+    slideTextFromContext,
+    asksAboutScreenContent,
     loadTutorProfile,
     resolveLessonContext: resolveContext,
     initLessonChat,

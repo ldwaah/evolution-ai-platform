@@ -23,6 +23,9 @@
     if (done.has(progressKey)) return false;
     done.add(progressKey);
     global.localStorage.setItem(STORE, JSON.stringify([...done]));
+    try {
+      global.EvoLessonProgress?.clearCheckpoint?.(progressKey);
+    } catch { /* checkpoint optional */ }
     global.EvoStudentSync?.notifyChange?.("lesson-complete");
     return true;
   }
@@ -131,8 +134,20 @@
       if (event.detail?.lessonId === lessonId) refresh();
     });
 
+    const checkpoint = global.EvoLessonProgress?.bind?.({
+      progressKey,
+      lessonId,
+      getState,
+    });
+
     refresh();
-    return { refresh, markComplete: () => { markComplete(progressKey); refresh(); } };
+    return {
+      refresh,
+      markComplete: () => { markComplete(progressKey); refresh(); },
+      checkpoint,
+      scheduleSave: () => checkpoint?.schedule?.(),
+      flushSave: () => checkpoint?.flush?.(),
+    };
   }
 
   global.EvoLessonCompletion = {

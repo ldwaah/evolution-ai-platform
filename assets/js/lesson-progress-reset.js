@@ -26,6 +26,7 @@
 (function (global) {
   const LESSON_STORAGE_KEYS = [
     "evolearn-progress",
+    "evoLessonCheckpoints",
     "evoEndQuizAnswers",
     "evoLessonQuizHistory",
     "evoTutorMemory",

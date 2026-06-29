@@ -71,7 +71,7 @@
     "greeting": "Hello. I am Nova, your tutor. We can take this one small step at a time. Tell me when you are ready, and we will look at just one thing together.",
     "revisionGreeting": "Nova in revision mode. You know this already. Ask for a key fact or memory jog from {topic}.",
     "feedback": "You picked a good word there. That shows you were listening. Next, try matching one more word from the list. There is no rush.",
-    "hint": "Look at the three words on screen. One of them means choosing people to make decisions for us. Which word feels closest?",
+    "hint": "Pick one word from this slide and ask me what it means. We will take it one small step at a time.",
     "encouragement": "You tried, and that matters. Learning is not about getting everything right straight away. Let us look at it again, slowly, together.",
     "assessmentIntroduction": "This is a short check to see what feels easy and what we can work on together. There are no trick questions. Pick the answer that looks best to you, and we will go from there.",
     "lessonDialogue": [
