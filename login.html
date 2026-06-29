@@ -285,7 +285,10 @@
         document.getElementById('demo-note').textContent = 'Demo mode · Firebase not configured';
       } else if (window.EvoStudentAuth) {
         EvoStudentAuth.waitForAuthReady().then(function (user) {
-          if (user) location.replace('index.html');
+          if (!user) return;
+          // Returning session: mark entry before index, or index sends users back to intro → login loop.
+          if (EvoStudentAuth.markSessionEntered) EvoStudentAuth.markSessionEntered();
+          location.replace('index.html');
         });
       }
 

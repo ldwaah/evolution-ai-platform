@@ -415,6 +415,7 @@
     isSignedIn,
     hasAppAccess,
     continueAsGuest,
+    markSessionEntered,
     onAuthStateChanged,
     waitForAuthReady,
     waitForAuthGate,
