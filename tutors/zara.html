@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>EVOlearn — Zara, Secure tutor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-zara.css" />
+  <style>
+    .zara-profile-page { min-height: 100vh; display: flex; flex-direction: column; }
+    .zara-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 26px; position: relative; z-index: 2;
+    }
+    .zara-topbar .brand-logo { height: 38px; width: auto; display: block; }
+    .zara-back {
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      padding: 8px 14px; border-radius: 999px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); backdrop-filter: blur(10px);
+      transition: color .6s cubic-bezier(.22,.61,.36,1), border-color .6s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .zara-shell { flex: 1; max-width: 920px; width: 100%; margin: 0 auto; padding: 14px 26px 48px; position: relative; z-index: 1; }
+
+    .zara-hero {
+      display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center;
+      margin-bottom: 36px;
+    }
+    .zara-hero-photo {
+      position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 1;
+      border: 1px solid var(--glass-line); background: var(--navy-deep);
+    }
+    .zara-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .zara-hero-badge {
+      position: absolute; top: 10px; left: 10px;
+      font-size: 12px; font-weight: 700; letter-spacing: .5px;
+      padding: 4px 10px; border-radius: 999px;
+      background: rgba(13,22,30,.75); border: 1px solid var(--glass-line); backdrop-filter: blur(6px);
+    }
+    .zara-hero-copy h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -.5px; }
+    .zara-hero-role { font-size: 14px; letter-spacing: .4px; margin-top: 4px; }
+    .zara-catchphrase { font-size: 16px; margin-top: 14px; font-style: italic; }
+    .zara-hero-support { font-size: 15px; color: var(--muted); margin-top: 10px; line-height: 1.55; max-width: 520px; }
+
+    .zara-section { margin-bottom: 32px; }
+    .zara-section h2 {
+      font-size: 13px; letter-spacing: 1.6px; text-transform: uppercase;
+      margin-bottom: 14px; font-weight: 600;
+    }
+    .zara-section p, .zara-section li { font-size: 15px; line-height: 1.65; color: #cfe1ec; }
+    .zara-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .zara-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .zara-tag {
+      font-size: 13px; padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--glass-line); backdrop-filter: blur(8px);
+    }
+
+    .zara-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .zara-card {
+      border-radius: 16px; border: 1px solid var(--glass-line);
+      backdrop-filter: blur(12px); padding: 18px 20px;
+    }
+    .zara-card h3 { font-size: 14px; margin-bottom: 10px; font-weight: 600; }
+
+    .zara-examples { display: flex; flex-direction: column; gap: 14px; }
+    .zara-example-card {
+      border-radius: 14px; border: 1px solid var(--glass-line);
+      padding: 16px 18px;
+    }
+    .zara-example-label {
+      font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px; display: block;
+    }
+    .zara-example-text { font-size: 14.5px; line-height: 1.6; color: #d8e8f2; }
+
+    .zara-dialogue { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .zara-dialogue-line {
+      padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.55;
+    }
+    .zara-dialogue-line--student {
+      align-self: flex-end; max-width: 72%;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: #eaf4fb;
+    }
+    .zara-dialogue-role {
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 4px; display: block;
+    }
+
+    .zara-compare-card { border-radius: 14px; border: 1px solid var(--glass-line); padding: 16px 18px; }
+    .zara-compare-prompt { font-size: 14px; color: var(--zara-gold-soft, #d9c49a); margin-bottom: 12px; font-weight: 600; }
+
+    .zara-stretch-card { border-radius: 14px; border: 1px solid var(--glass-line); padding: 16px 18px; }
+    .zara-stretch-title { font-size: 14px; font-weight: 600; color: var(--zara-gold, #c4a574); margin-bottom: 8px; }
+
+    .zara-challenge-list { display: flex; flex-direction: column; gap: 10px; }
+    .zara-challenge-item {
+      font-size: 14.5px; line-height: 1.55; color: #d8e8f2;
+      padding: 12px 16px; border-radius: 12px;
+      border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.03);
+    }
+
+    .zara-footer-cta { margin-top: 12px; text-align: center; }
+    .zara-cta {
+      display: inline-block; padding: 14px 30px; border-radius: 999px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: transform .6s cubic-bezier(.22,.61,.36,1), box-shadow .6s cubic-bezier(.22,.61,.36,1);
+    }
+    .zara-cta:hover { transform: translateY(-2px); }
+
+    @media (max-width: 680px) {
+      .zara-hero { grid-template-columns: 1fr; text-align: center; }
+      .zara-hero-photo { max-width: 180px; margin: 0 auto; }
+      .zara-hero-support { margin-left: auto; margin-right: auto; }
+      .zara-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="agent-zara zara-profile-page">
+  <canvas id="particles"></canvas>
+  <div class="ambient-glow"></div>
+
+  <div class="zara-profile-page">
+    <header class="zara-topbar">
+      <a href="../index.html#citizenship" aria-label="Home">
+        <img class="brand-logo" src="../assets/logo.svg" alt="EVOlearn" />
+      </a>
+      <a class="zara-back" href="citizenship.html">← All tutors</a>
+    </header>
+
+    <main class="zara-shell" id="zara-profile-root">
+      <p style="color:var(--muted);text-align:center;padding:40px 0;">Loading Zara's profile…</p>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById("zara-profile-root");
+
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function renderList(items, className) {
+        if (!items || !items.length) return "";
+        return items.map((item) => `<div class="${className}">${escapeHtml(item)}</div>`).join("");
+      }
+
+      function render(profile) {
+        const ex = profile.examples || {};
+        const bio = profile.biography || {};
+        const style = profile.supportStyle || {};
+        const feedback = Array.isArray(ex.feedback) ? ex.feedback : (ex.feedback ? [ex.feedback] : []);
+        const hints = ex.hints || [];
+        const encouragement = Array.isArray(ex.encouragement) ? ex.encouragement : (ex.encouragement ? [ex.encouragement] : []);
+        const challenges = ex.challengeQuestions || [];
+        const betterAnswers = ex.betterAnswerSuggestions || [];
+        const stretchTasks = ex.stretchTasks || [];
+        const assessmentDialogue = ex.assessmentDialogue || [];
+        const lessonCoaching = ex.lessonCoaching || [];
+        const lessonDialogue = ex.lessonDialogue || [];
+
+        root.innerHTML = `
+          <section class="zara-hero">
+            <div class="zara-hero-photo tutor-zara">
+              <span class="zara-hero-badge">Lvl ${profile.level}</span>
+              <img src="../${profile.image}" alt="${escapeHtml(profile.name)}, ${escapeHtml(profile.levelName)} tutor" />
+            </div>
+            <div class="zara-hero-copy">
+              <h1>${escapeHtml(profile.name)}</h1>
+              <p class="zara-hero-role">Level ${profile.level} · ${escapeHtml(profile.levelName)} · ${escapeHtml(profile.role)}</p>
+              <p class="zara-catchphrase">"${escapeHtml(profile.catchphrase)}"</p>
+              <p class="zara-hero-support">${escapeHtml(profile.description)}</p>
+            </div>
+          </section>
+
+          <section class="zara-section">
+            <h2>About Zara</h2>
+            <p>${escapeHtml(bio.expanded || bio.short || "")}</p>
+          </section>
+
+          <section class="zara-section">
+            <h2>Personality</h2>
+            <div class="zara-tags">
+              ${(profile.personalityTags || []).map((tag) => `<span class="zara-tag">${escapeHtml(tag)}</span>`).join("")}
+            </div>
+          </section>
+
+          <div class="zara-grid-2 zara-section">
+            <div class="zara-card">
+              <h3>Best for</h3>
+              <ul>${(profile.bestFor || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+            <div class="zara-card">
+              <h3>Support style</h3>
+              <p style="margin-bottom:12px;font-size:14px;color:var(--zara-gold-soft,#d9c49a);">${escapeHtml(style.headline || "")}</p>
+              <ul>${(style.approaches || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+          </div>
+
+          <section class="zara-section">
+            <h2>Challenge questions</h2>
+            <div class="zara-challenge-list">
+              ${renderList(challenges, "zara-challenge-item")}
+            </div>
+          </section>
+
+          <section class="zara-section">
+            <h2>Better-answer suggestions</h2>
+            <div class="zara-examples">
+              ${betterAnswers.map((item) => `
+                <div class="zara-compare-card">
+                  <p class="zara-compare-prompt">${escapeHtml(item.prompt || "")}</p>
+                  <p class="zara-example-label">Weaker</p>
+                  <p class="zara-compare-weaker">${escapeHtml(item.weaker || "")}</p>
+                  <p class="zara-example-label">Stronger</p>
+                  <p class="zara-compare-stronger">${escapeHtml(item.stronger || "")}</p>
+                  <p class="zara-compare-why">${escapeHtml(item.why || "")}</p>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="zara-section">
+            <h2>Stretch tasks</h2>
+            <div class="zara-examples">
+              ${stretchTasks.map((item) => `
+                <div class="zara-stretch-card">
+                  <p class="zara-stretch-title">${escapeHtml(item.title || "")}</p>
+                  <p class="zara-example-text">${escapeHtml(item.task || "")}</p>
+                  <span class="zara-stretch-focus">${escapeHtml(item.focus || "")}</span>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="zara-section">
+            <h2>Voice in action</h2>
+            <div class="zara-examples">
+              <div class="zara-example-card">
+                <span class="zara-example-label">Greeting</span>
+                <p class="zara-example-text">${escapeHtml(ex.greeting || "")}</p>
+              </div>
+              ${feedback.map((text, i) => `
+                <div class="zara-example-card">
+                  <span class="zara-example-label">Feedback ${feedback.length > 1 ? i + 1 : ""}</span>
+                  <p class="zara-example-text">${escapeHtml(text)}</p>
+                </div>
+              `).join("")}
+              ${hints.map((hint) => `
+                <div class="zara-example-card">
+                  <span class="zara-example-label">Hint · ${escapeHtml(hint.label || "Hint")}</span>
+                  <p class="zara-example-text">${escapeHtml(hint.text || "")}</p>
+                </div>
+              `).join("")}
+              ${encouragement.map((text, i) => `
+                <div class="zara-example-card">
+                  <span class="zara-example-label">Encouragement ${encouragement.length > 1 ? i + 1 : ""}</span>
+                  <p class="zara-example-text">${escapeHtml(text)}</p>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="zara-section">
+            <h2>Assessment dialogue</h2>
+            <div class="zara-example-card">
+              <span class="zara-example-label">Introduction</span>
+              <p class="zara-example-text" style="margin-bottom:14px;">${escapeHtml(ex.assessmentIntroduction || "")}</p>
+              <span class="zara-example-label">In conversation</span>
+              <div class="zara-dialogue">
+                ${assessmentDialogue.map((line) => `
+                  <div class="zara-dialogue-line zara-dialogue-line--${escapeHtml(line.role === "zara" ? "zara" : "student")}">
+                    <span class="zara-dialogue-role">${escapeHtml(line.role === "zara" ? profile.name : "Student")}</span>
+                    ${escapeHtml(line.text)}
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          </section>
+
+          <section class="zara-section">
+            <h2>Lesson coaching</h2>
+            <div class="zara-steps">
+              ${lessonCoaching.map((step) => `
+                <div class="zara-step-card">
+                  <span class="zara-step-num">${escapeHtml(String(step.step || ""))}</span>
+                  <div>
+                    <span class="zara-step-label">${escapeHtml(step.title || "")}</span>
+                    <p class="zara-step-text">${escapeHtml(step.text || "")}</p>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="zara-section">
+            <h2>Lesson dialogue</h2>
+            <div class="zara-example-card">
+              <div class="zara-dialogue">
+                ${lessonDialogue.map((line) => `
+                  <div class="zara-dialogue-line zara-dialogue-line--${escapeHtml(line.role === "zara" ? "zara" : "student")}">
+                    <span class="zara-dialogue-role">${escapeHtml(line.role === "zara" ? profile.name : "Student")}</span>
+                    ${escapeHtml(line.text)}
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          </section>
+
+          <section class="zara-section">
+            <h2>End of lesson</h2>
+            <div class="zara-example-card">
+              <p class="zara-example-text">${escapeHtml(ex.endOfLesson || "")}</p>
+            </div>
+          </section>
+
+          <div class="zara-footer-cta">
+            <a class="zara-cta" href="../assessment/citizenship.html">Start your assessment →</a>
+          </div>
+        `;
+      }
+
+      fetch("../assets/data/tutors/zara.json")
+        .then((r) => r.json())
+        .then(render)
+        .catch(() => {
+          root.innerHTML = "<p style=\"color:var(--muted);text-align:center;\">Could not load Zara's profile.</p>";
+        });
+    })();
+  </script>
+  <script>
+    const cv = document.getElementById("particles"), cx = cv.getContext("2d");
+    let dots = [];
+    function size(){ cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+    function init(){ size(); dots = Array.from({length:55},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*0.8+0.2,r:Math.random()*1.4+0.4,tw:Math.random()*6.28})); }
+    function draw(){ cx.clearRect(0,0,innerWidth,innerHeight); for(const d of dots){ d.y-=d.z*0.25; d.tw+=0.02; if(d.y<-5){d.y=innerHeight+5;d.x=Math.random()*innerWidth;} const a=(0.25+Math.sin(d.tw)*0.2)*d.z; cx.beginPath(); cx.arc(d.x,d.y,d.r*d.z+0.4,0,6.28); cx.fillStyle=`rgba(196,165,116,${a*0.55})`; cx.fill(); } requestAnimationFrame(draw); }
+    addEventListener("resize", size);
+    addEventListener("pointermove",(e)=>{ document.body.style.setProperty("--mx",(e.clientX/innerWidth*100)+"%"); document.body.style.setProperty("--my",(e.clientY/innerHeight*100)+"%"); });
+    init(); draw();
+  </script>
+</body>
+</html>

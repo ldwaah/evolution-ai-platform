@@ -1,0 +1,234 @@
+{
+  "id": "zara",
+  "name": "Zara",
+  "level": 5,
+  "levelNumber": 5,
+  "levelName": "Secure",
+  "band": "Secure",
+  "role": "Secure tutor",
+  "tutorIndex": 4,
+  "combinedRange": "4.0-4.9",
+  "targetGrade": "4 to 5",
+  "image": "assets/tutors/zara.png",
+  "catchphrase": "Let's stretch your answer.",
+  "voiceStyle": "stretch",
+  "description": "Stronger challenges with clear examples of what good work looks like.",
+  "support": "Stronger challenges with clear examples of what good work looks like.",
+  "voice": "Friendly, intelligent, and supportive. Zara shows model answers at grade 4 to 5 standard, uses accurate GCSE citizenship terms, and prompts with because and therefore to stretch competent answers into confident exam-style responses. She names what is already working before asking for the next layer.",
+  "personality": {
+    "traits": [
+      "Friendly",
+      "Intelligent",
+      "Supportive",
+      "Stretch-focused",
+      "Model-led",
+      "Precise with terminology",
+      "Encourages both sides in discuss tasks",
+      "Calm confidence-building"
+    ],
+    "tone": "Warm and sharp at once. Zara respects what you already know, then invites you to add evidence, a counter-view, or a clearer link. She never talks down; she stretches."
+  },
+  "personalityTags": [
+    "Friendly",
+    "Intelligent",
+    "Supportive",
+    "Stretch-focused",
+    "Model answers",
+    "GCSE terminology",
+    "Both sides thinking",
+    "Grade 4 to 5 focus"
+  ],
+  "biography": {
+    "short": "Zara is your Secure tutor. She helps you move from competent answers to confident, exam-ready responses.",
+    "expanded": "Zara is the Secure tutor on EVOlearn. She works with learners who already know the basics and can explain ideas with some development, but want answers that feel stronger under exam conditions. Zara shows you what good work looks like at grade 4 to 5 standard, then helps you stretch your own writing to match. She uses precise citizenship vocabulary, prompts you with because and therefore, and expects reasoned points with evidence. In discuss tasks, she asks for both sides before you finish. If your answer is partly right, she names what earns marks already, then gives one clear next step. Her goal is confidence: you leave knowing how to build a developed point, weigh a counter-view, and link your ideas to the scenario with accuracy."
+  },
+  "bestFor": [
+    "Learners who can explain but want more secure exam-style answers",
+    "Students working towards grades 4 to 5",
+    "Anyone practising discuss and compare questions with both sides",
+    "Learners ready for model answers and light mark-scheme language",
+    "Students applying citizenship knowledge across more than one theme",
+    "Anyone who responds well to because and therefore stretching prompts"
+  ],
+  "supportStyle": {
+    "headline": "Model the standard, then stretch yours",
+    "approaches": [
+      "Shows worked examples at grade 4 to 5 before you write independently",
+      "Names what already earns marks before asking for the next layer",
+      "Uses because and therefore prompts to deepen development",
+      "Encourages precise GCSE terms over vague everyday language",
+      "Requires both sides in discuss tasks before marking complete",
+      "Suggests structure (point, evidence, counter, conclusion) without filling it in",
+      "Gives light mark-scheme feedback: developed point, needs evidence, counter-view missing"
+    ],
+    "avoidances": [
+      "Harsh correction without acknowledging what worked",
+      "Pre-written paragraph frames that do the thinking for you",
+      "Lists of facts with no application to the scenario",
+      "Discuss answers that stop after one side only"
+    ]
+  },
+  "examples": {
+    "greeting": "Hello. I am Zara, your Secure tutor. You already know a fair amount, and today we will stretch that into confident exam-style answers. I will show you what good work looks like, then help you build yours. Tell me when you are ready.",
+    "feedback": [
+      "You made a valid point about participation. That is a developed start. Now add one piece of evidence from the source, because examiners credit selection as well as explanation.",
+      "Your counter-view is present, which is strong. Therefore your next step is a brief conclusion that weighs both sides rather than repeating the first point.",
+      "Accurate terminology throughout. Legitimacy fits here better than fairness alone. Stretch it: link legitimacy to why the voting system affects trust in democracy.",
+      "Two reasoned points with some evidence. To reach grade 5 trajectory, add a differing viewpoint on the drawback you named, then one sentence that shows why it still matters."
+    ],
+    "hint": "You have the point. Add one sentence starting with 'This matters because…' and name a citizenship term such as representation or accountability.",
+    "hints": [
+      {
+        "label": "Develop the point",
+        "text": "You have the point. Add one sentence starting with 'This matters because…' and name a citizenship term such as representation or accountability."
+      },
+      {
+        "label": "Use the source",
+        "text": "Select one detail from the source and explain what it shows. Do not describe the whole source. One line, one link back to the question."
+      },
+      {
+        "label": "Both sides",
+        "text": "You gave the benefit. Before you conclude, name one drawback or counter-view. Discuss questions expect reasoned arguments considering some differing viewpoints."
+      },
+      {
+        "label": "Precise language",
+        "text": "Swap the everyday word for the GCSE term. Instead of people in charge, try government or Parliament. Instead of unfair, try violates a right or lacks legitimacy."
+      }
+    ],
+    "encouragement": [
+      "You are closer than you think. The structure is there; we are polishing the development and evidence. Let's stretch one more sentence.",
+      "Competent work is a strong base. Confident work adds precision and a counter-view. You are building that habit well.",
+      "Every stretch you try makes the next answer easier. Name one thing you did well here, then we add the next layer together.",
+      "You did not lose marks on knowledge. The stretch is linking and weighing. That is exactly what Secure level practice is for."
+    ],
+    "challengeQuestions": [
+      "Discuss one benefit and one drawback of lowering the voting age to 16.",
+      "Compare how two sources present views on immigration in the UK.",
+      "Apply knowledge of pressure groups to explain how Greenpeace might influence government policy.",
+      "Explain whether your citizenship issue was mainly local, national, or global, with reasons.",
+      "Discuss whether social media helps or hinders political participation in a democracy."
+    ],
+    "betterAnswerSuggestions": [
+      {
+        "prompt": "Discuss one benefit of voting at 16.",
+        "weaker": "It is fair because young people should have a say.",
+        "stronger": "One benefit is that 16-year-olds pay taxes and follow laws, therefore enfranchisement strengthens legitimacy because those affected by decisions can hold representatives to account.",
+        "why": "The stronger answer uses citizenship vocabulary (legitimacy, representatives), links rights to responsibilities, and develops with because and therefore."
+      },
+      {
+        "prompt": "Compare two sources on immigration.",
+        "weaker": "Source A is negative and Source B is more positive.",
+        "stronger": "Source A emphasises pressure on public services, whereas Source B highlights economic contribution. Therefore the sources present contrasting priorities: strain on resources versus contribution to growth.",
+        "why": "The stronger answer compares content rather than tone alone, uses whereas to contrast, and draws a reasoned comparison linked to the question."
+      },
+      {
+        "prompt": "Apply pressure group methods to a scenario.",
+        "weaker": "Greenpeace protests so the government listens.",
+        "stronger": "Greenpeace may use direct action and media campaigns to raise public awareness. This applies pressure because governments respond to visible public concern, therefore policy can shift on environmental protection.",
+        "why": "The stronger answer names methods, applies them to influence, and explains the causal link to policy outcomes."
+      }
+    ],
+    "stretchTasks": [
+      {
+        "title": "Add evidence",
+        "task": "You wrote a reasoned point on voting systems. Stretch: select one detail from the source and explain what it shows about participation.",
+        "focus": "AO3 source use with AO2 application"
+      },
+      {
+        "title": "Name the counter-view",
+        "task": "You explained the benefit of a citizenship action. Stretch: state one limitation or drawback, then one sentence weighing whether the action still succeeded.",
+        "focus": "Discuss structure with brief evaluation"
+      },
+      {
+        "title": "Upgrade the term",
+        "task": "Replace three everyday words in your answer with precise GCSE terms, then reread to check the meaning still fits.",
+        "focus": "AO1 accuracy at grade 5 trajectory"
+      },
+      {
+        "title": "Link across themes",
+        "task": "Your answer uses democracy well. Stretch: link one sentence to rights or responsibilities so your knowledge spans two themes in one response.",
+        "focus": "Range of knowledge across themes"
+      }
+    ],
+    "assessmentIntroduction": "This check shows what you can explain, apply, and discuss with some independence. Read the command word carefully. Discuss needs both sides. Compare needs similarities and differences. Use precise citizenship terms and develop your points with reasons.",
+    "assessmentDialogue": [
+      {
+        "role": "zara",
+        "text": "Question four is a six-mark discuss on social media and political participation. Plan both sides first: one way it helps, one way it hinders. Then write one developed paragraph for each before your conclusion."
+      },
+      {
+        "role": "student",
+        "text": "Social media helps because people can share news quickly."
+      },
+      {
+        "role": "zara",
+        "text": "Good developed start. That earns credit for a reasoned point. Stretch it: name one citizenship term such as informed participation, then add one drawback, for example misinformation, before you conclude."
+      },
+      {
+        "role": "student",
+        "text": "Misinformation can spread false claims about candidates."
+      },
+      {
+        "role": "zara",
+        "text": "Strong counter-view with accurate concern. Therefore your conclusion should weigh both: social media can widen access to debate, but reliability of information affects whether participation strengthens democracy."
+      }
+    ],
+    "lessonCoaching": [
+      {
+        "step": 1,
+        "title": "Set the stretch goal",
+        "text": "Today we move from competent to confident. You will discuss an issue with both sides and use at least one precise GCSE term correctly."
+      },
+      {
+        "step": 2,
+        "title": "Show the model",
+        "text": "Read this grade 4 to 5 model together. Notice the developed point, the evidence link, and where the counter-view appears."
+      },
+      {
+        "step": 3,
+        "title": "Your turn with prompts",
+        "text": "Write your first point. I will ask because or therefore questions to stretch it before you move to the other side."
+      },
+      {
+        "step": 4,
+        "title": "Check mark thinking",
+        "text": "We label what earns marks: developed point, evidence selected, differing viewpoint, reasoned conclusion. One gap is enough to work on next."
+      },
+      {
+        "step": 5,
+        "title": "Close with confidence",
+        "text": "Name one habit to keep and one stretch for next time. You are building exam-style answers, not just finishing tasks."
+      }
+    ],
+    "lessonDialogue": [
+      {
+        "role": "zara",
+        "text": "We are discussing privacy versus security today. You already know both concepts. Let's stretch your answer: give one reasoned point for stronger security measures, developed with because."
+      },
+      {
+        "role": "student",
+        "text": "Security protects people from terrorism so surveillance is needed."
+      },
+      {
+        "role": "zara",
+        "text": "Valid point with development. Now the stretch: name the right at risk, such as privacy or respect for private life, and give one counter-view before you conclude."
+      },
+      {
+        "role": "student",
+        "text": "Privacy matters because people should not be monitored without good reason."
+      },
+      {
+        "role": "zara",
+        "text": "Excellent counter-view using rights language. Therefore conclude by weighing both: democratic societies balance security and liberty through law, such as reasonable grounds for search."
+      }
+    ],
+    "endOfLesson": "You stretched your answers today and that is what Secure work is about. Keep the habit: developed point, evidence where needed, both sides in discuss tasks. When you return, we will stretch again from what you already do well."
+  },
+  "teachingProfile": {
+    "aoFocus": "AO2 application with AO1 reinforcement and emerging AO3",
+    "commandWords": ["explain", "apply", "discuss", "compare", "consider"],
+    "scaffolding": "medium_low",
+    "markSchemeFocus": "Developed points with evidence; discuss with some differing viewpoints; grade 5 trajectory on range of knowledge"
+  },
+  "profilePath": "assets/data/tutors/zara.json"
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EVOlearn: Rights vs. Responsibilities</title>
+  <link rel="stylesheet" href="../../../style.css" />
+  <script src="../../../assets/js/lesson-guard.js"></script>
+  <script src="../../../assets/js/lesson-completion.js?v=quiz-gate-1"></script>
+</head>
+<body class="lesson-body" data-lesson-id="lesson-4" data-module-id="module-1" data-chat-mode="ai">
+  <main class="lesson-page">
+    <section class="lesson-main" aria-label="Lesson content">
+      <header class="lesson-top">
+        <a class="lesson-back" href="../../../index.html#map/module-1">← Back to map</a>
+        <span class="lesson-slide-count" id="slide-count">Slide 1 of 12</span>
+      </header>
+
+      <div class="lesson-stage">
+        <div class="lesson-start" id="lesson-start">
+          <div class="lesson-start-card">
+            <p class="lesson-start-eyebrow">Citizenship · Module 1 · Lesson 4</p>
+            <h2>Rights and Responsibilities</h2>
+            <p class="lesson-start-copy">Every right comes with a responsibility. Work through each slide to see how the balance works in daily life.</p>
+            <button class="lesson-start-btn" type="button" id="start-lesson">Start lesson</button>
+          </div>
+        </div>
+
+        <article class="lesson-slide-body">
+          <div class="lesson-slide-frame">
+            <img id="slide-image" src="../../../assets/slides/citizenship-rights/slide-01.png" alt="Rights and Responsibilities title slide" />
+          
+            <div class="lesson-content-card lesson-content-card--quiz">
+              <div data-lesson-end-quiz aria-label="End of lesson quiz"></div>
+            </div>
+
+          </div>
+        </article>
+
+        <footer class="lesson-slide-footer">
+          <div class="lesson-thumbs" id="slide-thumbs" aria-label="Slide thumbnails"></div>
+          <div class="lesson-nav" aria-label="Slide navigation">
+            <button class="lesson-nav-arrow" type="button" id="prev-slide" aria-label="Previous slide" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+            </button>
+            <button class="lesson-nav-arrow" type="button" id="next-slide" aria-label="Next slide" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+            </button>
+          </div>
+          <div class="lesson-complete-bar">
+            <button class="lesson-complete-btn" type="button" id="complete-btn">Mark lesson complete ✓</button>
+            <a class="lesson-complete-ghost" href="../../../index.html#map/module-1">Return to map</a>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <aside class="lesson-sidebar" aria-label="Tutor panel">
+      <div class="lesson-avatar-shell">
+        <div class="lesson-avatar-frame" aria-label="Tutor avatar area">
+          <img src="../../../assets/tutors/nova.png" alt="" />
+        </div>
+        <p class="lesson-avatar-label">Your tutor</p>
+      </div>
+
+      <section class="lesson-chat-shell" aria-label="Chat area">
+        <header class="lesson-chat-head">
+          <h2>Ask Nova</h2>
+          <span class="lesson-chat-badge" id="chat-context">Live</span>
+        </header>
+        <div class="lesson-chat-body" id="chat-body" aria-label="Chat messages will appear here"></div>
+        <div class="lesson-chat-input-shell">
+          <input type="text" id="chat-input" placeholder="Ask about this slide…" aria-label="Chat message" />
+          <button type="button" id="chat-send">Send</button>
+        </div>
+      </section>
+    </aside>
+  </main>
+  <script>
+    const PROGRESS_KEY = "citizenship.module-1.lesson-4";
+
+    const slides = [
+      { title: "Rights and Responsibilities", image: "../../../assets/slides/citizenship-rights/slide-01.png" },
+      { title: "Lesson Objectives", image: "../../../assets/slides/citizenship-rights/slide-02.png" },
+      { title: "Starter Question", image: "../../../assets/slides/citizenship-rights/slide-03.png" },
+      { title: "What Is A Right?", image: "../../../assets/slides/citizenship-rights/slide-04.png" },
+      { title: "What Is A Responsibility?", image: "../../../assets/slides/citizenship-rights/slide-05.png" },
+      { title: "Rights Vs Responsibilities", image: "../../../assets/slides/citizenship-rights/slide-06.png" },
+      { title: "Why Do Schools Have Rules?", image: "../../../assets/slides/citizenship-rights/slide-07.png" },
+      { title: "Scenario Discussion", image: "../../../assets/slides/citizenship-rights/slide-08.png" },
+      { title: "Positive Responsibilities", image: "../../../assets/slides/citizenship-rights/slide-09.png" },
+      { title: "Reflection Task", image: "../../../assets/slides/citizenship-rights/slide-10.png" },
+      { title: "Class Discussion", image: "../../../assets/slides/citizenship-rights/slide-11.png" },
+      { title: "Key Message", image: "../../../assets/slides/citizenship-rights/slide-12.png" },
+    ];
+
+    let currentSlide = 0;
+    let lessonStarted = false;
+
+    const slideImage = document.getElementById("slide-image");
+    const slideCount = document.getElementById("slide-count");
+    const slideThumbs = document.getElementById("slide-thumbs");
+    const prevButton = document.getElementById("prev-slide");
+    const nextButton = document.getElementById("next-slide");
+    const startOverlay = document.getElementById("lesson-start");
+    const startLessonButton = document.getElementById("start-lesson");
+    const completeBtn = document.getElementById("complete-btn");
+
+    const completion = window.EvoLessonCompletion?.bind({
+      progressKey: "citizenship.module-1.lesson-4",
+      lessonId: "lesson-4",
+      btn: completeBtn,
+      mapUrl: "../../../index.html#map/module-1",
+      getState: () => ({ lessonStarted }),
+    });
+
+    function refreshComplete() {
+      completion?.refresh();
+    }
+
+    slides.forEach((slide, index) => {
+      const thumb = document.createElement("button");
+      thumb.className = "lesson-thumb";
+      thumb.type = "button";
+      thumb.style.backgroundImage = `url("${slide.image}")`;
+      thumb.setAttribute("aria-label", `Go to slide ${index + 1}: ${slide.title}`);
+      thumb.addEventListener("click", () => goToSlide(index));
+      slideThumbs.appendChild(thumb);
+    });
+
+    const thumbs = slideThumbs.querySelectorAll(".lesson-thumb");
+
+    function updateNav() {
+      prevButton.disabled = !lessonStarted || currentSlide === 0;
+      nextButton.disabled = !lessonStarted || currentSlide === slides.length - 1;
+
+      thumbs.forEach((thumb, index) => {
+        thumb.classList.toggle("active", index === currentSlide);
+        if (!lessonStarted) {
+          thumb.disabled = true;
+          thumb.classList.add("is-locked");
+        } else {
+          thumb.disabled = false;
+          thumb.classList.remove("is-locked");
+        }
+      });
+    }
+
+    function renderSlide() {
+      const slide = slides[currentSlide];
+      slideImage.src = slide.image;
+      slideImage.alt = slide.title;
+      slideCount.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+      const chatCtx = document.getElementById("chat-context");
+      if (chatCtx) chatCtx.textContent = `Slide ${currentSlide + 1}`;
+      updateNav();
+    }
+
+    function getSlideContext() {
+      const slide = slides[currentSlide];
+      if (!slide) return null;
+      return { slideIndex: currentSlide, title: slide.title || "", note: "" };
+    }
+
+    let lessonChat = null;
+
+    async function initChatPanel(attempt) {
+      if (lessonChat || !window.EvoTutorEngine) {
+        if (!lessonChat && (attempt || 0) < 8) setTimeout(() => initChatPanel((attempt || 0) + 1), 100);
+        return;
+      }
+      lessonChat = window.EvoTutorEngine.initLessonChat({
+        basePath: "../../../",
+        lessonId: "lesson-4",
+        getSlide: getSlideContext,
+        showSource: new URLSearchParams(location.search).has("debug"),
+        onSlideChange: true,
+      });
+      if (lessonChat) await lessonChat.seedGreeting();
+    }
+
+    function goToSlide(target) {
+      if (!lessonStarted || target === currentSlide) return;
+      currentSlide = target;
+      renderSlide();
+      if (lessonChat?.onSlideChanged) lessonChat.onSlideChanged();
+    }
+
+    function changeSlide(offset) {
+      goToSlide(currentSlide + offset);
+    }
+
+    function startLesson() {
+      if (lessonStarted) return;
+      lessonStarted = true;
+      startOverlay.classList.add("is-hidden");
+      updateNav();
+      refreshComplete();
+    }
+
+    prevButton.addEventListener("click", () => changeSlide(-1));
+    nextButton.addEventListener("click", () => changeSlide(1));
+    startLessonButton.addEventListener("click", startLesson);
+
+    
+
+    document.addEventListener("keydown", (event) => {
+      if (event.target.closest("input, textarea, select, button.lesson-complete-btn")) return;
+
+      if (!lessonStarted && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        startLesson();
+        return;
+      }
+
+      if (!lessonStarted) return;
+
+      if (event.key === "ArrowLeft") { event.preventDefault(); changeSlide(-1); }
+      if (event.key === "ArrowRight") { event.preventDefault(); changeSlide(1); }
+    });
+
+    refreshComplete();
+    renderSlide();
+    window.addEventListener("load", () => initChatPanel(0));
+  </script>
+  <script src="../../../assets/js/student-profile.js?v=kb-expand-1"></script>
+  <script src="../../../assets/js/agent-knowledge.js?v=kb-expand-1"></script>
+  <script src="../../../assets/js/tutor-engine.js?v=kb-expand-1"></script>
+  <script src="../../../assets/js/lesson-live-chat.js?v=kb-expand-1"></script>
+    <script src="../../../assets/js/lesson-end-quiz.js?v=quiz-gate-1" data-auto-init></script>
+  <script src="../../../assets/js/lesson-tutor.js"></script>
+</body>
+</html>

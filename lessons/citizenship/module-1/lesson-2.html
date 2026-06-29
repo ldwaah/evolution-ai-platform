@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EVOlearn: Lesson 2</title>
+  <link rel="stylesheet" href="../../../style.css?v=mobile-watertight-1" />
+  <script src="../../../assets/js/lesson-guard.js?v=assessment-lock-1"></script>
+  <style>
+    .lesson-complete-footer { grid-column: 1 / -1; }
+    .lesson-quiz-view.is-active { animation: quiz-enter .4s ease; }
+    @keyframes quiz-enter {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .lesson-quiz-body {
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 8px 4px 12px;
+      min-height: 0;
+    }
+    .lesson-quiz-panel {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .lesson-chat-body { display: flex; flex-direction: column; gap: 8px; overflow-y: auto; min-height: 0; }
+    .chat-msg { max-width: 88%; padding: 9px 13px; border-radius: 14px; font-size: 13.5px; line-height: 1.45; }
+    .chat-msg--agent { align-self: flex-start; background: rgba(90,217,255,.12); border: 1px solid rgba(90,217,255,.22); color: #e8f4fb; border-bottom-left-radius: 4px; }
+    .chat-msg--user { align-self: flex-end; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); color: #fff; border-bottom-right-radius: 4px; }
+    #chat-input { flex: 1; }
+    #chat-send { cursor: pointer; }
+    /* per-slide narration control */
+    #slide-frame { position: relative; }
+    .slide-narrate-btn {
+      position: absolute; left: 14px; bottom: 14px; z-index: 3;
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 10px 18px; border-radius: 999px;
+      font-weight: 600; font-size: 14px; cursor: pointer; color: #08202b; border: none;
+      background: linear-gradient(120deg, #5ad9ff, #7c9cff);
+      box-shadow: 0 10px 26px rgba(0,0,0,.45);
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .slide-narrate-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(90,217,255,.35); }
+    .slide-narrate-btn.is-playing { background: rgba(20,32,42,.86); color: #eaf4fb; backdrop-filter: blur(8px); }
+    .slide-narrate-btn .narrate-icon { font-size: 12px; }
+    .lesson-revision-banner {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 8px 14px; margin: 0 0 4px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      color: #9edcff; background: rgba(90,217,255,.1);
+      border: 1px solid rgba(90,217,255,.22); border-radius: 10px;
+    }
+    .lesson-revision-banner[hidden] { display: none !important; }
+    body[data-lesson-mode="revision"] .lesson-complete-footer,
+    body[data-lesson-mode="revision"] #quiz-view { display: none !important; }
+    body[data-lesson-mode="revision"] .lesson-sidebar {
+      grid-template-rows: auto minmax(0, 1fr) auto;
+    }
+    .lesson-recap-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: clamp(14px, 2vw, 18px);
+      border-radius: var(--radius);
+      border: 1px solid rgba(90,217,255,.28);
+      background: rgba(20,32,42,.82);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 44px rgba(0,0,0,.4);
+    }
+    .lesson-recap-head h2 {
+      font-size: 16px;
+      font-weight: 650;
+      margin: 0 0 4px;
+    }
+    .lesson-recap-hint {
+      margin: 0;
+      font-size: 13px;
+      color: #b7c6d2;
+    }
+    .lesson-recap-hint[hidden] { display: none !important; }
+    .lesson-recap-audio {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .lesson-recap-status {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #b7c6d2;
+    }
+    .lesson-recap-status.is-unlocked,
+    .lesson-recap-status.is-earned { color: #9edcff; }
+    .lesson-recap-status.is-placeholder { color: #ffd0a0; }
+    .lesson-recap-status[hidden] { display: none !important; }
+    .lesson-recap-emblem {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(90,217,255,.1);
+      border: 1px solid rgba(90,217,255,.24);
+    }
+    .lesson-recap-emblem[hidden] { display: none !important; }
+    .lesson-recap-emblem-icon { font-size: 22px; }
+    .lesson-recap-emblem-text {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 600;
+      color: #d8f3ff;
+    }
+    .lesson-nav-arrow.is-audio-locked:disabled {
+      opacity: .28;
+      border-color: rgba(255,255,255,.08);
+      color: rgba(90,217,255,.45);
+    }
+    .lesson-revision-banner {
+      flex: 1;
+      margin: 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-align: center;
+      color: #b8e8ff;
+      background: rgba(90,217,255,.1);
+      border: 1px solid rgba(90,217,255,.22);
+    }
+    .lesson-revision-recap {
+      grid-column: 1 / -1;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body class="lesson-body" data-lesson-id="lesson-2" data-module-id="module-1" data-chat-mode="ai" data-ppt-student="true">
+  <main class="lesson-page">
+    <section class="lesson-main is-presenting" id="lesson-main" aria-label="Lesson content">
+      <header class="lesson-top">
+        <a class="lesson-back" href="../../../index.html#map/module-1">← Back to map</a>
+        <p class="lesson-revision-banner" id="revision-banner" hidden>Revision mode: skim slides freely</p>
+        <span class="lesson-slide-count" id="slide-count" hidden>End quiz</span>
+      </header>
+
+      <div class="lesson-stage" id="lesson-stage">
+        <div class="lesson-start" id="lesson-start">
+          <div class="lesson-start-card">
+            <p class="lesson-start-eyebrow">Citizenship · Module 1 · Lesson 2</p>
+            <h2>Your Rights and Responsibilities</h2>
+            <p class="lesson-start-copy" id="lesson-start-copy">The Rules of the Game. Work through the PowerPoint slides, then complete the end-of-lesson quiz.</p>
+            <button class="lesson-start-btn" type="button" id="start-lesson">Start lesson</button>
+          </div>
+        </div>
+
+        <div class="lesson-presentation-view" id="presentation-view">
+          <article class="lesson-slide-body lesson-slide-body--ppt">
+            <div class="lesson-slide-frame lesson-slide-frame--pure" id="slide-frame">
+              <img id="slide-image" class="ppt-slide-image" src="" alt="" hidden />
+              <button class="slide-narrate-btn" id="slide-narrate" type="button" hidden>
+                <span class="narrate-icon" aria-hidden="true">▶</span><span class="narrate-text">Play narration</span>
+              </button>
+            </div>
+          </article>
+
+          <footer class="lesson-slide-footer" id="ppt-footer">
+            <div class="lesson-nav" aria-label="Slide navigation">
+              <button class="lesson-nav-arrow" type="button" id="prev-slide" aria-label="Previous slide" disabled>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+              </button>
+              <button class="lesson-nav-arrow" type="button" id="next-slide" aria-label="Next slide" disabled>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+              </button>
+            </div>
+          </footer>
+        </div>
+
+        <section class="lesson-revision-recap" id="revision-recap" hidden aria-label="Lesson recap">
+          <article class="lesson-revision-recap-card">
+            <div class="recap-gradient-shell">
+              <div class="lesson-revision-recap-inner">
+                <div class="recap-media-row">
+                  <div class="recap-emblem-frame is-locked" id="recap-emblem-frame">
+                    <img class="recap-emblem-img" id="recap-emblem-img" alt="" hidden />
+                    <div class="recap-emblem-ghost" id="recap-emblem-ghost" aria-hidden="true">
+                      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/><path d="M32 18c-4 0-7 3-7 7s3 7 7 7 7-3 7-7-3-7-7-7zm0 14c-6 0-11 3-11 7v3h22v-3c0-4-5-7-11-7z" fill="currentColor" opacity=".45"/></svg>
+                    </div>
+                    <span class="recap-emblem-lock" id="recap-emblem-lock" aria-hidden="true">🔒</span>
+                  </div>
+                  <div class="recap-player-panel">
+                    <header class="lesson-revision-recap-head">
+                      <p class="recap-eyebrow">Revision mode</p>
+                      <h3>Lesson recap</h3>
+                      <p class="lesson-revision-recap-hint" id="recap-hint">Listen to 90% to unlock your emblem</p>
+                    </header>
+                    <div class="recap-waveform" id="recap-waveform" aria-hidden="true">
+                      <span></span><span></span><span></span><span></span><span></span>
+                      <span></span><span></span><span></span><span></span><span></span>
+                      <span></span><span></span><span></span><span></span><span></span>
+                      <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="recap-controls">
+                      <button class="recap-play-btn" type="button" id="recap-play-btn" aria-label="Play lesson recap">
+                        <svg class="recap-play-icon recap-play-icon--play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="recap-play-icon recap-play-icon--pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+                      </button>
+                      <div class="recap-progress-wrap">
+                        <input class="recap-scrubber" type="range" id="recap-scrubber" min="0" max="100" value="0" step="0.1" aria-label="Recap playback position" />
+                        <span class="recap-time" id="recap-time">0:00 / 0:00</span>
+                      </div>
+                    </div>
+                    <audio class="lesson-revision-recap-audio" id="recap-audio" preload="metadata" hidden></audio>
+                  </div>
+                </div>
+                <p class="lesson-revision-recap-unlocked" id="recap-unlocked" hidden>
+                  <span class="recap-unlocked-spark" aria-hidden="true">✦</span>
+                  Emblem unlocked! Check your profile.
+                </p>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <div class="lesson-quiz-view" id="quiz-view" aria-label="End of lesson quiz">
+          <article class="lesson-slide-body lesson-quiz-body">
+            <div class="lesson-quiz-panel">
+              <div data-lesson-end-quiz></div>
+            </div>
+          </article>
+        </div>
+
+        <footer class="lesson-slide-footer lesson-complete-footer" id="lesson-complete-footer">
+          <div class="lesson-complete-bar">
+            <button class="lesson-complete-btn" type="button" id="complete-btn" disabled>Mark lesson complete ✓</button>
+            <a class="lesson-complete-ghost" href="../../../index.html#map/module-1">Return to map without completing</a>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <aside class="lesson-sidebar" aria-label="Tutor panel">
+      <div class="lesson-avatar-shell">
+        <div class="lesson-avatar-frame" aria-label="Tutor avatar area">
+          <img src="../../../assets/tutors/nova.png" alt="" />
+        </div>
+        <p class="lesson-avatar-label">Your tutor</p>
+      </div>
+
+      <section class="lesson-chat-shell" aria-label="Chat area">
+        <header class="lesson-chat-head">
+          <h2>Ask Nova</h2>
+          <span class="lesson-chat-badge" id="chat-context">Lesson</span>
+        </header>
+        <div class="lesson-chat-body" id="chat-body" aria-live="polite"></div>
+        <div class="lesson-chat-input-shell">
+          <input type="text" id="chat-input" placeholder="Ask Nova about this slide…" aria-label="Ask a question" autocomplete="off" />
+          <button type="button" id="chat-send">Send</button>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <!-- Lesson-complete celebration: lock springs open, then back to the module map -->
+  <div class="unlock-overlay" id="unlock-overlay" role="dialog" aria-modal="true" aria-labelledby="unlock-title" hidden>
+    <div class="unlock-lock-wrap">
+      <span class="unlock-ring" aria-hidden="true"></span>
+      <svg class="unlock-lock" viewBox="0 0 120 120" aria-hidden="true">
+        <path class="shackle" d="M40 56 V42 a20 20 0 0 1 40 0 V56" fill="none"
+              stroke="#cfeefc" stroke-width="9" stroke-linecap="round" />
+        <rect class="lock-body" x="30" y="54" width="60" height="50" rx="13" fill="#8aa0ae" />
+        <circle cx="60" cy="74" r="7" fill="#08202b" />
+        <rect x="56.5" y="78" width="7" height="15" rx="3" fill="#08202b" />
+      </svg>
+    </div>
+    <div class="unlock-text">
+      <p class="unlock-eyebrow">Lesson 2 complete</p>
+      <h2 class="unlock-title" id="unlock-title">Well done!</h2>
+      <p class="unlock-sub">You've finished “Your Rights and Responsibilities.” More lessons are coming soon —
+        head back to your map to keep going.</p>
+    </div>
+    <div class="unlock-actions">
+      <a class="unlock-cta unlock-cta--secondary" id="unlock-revise" href="../../../index.html#citizenship/revision">Go to Revision</a>
+      <button class="unlock-cta" id="unlock-cta" type="button">Continue to map →</button>
+    </div>
+  </div>
+
+  <script src="../../../assets/js/firebase-config.js?v=progress-sync-1"></script>
+  <script src="../../../assets/js/student-auth.js?v=progress-sync-1"></script>
+  <script src="../../../assets/js/student-sync.js?v=progress-sync-1"></script>
+  <script src="../../../assets/js/lesson-ppt-viewer.js?v=revision-recap-2"></script>
+  <script src="../../../assets/js/lesson-worksheet.js?v=revision-recap-2"></script>
+  <script src="../../../assets/js/student-profile.js?v=revision-recap-3"></script>
+  <script src="../../../assets/js/lesson-revision-recap.js?v=revision-recap-3"></script>
+  <script src="../../../assets/js/lesson-completion.js?v=quiz-gate-1"></script>
+  <script>
+    const PROGRESS_KEY = "citizenship.module-1.lesson-2";
+    const REVISION_URL = `${location.pathname}?revision=1`;
+    const revisionRequested = window.EvoLessonPptViewer?.detectRevisionMode?.() ?? false;
+    const lessonComplete = window.EvoLessonPptViewer?.isProgressComplete?.(PROGRESS_KEY) ?? false;
+    const revisionMode = revisionRequested && lessonComplete;
+
+    if (revisionRequested && !lessonComplete) {
+      const url = new URL(location.href);
+      url.searchParams.delete("revision");
+      url.searchParams.delete("mode");
+      location.replace(url.pathname + url.search + url.hash);
+    }
+
+    if (revisionMode) {
+      document.body.dataset.lessonMode = "revision";
+      document.title = "EVOlearn: Lesson 2 (Revision)";
+    }
+
+    const STORE = "evolearn-progress";
+    const PPT_EXPORT_VERSION = "20260628-lesson2-audio-v1";
+    const PPT_BASE = "../../../powerpoint-slides/citizenship/module-1/lesson-2/lesson-two";
+
+    const PPT_TITLES = [
+      "Welcome",
+      "Learning Objectives",
+      "Part One: What Are Rights?",
+      "Rights vs Wants",
+      "Dignity, Liberty and Justice",
+      "The Human Rights Act 1998",
+      "Giving Rights Real Power",
+      "Your Fundamental Liberties",
+      "Part Two: Equality and Fairness",
+      "The Equality Act 2010",
+      "Protected Characteristics",
+      "Direct and Indirect Discrimination",
+      "Fairness at Work",
+      "Protecting Your Rights",
+      "Freedom of Expression",
+      "Rights Have Limits",
+      "Part Three: Rights and Responsibilities",
+      "The Rule of Law",
+      "Police Powers and Stop and Search",
+      "Your Rights If You're Arrested",
+      "Legal Milestones",
+      "Your Responsibilities",
+      "The Justice System",
+      "GCSE Exam Practice",
+    ];
+
+    const QUIZ_INTRO_HINT = "Before the quiz, bring today's learning together: rights and wants, the Human Rights Act, the Equality Act, responsibilities, and the Rule of Law. Citizenship is about your place in society and respecting others.";
+
+    const PPT_NOTES = [
+      "Welcome back to Citizenship. We move from identity to the rules that protect us every day. You have legal rights, but you also have responsibilities.",
+      "Today's goals: define a legal right, learn about the Equality Act 2010, and explore the Rule of Law and how it affects everyone.",
+      "What is a right? Is it earned, given, or protected by law? Every citizen should know their rights so they can recognise when they are respected.",
+      "Wants like a new phone are not legal requirements. Legal rights protect your freedom, safety, and dignity. They apply to everyone in the UK.",
+      "Three ideas at the heart of rights: dignity (respect for every person), liberty (freedom without unnecessary interference), and justice (fair treatment on evidence).",
+      "The Human Rights Act 1998 brought fundamental rights into UK law. Schools, hospitals, councils, and the police must respect your rights in decisions that affect you.",
+      "Rights must be enforceable. You can challenge public bodies in court. Parliament must consider human rights when making new laws.",
+      "The right to liberty means no arrest without lawful reason. The right to a fair trial means an independent court decides on evidence, not assumptions.",
+      "What happens when someone is treated unfairly because of who they are? Equality laws, including the Equality Act 2010, protect people from discrimination.",
+      "The Equality Act 2010 brought many separate anti-discrimination laws together. It makes it illegal to treat people unfairly because of key parts of their identity.",
+      "Protected characteristics include age, disability, race, religion, sex, and sexual orientation. The law recognises these should never be a reason for unfair treatment.",
+      "Direct discrimination is obvious unfair treatment because of a protected characteristic. Indirect discrimination is when a neutral rule puts one group at an unfair disadvantage.",
+      "The Equality Act applies at work. Employers must treat people fairly, pay equally where required, and make reasonable adjustments for staff with disabilities.",
+      "The EHRC and Citizens Advice investigate discrimination and help citizens understand their rights when they believe they have been treated unfairly.",
+      "Freedom of expression lets you share opinions, criticise those in power, and join peaceful protests. It also comes with responsibilities to protect others' rights.",
+      "No right is unlimited. Freedom of expression does not include threats, violence, or spreading hatred towards protected groups.",
+      "Rights come with responsibilities. This section explores what citizens are expected to do and how the justice system keeps communities safe and fair.",
+      "The Rule of Law means everyone must obey the law, from students to the Prime Minister. Justice should apply equally to every citizen.",
+      "Police cannot stop and search you whenever they like. They need reasonable grounds for suspicion and must explain who they are, why they're stopping you, and the legal reason.",
+      "If arrested, you still have rights: free legal advice from a solicitor, someone can be told you've been arrested, and only a court can decide guilt after hearing evidence.",
+      "Key legal ages: 10 (criminal responsibility in England), 16 (greater independence and more legal rights), 18 (vote, jury service, full adult responsibilities).",
+      "Citizenship means responsibilities too: following the law, paying taxes to fund public services, and possibly serving on a jury to help courts decide fairly.",
+      "The justice system exists for fairness: protecting innocent people, holding law-breakers accountable, and making decisions based on evidence, not who you are.",
+      "For longer GCSE answers use Point, Explain, Evidence, Evaluate, Conclude. Weigh whether the Equality Act reduced discrimination against challenges that still exist.",
+    ];
+
+    const slides = PPT_TITLES.map((title, index) => ({
+      title,
+      image: `${PPT_BASE}/${index + 1}.png?v=${PPT_EXPORT_VERSION}`,
+      note: PPT_NOTES[index] || "",
+    }));
+
+    let currentSlide = 0;
+    let lessonStarted = false;
+    let quizActive = false;
+    const AUDIO_BASE = "../../../assets/audio/citizenship/lesson-2";
+    const SCENE_AUDIO = [
+      "scene-01-welcome.mp3",
+      "scene-02-learning-objectives.mp3",
+      "scene-03-part-one-what-are-rights.mp3",
+      "scene-04-rights-vs-wants.mp3",
+      "scene-05-dignity-liberty-and-justice.mp3",
+      "scene-06-human-rights-act.mp3",
+      "scene-07-giving-rights-real-power.mp3",
+      "scene-08-your-fundamental-liberties.mp3",
+      "scene-09-part-two-equality-and-fairness.mp3",
+      "scene-10-the-equality-act-2010.mp3",
+      "scene-11-protected-characteristics.mp3",
+      "scene-12-direct-and-indirect-discrimination.mp3",
+      "scene-13-fairness-at-work.mp3",
+      "scene-14-protecting-your-rights.mp3",
+      "scene-15-freedom-of-expression.mp3",
+      "scene-16-rights-have-limits.mp3",
+      "scene-17-part-three-rights-and-responsibilities.mp3",
+      "scene-18-the-rule-of-law.mp3",
+      "scene-19-police-powers-and-stop-and-search.mp3",
+      "scene-20-your-rights-if-youre-arrested.mp3",
+      "scene-21-legal-milestones.mp3",
+      "scene-22-your-responsibilities.mp3",
+      "scene-23-the-justice-system.mp3",
+      "scene-24-gcse-exam-practice.mp3",
+    ];
+    const QUIZ_INTRO_AUDIO = "scene-25-lesson-reflection.mp3";
+    let quizIntroAudio = null;
+    const visitedSlides = new Set();
+    let highestUnlockedSlide = 0;
+
+    const lessonMain = document.getElementById("lesson-main");
+    const presentationView = document.getElementById("presentation-view");
+    const quizView = document.getElementById("quiz-view");
+    const slideImage = document.getElementById("slide-image");
+    const slideCount = document.getElementById("slide-count");
+    const prevButton = document.getElementById("prev-slide");
+    const nextButton = document.getElementById("next-slide");
+    const startOverlay = document.getElementById("lesson-start");
+    const startLessonButton = document.getElementById("start-lesson");
+    const startCopy = document.getElementById("lesson-start-copy");
+    const revisionBanner = document.getElementById("revision-banner");
+    const completeFooter = document.getElementById("lesson-complete-footer");
+    const btn = document.getElementById("complete-btn");
+    const recapSection = document.getElementById("revision-recap");
+
+    if (revisionMode) {
+      if (revisionBanner) revisionBanner.hidden = false;
+      if (startCopy) {
+        startCopy.textContent = "Skim all slides at your own pace. Tap play for faster narration (1.5×). Then listen to the lesson recap below to earn your emblem.";
+      }
+      if (startLessonButton) startLessonButton.textContent = "Start revision";
+      if (completeFooter) completeFooter.hidden = true;
+      if (recapSection) recapSection.hidden = false;
+      highestUnlockedSlide = slides.length - 1;
+    }
+
+    async function initRevisionRecap() {
+      if (!revisionMode || !window.EvoLessonRevisionRecap) return;
+      await window.EvoLessonRevisionRecap.createRecapController({
+        lessonId: "lesson-2",
+        basePath: "../../../",
+        audioEl: document.getElementById("recap-audio"),
+        hintEl: document.getElementById("recap-hint"),
+        unlockedEl: document.getElementById("recap-unlocked"),
+        emblemFrameEl: document.getElementById("recap-emblem-frame"),
+        emblemImgEl: document.getElementById("recap-emblem-img"),
+        emblemGhostEl: document.getElementById("recap-emblem-ghost"),
+        emblemLockEl: document.getElementById("recap-emblem-lock"),
+        playBtnEl: document.getElementById("recap-play-btn"),
+        scrubberEl: document.getElementById("recap-scrubber"),
+        timeEl: document.getElementById("recap-time"),
+        waveformEl: document.getElementById("recap-waveform"),
+      }).init();
+    }
+
+    const MAP_URL = "../../../index.html#map/module-1";
+
+    const completion = window.EvoLessonCompletion?.bind({
+      progressKey: PROGRESS_KEY,
+      lessonId: "lesson-2",
+      btn,
+      mapUrl: MAP_URL,
+      requireQuizView: true,
+      redirectOnComplete: false, // play the unlock animation first, then navigate
+      getState: () => ({ lessonStarted, quizActive }),
+    });
+
+    function refresh() {
+      completion?.refresh();
+    }
+
+    // After the lesson is marked complete (only possible once the end quiz is
+    // done), celebrate with a lock→unlock animation, then send the student to
+    // the map with Lesson 2 unlocked. This click listener runs after the
+    // completion binding has already recorded the progress.
+    btn.addEventListener("click", () => {
+      if (btn.dataset.celebrated === "true") return;
+      if (!window.EvoLessonCompletion?.getDone?.().has(PROGRESS_KEY)) return;
+      btn.dataset.celebrated = "true";
+      celebrateUnlock();
+    });
+
+    function goToMapWithUnlock() {
+      // Lesson 3 isn't available yet, so finishing just returns to the module map.
+      location.href = MAP_URL;
+    }
+
+    function celebrateUnlock() {
+      const ov = document.getElementById("unlock-overlay");
+      if (!ov) { goToMapWithUnlock(); return; }
+      narration?.stopPlayback?.();
+      stopQuizIntroAudio();
+      ov.hidden = false;
+      requestAnimationFrame(() => ov.classList.add("is-show", "is-shake"));
+      setTimeout(() => { ov.classList.remove("is-shake"); ov.classList.add("is-open"); }, 600);
+      let navigated = false;
+      const go = () => { if (navigated) return; navigated = true; goToMapWithUnlock(); };
+      const cta = document.getElementById("unlock-cta");
+      if (cta) cta.addEventListener("click", go);
+      setTimeout(go, 4300); // auto-advance if the student doesn't click
+    }
+
+    function initEndQuizIfNeeded() {
+      const mount = quizView.querySelector("[data-lesson-end-quiz]");
+      if (!mount || mount.dataset.quizInitialized === "true") return;
+      mount.dataset.quizInitialized = "true";
+      window.EvoLessonEndQuiz?.init?.({
+        lessonId: "lesson-2",
+        moduleId: "module-1",
+        basePath: "../../../",
+        container: mount,
+        completeBtn: btn,
+        getChat: () => lessonChat,
+        onComplete: () => refresh(),
+      });
+    }
+
+    const narrateBtn = document.getElementById("slide-narrate");
+    let worksheetCtrl = null;
+    const slideProgressBar = window.EvoLessonPptViewer?.createSlideProgressBar?.({
+      mountEl: document.getElementById("slide-frame"),
+      position: "bottom",
+    });
+
+    function updateSlideProgress() {
+      if (!slideProgressBar || quizActive || !lessonStarted) {
+        window.EvoLessonPptViewer?.hideSlideProgressBar?.(slideProgressBar);
+        return;
+      }
+      window.EvoLessonPptViewer?.updateSlideProgressBar?.(
+        slideProgressBar,
+        currentSlide,
+        slides.length
+      );
+    }
+
+    const narration = window.EvoLessonPptViewer?.createNarrationController?.({
+      audioBase: AUDIO_BASE,
+      cacheBust: PPT_EXPORT_VERSION,
+      sceneFiles: SCENE_AUDIO,
+      narrateBtn,
+      progressKey: PROGRESS_KEY,
+      revisionMode,
+      playbackRate: 1.5,
+      getSlideIndex: () => currentSlide,
+      isEnabled: () => lessonStarted && !quizActive,
+      onGateChange: () => {
+        if (narration?.canAdvanceForward?.() && worksheetCtrl) {
+          worksheetCtrl.checkAfterNarration?.(currentSlide);
+        }
+        updateNav();
+      },
+    });
+
+    function isWorksheetLocked() {
+      return worksheetCtrl ? !worksheetCtrl.canAdvanceForward() : false;
+    }
+
+    function updateNav() {
+      if (quizActive) return;
+
+      prevButton.disabled = !lessonStarted || currentSlide === 0;
+      const onLastSlide = currentSlide === slides.length - 1;
+      const narrationLocked = revisionMode ? false : (narration ? !narration.canAdvanceForward() : false);
+      const worksheetLocked = revisionMode ? false : isWorksheetLocked();
+      const forwardLocked = narrationLocked || worksheetLocked;
+      nextButton.disabled = !lessonStarted || forwardLocked;
+      nextButton.classList.toggle("is-audio-locked", forwardLocked && !revisionMode);
+      if (revisionMode && onLastSlide) {
+        nextButton.setAttribute("aria-label", "Last slide");
+      } else {
+        nextButton.setAttribute("aria-label", onLastSlide ? "Finish presentation" : "Next slide");
+      }
+
+      refresh();
+    }
+
+    async function renderSlide() {
+      if (quizActive) return;
+
+      const slide = slides[currentSlide];
+      slideImage.hidden = false;
+      slideImage.src = slide.image;
+      slideImage.alt = "";
+
+      await narration?.onSlideShown?.();
+
+      const narrationUnlocked = narration?.canAdvanceForward?.() ?? true;
+      worksheetCtrl?.onSlideShown?.(currentSlide, { narrationUnlocked });
+      if (narrationUnlocked && worksheetCtrl?.hasPendingWorksheet?.(currentSlide)) {
+        worksheetCtrl.checkAfterNarration(currentSlide);
+      }
+
+      updateSlideProgress();
+      updateNav();
+      updateChatContext();
+      if (lessonChat?.onSlideChanged) lessonChat.onSlideChanged();
+    }
+
+    function playQuizIntroAudio() {
+      if (!QUIZ_INTRO_AUDIO) return;
+      quizIntroAudio?.pause?.();
+      const url = `${AUDIO_BASE}/${QUIZ_INTRO_AUDIO}?v=${encodeURIComponent(PPT_EXPORT_VERSION)}`;
+      quizIntroAudio = new Audio(url);
+      quizIntroAudio.play().catch(() => {});
+    }
+
+    function stopQuizIntroAudio() {
+      if (!quizIntroAudio) return;
+      quizIntroAudio.pause();
+      quizIntroAudio = null;
+    }
+
+    async function showQuizIntroMessage() {
+      if (!lessonChat?.pushAgentMessage) return;
+      let intro = QUIZ_INTRO_HINT;
+      try {
+        const payload = await window.EvoAgentKnowledge?.getTopicFull?.("equality-act-discrimination", "../../../");
+        intro = payload?.topic?.quizIntro?.hint || payload?.topic?.quizIntro?.script || intro;
+      } catch { /* use fallback */ }
+      playQuizIntroAudio();
+      await lessonChat.pushAgentMessage(intro, "quiz:intro");
+    }
+
+    function showQuiz() {
+      if (quizActive || revisionMode) return;
+      quizActive = true;
+      narration?.pauseForNavigation?.();
+      narration?.stopPlayback?.();
+      if (narrateBtn) narrateBtn.hidden = true;
+      visitedSlides.add(slides.length - 1);
+
+      quizView.classList.add("is-active");
+      lessonMain.classList.remove("is-presenting");
+
+      window.EvoLessonPptViewer?.hideSlideProgressBar?.(slideProgressBar);
+
+      if (slideCount) {
+        slideCount.hidden = false;
+        slideCount.textContent = "End quiz";
+      }
+
+      initEndQuizIfNeeded();
+      updateChatContext();
+      showQuizIntroMessage();
+      refresh();
+    }
+
+    function goToSlide(target) {
+      if (!lessonStarted || quizActive || target < 0 || target >= slides.length || target === currentSlide) return;
+      if (!revisionMode && target > highestUnlockedSlide + 1) return;
+      currentSlide = target;
+      visitedSlides.add(currentSlide);
+      highestUnlockedSlide = Math.max(highestUnlockedSlide, currentSlide);
+      renderSlide();
+    }
+
+    function changeSlide(offset) {
+      if (!lessonStarted || quizActive) return;
+      if (offset > 0 && narration && !narration.canAdvanceForward()) return;
+      if (offset > 0 && worksheetCtrl?.hasPendingWorksheet?.(currentSlide)) {
+        worksheetCtrl.checkAfterNarration(currentSlide);
+        return;
+      }
+      if (offset > 0 && worksheetCtrl && !worksheetCtrl.canAdvanceForward()) return;
+
+      narration?.pauseForNavigation?.();
+
+      if (offset > 0 && currentSlide === slides.length - 1) {
+        if (revisionMode) return;
+        showQuiz();
+        return;
+      }
+
+      goToSlide(currentSlide + offset);
+    }
+
+    function startLesson() {
+      if (lessonStarted) return;
+      lessonStarted = true;
+      visitedSlides.add(currentSlide);
+      highestUnlockedSlide = Math.max(highestUnlockedSlide, currentSlide);
+      startOverlay.classList.add("is-hidden");
+      renderSlide();
+    }
+
+    prevButton.addEventListener("click", () => changeSlide(-1));
+    nextButton.addEventListener("click", () => changeSlide(1));
+    startLessonButton.addEventListener("click", startLesson);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.target.closest("input, textarea, select, button.lesson-complete-btn")) return;
+
+      if (!lessonStarted && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        startLesson();
+        return;
+      }
+
+      if (!lessonStarted || quizActive) return;
+
+      if (event.key === "ArrowLeft") { event.preventDefault(); changeSlide(-1); }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        changeSlide(1);
+      }
+    });
+
+    const chatContext = document.getElementById("chat-context");
+    const chatInput = document.getElementById("chat-input");
+    const chatSend = document.getElementById("chat-send");
+
+    function updateChatContext() {
+      window.EvoLessonPptViewer?.updateStudentChatBadge?.(chatContext, {
+        quizActive,
+        revisionMode,
+      });
+    }
+
+    function getSlideContext() {
+      if (quizActive) {
+        return { slideIndex: slides.length, title: "End of Lesson Quiz", note: "" };
+      }
+      const slide = slides[currentSlide];
+      if (!slide) return null;
+      return {
+        slideIndex: currentSlide,
+        title: slide.title || "",
+        note: slide.note || "",
+        revisionMode,
+      };
+    }
+
+    let lessonChat = null;
+
+    async function initWorksheetController() {
+      if (worksheetCtrl || !window.EvoLessonWorksheet) return;
+      worksheetCtrl = window.EvoLessonWorksheet.createController({
+        lessonId: "lesson-2",
+        basePath: "../../../",
+        progressKey: PROGRESS_KEY,
+        revisionMode,
+        mountEl: document.getElementById("lesson-stage"),
+        getSlideIndex: () => currentSlide,
+        isEnabled: () => lessonStarted && !quizActive,
+        getChat: () => lessonChat,
+        onGateChange: () => updateNav(),
+      });
+      await worksheetCtrl.init();
+      updateNav();
+    }
+
+    async function initChatPanel(attempt) {
+      if (lessonChat) return;
+      if (!window.EvoTutorEngine) {
+        if ((attempt || 0) < 8) setTimeout(() => initChatPanel((attempt || 0) + 1), 100);
+        return;
+      }
+
+      const ctx = await window.EvoTutorEngine.resolveLessonContext({
+        basePath: "../../../",
+        lessonId: "lesson-2",
+      });
+      const tutorName = ctx?.agent?.name || "your tutor";
+
+      if (chatInput) {
+        chatInput.disabled = false;
+        chatInput.placeholder = revisionMode
+          ? (window.EvoTutorEngine?.revisionChatPlaceholder?.(tutorName) || `Ask ${tutorName} for key facts…`)
+          : `Ask ${tutorName} about this slide…`;
+      }
+      if (chatSend) chatSend.disabled = false;
+
+      const chatBody = document.getElementById("chat-body");
+      if (chatBody) chatBody.innerHTML = "";
+
+      lessonChat = window.EvoTutorEngine.initLessonChat({
+        basePath: "../../../",
+        lessonId: "lesson-2",
+        getSlide: getSlideContext,
+        updateContext: updateChatContext,
+        showSource: new URLSearchParams(location.search).has("debug"),
+        onSlideChange: true,
+        revisionMode,
+        tutorName,
+      });
+      window.__evoLessonChat = lessonChat;
+
+      if (lessonChat) await lessonChat.seedGreeting();
+      updateChatContext();
+    }
+
+    window.addEventListener("load", () => {
+      initChatPanel(0);
+      initWorksheetController();
+      initRevisionRecap();
+      if (revisionMode) startLesson();
+    });
+
+    refresh();
+  </script>
+  <script src="../../../assets/js/agent-knowledge.js?v=kb-expand-1"></script>
+  <script src="../../../assets/js/tutor-engine.js?v=kb-expand-1"></script>
+  <script src="../../../assets/js/lesson-tutor.js"></script>
+  <script src="../../../assets/js/lesson-end-quiz.js?v=quiz-gate-1"></script>
+</body>
+</html>

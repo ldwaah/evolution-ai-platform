@@ -1,0 +1,91 @@
+{
+  "topicId": "uk-constitution-monarchy",
+  "topicTitle": "The UK Constitution and the Monarchy",
+  "moduleId": "module-2",
+  "lessonIds": [
+    "lesson-9"
+  ],
+  "levels": {
+    "1": {
+      "summary": "The UK has a King as head of state, but elected politicians run the government day to day.",
+      "keyPoints": [
+        "The King opens Parliament and meets the PM.",
+        "Constitution = rules about how the country is run.",
+        "UK constitution is mostly unwritten — in laws and conventions."
+      ],
+      "explainLike": "The King is a symbol; MPs and ministers make political decisions."
+    },
+    "2": {
+      "summary": "Key constitutional principles include parliamentary sovereignty, rule of law, and constitutional monarchy.",
+      "keyPoints": [
+        "Parliament can make or unmake any law.",
+        "Monarch acts on advice of ministers — royal prerogative limited.",
+        "Conventions are unwritten rules politicians follow."
+      ],
+      "explainLike": "Gap-fill pattern: sovereignty = Parliament supreme; monarchy = ceremonial + formal roles."
+    },
+    "3": {
+      "summary": "Sources of the UK constitution include statutes (e.g. Parliament Acts), common law, conventions, and EU law (retained after Brexit).",
+      "keyPoints": [
+        "Magna Carta (1215) symbolises limits on power — historical not operative alone.",
+        "Uncodified = flexible but harder to see all rules at once.",
+        "Cabinet manual explains government conventions."
+      ],
+      "explainLike": "One source, one example: Parliament Acts limit Lords — that is written constitutional law."
+    },
+    "4": {
+      "summary": "The monarch's formal powers include granting Royal Assent and appointing PM; in practice ministers decide policy.",
+      "keyPoints": [
+        "Bagehot: monarch has 'right to be consulted, to encourage, to warn'.",
+        "Prerogative powers on treaties and defence exercised by PM/Cabinet.",
+        "Supreme Court can review prerogative use (Miller cases)."
+      ],
+      "explainLike": "Apply: who really decides war or treaties? Executive using prerogative, scrutinised by Parliament and courts."
+    },
+    "5": {
+      "summary": "Explain advantages and disadvantages of an uncodified constitution for democracy and rights.",
+      "keyPoints": [
+        "Flexibility to adapt without difficult amendment process.",
+        "Risk: executive power less visible; conventions can break.",
+        "No single document citizens can easily read."
+      ],
+      "explainLike": "Because/therefore: flexible constitution adapts fast, therefore crises can be managed — but rights may be less entrenched."
+    },
+    "6": {
+      "summary": "Discuss republic versus monarchy arguments in modern UK — cost, symbolism, democracy, tourism, Commonwealth role.",
+      "keyPoints": [
+        "Republicans: hereditary head of state undemocratic.",
+        "Monarchists: stability, continuity, non-partisan symbol.",
+        "Crown neutrality in political debate."
+      ],
+      "explainLike": "Probing question: does monarchy help or hinder democratic equality in 2020s Britain?"
+    },
+    "7": {
+      "summary": "AO exam work: define sovereignty and prerogative (AO1), apply Miller judgement facts (AO2), evaluate uncodified system (AO3).",
+      "keyPoints": [
+        "'Define parliamentary sovereignty' — 2 marks identification + development.",
+        "Miller (2019): prorogation unlawful — courts check executive.",
+        "Evaluate starter for 8-mark questions."
+      ],
+      "explainLike": "Examiner: credit conventions if explained with example — not just 'unwritten rules'."
+    },
+    "8": {
+      "summary": "Analyse constitutional change pressures: devolution, Brexit, judicial review, and proposed reforms.",
+      "keyPoints": [
+        "Brexit highlighted sovereignty debates with devolved nations.",
+        "Bill of Rights proposals and HRA reform.",
+        "Whether codification would strengthen accountability."
+      ],
+      "explainLike": "Weigh flexibility against clarity — use post-2016 events as evidence."
+    },
+    "9": {
+      "summary": "Evaluate whether the UK's constitutional arrangements secure democratic accountability and citizen understanding.",
+      "keyPoints": [
+        "Synthesis: monarchy, Parliament, courts, devolution.",
+        "Judgement on citizen literacy about constitutional rules.",
+        "Grade 8–9 sustained evaluative line."
+      ],
+      "explainLike": "Mastery: constitution as living practice — judge institutions, conventions, and public trust together."
+    }
+  }
+}

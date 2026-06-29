@@ -1,0 +1,91 @@
+{
+  "topicId": "police-courts",
+  "topicTitle": "Police, Magistrates, and Judges",
+  "moduleId": "module-3",
+  "lessonIds": [
+    "lesson-14"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Police help keep people safe and investigate crimes. Courts decide if someone broke the law.",
+      "keyPoints": [
+        "Call 999 in emergencies; 101 for non-emergencies.",
+        "Magistrates are volunteers who hear many cases.",
+        "Judges hear serious cases in Crown Court."
+      ],
+      "explainLike": "Police find facts; courts decide guilt and punishment fairly."
+    },
+    "2": {
+      "summary": "UK police forces are locally organised. CPS prosecutes criminal cases. Courts are independent.",
+      "keyPoints": [
+        "Magistrates' Court: summary offences, some either-way.",
+        "Crown Court: serious crimes, jury trials.",
+        "Supreme Court is highest appeal court for UK law."
+      ],
+      "explainLike": "Model: crime reported → police investigate → CPS charges → court trial."
+    },
+    "3": {
+      "summary": "Police powers include arrest and stop and search — must be used lawfully. Defendants can have lawyers.",
+      "keyPoints": [
+        "PACE 1984 regulates police powers.",
+        "Legal aid may fund defence lawyers.",
+        "Jury of 12 in Crown Court criminal trials."
+      ],
+      "explainLike": "Because police power is strong, therefore law limits how they use it."
+    },
+    "4": {
+      "summary": "Civil courts (County Court, High Court) handle disputes — different from criminal courts.",
+      "keyPoints": [
+        "Claimant versus defendant in civil cases.",
+        "Lower burden of proof in civil cases (balance of probabilities).",
+        "Appeals go to Court of Appeal then Supreme Court."
+      ],
+      "explainLike": "Step: criminal (state v accused) versus civil (person v person) — different courts and outcomes."
+    },
+    "5": {
+      "summary": "Explain how independent courts uphold rule of law and fair trial rights.",
+      "keyPoints": [
+        "Judiciary independent from government pressure.",
+        "Open justice — public hearings where possible.",
+        "HRA Article 6 right to fair trial."
+      ],
+      "explainLike": "Therefore independent judges protect fairness when government or police accuse citizens."
+    },
+    "6": {
+      "summary": "Discuss stop and search — crime prevention versus discrimination concerns.",
+      "keyPoints": [
+        "Section 1 PACE requires reasonable grounds.",
+        "Disproportionate use on minority communities criticised.",
+        "Body-worn cameras increase accountability."
+      ],
+      "explainLike": "Weigh safety benefits against rights and equality impacts."
+    },
+    "7": {
+      "summary": "Exam: outline court structure (AO1), apply process to scenario (AO2), evaluate fairness (AO3).",
+      "keyPoints": [
+        "Magistrates versus district judge.",
+        "AO2: match offence seriousness to court.",
+        "Evaluate access to justice and legal aid cuts."
+      ],
+      "explainLike": "Nia: diagram court hierarchy in words for describe questions."
+    },
+    "8": {
+      "summary": "Analyse court backlogs, digital justice, and diversity of judiciary.",
+      "keyPoints": [
+        "Delays affect justice principle.",
+        "Online pleas and video hearings post-COVID.",
+        "Judicial diversity statistics — representation debates."
+      ],
+      "explainLike": "Examine whether system delivers equal justice in practice."
+    },
+    "9": {
+      "summary": "Evaluate whether UK policing and courts secure justice for all communities.",
+      "keyPoints": [
+        "Synthesis: rule of law, equality, youth justice.",
+        "Institutional bias evidence and reform proposals.",
+        "Substantiated judgement."
+      ],
+      "explainLike": "Mastery: institutions on paper versus trust in communities."
+    }
+  }
+}

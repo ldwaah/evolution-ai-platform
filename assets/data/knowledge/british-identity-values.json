@@ -1,0 +1,1406 @@
+{
+  "topicId": "british-identity-values",
+  "topicTitle": "British Identity and Values",
+  "moduleId": "module-1",
+  "lessonIds": [
+    "lesson-1"
+  ],
+  "keywords": [
+    "tolerance",
+    "respect",
+    "England",
+    "Scotland",
+    "Wales",
+    "Northern Ireland",
+    "identity",
+    "British values",
+    "community",
+    "migration",
+    "cohesion",
+    "multicultural",
+    "digital identity",
+    "Commonwealth",
+    "smartphone",
+    "home screen",
+    "Windrush",
+    "push factor",
+    "pull factor",
+    "post-war",
+    "Caribbean",
+    "NHS",
+    "Parliament",
+    "borough",
+    "diversity",
+    "slang",
+    "MLE",
+    "reggae",
+    "ska",
+    "democracy",
+    "rule of law",
+    "individual liberty"
+  ],
+  "aliases": [
+    "four nations",
+    "four countries",
+    "British values",
+    "who am I",
+    "life in modern Britain"
+  ],
+  "faqs": [
+    {
+      "patterns": [
+        "what is identity",
+        "what does identity mean",
+        "define identity"
+      ],
+      "levelMax": 3,
+      "answer": "Identity means who you feel you are. It can include your roles, background, and the communities you belong to."
+    },
+    {
+      "patterns": [
+        "what is tolerance",
+        "what does tolerance mean"
+      ],
+      "levelMax": 4,
+      "answer": "Tolerance means accepting that other people may think, believe, or live differently from you, and treating them fairly anyway."
+    },
+    {
+      "patterns": [
+        "what is an og",
+        "what does og mean",
+        "i am an og"
+      ],
+      "answer": "OG usually means original. Someone who has been part of something from the start. On this lesson we are talking about identity in the UK: who you are can include many roles and backgrounds at once."
+    },
+    {
+      "patterns": [
+        "four countries",
+        "four nations",
+        "what countries make up the uk",
+        "what is the uk made of"
+      ],
+      "answer": "The UK is made up of England, Scotland, Wales, and Northern Ireland."
+    },
+    {
+      "patterns": [
+        "what is multiple identity",
+        "multiple identity"
+      ],
+      "answer": "Multiple identity means feeling connected to more than one culture, country, or role at the same time. For example British and Scottish, or a student and a footballer."
+    },
+    {
+      "patterns": [
+        "what is a local community",
+        "local community"
+      ],
+      "answer": "A local community is the area, people, and places where you live your daily life. Your neighbourhood, school, and local shops."
+    },
+    {
+      "patterns": [
+        "what is migration",
+        "what does migration mean",
+        "define migration"
+      ],
+      "answer": "Migration is when people move from one place to another to live. The UK has been shaped by people migrating here and sharing their culture, food, music, and language."
+    },
+    {
+      "patterns": [
+        "push and pull factors",
+        "what are push and pull factors",
+        "what is a push factor",
+        "what is a pull factor",
+        "push factor",
+        "pull factor"
+      ],
+      "answer": "Push factors are reasons people leave a place. Like war, danger, or no jobs. Pull factors are reasons that attract them somewhere new. Like jobs, safety, or family. People often move because of both."
+    },
+    {
+      "patterns": [
+        "what is the windrush",
+        "windrush generation",
+        "who were the windrush",
+        "what was windrush"
+      ],
+      "answer": "The Windrush generation were people invited from the Caribbean from 1948 onwards to help rebuild Britain after World War II. They are named after the ship that brought many of them, the Empire Windrush."
+    },
+    {
+      "patterns": [
+        "why did people come to the uk after the war",
+        "post-war migration",
+        "why did people migrate after the war",
+        "post war rebuilding"
+      ],
+      "answer": "After World War II the UK needed lots of workers to rebuild roads, factories, hospitals and transport. The government invited people from the Commonwealth, including the Caribbean and South Asia, to help."
+    },
+    {
+      "patterns": [
+        "what are british values",
+        "british values",
+        "what is a british value"
+      ],
+      "answer": "The four fundamental British values are democracy, the rule of law, individual liberty, and mutual respect and tolerance. They are shared principles for living together fairly. Not about how someone looks."
+    },
+    {
+      "patterns": [
+        "what is wider uk society",
+        "wider uk society",
+        "what is national society"
+      ],
+      "answer": "Wider UK society is the big picture beyond your local area. The laws everyone follows, the UK Parliament, and national services like the NHS."
+    },
+    {
+      "patterns": [
+        "what is a borough",
+        "what does borough mean"
+      ],
+      "answer": "A borough is a local district, especially in cities like London. It is part of your local community, with its own council and local services."
+    },
+    {
+      "patterns": [
+        "what does parliament do",
+        "what is parliament"
+      ],
+      "answer": "Parliament is where laws are made for the whole UK. It is part of wider UK society, not just your local area."
+    },
+    {
+      "patterns": [
+        "what is the nhs",
+        "what does the nhs do"
+      ],
+      "answer": "The NHS (National Health Service) provides healthcare for everyone in the UK, usually free when you need it. It is a national service that is part of wider UK society."
+    },
+    {
+      "patterns": [
+        "what is mle",
+        "multicultural london english",
+        "what is slang",
+        "where does slang come from"
+      ],
+      "answer": "Multicultural London English (MLE) is a modern way of speaking that mixes English with Caribbean Patois, South Asian and other influences. It shows how migration has shaped everyday language."
+    },
+    {
+      "patterns": [
+        "what is ska",
+        "what is reggae",
+        "what music came from migration",
+        "how did migration change music"
+      ],
+      "answer": "Caribbean migration brought music like ska and reggae to the UK. These influenced later home-grown British genres such as grime and drill. Music shaped by many cultures mixing together."
+    },
+    {
+      "patterns": [
+        "is fish and chips british",
+        "where does british food come from",
+        "what foods came from migration"
+      ],
+      "answer": "British food has global roots. Even fish and chips has migrant influences. Foods like curry and kebabs are everyday UK favourites today because of migration."
+    },
+    {
+      "patterns": [
+        "why is identity unique",
+        "what makes me unique",
+        "why am i unique"
+      ],
+      "answer": "Your identity is unique because no one else has your exact mix of roles, background, interests and experiences. A bit like your phone home screen being set up just for you."
+    },
+    {
+      "patterns": [
+        "what is diversity",
+        "what does multicultural mean",
+        "what is a multicultural society"
+      ],
+      "answer": "A multicultural society is one where people from many different cultures and backgrounds live together. The modern UK is multicultural, with people from almost every country on Earth."
+    },
+    {
+      "patterns": [
+        "what is mutual respect",
+        "what does respect mean",
+        "what is respect"
+      ],
+      "answer": "Mutual respect means treating other people fairly and politely, even when you disagree with them or they live differently from you."
+    }
+  ],
+  "slides": {
+    "0": {
+      "title": "Welcome to Citizenship",
+      "terms": [
+        "citizenship",
+        "identity",
+        "modern Britain",
+        "community",
+        "who are you",
+        "belonging"
+      ],
+      "hint": "Welcome slide. This lesson explores who we are, where we belong, and what it means to live in modern Britain. Identity is more than your name or where you come from.",
+      "script": "Welcome to your very first Citizenship lesson. Over the next few weeks, we're going to explore some of the biggest questions about who we are, where we belong, and what it means to live in modern Britain. This isn't just a lesson about politics or laws. It's about you. Every one of us has a unique story, shaped by our family, friends, interests, experiences, and the communities around us. By the end of today's lesson, you'll understand why identity is much more than just your name or where you come from. So, let's begin with one simple question that isn't quite as easy to answer as it sounds: Who are you?",
+      "opener": "Welcome to your first Citizenship lesson. We will explore who we are and where we belong in modern Britain. Starting with one big question: Who are you?",
+      "faqs": [
+        {
+          "patterns": [
+            "what is this lesson about",
+            "what will we learn",
+            "what is citizenship"
+          ],
+          "answer": "This Citizenship lesson explores who we are, where we belong, and what it means to live in modern Britain. It is about you. Your story, your community, and your identity."
+        },
+        {
+          "patterns": [
+            "who are you",
+            "who am i",
+            "what is the question"
+          ],
+          "answer": "Who are you? sounds simple, but identity is much more than your name or where you come from. It includes your family, friends, interests, experiences, and communities."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know",
+            "no idea"
+          ],
+          "answer": "That is okay. Who you are is a big question. Start with small pieces: your name, your interests, your friends, or your family. Identity is built from many parts, not just one fact."
+        }
+      ]
+    },
+    "1": {
+      "title": "Who Are We?",
+      "terms": [
+        "identity",
+        "family",
+        "culture",
+        "hobbies",
+        "beliefs",
+        "friends",
+        "who are we",
+        "story"
+      ],
+      "hint": "Identity cannot be explained in one sentence. It is made up of many parts that shape who we are as individuals and the communities we belong to.",
+      "script": "Who are we? It sounds like a simple question, doesn't it? But if someone genuinely asked you to describe yourself, where would you begin? Would you talk about your family, your culture, your hobbies, your beliefs, or your friends? The truth is, identity isn't something that can be explained in just one sentence. It's made up of many different parts that come together to tell your story. Throughout this lesson, we'll explore those different parts and discover how they help shape not only who we are as individuals, but also the communities and society we belong to.",
+      "faqs": [
+        {
+          "patterns": [
+            "where would i begin",
+            "how do i describe myself",
+            "what would i talk about"
+          ],
+          "answer": "You might begin with your family, culture, hobbies, beliefs, or friends. There is no single right order. Identity is many parts that together tell your story."
+        },
+        {
+          "patterns": [
+            "what is identity",
+            "what does identity mean",
+            "define identity"
+          ],
+          "answer": "Identity is who you really are. Made up of many parts like family, culture, hobbies, beliefs, and friends. It cannot be explained in just one sentence."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know",
+            "not sure who i am",
+            "no idea"
+          ],
+          "answer": "That is fine. Many people find this hard at first. Try one small step: name your family, one hobby, one belief, or one friend. Each piece helps build your identity picture."
+        }
+      ]
+    },
+    "2": {
+      "title": "Part One: Individual Identity",
+      "terms": [
+        "individual identity",
+        "experiences",
+        "challenges",
+        "successes",
+        "community",
+        "citizenship",
+        "unique"
+      ],
+      "hint": "Before communities or the UK, we need to understand ourselves. Every person has lived a different life shaped by experiences, challenges, and successes.",
+      "script": "Let's begin with the first part of our lesson: understanding individual identity. Before we can understand communities, citizenship, or even the United Kingdom itself, we first need to understand ourselves. Every person in this room has lived a different life. You've had different experiences, met different people, faced different challenges, and celebrated different successes. All of those moments help shape your identity. As we work through this first section, I'd like you to keep thinking about one question: What has made you the person you are today?",
+      "opener": "Every person has lived a different life. Keep thinking: what has made you the person you are today?",
+      "faqs": [
+        {
+          "patterns": [
+            "what has made me",
+            "what made me who i am",
+            "what shaped me"
+          ],
+          "answer": "Your experiences, the people you have met, the challenges you have faced, and the successes you have celebrated all help shape who you are today."
+        },
+        {
+          "patterns": [
+            "what makes up identity",
+            "pieces of identity",
+            "what is individual identity"
+          ],
+          "answer": "Individual identity is built through your experiences, the people you meet, the challenges you face, and the successes you celebrate. No two people have exactly the same mix."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know",
+            "can't think of any",
+            "cant think of any"
+          ],
+          "answer": "Try listing one moment at a time: a challenge you faced, a success you celebrated, or someone who influenced you. Each piece helps answer what has made you who you are."
+        }
+      ]
+    },
+    "3": {
+      "title": "A Big Question",
+      "terms": [
+        "who are you",
+        "name",
+        "family",
+        "hobbies",
+        "culture",
+        "identity pieces",
+        "unique"
+      ],
+      "hint": "If someone asked you 'Who are you?' in the street, there is no single correct answer. Identity is made up of many different pieces that fit together.",
+      "script": "Before we look at the United Kingdom, its history, or even the map, let's begin with the most important person in today's lesson: you. Imagine someone stopped you in the street and asked, \"Who are you?\" How would you answer? Would you talk about your name, your family, your hobbies, your culture, or the people who matter most to you? There isn't one correct answer, because identity is made up of many different pieces. Throughout this lesson, you'll discover how those pieces fit together to create the unique person you are today.",
+      "faqs": [
+        {
+          "patterns": [
+            "how would i answer",
+            "what would i say",
+            "who are you question"
+          ],
+          "answer": "You might talk about your name, family, hobbies, culture, or the people who matter most to you. There is no one correct answer. Identity has many pieces."
+        },
+        {
+          "patterns": [
+            "is there one correct answer",
+            "one right answer",
+            "correct answer"
+          ],
+          "answer": "No. There is not one correct answer. Identity is made up of many different pieces that fit together to create the unique person you are."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know",
+            "no idea how to answer"
+          ],
+          "answer": "That is okay. Start with one piece: your name, one hobby, one person who matters to you, or your family. Each piece helps build your answer."
+        }
+      ]
+    },
+    "4": {
+      "title": "The Teacher's Layers",
+      "terms": [
+        "layers",
+        "roles",
+        "teacher",
+        "parent",
+        "friend",
+        "identity",
+        "genuine"
+      ],
+      "hint": "Identity is like layers, not a single label. Different parts become more noticeable depending on where you are and who you are with.",
+      "script": "Think of identity like layers rather than a single label. Depending on where you are and who you're with, different parts of your identity become more noticeable. For example, in this classroom I'm your teacher. At home, I might be a parent, a brother, a friend, or even someone learning a new skill myself. None of those roles are fake. They're all genuine parts of who I am. The same is true for you. Your identity isn't just one thing; it's a combination of many different roles that together make you unique.",
+      "faqs": [
+        {
+          "patterns": [
+            "what are layers of identity",
+            "identity layers",
+            "layers not label"
+          ],
+          "answer": "Layers of identity mean you are many things at once. Not just one label. Different parts become more noticeable depending on where you are and who you are with."
+        },
+        {
+          "patterns": [
+            "are my roles fake",
+            "pretending to be someone",
+            "fake identity"
+          ],
+          "answer": "No. Your different roles are all genuine parts of who you are. Being a student at school and a sibling at home are both real, not pretending."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know",
+            "what are my roles"
+          ],
+          "answer": "Think about where you are right now: at school you might be a student; at home you might be a son, daughter, or sibling. Each role is a real layer of who you are."
+        }
+      ]
+    },
+    "5": {
+      "title": "Your Family Roles",
+      "terms": [
+        "family",
+        "son",
+        "daughter",
+        "sibling",
+        "brother",
+        "sister",
+        "responsibility",
+        "patience",
+        "kindness"
+      ],
+      "hint": "Identity begins to develop at home. Family roles like son, daughter, or sibling teach qualities such as patience, kindness, and responsibility.",
+      "script": "One of the first places our identity begins to develop is at home. Within our families, we all have different roles. You might be a son or daughter, a brother or sister, or perhaps an older sibling who helps look after younger family members. Some people even help care for parents or grandparents. These responsibilities often teach us valuable qualities such as patience, kindness, teamwork, and responsibility. Every family is different, but the role you play at home helps shape the way you see yourself and how you interact with other people every day.",
+      "faqs": [
+        {
+          "patterns": [
+            "what family roles",
+            "family roles",
+            "roles at home"
+          ],
+          "answer": "At home you might be a son or daughter, a brother or sister, or someone who helps care for younger siblings or grandparents. Each role shapes how you see yourself."
+        },
+        {
+          "patterns": [
+            "what do family roles teach",
+            "patience kindness responsibility",
+            "what qualities"
+          ],
+          "answer": "Family responsibilities often teach patience, kindness, teamwork, and responsibility. Qualities that shape how you interact with other people every day."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know",
+            "no family role"
+          ],
+          "answer": "Every family is different, but you almost certainly have a role. Even being the youngest or oldest child counts. Think about who you are at home."
+        }
+      ]
+    },
+    "6": {
+      "title": "The Parent Role",
+      "terms": [
+        "parent",
+        "guardian",
+        "guidance",
+        "protection",
+        "support",
+        "responsibility",
+        "identity changes"
+      ],
+      "hint": "Becoming a parent or guardian is one of the biggest parts of adult identity. It influences choices every day, even if you are not a parent yourself yet.",
+      "script": "As people grow older, their identity often changes. For many adults, becoming a parent or guardian becomes one of the biggest parts of who they are. Looking after a child isn't simply another responsibility. It's a role that influences the choices they make every single day. They provide guidance, protection, encouragement, and support, often putting someone else's needs before their own. Even if you aren't a parent yourself, this shows that our identities continue to develop throughout life as our responsibilities and experiences grow.",
+      "faqs": [
+        {
+          "patterns": [
+            "why is being a parent important",
+            "parent role identity",
+            "parent identity"
+          ],
+          "answer": "For many adults, being a parent or guardian becomes one of the biggest parts of who they are. It influences their daily choices. Providing guidance, protection, and support."
+        },
+        {
+          "patterns": [
+            "does identity change",
+            "identity develop over life",
+            "identity keep changing"
+          ],
+          "answer": "Yes. Identities continue to develop throughout life as responsibilities and experiences grow. Becoming a parent is one example of how identity changes over time."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know",
+            "i'm not a parent"
+          ],
+          "answer": "That is fine. You do not need to be a parent yet. This slide shows that identity keeps developing as people take on new responsibilities throughout life."
+        }
+      ]
+    },
+    "7": {
+      "title": "The Student Role",
+      "terms": [
+        "student",
+        "learning",
+        "skills",
+        "resilience",
+        "confidence",
+        "homework",
+        "questions"
+      ],
+      "hint": "Being a student means more than sitting in class. It is about learning, developing skills, asking questions, and building resilience and confidence.",
+      "script": "Right now, one of your most important roles is being a student. That means far more than simply sitting in a classroom or completing homework. Being a student is about learning new ideas, developing skills, solving problems, asking questions, and becoming more confident every day. Sometimes learning feels easy, and sometimes it's challenging, but every experience helps you grow. The knowledge, resilience, and confidence you build now won't just help you pass exams. They'll help prepare you for opportunities and challenges you'll face throughout your future.",
+      "faqs": [
+        {
+          "patterns": [
+            "what does being a student mean",
+            "student role",
+            "more than homework"
+          ],
+          "answer": "Being a student means learning new ideas, developing skills, solving problems, asking questions, and becoming more confident. Not just sitting in class or doing homework."
+        },
+        {
+          "patterns": [
+            "why does school matter",
+            "why be a student",
+            "what does school prepare me for"
+          ],
+          "answer": "The knowledge, resilience, and confidence you build as a student prepare you for opportunities and challenges throughout your future. Not just exams."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know",
+            "school is hard",
+            "learning is hard"
+          ],
+          "answer": "That is normal. Sometimes learning feels easy and sometimes it is challenging. Every experience, even hard ones, helps you grow and build resilience."
+        }
+      ]
+    },
+    "8": {
+      "title": "Many Roles, One Person",
+      "terms": [
+        "multiple identity",
+        "Londoner",
+        "football fan",
+        "gamer",
+        "British citizen",
+        "diversity",
+        "roles"
+      ],
+      "hint": "You can be a Londoner, football fan, gamer, sibling, and British citizen all at once. This is multiple identity, and different parts matter more in different situations.",
+      "script": "Here's something interesting to think about. Can you be a Londoner, a football fan, a gamer, a brother or sister, and a British citizen all at the same time? Of course you can. This is called having multiple identities. Different parts of your identity become more important depending on the situation you're in, but together they all make up the person you are. Understanding that everyone has multiple identities helps us appreciate diversity, respect different experiences, and realise that there's always much more to a person than what we first see.",
+      "faqs": [
+        {
+          "patterns": [
+            "can i be many things",
+            "multiple identities",
+            "many roles one person",
+            "londoner and british"
+          ],
+          "answer": "Yes. You can be a Londoner, football fan, gamer, sibling, and British citizen all at the same time. This is called having multiple identities."
+        },
+        {
+          "patterns": [
+            "what is multiple identity",
+            "multiple identity meaning"
+          ],
+          "answer": "Multiple identity means feeling connected to more than one role, culture, or community at the same time. Different parts become more important depending on the situation."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know",
+            "what are my identities"
+          ],
+          "answer": "List a few roles: where you live, a hobby you love, your family role, and your nationality. You probably have more identities than you first realise."
+        }
+      ]
+    },
+    "9": {
+      "title": "100% Unique",
+      "terms": [
+        "unique",
+        "phone",
+        "home screen",
+        "identity",
+        "interests",
+        "choices"
+      ],
+      "hint": "Like your phone home screen, your identity is unique. Built from interests, relationships, experiences, beliefs, and choices.",
+      "script": "Now think about your smartphone for a moment. If someone unlocked it and looked at your home screen, what would they learn about you? They might notice your favourite apps, your wallpaper, the music you listen to, the games you play, or the people you message the most. No two phones are exactly alike because every person customises theirs differently. Identity works in much the same way. It's built from your interests, relationships, experiences, beliefs, and choices. Just like your home screen tells a story about you, your identity reflects the unique person you are becoming every single day.",
+      "opener": "Think about your phone home screen. What would it tell someone about you?",
+      "faqs": [
+        {
+          "patterns": [
+            "why is my phone like identity",
+            "phone home screen identity",
+            "smartphone identity"
+          ],
+          "answer": "Your phone home screen is customised just for you. Apps, wallpaper, music, games, and contacts. Identity works the same way: no two people have the exact same mix of interests, relationships, and experiences."
+        },
+        {
+          "patterns": [
+            "what makes me unique",
+            "why am i unique",
+            "am i unique"
+          ],
+          "answer": "You are unique because your mix of interests, relationships, experiences, beliefs, and choices is yours alone. Like a phone home screen set up just for you."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Pick one thing on your phone. A game, a song, or a person you message. That already tells part of your identity story."
+        }
+      ]
+    },
+    "10": {
+      "title": "Constant Connection",
+      "terms": [
+        "digital identity",
+        "online",
+        "social media",
+        "gaming",
+        "communities"
+      ],
+      "hint": "Your digital life connects you to communities. What you follow, like, and share shapes your digital identity.",
+      "script": "How much time do you spend online every day? Whether you're gaming, watching videos, chatting with friends, or scrolling through social media, your digital life connects you to lots of different communities. The things you choose to follow, like, comment on, or share often reveal something about your interests and personality. That's why we talk about having a digital identity. Just like in the real world, your behaviour online shapes how other people see you. Every post and every comment leaves an impression, so making positive choices online is just as important as making them face to face.",
+      "opener": "Your online choices. What you follow, like, and share. Are part of your digital identity.",
+      "faqs": [
+        {
+          "patterns": [
+            "what is digital identity",
+            "digital identity",
+            "online identity"
+          ],
+          "answer": "Digital identity is who you are and how others see you online. Through what you follow, like, comment on, and share. It is part of your overall identity."
+        },
+        {
+          "patterns": [
+            "does social media affect identity",
+            "social media identity",
+            "online behaviour"
+          ],
+          "answer": "Yes. Your behaviour online shapes how other people see you. Every post and comment leaves an impression, so positive choices online matter just as much as face to face."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Think about one app you use most. Gaming, videos, or chat. The communities and content you choose there are part of your digital identity."
+        }
+      ]
+    },
+    "11": {
+      "title": "Part 2: The UK Story",
+      "terms": [
+        "UK story",
+        "part 2",
+        "migration",
+        "shared history",
+        "diverse society"
+      ],
+      "hint": "Part 2 moves from individual identity to how migration has shaped Britain's shared history and diverse society.",
+      "script": "Now let's zoom out. We've explored your identity as an individual, but what about the identity of the country we live in? Just like people, countries have stories too. The United Kingdom wasn't built overnight. Over thousands of years, people from different places have travelled here, settled here, and helped shape the nation we know today. In this next section, we'll explore how migration has influenced Britain and why understanding our shared history helps us understand the diverse society we live in today.",
+      "opener": "Countries have stories too. Let's explore how migration has shaped modern Britain.",
+      "faqs": [
+        {
+          "patterns": [
+            "what is part 2 about",
+            "uk story",
+            "country identity"
+          ],
+          "answer": "Part 2 looks at Britain's identity as a country. How migration over thousands of years has shaped the diverse society we live in today."
+        },
+        {
+          "patterns": [
+            "why does migration matter for britain",
+            "how did migration shape britain"
+          ],
+          "answer": "People from different places have travelled to Britain, settled, and helped shape the nation. Understanding this shared history helps explain modern Britain's diversity."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Part 2 is about Britain's story. How people moving here over time helped create the country we know today."
+        }
+      ]
+    },
+    "12": {
+      "title": "People On The Move",
+      "terms": [
+        "migration",
+        "movement",
+        "people",
+        "skills",
+        "traditions",
+        "cultures"
+      ],
+      "hint": "Migration means people moving to live somewhere new. It has shaped the UK for thousands of years.",
+      "script": "Migration simply means people moving from one place to another to live. Sometimes people move to another town, while others move across the world to begin a completely new life. This has been happening for thousands of years, long before modern countries even existed. In fact, migration has played a huge role in shaping the United Kingdom. Different groups of people have brought new skills, ideas, traditions, languages, and cultures that have influenced the way Britain has grown. Without migration, the country we know today would look very different.",
+      "opener": "Migration means people moving to live somewhere new. And it has shaped Britain for thousands of years.",
+      "faqs": [
+        {
+          "patterns": [
+            "what is migration",
+            "what does migration mean",
+            "define migration"
+          ],
+          "answer": "Migration means people moving from one place to another to live. It has happened for thousands of years and has shaped the UK through new skills, ideas, traditions, and cultures."
+        },
+        {
+          "patterns": [
+            "has migration always happened",
+            "migration thousands of years"
+          ],
+          "answer": "Yes. People have moved to live in new places for thousands of years, long before modern countries existed. Migration is not a recent thing."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Migration simply means moving to live somewhere new. Different groups brought skills, food, music, and languages that changed Britain."
+        }
+      ]
+    },
+    "13": {
+      "title": "Push and Pull",
+      "terms": [
+        "push factor",
+        "pull factor",
+        "war",
+        "jobs",
+        "safety",
+        "migration"
+      ],
+      "hint": "People migrate because of push factors (war, poverty) and pull factors (jobs, safety, education).",
+      "script": "So why do people leave one country and move to another? Usually, it's because of what geographers call push factors and pull factors. Push factors are the difficult things that force people to leave, such as war, conflict, poverty, natural disasters, or a lack of jobs. Pull factors are the opportunities that attract people somewhere new, like safety, education, employment, healthcare, or a better future for their families. Most people don't move because of just one reason. Instead, they're often pushed away from hardship while being pulled towards new opportunities.",
+      "faqs": [
+        {
+          "patterns": [
+            "push and pull factors",
+            "what are push and pull factors",
+            "what is a push factor",
+            "what is a pull factor"
+          ],
+          "answer": "Push factors force people to leave. Like war, poverty, or no jobs. Pull factors attract them somewhere new. Like safety, education, or employment. Most people move because of both."
+        },
+        {
+          "patterns": [
+            "why do people migrate",
+            "why do people move countries"
+          ],
+          "answer": "People usually migrate because push factors (hardship at home) and pull factors (opportunities elsewhere) work together. Not just one reason."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Push = reasons to leave (war, no jobs). Pull = reasons to go somewhere new (safety, work). Both often apply at once."
+        }
+      ]
+    },
+    "14": {
+      "title": "Post-War Rebuilding",
+      "terms": [
+        "post-war",
+        "WWII",
+        "rebuilding",
+        "Commonwealth",
+        "workers"
+      ],
+      "hint": "After WWII Britain needed workers to rebuild. The government invited people from across the Commonwealth.",
+      "script": "After the Second World War, Britain faced a huge challenge. Much of the country needed rebuilding, and there simply weren't enough workers to do the job. Roads, railways, hospitals, factories, and public services all needed people. To help rebuild the country, the government encouraged people from across the Commonwealth to come and live and work in the UK. Thousands accepted the invitation, bringing valuable skills and experience. Their hard work helped rebuild Britain and left a lasting impact that can still be seen in communities across the country today.",
+      "faqs": [
+        {
+          "patterns": [
+            "why did people come after the war",
+            "post-war migration",
+            "why migrate after ww2",
+            "commonwealth workers"
+          ],
+          "answer": "After WWII Britain needed workers to rebuild roads, railways, hospitals, and factories. The government invited people from across the Commonwealth to come and help."
+        },
+        {
+          "patterns": [
+            "what is the commonwealth",
+            "commonwealth migration"
+          ],
+          "answer": "The Commonwealth is a group of countries linked to Britain's history. After the war, the UK encouraged people from Commonwealth countries to come and work here."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "After the war Britain needed more workers. The government asked people from Commonwealth countries to come and help rebuild."
+        }
+      ]
+    },
+    "15": {
+      "title": "The Windrush Generation",
+      "terms": [
+        "Windrush",
+        "Caribbean",
+        "Empire Windrush",
+        "1948",
+        "NHS"
+      ],
+      "hint": "The Windrush generation arrived from the Caribbean from 1948. They helped rebuild Britain and shaped modern UK culture.",
+      "script": "One of the most important moments in modern British history happened in 1948, when the HMT Empire Windrush arrived carrying passengers from the Caribbean. Many had answered Britain's call for workers after the war and went on to work in the NHS, public transport, factories, and other essential services. They helped rebuild the country while also bringing rich traditions, music, food, and culture. Today, we remember the Windrush Generation for its enormous contribution to Britain and recognise the important role it played in shaping the diverse country we live in today.",
+      "faqs": [
+        {
+          "patterns": [
+            "what is the windrush",
+            "windrush generation",
+            "who were the windrush",
+            "empire windrush"
+          ],
+          "answer": "The Windrush generation were people who came from the Caribbean from 1948 onwards, named after the ship Empire Windrush. They worked in the NHS, transport, and factories, and brought music, food, and culture."
+        },
+        {
+          "patterns": [
+            "what did windrush generation do",
+            "windrush contribution"
+          ],
+          "answer": "They helped rebuild post-war Britain in essential jobs like the NHS and transport, while bringing Caribbean traditions, music, and food that shaped modern British culture."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Windrush refers to Caribbean people who came to Britain from 1948 to help rebuild after the war. They worked in hospitals, buses, and factories."
+        }
+      ]
+    },
+    "16": {
+      "title": "Growth Through the Decades",
+      "terms": [
+        "South Asia",
+        "East Africa",
+        "1960s",
+        "1980s",
+        "communities",
+        "diversity"
+      ],
+      "hint": "Through the 60s-80s, communities from South Asia and East Africa transformed towns and cities across Britain.",
+      "script": "Migration to Britain continued throughout the 1960s, 1970s, and 1980s, with many people arriving from South Asia and East Africa. Some came to reunite with family, while others arrived to work, study, or build a better future. As these communities settled, they transformed towns and cities across the country, especially places like London, Birmingham, and Leicester. They opened businesses, introduced new traditions, strengthened local economies, and added to Britain's cultural life. Today, these communities remain an important part of what makes modern Britain such a diverse and vibrant society.",
+      "faqs": [
+        {
+          "patterns": [
+            "who came in the 60s and 80s",
+            "south asia east africa migration",
+            "1960s 1980s migration"
+          ],
+          "answer": "Many people arrived from South Asia and East Africa in the 1960s-1980s. To reunite with family, work, study, or build a better future. They transformed cities like London, Birmingham, and Leicester."
+        },
+        {
+          "patterns": [
+            "how did communities change britain",
+            "migration changed towns"
+          ],
+          "answer": "New communities opened businesses, introduced traditions, strengthened local economies, and added to Britain's cultural life. Especially in cities like London, Birmingham, and Leicester."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "In the 60s-80s many people came from South Asia and East Africa. They helped build businesses and added to local culture in cities across Britain."
+        }
+      ]
+    },
+    "17": {
+      "title": "Modern UK",
+      "terms": [
+        "diversity",
+        "modern UK",
+        "multicultural",
+        "strengths",
+        "festivals"
+      ],
+      "hint": "The modern UK is home to people from almost every country. Diversity shapes food, music, sport, and festivals.",
+      "script": "Today, the United Kingdom is home to people with roots in almost every country in the world. This diversity is one of Britain's greatest strengths. It influences the food we eat, the music we enjoy, the sports we play, the festivals we celebrate, and even the languages we hear every day. Living in a diverse society gives us the chance to learn from people with different experiences and perspectives. Although our backgrounds may be different, those differences help create the vibrant, welcoming, and multicultural Britain that millions of people proudly call home.",
+      "opener": "Modern Britain is multicultural. People from almost every country call the UK home.",
+      "faqs": [
+        {
+          "patterns": [
+            "what is a multicultural society",
+            "multicultural britain",
+            "what does multicultural mean"
+          ],
+          "answer": "A multicultural society is one where people from many different cultures and backgrounds live together. The modern UK is multicultural, with roots from almost every country in the world."
+        },
+        {
+          "patterns": [
+            "why is diversity a strength",
+            "diversity strength britain"
+          ],
+          "answer": "Diversity influences food, music, sport, festivals, and language. And lets us learn from people with different experiences. It helps create a vibrant, welcoming Britain."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "The UK today has people from almost every country. That diversity shapes everyday life. Food, music, festivals, and more."
+        }
+      ]
+    },
+    "18": {
+      "title": "From Ska to Reggae",
+      "terms": [
+        "music",
+        "Caribbean",
+        "ska",
+        "reggae",
+        "culture",
+        "migration"
+      ],
+      "hint": "Caribbean migration brought new rhythms and instruments that blended with British sounds and inspired new music.",
+      "script": "Migration hasn't just changed who lives in Britain. It has also shaped British culture in amazing ways. Music is one of the best examples. From the 1950s onwards, communities arriving from the Caribbean brought new rhythms, instruments, and musical traditions that blended with sounds already here in Britain. Over time, those influences inspired entirely new styles of music. Today, many of the artists you listen to reflect this rich cultural mix. It reminds us that culture is always evolving, with different communities learning from one another and creating something new together.",
+      "faqs": [
+        {
+          "patterns": [
+            "how did migration change music",
+            "caribbean music britain",
+            "ska reggae uk"
+          ],
+          "answer": "From the 1950s, Caribbean communities brought new rhythms and instruments that blended with British sounds. Over time this inspired entirely new styles of music."
+        },
+        {
+          "patterns": [
+            "what music came from migration",
+            "migration music culture"
+          ],
+          "answer": "Caribbean migration brought ska and reggae influences that mixed with British music and helped create new genres. Culture evolves when communities learn from each other."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Caribbean communities brought new rhythms to Britain from the 1950s. Those sounds mixed with music here and inspired new styles."
+        }
+      ]
+    },
+    "19": {
+      "title": "Born in the UK",
+      "terms": [
+        "grime",
+        "drill",
+        "British music",
+        "London",
+        "multicultural",
+        "identity"
+      ],
+      "hint": "Grime and Drill were created in the UK but draw on Caribbean, African, and British musical traditions.",
+      "script": "Think about genres like Grime and Drill. These styles of music were created here in the United Kingdom, particularly in cities such as London. Although they're proudly British, they have been influenced by many different cultures, including Caribbean, African, and British musical traditions. This shows that culture doesn't stand still. As different communities meet, they share ideas, creativity, and experiences that inspire something completely new. Modern British music is a great example of how diversity has helped shape a unique national identity that is recognised around the world.",
+      "faqs": [
+        {
+          "patterns": [
+            "what is grime",
+            "what is drill",
+            "grime and drill",
+            "british grime"
+          ],
+          "answer": "Grime and Drill are music genres created in the UK, especially in London. They are proudly British but influenced by Caribbean, African, and British musical traditions."
+        },
+        {
+          "patterns": [
+            "how is british music multicultural",
+            "music diversity uk"
+          ],
+          "answer": "Modern British genres like Grime and Drill show how different communities share ideas and creativity. Creating new music that is recognised worldwide."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Grime and Drill started in the UK. They mix influences from Caribbean, African, and British music. Showing how culture keeps evolving."
+        }
+      ]
+    },
+    "20": {
+      "title": "Fish and Chips",
+      "terms": [
+        "food",
+        "fish and chips",
+        "curry",
+        "jerk chicken",
+        "culture",
+        "migration"
+      ],
+      "hint": "British food is now a blend of global influences. Curry, jerk chicken, kebabs, and more are everyday favourites.",
+      "script": "The same is true when we think about food. Traditional meals like fish and chips remain an important part of British history, but they are no longer the only foods that represent Britain today. Dishes such as curries, jerk chicken, Chinese cuisine, kebabs, and many others have become favourites enjoyed by millions of people every week. These foods reflect the communities that have settled here over many decades and shared their traditions with others. Britain's food culture is now a blend of influences from around the world, making everyday life richer and more diverse.",
+      "faqs": [
+        {
+          "patterns": [
+            "is fish and chips british",
+            "british food migration",
+            "what foods came from migration"
+          ],
+          "answer": "Fish and chips is part of British history, but modern British food also includes curry, jerk chicken, Chinese food, and kebabs. Reflecting communities that settled here and shared their traditions."
+        },
+        {
+          "patterns": [
+            "why is food diverse in britain",
+            "multicultural food uk"
+          ],
+          "answer": "Communities that settled in Britain shared their food traditions. Today millions enjoy dishes from around the world every week. Making British food culture a global blend."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "British food is not just fish and chips. Curry, kebabs, and jerk chicken are everyday favourites thanks to migration."
+        }
+      ]
+    },
+    "21": {
+      "title": "Slang and Language",
+      "terms": [
+        "slang",
+        "MLE",
+        "Multicultural London English",
+        "Patois",
+        "language"
+      ],
+      "hint": "Modern urban English mixes Caribbean Patois, South Asian languages, and British English. Linguists call this Multicultural London English (MLE).",
+      "script": "Language is another great example of cultures coming together. Listen to how young people speak in many towns and cities across the UK today. It isn't simply one version of English. Instead, language has developed through influences from Caribbean English and Patois, South Asian languages, African languages, and traditional British English. Linguists have identified one variety of this as Multicultural London English, often called MLE. It's a reminder that language changes over time, reflecting the people, communities, and cultures that shape modern Britain.",
+      "faqs": [
+        {
+          "patterns": [
+            "what is mle",
+            "multicultural london english",
+            "what is slang",
+            "where does slang come from"
+          ],
+          "answer": "Multicultural London English (MLE) is a modern way of speaking that mixes English with Caribbean Patois, South Asian and African influences. It shows how migration has shaped everyday language."
+        },
+        {
+          "patterns": [
+            "why does language change",
+            "language migration uk"
+          ],
+          "answer": "Language changes as communities meet and share words. In the UK, Caribbean, South Asian, and African influences mix with British English. Especially in cities."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Young people in UK cities often mix English with words from Caribbean Patois and other languages. Linguists call one variety MLE. Multicultural London English."
+        }
+      ]
+    },
+    "22": {
+      "title": "Part 3: Where We Live",
+      "terms": [
+        "borough",
+        "local",
+        "part 3",
+        "where we belong",
+        "community"
+      ],
+      "hint": "Part 3 asks where we belong. Your street, neighbourhood, town, and the wider UK all shape identity.",
+      "script": "So far we've explored who we are as individuals and how Britain's history has helped shape modern society. Now let's think about one final question: Where do we belong? The places we live influence our identity just as much as our family, culture, or interests. Whether it's your street, your neighbourhood, your town, or the wider United Kingdom, every place helps shape the experiences we have and the people we become. Let's explore how our local communities help us develop a sense of belonging.",
+      "opener": "Where do you belong? Your local area and the wider UK both shape who you are.",
+      "faqs": [
+        {
+          "patterns": [
+            "where do i belong",
+            "what is belonging",
+            "part 3 about"
+          ],
+          "answer": "Part 3 explores belonging. How your street, neighbourhood, town, and the wider UK all shape your identity and sense of connection."
+        },
+        {
+          "patterns": [
+            "do places shape identity",
+            "where we live identity"
+          ],
+          "answer": "Yes. The places we live influence identity just as much as family, culture, or interests. Every place shapes the experiences we have."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Belonging means feeling part of a place or group. Start with your street or school. Then think about your town and the wider UK."
+        }
+      ]
+    },
+    "23": {
+      "title": "Your Borough",
+      "terms": [
+        "borough",
+        "local community",
+        "neighbours",
+        "belonging",
+        "citizenship"
+      ],
+      "hint": "Your local community. Borough, town, or neighbourhood. Is often where citizenship and belonging begin.",
+      "script": "For many people, their local community is the first place where they truly feel they belong. It's where you recognise familiar faces, visit local shops, spend time with friends, and make memories with your family. Whether you call it your borough, town, village, or neighbourhood, it's a place that helps shape your identity every day. Feeling connected to your local community often encourages people to support one another, look after shared spaces, and take pride in the place they call home. That's where citizenship often begins.",
+      "faqs": [
+        {
+          "patterns": [
+            "what is a local community",
+            "local community",
+            "what is a borough"
+          ],
+          "answer": "Your local community is where you live day to day. Your borough, town, village, or neighbourhood. It is where you know faces, visit shops, and make memories. Citizenship often begins here."
+        },
+        {
+          "patterns": [
+            "why does local community matter",
+            "belonging local area"
+          ],
+          "answer": "Feeling connected to your local community encourages people to support each other, look after shared spaces, and take pride in where they live. That is where citizenship begins."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Your local area is where you see familiar faces and local shops. That everyday place is often the first place people feel they belong."
+        }
+      ]
+    },
+    "24": {
+      "title": "Parliament and the NHS",
+      "terms": [
+        "Parliament",
+        "NHS",
+        "wider UK",
+        "laws",
+        "institutions",
+        "citizens"
+      ],
+      "hint": "Parliament makes laws and the NHS provides healthcare. Shared national institutions connect us as UK citizens.",
+      "script": "Of course, we also belong to something much bigger than our local community. Across the United Kingdom, millions of people are connected through national institutions that help society function every day. Parliament creates the laws we all follow, while the NHS provides healthcare whenever we need it. Schools, emergency services, the courts, and many other organisations also play important roles in supporting our lives. Even though we'll never meet everyone in Britain, these shared institutions connect us together as citizens living in the same country.",
+      "faqs": [
+        {
+          "patterns": [
+            "what does parliament do",
+            "what is parliament",
+            "who makes laws uk"
+          ],
+          "answer": "Parliament creates the laws everyone in the UK follows. It is a national institution that connects us as citizens. Part of wider UK society, not just your local area."
+        },
+        {
+          "patterns": [
+            "what is the nhs",
+            "what does the nhs do",
+            "nhs citizenship"
+          ],
+          "answer": "The NHS (National Health Service) provides healthcare for everyone in the UK, usually free when you need it. It is a shared national service that connects millions of citizens."
+        },
+        {
+          "patterns": [
+            "local vs national",
+            "difference local and uk",
+            "wider uk society"
+          ],
+          "answer": "Local community is your everyday area. Wider UK society includes national institutions like Parliament (laws) and the NHS (healthcare) that connect everyone in the country."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "Parliament makes laws for the whole UK. The NHS gives healthcare. These national services connect us even if we never meet everyone in Britain."
+        }
+      ]
+    },
+    "25": {
+      "title": "What Makes Us, Us?",
+      "terms": [
+        "British identity",
+        "reflection",
+        "identity pieces",
+        "diversity",
+        "belonging"
+      ],
+      "hint": "Identity is built from many pieces. Family, culture, community, and country. Every person's story is different.",
+      "script": "So, what really makes us who we are? Hopefully by now you've realised there isn't just one answer. Your identity is built from many different pieces. Your family, your interests, your culture, your experiences, your community, and the country you live in. Every person's story is different, and that's something to celebrate. Britain is made up of millions of unique identities, all contributing to one diverse society. As you continue through this course, keep thinking about your own story and how you fit into the wider picture of modern Britain.",
+      "opener": "There is no single answer to who you are. Your identity is many pieces that fit together.",
+      "faqs": [
+        {
+          "patterns": [
+            "what makes us who we are",
+            "what makes me who i am",
+            "pieces of identity"
+          ],
+          "answer": "Identity is built from many pieces. Family, interests, culture, experiences, community, and country. There is not just one answer, and every person's story is different."
+        },
+        {
+          "patterns": [
+            "why celebrate different identities",
+            "millions of identities"
+          ],
+          "answer": "Britain is made up of millions of unique identities all contributing to one diverse society. Different stories make society stronger, not weaker."
+        },
+        {
+          "patterns": [
+            "i don't know",
+            "i dont know",
+            "i do not know"
+          ],
+          "answer": "List a few pieces: family, hobbies, where you live, your background. Together they make your identity. And no two people are the same."
+        }
+      ]
+    }
+  },
+  "misconceptions": [
+    {
+      "wrong": "Pretending to be someone else online",
+      "correction": "Multiple identity is not about pretending. It means genuinely belonging to more than one culture, country, or role at the same time."
+    },
+    {
+      "wrong": "Forgetting who you are",
+      "correction": "Multiple identity is the opposite. It means recognising all the roles and communities that make you who you are."
+    },
+    {
+      "wrong": "The government building in central London",
+      "correction": "A local community is not a government building. It is the area, people, and shops where you live your daily life."
+    },
+    {
+      "wrong": "A type of social media app",
+      "correction": "A local community is a real place and group of people around you. Not an app."
+    },
+    {
+      "wrong": "True",
+      "patterns": [
+        "food music languages stayed the same"
+      ],
+      "correction": "Food, music, and languages in the UK have changed over time through migration and global influences. They have not stayed exactly the same."
+    },
+    {
+      "wrong": "An incorrect identity",
+      "correction": "Having more than one role or background is called a multiple identity. There is no such thing as an incorrect identity."
+    },
+    {
+      "wrong": "British means white",
+      "correction": "British identity is not about how someone looks. British values are principles for public life that apply to everyone."
+    }
+  ],
+  "commandWords": {
+    "define": {
+      "template": "To define a term: write one clear sentence for what it means, then give one example from UK life."
+    },
+    "explain": {
+      "template": "To explain: state the idea, then say why it matters with a concrete example."
+    },
+    "evaluate": {
+      "levelMin": 6,
+      "template": "To evaluate: give two sides of the argument, use evidence, then reach a clear judgement."
+    },
+    "describe": {
+      "template": "To describe: say what you see or what happens, using specific details from the topic."
+    }
+  },
+  "levels": {
+    "1": {
+      "summary": "The UK is made up of England, Scotland, Wales, and Northern Ireland. People can belong to more than one community.",
+      "keyPoints": [
+        "British values include respect and tolerance.",
+        "Identity means who you feel you are.",
+        "The UK population includes many backgrounds and faiths."
+      ],
+      "explainLike": "Think of the UK like a school with different houses, everyone belongs somewhere, and we treat each other fairly."
+    },
+    "2": {
+      "summary": "British identity is shared and personal. British values, democracy, rule of law, individual liberty, and mutual respect, help people live together.",
+      "keyPoints": [
+        "Democracy means people have a say in how the country is run.",
+        "The rule of law means everyone follows the same laws.",
+        "Mutual respect means treating others fairly even when you disagree."
+      ],
+      "explainLike": "British values are like playground rules for the whole country, they keep life fair for everyone."
+    },
+    "3": {
+      "summary": "The UK's identity has changed through migration, devolution, and a diverse population. British values support community cohesion.",
+      "keyPoints": [
+        "Migration has shaped the UK's culture and economy over time.",
+        "Community cohesion means different groups living together peacefully.",
+        "Tolerance of different faiths and beliefs is a British value taught in schools."
+      ],
+      "explainLike": "Because the UK has changed, we need shared values so people from different backgrounds can get along."
+    },
+    "4": {
+      "summary": "British identity combines national, regional, and personal identities. The four fundamental British values are promoted in education to strengthen social unity.",
+      "keyPoints": [
+        "Devolution means Scotland, Wales, and NI have their own parliaments or assemblies.",
+        "Individual liberty means freedom within the law, you can make choices about your life.",
+        "Extremism is rejected because it threatens tolerance and the rule of law."
+      ],
+      "explainLike": "You can be British and also Scottish, Muslim, or a Londoner, shared values link those identities together."
+    },
+    "5": {
+      "summary": "GCSE Citizenship explores how British values interact with a multicultural society. Identity is influenced by history, geography, and lived experience.",
+      "keyPoints": [
+        "The Equality Act 2010 protects people from discrimination on protected characteristics.",
+        "British values are not a test of how 'British' someone looks, they are principles for public life.",
+        "Media and politics can both unite and divide communities on identity issues."
+      ],
+      "explainLike": "British values set the ground rules for debate, you can disagree strongly, but within democracy and respect for the law."
+    },
+    "6": {
+      "summary": "Students should explain why British values matter for democracy and explain tensions when values appear to conflict, such as free speech versus harm.",
+      "keyPoints": [
+        "Free speech is protected but limited when it incites hatred or violence.",
+        "Schools have a duty to promote fundamental British values under Prevent guidance.",
+        "Identity politics can increase participation but may also polarise debate."
+      ],
+      "explainLike": "When values clash, citizenship means weighing both sides, not picking the loudest voice."
+    },
+    "7": {
+      "summary": "Exam-style answers link British values to AO2 application in school and community contexts, and begin AO3 evaluation of how well cohesion is achieved.",
+      "keyPoints": [
+        "Point + development: name a value, then give a concrete UK example.",
+        "Sources on migration or media bias require you to use evidence, not opinion alone.",
+        "Evaluate whether British values are consistently applied, e.g. treatment of minorities in policy."
+      ],
+      "explainLike": "For 4-mark explain questions: one mark for the value, one mark for a developed example from UK life."
+    },
+    "8": {
+      "summary": "Analyse how historical change and global links have reshaped British identity. Evaluate competing viewpoints on integration, assimilation, and multiculturalism.",
+      "keyPoints": [
+        "Post-war migration and EU membership (historically) changed demographics and debate.",
+        "Multiculturalism celebrates diversity; critics argue it can fragment shared identity.",
+        "Selective knowledge, answer the question asked, not everything you know about migration."
+      ],
+      "explainLike": "A strong answer compares viewpoints, uses precise terms, and reaches a substantiated judgement on cohesion."
+    },
+    "9": {
+      "summary": "Synthesise themes across Life in modern Britain: evaluate the extent to which British values secure cohesion in a changing, devolved, and digitally connected UK.",
+      "keyPoints": [
+        "Devolution creates multiple political identities within one state, analyse implications for unity.",
+        "Digital citizenship amplifies both solidarity campaigns and divisive misinformation.",
+        "Grade 8-9 responses sustain argument, integrate evidence, and conclude without contradicting the analysis."
+      ],
+      "explainLike": "At mastery level, you are not listing values, you are judging how far they work in practice, with nuanced evidence and a clear final line."
+    }
+  },
+  "quizIntro": {
+    "title": "GCSE Challenge",
+    "terms": [
+      "GCSE",
+      "exam",
+      "belonging",
+      "multiple identity",
+      "explain",
+      "examples"
+    ],
+    "hint": "Before the quiz: think carefully, use lesson examples, and explain your ideas. Don't just state opinions.",
+    "script": "Before we finish, I'd like you to think carefully about the questions on your screen. Don't rush your answers. Use everything we've explored throughout this lesson to help you explain your ideas. How do the different roles you have help you feel that you belong? Why might having multiple identities make society stronger? Remember, the best GCSE answers don't just state an opinion. They explain it clearly and support it with examples. If you can do that, you're already thinking like a successful Citizenship student. I'll see you in the next lesson.",
+    "note": "Quiz follows slide 26 (index 25). Scene 27 narration plays in the quiz phase, not on a PowerPoint slide."
+  }
+}

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# EVOlearn AI chat — user-only deploy steps (run manually; do not commit secrets).
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT"
+
+echo "=== EVOlearn AI chat deploy (manual) ==="
+echo ""
+echo "1. Firebase CLI login (opens browser):"
+echo "   npx -y firebase-tools@latest login"
+echo ""
+echo "2. Select project:"
+echo "   npx -y firebase-tools@latest use student-portal-9de85"
+echo ""
+echo "3. Install Functions dependencies (first time or after package changes):"
+echo "   cd functions && npm install && cd .."
+echo ""
+echo "4. Set Gemini API key (secret — never commit):"
+echo "   npx -y firebase-tools@latest functions:secrets:set GEMINI_API_KEY"
+echo ""
+echo "5. Deploy the chat Cloud Function:"
+echo "   npx -y firebase-tools@latest deploy --only functions:chat"
+echo ""
+echo "   Function URL:"
+echo "   https://europe-west2-student-portal-9de85.cloudfunctions.net/chat"
+echo ""
+echo "6. Deploy static site to Netlify (proxies POST /api/chat to the function above):"
+echo "   netlify deploy --prod --dir ."
+echo ""
+echo "   netlify.toml proxies /api/chat → the function URL. Deploy functions before Netlify."
+echo ""
+echo "See docs/AI_CHAT.md for architecture and local emulator testing."

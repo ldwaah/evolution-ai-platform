@@ -1,0 +1,83 @@
+{
+  "lessonId": "lesson-2",
+  "worksheets": [
+    {
+      "id": "ws-rights-vs-wants",
+      "triggerAfterSlideIndex": 3,
+      "title": "Quick check: rights vs wants",
+      "type": "binary-sort",
+      "instruction": "A legal right is protected by law; a want is something you would like but are not entitled to. Sort each item.",
+      "categories": [
+        { "id": "right", "label": "Legal right" },
+        { "id": "want", "label": "Personal want" }
+      ],
+      "items": [
+        { "id": "fair-trial", "text": "A fair trial if you are accused of a crime", "correctCategory": "right" },
+        { "id": "new-phone", "text": "The latest smartphone", "correctCategory": "want" },
+        { "id": "no-discrimination", "text": "Not being discriminated against", "correctCategory": "right" },
+        { "id": "trainers", "text": "Designer trainers", "correctCategory": "want" }
+      ],
+      "levels": {
+        "1": {
+          "instruction": "A right is something the law protects for everyone. A want is something you would like. Tap right or want for each item."
+        },
+        "6": {
+          "instruction": "Classify each item as a legal right (guaranteed by law) or a personal want (a preference, not a legal entitlement)."
+        }
+      },
+      "submitMessage": "Good. Rights protect your freedom, safety and dignity — wants are choices, not legal guarantees."
+    },
+    {
+      "id": "ws-direct-indirect",
+      "triggerAfterSlideIndex": 11,
+      "title": "Quick check: discrimination",
+      "type": "binary-sort",
+      "instruction": "Direct discrimination treats someone worse because of who they are. Indirect discrimination is a neutral rule that unfairly disadvantages a group. Sort each example.",
+      "categories": [
+        { "id": "direct", "label": "Direct" },
+        { "id": "indirect", "label": "Indirect" }
+      ],
+      "items": [
+        { "id": "refuse-hire", "text": "A shop refuses to hire someone because of their race", "correctCategory": "direct" },
+        { "id": "saturday-rule", "text": "A rule that all staff must work Saturdays, excluding some religious groups", "correctCategory": "indirect" },
+        { "id": "ban-women", "text": "A club bans women from becoming members", "correctCategory": "direct" },
+        { "id": "no-headwear", "text": "A 'no headwear' policy that disadvantages some faiths", "correctCategory": "indirect" }
+      ],
+      "levels": {
+        "1": {
+          "instruction": "Direct means someone is treated worse on purpose because of who they are. Indirect means a rule that quietly disadvantages a group. Tap one for each."
+        },
+        "6": {
+          "instruction": "Decide whether each example is direct discrimination (explicit unfair treatment) or indirect discrimination (a neutral rule with an unfair effect)."
+        }
+      },
+      "submitMessage": "Well done. The Equality Act 2010 protects people from both direct and indirect discrimination."
+    },
+    {
+      "id": "ws-rights-responsibilities",
+      "triggerAfterSlideIndex": 21,
+      "title": "Quick check: rights and responsibilities",
+      "type": "binary-sort",
+      "instruction": "Some things the law gives you (rights); others are things you are expected to do (responsibilities). Sort each one.",
+      "categories": [
+        { "id": "right", "label": "A right" },
+        { "id": "responsibility", "label": "A responsibility" }
+      ],
+      "items": [
+        { "id": "free-speech", "text": "Sharing your opinions through free speech", "correctCategory": "right" },
+        { "id": "pay-tax", "text": "Paying taxes to fund public services", "correctCategory": "responsibility" },
+        { "id": "follow-law", "text": "Obeying the law", "correctCategory": "responsibility" },
+        { "id": "jury", "text": "Serving on a jury when asked", "correctCategory": "responsibility" }
+      ],
+      "levels": {
+        "1": {
+          "instruction": "A right is something the law gives you. A responsibility is something you are expected to do. Tap one for each line."
+        },
+        "6": {
+          "instruction": "Classify each item as a right you hold or a responsibility you are expected to meet as a citizen."
+        }
+      },
+      "submitMessage": "Great thinking. Rights and responsibilities work together to keep society fair."
+    }
+  ]
+}

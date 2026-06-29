@@ -1,0 +1,91 @@
+{
+  "topicId": "devolution",
+  "topicTitle": "Devolution: Scotland, Wales, and Northern Ireland",
+  "moduleId": "module-2",
+  "lessonIds": [
+    "lesson-10"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Devolution means some powers moved from London to Scotland, Wales, and Northern Ireland.",
+      "keyPoints": [
+        "Each nation has its own parliament or assembly.",
+        "They make laws on things like health and education in their area.",
+        "The UK Parliament still controls defence and foreign policy."
+      ],
+      "explainLike": "London handles UK-wide issues; Edinburgh, Cardiff, and Belfast handle more local decisions."
+    },
+    "2": {
+      "summary": "Scotland has the Scottish Parliament; Wales has the Senedd; Northern Ireland has the Assembly. Each has different powers.",
+      "keyPoints": [
+        "Scotland Act, Government of Wales Act, Northern Ireland Act set powers.",
+        "Some taxes are devolved (e.g. Scottish income tax rates).",
+        "MLAs, MSPs, and MSs are elected to devolved bodies."
+      ],
+      "explainLike": "Model: nation → devolved institution → examples of devolved policy (schools, NHS organisation)."
+    },
+    "3": {
+      "summary": "Devolution created multiple governments within one UK state. This affects identity, elections, and law.",
+      "keyPoints": [
+        "West Lothian question: Scottish MPs vote on England-only laws at Westminster.",
+        "Sewel convention: Westminster normally needs consent on devolved matters.",
+        "Brexit strained devolution settlements."
+      ],
+      "explainLike": "One reason devolution matters: laws on education can differ in Cardiff and London."
+    },
+    "4": {
+      "summary": "Compare reserved and devolved matters. Explain how devolution interacts with UK-wide citizenship.",
+      "keyPoints": [
+        "Reserved: immigration, defence, macroeconomic policy.",
+        "Devolved: health, transport, some justice (Scotland).",
+        "England has no separate parliament — English laws via UK Parliament."
+      ],
+      "explainLike": "Step: classify the policy area → name which legislature decides → give a real example."
+    },
+    "5": {
+      "summary": "Explain why devolution was introduced and its impact on democracy and national identity.",
+      "keyPoints": [
+        "1997 referendums led to Scottish Parliament and Welsh Assembly.",
+        "Good Friday Agreement (1998) restored NI Assembly.",
+        "Devolution responds to nationalist and regional demands within union."
+      ],
+      "explainLike": "Because voters wanted local decisions, therefore power was shared — but the UK remains one state."
+    },
+    "6": {
+      "summary": "Discuss independence versus devolution debates in Scotland and Wales.",
+      "keyPoints": [
+        "2014 Scottish independence referendum: 55% remain in UK.",
+        "Arguments for independence: self-determination, policy control.",
+        "Arguments against: economic union, shared institutions, complexity."
+      ],
+      "explainLike": "Both sides with evidence — not slogans — then a reasoned view on future of the union."
+    },
+    "7": {
+      "summary": "Exam: define devolution (AO1), apply to policy scenarios (AO2), evaluate union stability (AO3).",
+      "keyPoints": [
+        "Distinguish federal (US) from devolved (UK) systems.",
+        "Sentence starter: 'This matter is devolved because…'",
+        "Evaluate: does devolution strengthen or weaken UK democracy?"
+      ],
+      "explainLike": "Nia: 4-mark explain needs named nation + institution + policy example."
+    },
+    "8": {
+      "summary": "Analyse asymmetric devolution and the English question — regional mayors without English Parliament.",
+      "keyPoints": [
+        "NI power-sharing requires unionist/nationalist balance.",
+        "Sewel/consent debates after Internal Market Act.",
+        "Federalism proposals versus status quo."
+      ],
+      "explainLike": "Examine uneven power map — who is represented at which level?"
+    },
+    "9": {
+      "summary": "Evaluate whether devolution has improved democratic representation across the UK's nations.",
+      "keyPoints": [
+        "Synthesis: identity, elections, Brexit, active citizenship.",
+        "Judgement on democratic deficit in England.",
+        "Selective use of referendum and turnout data."
+      ],
+      "explainLike": "Mastery: union as negotiated project — judge with evidence on voice and outcomes."
+    }
+  }
+}

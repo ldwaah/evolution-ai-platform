@@ -1,0 +1,485 @@
+/**
+ * EVOlearn 3D UI theme — non-lesson screens only.
+ * Scoped to body.evo-3d; lesson pages (body.lesson-body) never load this file.
+ */
+body.evo-3d {
+  --evo-3d-base: rgba(12, 28, 42, 0.95);
+  --evo-3d-mid: rgba(32, 49, 64, 0.9);
+  --evo-3d-deep: #0a1520;
+  --evo-3d-edge: rgba(140, 200, 230, 0.22);
+  --evo-3d-highlight: rgba(255, 255, 255, 0.14);
+  --evo-3d-lift: 5px;
+  --evo-3d-lift-sm: 3px;
+  --evo-3d-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* subtle depth grid over existing navy background */
+body.evo-3d::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(90, 217, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 217, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+}
+
+body.evo-3d #select-screen,
+body.evo-3d #citizenship-dashboard,
+body.evo-3d #module-picker,
+body.evo-3d #map-screen {
+  perspective: 1200px;
+}
+
+/* ---------- headings ---------- */
+body.evo-3d .select-title,
+body.evo-3d .dashboard-title,
+body.evo-3d .module-picker-title {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08),
+    0 3px 0 rgba(90, 217, 255, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- shared raised glass card ---------- */
+body.evo-3d .course-card,
+body.evo-3d .dashboard-card,
+body.evo-3d .module-picker-card,
+body.evo-3d .dashboard-agent-strip {
+  border: none;
+  border-top: 1px solid var(--evo-3d-highlight);
+  background: linear-gradient(
+    180deg,
+    rgba(48, 68, 85, 0.55) 0%,
+    rgba(22, 36, 47, 0.72) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.18),
+    0 var(--evo-3d-lift-sm) 0 var(--evo-3d-base),
+    0 calc(var(--evo-3d-lift-sm) + 8px) 22px rgba(0, 0, 0, 0.38),
+    0 0 0 1px var(--evo-3d-edge);
+  transition:
+    transform 0.18s var(--evo-3d-ease),
+    box-shadow 0.18s var(--evo-3d-ease),
+    border-color 0.18s var(--evo-3d-ease);
+  transform-style: preserve-3d;
+}
+
+body.evo-3d .course-card[data-course]:hover,
+body.evo-3d .dashboard-card:not(.dashboard-card--placeholder):hover,
+body.evo-3d .module-picker-card:hover {
+  transform: translateY(-4px);
+  border-top-color: rgba(127, 227, 255, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+    0 calc(var(--evo-3d-lift-sm) + 2px) 0 var(--evo-3d-mid),
+    0 calc(var(--evo-3d-lift-sm) + 12px) 28px rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(90, 217, 255, 0.12),
+    0 0 0 1px rgba(90, 217, 255, 0.28);
+}
+
+body.evo-3d .course-card[data-course]:active,
+body.evo-3d .dashboard-card:not(.dashboard-card--placeholder):active,
+body.evo-3d .module-picker-card:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.28),
+    0 2px 0 var(--evo-3d-base),
+    0 4px 14px rgba(0, 0, 0, 0.32),
+    0 0 0 1px var(--evo-3d-edge);
+}
+
+body.evo-3d .course-card--soon,
+body.evo-3d .dashboard-card--placeholder {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.14),
+    0 2px 0 var(--evo-3d-base),
+    0 6px 16px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(140, 200, 230, 0.1);
+}
+
+/* ---------- back / nav buttons ---------- */
+body.evo-3d .dashboard-back,
+body.evo-3d .module-picker-back,
+body.evo-3d .map-back,
+body.evo-3d .assessment-back-link {
+  border: none;
+  border-top: 1px solid var(--evo-3d-highlight);
+  background: linear-gradient(180deg, rgba(42, 62, 79, 0.65), rgba(22, 36, 47, 0.8));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 var(--evo-3d-lift-sm) 0 var(--evo-3d-base),
+    0 calc(var(--evo-3d-lift-sm) + 4px) 12px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.14s var(--evo-3d-ease),
+    box-shadow 0.14s var(--evo-3d-ease),
+    color 0.2s;
+}
+
+body.evo-3d .dashboard-back:hover,
+body.evo-3d .module-picker-back:hover,
+body.evo-3d .map-back:hover,
+body.evo-3d .assessment-back-link:hover {
+  transform: translateY(-2px) translateX(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 calc(var(--evo-3d-lift-sm) + 1px) 0 var(--evo-3d-mid),
+    0 calc(var(--evo-3d-lift-sm) + 8px) 16px rgba(0, 0, 0, 0.35);
+}
+
+body.evo-3d .dashboard-back:active,
+body.evo-3d .module-picker-back:active,
+body.evo-3d .map-back:active,
+body.evo-3d .assessment-back-link:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.22),
+    0 2px 0 var(--evo-3d-base);
+}
+
+/* ---------- map topbar ---------- */
+body.evo-3d .topbar {
+  margin: 10px 14px 0;
+  padding: 12px 18px;
+  border-radius: calc(var(--radius) - 2px);
+  border-top: 1px solid var(--evo-3d-highlight);
+  background: linear-gradient(180deg, rgba(32, 49, 64, 0.72), rgba(18, 30, 40, 0.85));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 var(--evo-3d-lift) 0 var(--evo-3d-base),
+    0 calc(var(--evo-3d-lift) + 10px) 28px rgba(0, 0, 0, 0.4);
+  transform: rotateX(0.6deg);
+  transform-origin: center top;
+}
+
+body.evo-3d .module-pill {
+  border: none;
+  border-top: 1px solid rgba(127, 227, 255, 0.25);
+  background: linear-gradient(180deg, rgba(90, 217, 255, 0.14), rgba(90, 217, 255, 0.06));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 2px 0 var(--evo-3d-base),
+    0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+body.evo-3d .progress-track {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.35),
+    0 2px 0 var(--evo-3d-base);
+}
+
+body.evo-3d .progress-fill {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 2px 6px rgba(90, 217, 255, 0.45);
+}
+
+/* ---------- map lesson nodes ---------- */
+body.evo-3d .node-ring {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: radial-gradient(circle at 50% 32%, rgba(52, 74, 92, 0.98), rgba(16, 28, 38, 0.98));
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.35),
+    0 5px 0 var(--evo-3d-base),
+    0 10px 22px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s var(--evo-3d-ease), box-shadow 0.2s var(--evo-3d-ease);
+}
+
+body.evo-3d .node:hover .node-ring {
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.35),
+    0 7px 0 var(--evo-3d-mid),
+    0 14px 28px rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(90, 217, 255, 0.15);
+}
+
+body.evo-3d .node.is-current .node-ring {
+  border-top-color: rgba(127, 227, 255, 0.4);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.16),
+    0 6px 0 rgba(32, 80, 100, 0.9),
+    0 12px 26px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(90, 217, 255, 0.35);
+}
+
+body.evo-3d .node.is-complete .node-ring {
+  border-top-color: rgba(95, 230, 176, 0.35);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.12),
+    0 5px 0 rgba(24, 60, 48, 0.85),
+    0 10px 24px rgba(0, 0, 0, 0.4),
+    0 0 18px rgba(95, 230, 176, 0.28);
+}
+
+body.evo-3d .node-num-badge {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 0 var(--evo-3d-base),
+    0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- preview card ---------- */
+body.evo-3d .preview {
+  border: none;
+  border-top: 1px solid var(--evo-3d-highlight);
+  background: linear-gradient(180deg, rgba(36, 54, 68, 0.88), rgba(18, 30, 40, 0.92));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 var(--evo-3d-lift) 0 var(--evo-3d-base),
+    0 calc(var(--evo-3d-lift) + 14px) 36px rgba(0, 0, 0, 0.5);
+  transform: rotateX(0.5deg);
+  transform-origin: center bottom;
+}
+
+body.evo-3d .preview-status {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 3px 0 var(--evo-3d-base),
+    0 6px 12px rgba(0, 0, 0, 0.28);
+}
+
+body.evo-3d .preview-cta {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 var(--evo-3d-lift-sm) 0 #1a4a5c,
+    0 calc(var(--evo-3d-lift-sm) + 6px) 16px rgba(90, 217, 255, 0.28);
+  transition: transform 0.14s var(--evo-3d-ease), box-shadow 0.14s var(--evo-3d-ease);
+}
+
+body.evo-3d .preview-cta:hover:not(.locked) {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 calc(var(--evo-3d-lift-sm) + 2px) 0 #1a4a5c,
+    0 calc(var(--evo-3d-lift-sm) + 10px) 22px rgba(90, 217, 255, 0.35);
+}
+
+body.evo-3d .preview-cta:active:not(.locked) {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 4px rgba(8, 32, 43, 0.35),
+    0 2px 0 #1a4a5c;
+}
+
+/* ---------- Nova button & panel ---------- */
+body.evo-3d .nova-btn {
+  border: none;
+  border-top: 1px solid var(--evo-3d-highlight);
+  background: linear-gradient(180deg, rgba(36, 54, 68, 0.92), rgba(18, 30, 40, 0.95));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 var(--evo-3d-lift) 0 var(--evo-3d-base),
+    0 calc(var(--evo-3d-lift) + 10px) 28px rgba(0, 0, 0, 0.45);
+}
+
+body.evo-3d .nova-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 calc(var(--evo-3d-lift) + 2px) 0 var(--evo-3d-mid),
+    0 calc(var(--evo-3d-lift) + 14px) 32px rgba(90, 217, 255, 0.2);
+}
+
+body.evo-3d .nova-btn:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.3),
+    0 3px 0 var(--evo-3d-base);
+}
+
+body.evo-3d .nova-orb {
+  box-shadow:
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+    0 3px 0 rgba(26, 74, 92, 0.8),
+    0 0 16px rgba(90, 217, 255, 0.7);
+}
+
+body.evo-3d .nova-panel {
+  border: none;
+  border-top: 1px solid var(--evo-3d-highlight);
+  background: linear-gradient(180deg, rgba(36, 54, 68, 0.95), rgba(16, 28, 38, 0.98));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 var(--evo-3d-lift) 0 var(--evo-3d-base),
+    0 calc(var(--evo-3d-lift) + 16px) 40px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- toast ---------- */
+body.evo-3d .toast {
+  border: none;
+  border-top: 1px solid var(--evo-3d-highlight);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 var(--evo-3d-lift-sm) 0 var(--evo-3d-base),
+    0 calc(var(--evo-3d-lift-sm) + 8px) 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   ASSESSMENT (citizenship.html)
+   ============================================================ */
+body.evo-3d .assessment-card {
+  border: none;
+  border-top: 1px solid var(--evo-3d-highlight);
+  background: linear-gradient(180deg, rgba(36, 54, 68, 0.82), rgba(18, 30, 40, 0.9));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 var(--evo-3d-lift) 0 var(--evo-3d-base),
+    0 calc(var(--evo-3d-lift) + 14px) 40px rgba(0, 0, 0, 0.45);
+  transform: rotateX(0.6deg);
+  transform-origin: center top;
+}
+
+body.evo-3d .assessment-progress-track {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.evo-3d .assessment-progress-fill {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 1px 4px rgba(90, 217, 255, 0.4);
+}
+
+body.evo-3d .assessment-option {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 2px 0 var(--evo-3d-base),
+    0 5px 12px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 0.12s var(--evo-3d-ease),
+    box-shadow 0.12s var(--evo-3d-ease),
+    background 0.12s;
+}
+
+body.evo-3d .assessment-option:hover,
+body.evo-3d .assessment-option:focus-visible {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 3px 0 var(--evo-3d-mid),
+    0 8px 16px rgba(0, 0, 0, 0.28);
+}
+
+body.evo-3d .assessment-option.is-selected {
+  border-top-color: rgba(127, 227, 255, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 4px 0 rgba(26, 74, 92, 0.9),
+    0 8px 18px rgba(90, 217, 255, 0.2);
+}
+
+body.evo-3d .assessment-option-marker {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 0 var(--evo-3d-base);
+}
+
+body.evo-3d .assessment-option.is-selected .assessment-option-marker {
+  border-top-color: rgba(255, 255, 255, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 2px 0 #1a4a5c;
+}
+
+body.evo-3d .assessment-scenario {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--cyan);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 3px 0 var(--evo-3d-base),
+    0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+body.evo-3d .assessment-input,
+body.evo-3d .assessment-textarea {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.28),
+    0 3px 0 var(--evo-3d-base);
+}
+
+body.evo-3d .assessment-nav.is-back {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 var(--evo-3d-lift-sm) 0 var(--evo-3d-base),
+    0 calc(var(--evo-3d-lift-sm) + 4px) 10px rgba(0, 0, 0, 0.28);
+}
+
+body.evo-3d .assessment-nav.is-next {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 var(--evo-3d-lift-sm) 0 #1a4a5c,
+    0 calc(var(--evo-3d-lift-sm) + 6px) 16px rgba(90, 217, 255, 0.28);
+}
+
+body.evo-3d .assessment-nav:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+body.evo-3d .assessment-nav.is-next:hover:not(:disabled) {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 calc(var(--evo-3d-lift-sm) + 2px) 0 #1a4a5c,
+    0 calc(var(--evo-3d-lift-sm) + 10px) 20px rgba(90, 217, 255, 0.32);
+}
+
+body.evo-3d .assessment-nav:active:not(:disabled) {
+  transform: translateY(2px);
+}
+
+body.evo-3d .assessment-command,
+body.evo-3d .assessment-topic {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 0 var(--evo-3d-base);
+}
+
+/* ---------- accessibility ---------- */
+@media (max-width: 640px) {
+  body.evo-3d .topbar,
+  body.evo-3d .preview,
+  body.evo-3d .assessment-card {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.evo-3d .topbar,
+  body.evo-3d .preview,
+  body.evo-3d .assessment-card {
+    transform: none;
+  }
+
+  body.evo-3d * {
+    transition: none !important;
+  }
+}

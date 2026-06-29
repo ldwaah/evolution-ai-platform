@@ -1,57 +1,134 @@
 {
+  "meta": {
+    "version": "1.0.0",
+    "subject": "GCSE Citizenship Studies",
+    "levelScale": "Nine tutor bands (levels 1-9) mapped from combined diagnostic score 0.0-10.0",
+    "defaultAgentId": "nova"
+  },
+  "scoreBands": [
+    { "min": 0.0, "max": 0.9, "tutorId": "nova" },
+    { "min": 1.0, "max": 1.9, "tutorId": "milo" },
+    { "min": 2.0, "max": 2.9, "tutorId": "ava" },
+    { "min": 3.0, "max": 3.9, "tutorId": "kai" },
+    { "min": 4.0, "max": 4.9, "tutorId": "zara" },
+    { "min": 5.0, "max": 5.9, "tutorId": "theo" },
+    { "min": 6.0, "max": 6.9, "tutorId": "nia" },
+    { "min": 7.0, "max": 7.9, "tutorId": "elias" },
+    { "min": 8.0, "max": 10.0, "tutorId": "athena" }
+  ],
   "tutors": [
     {
       "id": "nova",
       "name": "Nova",
+      "levelNumber": 1,
       "level": "Access",
+      "band": "Access",
+      "role": "Access tutor",
+      "combinedRange": "0.0-0.9",
+      "gradeRangeLabel": "1 (U to 1 entry)",
+      "support": "Gentle help when you want to take things one small step at a time.",
+      "catchphrase": "Let's take this one small step at a time.",
+      "voice": "Like the best teaching assistant you have ever met. One idea at a time, short sentences, word banks and clear choices.",
+      "personalityTags": ["Patient", "Gentle", "Calm", "Encouraging", "Simple language", "Tiny steps", "Anxiety-aware"],
+      "bestFor": [
+        "Learners who feel nervous starting new topics",
+        "Students who need one idea at a time",
+        "Anyone building confidence with citizenship words",
+        "Learners who benefit from word banks and clear choices"
+      ],
+      "supportStyle": "Maximum scaffolding, minimum pressure. One idea per message, word banks, short sentences, celebrates every attempt.",
+      "profilePath": "assets/data/tutors/nova.json",
       "image": "assets/tutors/nova.png"
     },
     {
       "id": "milo",
       "name": "Milo",
+      "levelNumber": 2,
       "level": "Foundation",
+      "combinedRange": "1.0-1.9",
+      "gradeRangeLabel": "1 to 2",
+      "support": "Straightforward tasks that show you exactly what to do next.",
+      "catchphrase": "Here's what to do first.",
+      "voice": "Friendly but direct. Shows a model answer first, then guides you to copy the pattern. Uses gap-fills, clear steps, and one new term per block.",
+      "personalityTags": ["Practical", "Organised", "Clear", "Direct", "Step-by-step", "Model-first", "Foundation focus"],
+      "bestFor": [
+        "Learners moving from word banks to short written answers",
+        "Students who want clear steps before they write",
+        "Anyone practising define and describe questions",
+        "Learners working towards grades 1 to 2"
+      ],
+      "supportStyle": "Model first, then your turn. Numbered steps, gap-fills with keyword banks, one new term per block, marks named in feedback.",
+      "profilePath": "assets/data/tutors/milo.json",
       "image": "assets/tutors/milo.png"
     },
     {
       "id": "ava",
       "name": "Ava",
+      "levelNumber": 3,
       "level": "Building Confidence",
+      "combinedRange": "2.0-2.9",
+      "gradeRangeLabel": "2 to 3",
+      "support": "Encouragement when you know some things but do not feel sure yet.",
       "image": "assets/tutors/ava.png"
     },
     {
       "id": "kai",
       "name": "Kai",
+      "levelNumber": 4,
       "level": "Developing",
+      "combinedRange": "3.0-3.9",
+      "gradeRangeLabel": "3 to 4",
+      "support": "Clear rules, simple steps, and calm practice.",
       "image": "assets/tutors/kai.png"
     },
     {
       "id": "zara",
       "name": "Zara",
+      "levelNumber": 5,
       "level": "Secure",
+      "combinedRange": "4.0-4.9",
+      "gradeRangeLabel": "4 to 5",
+      "support": "Stronger challenges with clear examples of what good work looks like.",
       "image": "assets/tutors/zara.png"
     },
     {
       "id": "theo",
       "name": "Theo",
+      "levelNumber": 6,
       "level": "Confident",
+      "combinedRange": "5.0-5.9",
+      "gradeRangeLabel": "5 to 6",
+      "support": "Lively questions that help you think deeper and explain your ideas.",
       "image": "assets/tutors/theo.png"
     },
     {
       "id": "nia",
       "name": "Nia",
+      "levelNumber": 7,
       "level": "Exam Ready",
+      "combinedRange": "6.0-6.9",
+      "gradeRangeLabel": "6 to 7",
+      "support": "Exam tips, mark scheme thinking, and ways to get more marks.",
       "image": "assets/tutors/nia.png"
     },
     {
       "id": "elias",
       "name": "Elias",
+      "levelNumber": 8,
       "level": "Advanced",
+      "combinedRange": "7.0-7.9",
+      "gradeRangeLabel": "7 to 8",
+      "support": "Big ideas, careful thinking, and more detailed discussion.",
       "image": "assets/tutors/elias.png"
     },
     {
       "id": "athena",
       "name": "Athena",
+      "levelNumber": 9,
       "level": "Mastery",
+      "combinedRange": "8.0-10.0",
+      "gradeRangeLabel": "8 to 9",
+      "support": "High-level coaching when you are ready to produce your best work.",
       "image": "assets/tutors/athena.png"
     }
   ]

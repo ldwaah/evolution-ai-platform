@@ -1,0 +1,89 @@
+{
+  "topicId": "elections-voting",
+  "topicTitle": "Elections and Voting",
+  "moduleId": "module-2",
+  "lessonIds": ["lesson-6"],
+  "levels": {
+    "1": {
+      "summary": "An election is when people vote to choose their representatives. In UK general elections you must be 18 or over to vote.",
+      "keyPoints": [
+        "Voting is one way citizens take part in democracy.",
+        "MPs are elected to represent areas called constituencies.",
+        "A ballot paper lists the candidates you can vote for."
+      ],
+      "explainLike": "An election is like choosing a class rep, everyone eligible gets one vote to pick who speaks for them."
+    },
+    "2": {
+      "summary": "UK general elections use first-past-the-post (FPTP). The candidate with the most votes in each constituency wins a seat in the House of Commons.",
+      "keyPoints": [
+        "Register to vote before election day, registration is a citizen responsibility.",
+        "A general election usually happens at least every five years.",
+        "The party with most MPs usually forms the government."
+      ],
+      "explainLike": "FPTP means you do not need half the votes to win, just more than anyone else in your area."
+    },
+    "3": {
+      "summary": "Elections connect citizens to Parliament. Voters choose MPs; MPs scrutinise government and can vote on laws.",
+      "keyPoints": [
+        "Turnout measures what percentage of registered voters actually voted.",
+        "Safe seats have predictable winners; marginal seats are closely fought.",
+        "Local elections and devolved elections use different rules and ages in some nations."
+      ],
+      "explainLike": "Your vote picks an MP, but the whole country's results together decide who runs the government."
+    },
+    "4": {
+      "summary": "The electoral system affects representation. FPTP tends to produce majority governments but can under-represent smaller parties nationally.",
+      "keyPoints": [
+        "A hung parliament occurs when no party wins an overall majority of seats.",
+        "Coalition or confidence-and-supply arrangements may follow a hung parliament.",
+        "Electoral reform debates compare FPTP with proportional systems such as STV or list PR."
+      ],
+      "explainLike": "FPTP is simple to understand, but a party can win many votes nationwide and still win few seats."
+    },
+    "5": {
+      "summary": "Citizenship requires explaining how elections uphold democracy and describing barriers to participation such as apathy or disinformation.",
+      "keyPoints": [
+        "Compulsory voting exists in some countries but not the UK, participation is voluntary.",
+        "Voter ID requirements (where applied) aim to reduce fraud but may affect access.",
+        "Young people can influence politics before 18 through campaigns, petitions, and youth councils."
+      ],
+      "explainLike": "Democracy needs informed voters, citizenship is about using your voice even when you cannot yet mark a ballot."
+    },
+    "6": {
+      "summary": "Discuss advantages and disadvantages of lowering the voting age to 16, using evidence on maturity, tax, and participation.",
+      "keyPoints": [
+        "Scotland allowed 16-17-year-olds to vote in some referendums and devolved elections.",
+        "Arguments for: taxation without representation, engagement in citizenship education.",
+        "Arguments against: concerns about independence of choice and consistency UK-wide."
+      ],
+      "explainLike": "A discuss answer needs a benefit, a drawback, and a reasoned view, not just your personal opinion."
+    },
+    "7": {
+      "summary": "Apply mark-scheme thinking: explain two ways elections promote accountability (AO2) and evaluate one limitation of FPTP (AO3).",
+      "keyPoints": [
+        "Accountability: MPs can be voted out; manifestos set expectations; opposition challenges policy.",
+        "FPTP limitation: wasted votes in safe seats; disproportionate seat share vs vote share.",
+        "Use command words precisely, 'explain' needs because/therefore chains."
+      ],
+      "explainLike": "Examiners credit developed points, identify the idea, then explain why it matters for democracy."
+    },
+    "8": {
+      "summary": "Analyse how media, social media, and party machinery shape electoral outcomes and voter behaviour in the UK context.",
+      "keyPoints": [
+        "Marginal seat targeting concentrates campaign spending and visits.",
+        "Digital micro-targeting raises questions about privacy and manipulation.",
+        "Evaluate whether reforms (spending caps, impartiality rules) balance free speech and fair elections."
+      ],
+      "explainLike": "Modern elections are fought online as well as on doorsteps, analyse both the opportunities and risks."
+    },
+    "9": {
+      "summary": "Evaluate the extent to which UK elections deliver legitimate democratic representation in the 21st century, integrating devolution and reform debates.",
+      "keyPoints": [
+        "Legitimacy links to turnout, fairness of system, and public trust in results.",
+        "Compare FPTP stability with PR arguments for fairer reflection of views.",
+        "Conclude with a justified line, 'to a large extent' needs evidence on both sides."
+      ],
+      "explainLike": "Mastery answers weigh systemic design, participation trends, and media influence before a precise evaluative conclusion."
+    }
+  }
+}

@@ -1,0 +1,435 @@
+/**
+ * Theo (Level 6 Confident) — scoped tutor theme
+ * Apply via .tutor-theo on cards or .agent-theo on pages where Theo is active.
+ * Electric cyan accent, snappier motion than Nova, more dynamic than Kai.
+ * Does not affect other tutor styles.
+ */
+
+:root {
+  --theo-ease: cubic-bezier(0.34, 1.2, 0.64, 1);
+  --theo-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --theo-accent: #00c8f0;
+  --theo-accent-soft: #5ee4ff;
+  --theo-accent-deep: #0099c4;
+  --theo-glow: rgba(0, 200, 240, 0.32);
+  --theo-glow-strong: rgba(0, 200, 240, 0.5);
+  --theo-glow-soft: rgba(94, 228, 255, 0.16);
+  --theo-line: rgba(0, 200, 240, 0.38);
+}
+
+/* ---------- Tutor selection card ---------- */
+.tutor-card.tutor-theo {
+  transition:
+    transform 0.28s var(--theo-ease),
+    box-shadow 0.28s var(--theo-ease-out),
+    border-color 0.28s var(--theo-ease-out);
+}
+
+.tutor-card.tutor-theo::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.42;
+  background: radial-gradient(ellipse 90% 70% at 50% 0%, var(--theo-glow-soft), transparent 68%);
+  transition: opacity 0.28s var(--theo-ease-out);
+}
+
+.tutor-card.tutor-theo:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: var(--theo-line);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.4),
+    0 0 32px var(--theo-glow);
+  animation: theo-hover-pulse 1.2s var(--theo-ease-out) infinite alternate;
+}
+
+.tutor-card.tutor-theo:hover::before {
+  opacity: 0.95;
+}
+
+.tutor-card.tutor-theo:hover .tutor-photo img {
+  transform: scale(1.08);
+  transition: transform 0.32s var(--theo-ease);
+}
+
+.tutor-card.tutor-theo .tutor-photo img {
+  transition: transform 0.32s var(--theo-ease);
+}
+
+.tutor-card.tutor-theo.is-selected {
+  border-color: var(--theo-accent);
+  box-shadow:
+    0 0 0 2px rgba(0, 200, 240, 0.42),
+    0 0 36px var(--theo-glow-strong),
+    0 0 72px var(--theo-glow-soft),
+    0 24px 54px rgba(0, 0, 0, 0.46);
+  animation: theo-card-glow 1.6s var(--theo-ease-out) infinite alternate;
+}
+
+.tutor-card.tutor-theo.is-selected::before {
+  opacity: 1;
+}
+
+@keyframes theo-hover-pulse {
+  from { box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4), 0 0 28px var(--theo-glow); }
+  to   { box-shadow: 0 22px 52px rgba(0, 0, 0, 0.42), 0 0 40px var(--theo-glow-strong); }
+}
+
+@keyframes theo-card-glow {
+  from {
+    box-shadow:
+      0 0 0 2px rgba(0, 200, 240, 0.36),
+      0 0 30px var(--theo-glow),
+      0 24px 54px rgba(0, 0, 0, 0.46);
+  }
+  to {
+    box-shadow:
+      0 0 0 2px rgba(0, 200, 240, 0.55),
+      0 0 48px var(--theo-glow-strong),
+      0 0 80px var(--theo-glow-soft),
+      0 24px 54px rgba(0, 0, 0, 0.46);
+  }
+}
+
+/* ---------- Home carousel chip ---------- */
+.tutor-chip.tutor-theo {
+  transition: transform 0.28s var(--theo-ease), box-shadow 0.28s var(--theo-ease-out);
+}
+
+.tutor-chip.tutor-theo:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 28px var(--theo-glow);
+}
+
+.tutor-chip.tutor-theo:hover img {
+  border-color: var(--theo-accent);
+  box-shadow: 0 12px 32px var(--theo-glow);
+}
+
+/* ---------- Active agent: map panel, dashboard, lessons ---------- */
+body.agent-theo .theo-btn,
+body.agent-theo .theo-panel {
+  transition: transform 0.28s var(--theo-ease), box-shadow 0.28s var(--theo-ease-out), border-color 0.28s var(--theo-ease-out);
+}
+
+body.agent-theo .theo-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px var(--theo-glow);
+}
+
+body.agent-theo .theo-orb {
+  box-shadow: 0 0 20px var(--theo-glow);
+  animation: theo-orb-pulse 1.8s var(--theo-ease-out) infinite alternate;
+}
+
+@keyframes theo-orb-pulse {
+  from { box-shadow: 0 0 14px var(--theo-glow-soft); transform: scale(1); }
+  to   { box-shadow: 0 0 28px var(--theo-glow-strong); transform: scale(1.04); }
+}
+
+body.agent-theo .theo-panel {
+  border-color: rgba(0, 200, 240, 0.3);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.44), 0 0 28px var(--theo-glow-soft);
+}
+
+body.agent-theo .dashboard-agent-strip {
+  box-shadow: inset 0 0 28px var(--theo-glow-soft);
+  border-color: rgba(0, 200, 240, 0.24);
+}
+
+body.agent-theo .lesson-sidebar {
+  box-shadow: inset 0 0 36px var(--theo-glow-soft);
+}
+
+body.agent-theo .lesson-avatar-frame {
+  box-shadow: 0 0 24px var(--theo-glow);
+  transition: box-shadow 0.28s var(--theo-ease-out);
+}
+
+body.agent-theo .chat-msg--agent,
+body.agent-theo .lesson-tutor-preview {
+  border-color: rgba(0, 200, 240, 0.28);
+  box-shadow: 0 0 18px var(--theo-glow-soft);
+}
+
+/* ---------- Theo profile page ---------- */
+.theo-profile-page {
+  --theo-accent: var(--theo-accent);
+  --theo-accent-soft: var(--theo-accent-soft);
+}
+
+.theo-profile-page .theo-hero-photo {
+  box-shadow: 0 0 44px var(--theo-glow);
+  transition: box-shadow 0.28s var(--theo-ease-out), transform 0.28s var(--theo-ease);
+}
+
+.theo-profile-page .theo-hero-photo:hover {
+  box-shadow: 0 0 60px var(--theo-glow-strong);
+  transform: translateY(-2px);
+}
+
+.theo-profile-page .theo-hero-role,
+.theo-profile-page .theo-section h2,
+.theo-profile-page .theo-card h3,
+.theo-profile-page .theo-question-mark {
+  color: var(--theo-accent);
+}
+
+.theo-profile-page .theo-catchphrase {
+  color: var(--theo-accent-soft);
+  animation: theo-catchphrase-glow 2.2s var(--theo-ease-out) infinite alternate;
+}
+
+@keyframes theo-catchphrase-glow {
+  from { text-shadow: 0 0 10px var(--theo-glow-soft); }
+  to   { text-shadow: 0 0 22px var(--theo-glow-strong); }
+}
+
+.theo-profile-page .theo-tag {
+  transition: border-color 0.28s var(--theo-ease-out), box-shadow 0.28s var(--theo-ease-out), transform 0.28s var(--theo-ease);
+  color: var(--theo-accent-soft);
+}
+
+.theo-profile-page .theo-tag:hover {
+  border-color: var(--theo-line);
+  box-shadow: 0 0 16px var(--theo-glow-soft);
+  transform: translateY(-1px);
+}
+
+.theo-profile-page .theo-card,
+.theo-profile-page .theo-example-card,
+.theo-profile-page .theo-question-card,
+.theo-profile-page .theo-hint-card {
+  transition: border-color 0.28s var(--theo-ease-out), box-shadow 0.28s var(--theo-ease-out), transform 0.28s var(--theo-ease);
+}
+
+.theo-profile-page .theo-card:hover,
+.theo-profile-page .theo-example-card:hover,
+.theo-profile-page .theo-question-card:hover,
+.theo-profile-page .theo-hint-card:hover {
+  border-color: rgba(0, 200, 240, 0.35);
+  box-shadow: 0 0 24px var(--theo-glow-soft);
+  transform: translateY(-2px);
+}
+
+.theo-profile-page .theo-section ul li::before {
+  color: var(--theo-accent);
+}
+
+/* Question-led section blocks */
+.theo-profile-page .theo-question-led {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.theo-profile-page .theo-question-card {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 14px;
+  align-items: start;
+  border-radius: 14px;
+  border: 1px solid var(--glass-line);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 16px 18px;
+}
+
+.theo-profile-page .theo-question-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #06222e;
+  background: linear-gradient(135deg, var(--theo-accent-soft), var(--theo-accent));
+  box-shadow: 0 4px 16px var(--theo-glow-soft);
+  flex-shrink: 0;
+}
+
+.theo-profile-page .theo-question-label {
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--theo-accent);
+  margin-bottom: 4px;
+  display: block;
+  font-weight: 600;
+}
+
+.theo-profile-page .theo-question-text {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #d8e8f2;
+}
+
+.theo-profile-page .theo-question-sub {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* Socratic exchange blocks */
+.theo-profile-page .theo-socratic-card {
+  border-radius: 14px;
+  border: 1px solid var(--glass-line);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 16px 18px;
+  transition: border-color 0.28s var(--theo-ease-out), box-shadow 0.28s var(--theo-ease-out);
+}
+
+.theo-profile-page .theo-socratic-card:hover {
+  border-color: rgba(0, 200, 240, 0.35);
+  box-shadow: 0 0 24px var(--theo-glow-soft);
+}
+
+.theo-profile-page .theo-socratic-label {
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.theo-profile-page .theo-socratic-line {
+  font-size: 14px;
+  line-height: 1.55;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.theo-profile-page .theo-socratic-line:last-child {
+  margin-bottom: 0;
+}
+
+.theo-profile-page .theo-socratic-line--student {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #eaf4fb;
+}
+
+.theo-profile-page .theo-socratic-line--theo {
+  background: rgba(0, 200, 240, 0.1);
+  border: 1px solid rgba(0, 200, 240, 0.24);
+  color: #e8f8fc;
+}
+
+.theo-profile-page .theo-socratic-role {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Deeper hint levels */
+.theo-profile-page .theo-hints {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.theo-profile-page .theo-hint-card {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  align-items: start;
+  border-radius: 14px;
+  border: 1px solid var(--glass-line);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px 16px;
+}
+
+.theo-profile-page .theo-hint-level {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #06222e;
+  background: linear-gradient(135deg, var(--theo-accent-soft), var(--theo-accent-deep));
+  box-shadow: 0 4px 14px var(--theo-glow-soft);
+}
+
+.theo-profile-page .theo-hint-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--theo-accent);
+  margin-bottom: 4px;
+}
+
+.theo-profile-page .theo-hint-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d8e8f2;
+}
+
+/* Dialogue blocks */
+.theo-profile-page .theo-dialogue {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.theo-profile-page .theo-dialogue-line {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.theo-profile-page .theo-dialogue-line--theo {
+  align-self: flex-start;
+  max-width: 92%;
+  background: rgba(0, 200, 240, 0.1);
+  border: 1px solid rgba(0, 200, 240, 0.24);
+  color: #e8f8fc;
+}
+
+.theo-profile-page .theo-dialogue-line--student {
+  align-self: flex-end;
+  max-width: 72%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #eaf4fb;
+}
+
+.theo-profile-page .theo-dialogue-role {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.theo-profile-page .theo-cta {
+  background: linear-gradient(120deg, var(--theo-accent-soft), var(--theo-accent));
+  box-shadow: 0 14px 36px var(--theo-glow);
+  transition: transform 0.28s var(--theo-ease), box-shadow 0.28s var(--theo-ease-out);
+}
+
+.theo-profile-page .theo-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px var(--theo-glow-strong);
+}
+
+.theo-profile-page .theo-back:hover {
+  color: var(--theo-accent);
+  border-color: var(--theo-line);
+}
+
+.theo-profile-page .theo-hero-badge {
+  color: var(--theo-accent-soft);
+}

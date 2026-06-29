@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>EVOlearn — Nia, Exam Ready tutor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-nia.css" />
+  <style>
+    .nia-profile-page { min-height: 100vh; display: flex; flex-direction: column; }
+    .nia-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 26px; position: relative; z-index: 2;
+    }
+    .nia-topbar .brand-logo { height: 38px; width: auto; display: block; }
+    .nia-back {
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      padding: 8px 14px; border-radius: 999px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); backdrop-filter: blur(10px);
+      transition: color .4s cubic-bezier(.22,.61,.36,1), border-color .4s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .nia-shell { flex: 1; max-width: 960px; width: 100%; margin: 0 auto; padding: 14px 26px 48px; position: relative; z-index: 1; }
+
+    .nia-hero {
+      display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center;
+      margin-bottom: 36px;
+    }
+    .nia-hero-photo {
+      position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 1;
+      border: 1px solid var(--glass-line); background: var(--navy-deep);
+    }
+    .nia-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .nia-hero-badge {
+      position: absolute; top: 10px; left: 10px;
+      font-size: 12px; font-weight: 700; letter-spacing: .5px;
+      padding: 4px 10px; border-radius: 999px;
+      background: rgba(13,22,30,.75);
+      border: 1px solid var(--glass-line); backdrop-filter: blur(6px);
+    }
+    .nia-hero-copy h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -.5px; }
+    .nia-hero-role { font-size: 14px; letter-spacing: .4px; margin-top: 4px; }
+    .nia-catchphrase { font-size: 16px; margin-top: 14px; font-style: italic; }
+    .nia-hero-support { font-size: 15px; color: var(--muted); margin-top: 10px; line-height: 1.55; max-width: 520px; }
+
+    .nia-section { margin-bottom: 32px; }
+    .nia-section h2 {
+      font-size: 13px; letter-spacing: 1.6px; text-transform: uppercase;
+      margin-bottom: 14px; font-weight: 600;
+    }
+    .nia-section p, .nia-section li { font-size: 15px; line-height: 1.65; color: #cfe1ec; }
+    .nia-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .nia-section ul li::before { content: "·"; margin-right: 10px; }
+
+    .nia-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .nia-tag {
+      font-size: 13px; padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--glass-line); background: var(--glass);
+      backdrop-filter: blur(8px);
+    }
+
+    .nia-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .nia-card {
+      border-radius: 16px; border: 1px solid var(--glass-line);
+      background: var(--glass); backdrop-filter: blur(12px); padding: 18px 20px;
+    }
+    .nia-card h3 { font-size: 14px; margin-bottom: 10px; font-weight: 600; }
+
+    .nia-examples { display: flex; flex-direction: column; gap: 14px; }
+    .nia-example-card {
+      border-radius: 14px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); padding: 16px 18px;
+    }
+    .nia-example-label {
+      font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px; display: block;
+    }
+    .nia-example-text { font-size: 14.5px; line-height: 1.6; color: #d8e8f2; }
+    .nia-example-sub { font-size: 13px; color: var(--muted); margin-bottom: 8px; line-height: 1.5; }
+
+    .nia-principle-card {
+      border-radius: 14px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.03); padding: 14px 16px;
+    }
+    .nia-principle-title { font-size: 14px; font-weight: 600; color: #e8f4fb; margin-bottom: 6px; }
+    .nia-principle-detail { font-size: 14px; line-height: 1.55; color: #c8dcea; }
+
+    .nia-dialogue { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .nia-dialogue-line {
+      padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.55;
+    }
+    .nia-dialogue-line--student {
+      align-self: flex-end; max-width: 72%;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: #eaf4fb;
+    }
+    .nia-dialogue-role {
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 4px; display: block;
+    }
+
+    .nia-footer-cta { margin-top: 12px; text-align: center; }
+    .nia-cta {
+      display: inline-block; padding: 14px 30px; border-radius: 999px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .4s cubic-bezier(.22,.61,.36,1);
+    }
+    .nia-cta:hover { transform: translateY(-2px); }
+
+    @media (max-width: 680px) {
+      .nia-hero { grid-template-columns: 1fr; text-align: center; }
+      .nia-hero-photo { max-width: 180px; margin: 0 auto; }
+      .nia-hero-support { margin-left: auto; margin-right: auto; }
+      .nia-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="agent-nia nia-profile-page">
+  <canvas id="particles"></canvas>
+  <div class="ambient-glow"></div>
+
+  <div class="nia-profile-page">
+    <header class="nia-topbar">
+      <a href="../index.html#citizenship" aria-label="Home">
+        <img class="brand-logo" src="../assets/logo.svg" alt="EVOlearn" />
+      </a>
+      <a class="nia-back" href="citizenship.html">← All tutors</a>
+    </header>
+
+    <main class="nia-shell" id="nia-profile-root">
+      <p style="color:var(--muted);text-align:center;padding:40px 0;">Loading Nia's profile…</p>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById("nia-profile-root");
+
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function renderList(items, key) {
+        if (!items || !items.length) return "";
+        return items.map((item) => `<li>${escapeHtml(typeof item === "string" ? item : item[key] || "")}</li>`).join("");
+      }
+
+      function renderDialogue(lines, tutorName) {
+        if (!lines || !lines.length) return "";
+        return `<div class="nia-dialogue">${lines.map((line) => {
+          const isTutor = line.role === "nia";
+          return `
+            <div class="nia-dialogue-line nia-dialogue-line--${isTutor ? "nia" : "student"}">
+              <span class="nia-dialogue-role">${escapeHtml(isTutor ? tutorName : "Student")}</span>
+              ${escapeHtml(line.text)}
+            </div>`;
+        }).join("")}</div>`;
+      }
+
+      function render(profile) {
+        const ex = profile.examples || {};
+        const bio = profile.biography || {};
+        const style = profile.supportStyle || {};
+        const exam = profile.examStrategy || {};
+        const ms = profile.markSchemeExplanations || {};
+        const timing = profile.timingAdvice || {};
+        const mistakes = profile.commonMistakes || {};
+        const models = profile.modelAnswers || {};
+        const feedback = profile.assessmentFeedback || {};
+        const revision = profile.revisionGuidance || {};
+        const hints = profile.structuredHints || {};
+        const coaching = profile.lessonCoaching || {};
+        const dialogue = profile.lessonDialogue || [];
+
+        root.innerHTML = `
+          <section class="nia-hero">
+            <div class="nia-hero-photo tutor-nia">
+              <span class="nia-hero-badge">Lvl ${profile.level}</span>
+              <img src="../${profile.image}" alt="${escapeHtml(profile.name)}, ${escapeHtml(profile.levelName)} tutor" />
+            </div>
+            <div class="nia-hero-copy">
+              <h1>${escapeHtml(profile.name)}</h1>
+              <p class="nia-hero-role">Level ${profile.level} · ${escapeHtml(profile.levelName)} · ${escapeHtml(profile.role)}</p>
+              <p class="nia-catchphrase">"${escapeHtml(profile.catchphrase)}"</p>
+              <p class="nia-hero-support">${escapeHtml(profile.description)}</p>
+            </div>
+          </section>
+
+          <section class="nia-section">
+            <h2>About Nia</h2>
+            <p>${escapeHtml(bio.expanded || bio.short || "")}</p>
+          </section>
+
+          <section class="nia-section">
+            <h2>Personality</h2>
+            <div class="nia-tags">
+              ${(profile.personalityTags || []).map((tag) => `<span class="nia-tag">${escapeHtml(tag)}</span>`).join("")}
+            </div>
+          </section>
+
+          <div class="nia-grid-2 nia-section">
+            <div class="nia-card">
+              <h3>Best for</h3>
+              <ul>${renderList(profile.bestFor)}</ul>
+            </div>
+            <div class="nia-card">
+              <h3>Support style</h3>
+              <p style="margin-bottom:12px;font-size:14px;color:var(--nia-cyan-soft);">${escapeHtml(style.headline || "")}</p>
+              <ul>${renderList(style.approaches)}</ul>
+            </div>
+          </div>
+
+          <section class="nia-section">
+            <h2>Exam strategy</h2>
+            ${exam.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(exam.headline)}</p>` : ""}
+            <div class="nia-examples" style="margin-bottom:18px;">
+              ${(exam.principles || []).map((p) => `
+                <div class="nia-principle-card">
+                  <p class="nia-principle-title">${escapeHtml(p.title)}</p>
+                  <p class="nia-principle-detail">${escapeHtml(p.detail)}</p>
+                </div>
+              `).join("")}
+            </div>
+            <div class="nia-grid-2">
+              ${(exam.paperFocus || []).map((p) => `
+                <div class="nia-card">
+                  <h3>${escapeHtml(p.paper)}</h3>
+                  <p style="font-size:14px;line-height:1.6;color:#c8dcea;">${escapeHtml(p.focus)}</p>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="nia-section">
+            <h2>Mark scheme explanations</h2>
+            ${ms.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(ms.headline)}</p>` : ""}
+            <div class="nia-ms-grid" style="margin-bottom:20px;">
+              ${(ms.aoGuide || []).map((ao) => `
+                <div class="nia-ms-block">
+                  <div class="nia-ms-ao">${escapeHtml(ao.ao)}</div>
+                  <div class="nia-ms-label">${escapeHtml(ao.label)}</div>
+                  <p class="nia-example-text" style="margin-bottom:0;">${escapeHtml(ao.examinerExpects)}</p>
+                  <ul class="nia-starter-list">
+                    ${(ao.sentenceStarters || []).map((s) => `<li>${escapeHtml(s)}</li>`).join("")}
+                  </ul>
+                </div>
+              `).join("")}
+            </div>
+            <p class="nia-example-label" style="margin-bottom:12px;">Command words</p>
+            <div class="nia-cmd-grid" style="margin-bottom:20px;">
+              ${(ms.commandWords || []).map((cw) => `
+                <div class="nia-cmd-callout">
+                  <div class="nia-cmd-word">${escapeHtml(cw.word)}</div>
+                  <div class="nia-cmd-marks">${escapeHtml(cw.marksTypical)} marks typical</div>
+                  <p class="nia-cmd-structure">${escapeHtml(cw.structure)}</p>
+                </div>
+              `).join("")}
+            </div>
+            <div class="nia-examples">
+              ${(ms.levelSnapshots || []).map((snap) => `
+                <div class="nia-example-card">
+                  <span class="nia-example-label">${escapeHtml(snap.marks)}</span>
+                  <p class="nia-example-text"><strong style="color:var(--nia-cyan-soft);font-weight:600;">Level 2:</strong> ${escapeHtml(snap.level2)}</p>
+                  <p class="nia-example-text" style="margin-top:8px;"><strong style="color:var(--nia-cyan-soft);font-weight:600;">Level 3:</strong> ${escapeHtml(snap.level3)}</p>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="nia-section">
+            <h2>Timing advice</h2>
+            ${timing.headline ? `<p style="margin-bottom:8px;color:var(--muted);font-size:14px;">${escapeHtml(timing.headline)}</p>` : ""}
+            ${timing.note ? `<p class="nia-timing-note">${escapeHtml(timing.note)}</p>` : ""}
+            <div class="nia-examples">
+              ${(timing.rules || []).map((r) => `
+                <div class="nia-principle-card">
+                  <p class="nia-principle-title">${escapeHtml(r.title)}</p>
+                  <p class="nia-principle-detail">${escapeHtml(r.detail)}</p>
+                </div>
+              `).join("")}
+              ${timing.niaSays ? `
+                <div class="nia-example-card">
+                  <span class="nia-example-label">Nia says</span>
+                  <p class="nia-example-text">${escapeHtml(timing.niaSays)}</p>
+                </div>
+              ` : ""}
+            </div>
+          </section>
+
+          <section class="nia-section">
+            <h2>Common mistakes</h2>
+            ${mistakes.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(mistakes.headline)}</p>` : ""}
+            <div class="nia-examples">
+              ${(mistakes.mistakes || []).map((m) => `
+                <div class="nia-mistake-card">
+                  <p class="nia-mistake-title">${escapeHtml(m.mistake)}</p>
+                  <p class="nia-mistake-cost">${escapeHtml(m.whyItCosts)}</p>
+                  <p class="nia-mistake-fix">${escapeHtml(m.fix)}</p>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="nia-section">
+            <h2>Model answers</h2>
+            ${models.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(models.headline)}</p>` : ""}
+            <div class="nia-examples">
+              ${(models.examples || []).map((item) => `
+                <div class="nia-example-card">
+                  <span class="nia-example-label">${escapeHtml(item.label)}</span>
+                  <p class="nia-example-sub">${escapeHtml(item.prompt)}</p>
+                  <p class="nia-example-text">${escapeHtml(item.model)}</p>
+                  ${item.markNotes ? `<p class="nia-mark-notes">${escapeHtml(item.markNotes)}</p>` : ""}
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="nia-section">
+            <h2>Assessment feedback</h2>
+            ${feedback.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(feedback.headline)}</p>` : ""}
+            <div class="nia-examples">
+              <div class="nia-example-card">
+                <span class="nia-example-label">Introduction</span>
+                <p class="nia-example-text">${escapeHtml(feedback.introduction || ex.assessmentIntroduction || "")}</p>
+              </div>
+              <div class="nia-example-card">
+                <span class="nia-example-label">During the task</span>
+                <p class="nia-example-text">${escapeHtml(feedback.duringTask || "")}</p>
+              </div>
+              ${(feedback.feedbackPatterns || []).map((item) => `
+                <div class="nia-example-card">
+                  <span class="nia-example-label">${escapeHtml(item.situation)}</span>
+                  <p class="nia-example-text">${escapeHtml(item.message)}</p>
+                </div>
+              `).join("")}
+              <div class="nia-example-card">
+                <span class="nia-example-label">After submit</span>
+                <p class="nia-example-text">${escapeHtml(feedback.afterSubmit || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="nia-section">
+            <h2>Revision guidance</h2>
+            ${revision.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(revision.headline)}</p>` : ""}
+            <div class="nia-examples">
+              ${(revision.strategies || []).map((s) => `
+                <div class="nia-principle-card">
+                  <p class="nia-principle-title">${escapeHtml(s.title)}</p>
+                  <p class="nia-principle-detail">${escapeHtml(s.detail)}</p>
+                </div>
+              `).join("")}
+              ${revision.niaSays ? `
+                <div class="nia-example-card">
+                  <span class="nia-example-label">Nia says</span>
+                  <p class="nia-example-text">${escapeHtml(revision.niaSays)}</p>
+                </div>
+              ` : ""}
+            </div>
+          </section>
+
+          <section class="nia-section">
+            <h2>Voice in action</h2>
+            <div class="nia-examples">
+              <div class="nia-example-card">
+                <span class="nia-example-label">Greeting</span>
+                <p class="nia-example-text">${escapeHtml(ex.greeting || "")}</p>
+              </div>
+              <div class="nia-example-card">
+                <span class="nia-example-label">Feedback</span>
+                <p class="nia-example-text">${escapeHtml(ex.feedback || "")}</p>
+              </div>
+              <div class="nia-example-card">
+                <span class="nia-example-label">Encouragement</span>
+                <p class="nia-example-text">${escapeHtml(ex.encouragement || "")}</p>
+              </div>
+              <div class="nia-example-card">
+                <span class="nia-example-label">End of lesson</span>
+                <p class="nia-example-text">${escapeHtml(ex.endOfLesson || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="nia-section">
+            <h2>Structured hints</h2>
+            ${hints.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(hints.headline)}</p>` : ""}
+            <div class="nia-examples">
+              ${(hints.levels || []).map((item) => `
+                <div class="nia-cmd-callout">
+                  <div class="nia-cmd-word">${escapeHtml(item.title || ("Level " + item.level))}</div>
+                  <p class="nia-cmd-structure">${escapeHtml(item.example || "")}</p>
+                </div>
+              `).join("")}
+              <div class="nia-example-card">
+                <span class="nia-example-label">Hint example</span>
+                <p class="nia-example-text">${escapeHtml(ex.hint || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="nia-section">
+            <h2>Lesson coaching</h2>
+            ${coaching.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(coaching.headline)}</p>` : ""}
+            <div class="nia-examples">
+              ${(coaching.examples || []).map((item) => `
+                <div class="nia-example-card">
+                  <span class="nia-example-label">${escapeHtml(item.label)}</span>
+                  <p class="nia-example-sub">${escapeHtml(item.scenario)}</p>
+                  <p class="nia-example-text">${escapeHtml(item.niaSays)}</p>
+                </div>
+              `).join("")}
+            </div>
+            <div class="nia-example-card" style="margin-top:14px;">
+              <span class="nia-example-label">Lesson dialogue</span>
+              ${renderDialogue(dialogue, profile.name)}
+            </div>
+          </section>
+
+          <div class="nia-footer-cta">
+            <a class="nia-cta" href="../assessment/citizenship.html">Start your assessment →</a>
+          </div>
+        `;
+      }
+
+      fetch("../assets/data/tutors/nia.json")
+        .then((r) => r.json())
+        .then(render)
+        .catch(() => {
+          root.innerHTML = "<p style=\"color:var(--muted);text-align:center;\">Could not load Nia's profile.</p>";
+        });
+    })();
+  </script>
+  <script>
+    const cv = document.getElementById("particles"), cx = cv.getContext("2d");
+    let dots = [];
+    function size(){ cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+    function init(){ size(); dots = Array.from({length:55},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*0.8+0.2,r:Math.random()*1.4+0.4,tw:Math.random()*6.28})); }
+    function draw(){ cx.clearRect(0,0,innerWidth,innerHeight); for(const d of dots){ d.y-=d.z*0.25; d.tw+=0.02; if(d.y<-5){d.y=innerHeight+5;d.x=Math.random()*innerWidth;} const a=(0.25+Math.sin(d.tw)*0.2)*d.z; cx.beginPath(); cx.arc(d.x,d.y,d.r*d.z+0.4,0,6.28); cx.fillStyle=`rgba(90,217,255,${a})`; cx.fill(); } requestAnimationFrame(draw); }
+    addEventListener("resize", size);
+    addEventListener("pointermove",(e)=>{ document.body.style.setProperty("--mx",(e.clientX/innerWidth*100)+"%"); document.body.style.setProperty("--my",(e.clientY/innerHeight*100)+"%"); });
+    init(); draw();
+  </script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>EVOlearn — Athena, Mastery tutor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-athena.css" />
+  <style>
+    .athena-profile-page { min-height: 100vh; display: flex; flex-direction: column; }
+    .athena-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 28px; position: relative; z-index: 2;
+    }
+    .athena-topbar .brand-logo { height: 38px; width: auto; display: block; }
+    .athena-back {
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      padding: 8px 16px; border-radius: 999px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); backdrop-filter: blur(10px);
+      transition: color .42s cubic-bezier(.16,1,.3,1), border-color .42s cubic-bezier(.16,1,.3,1);
+    }
+
+    .athena-shell { flex: 1; max-width: 940px; width: 100%; margin: 0 auto; padding: 16px 28px 56px; position: relative; z-index: 1; }
+
+    .athena-hero {
+      display: grid; grid-template-columns: 210px 1fr; gap: 32px; align-items: center;
+      margin-bottom: 40px;
+    }
+    .athena-hero-photo {
+      position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 1;
+      border: 1px solid var(--glass-line); background: var(--navy-deep);
+    }
+    .athena-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .athena-hero-badge {
+      position: absolute; top: 12px; left: 12px;
+      font-size: 12px; font-weight: 700; letter-spacing: .5px;
+      padding: 5px 12px; border-radius: 999px;
+      background: rgba(13,22,30,.78); border: 1px solid var(--glass-line); backdrop-filter: blur(8px);
+    }
+    .athena-hero-copy h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 500; letter-spacing: -.6px; }
+    .athena-hero-role { font-size: 14px; letter-spacing: .5px; margin-top: 6px; }
+    .athena-catchphrase { font-size: 17px; margin-top: 16px; font-style: italic; }
+    .athena-hero-support { font-size: 15px; color: var(--muted); margin-top: 12px; line-height: 1.6; max-width: 540px; }
+
+    .athena-section { margin-bottom: 36px; }
+    .athena-section h2 {
+      font-size: 12px; letter-spacing: 1.8px; text-transform: uppercase;
+      margin-bottom: 16px; font-weight: 600;
+    }
+    .athena-section p, .athena-section li { font-size: 15px; line-height: 1.68; color: #cfe1ec; }
+    .athena-section ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .athena-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .athena-tag {
+      font-size: 13px; padding: 7px 14px; border-radius: 999px;
+      border: 1px solid var(--glass-line); background: var(--glass);
+      backdrop-filter: blur(8px);
+    }
+
+    .athena-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .athena-card {
+      border-radius: 18px; border: 1px solid var(--glass-line);
+      background: var(--glass); backdrop-filter: blur(12px); padding: 20px 22px;
+    }
+    .athena-card h3 { font-size: 14px; margin-bottom: 12px; font-weight: 600; }
+
+    .athena-examples { display: flex; flex-direction: column; gap: 16px; }
+    .athena-example-card {
+      border-radius: 16px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.035); padding: 18px 20px;
+    }
+    .athena-example-label {
+      font-size: 11px; letter-spacing: 1.3px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 10px; display: block;
+    }
+    .athena-example-text { font-size: 14.5px; line-height: 1.65; color: #dceef6; }
+
+    .athena-footer-cta { margin-top: 16px; text-align: center; }
+    .athena-cta {
+      display: inline-block; padding: 15px 34px; border-radius: 999px;
+      font-size: 15px; font-weight: 600; text-decoration: none; color: #06222e;
+    }
+
+    @media (max-width: 680px) {
+      .athena-hero { grid-template-columns: 1fr; text-align: center; }
+      .athena-hero-photo { max-width: 190px; margin: 0 auto; }
+      .athena-hero-support { margin-left: auto; margin-right: auto; }
+      .athena-grid-2 { grid-template-columns: 1fr; }
+      .athena-hint-level { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body class="agent-athena athena-profile-page">
+  <canvas id="particles"></canvas>
+  <div class="ambient-glow"></div>
+
+  <div class="athena-profile-page">
+    <header class="athena-topbar">
+      <a href="../index.html#citizenship" aria-label="Home">
+        <img class="brand-logo" src="../assets/logo.svg" alt="EVOlearn" />
+      </a>
+      <a class="athena-back" href="citizenship.html">← All tutors</a>
+    </header>
+
+    <main class="athena-shell" id="athena-profile-root">
+      <p style="color:var(--muted);text-align:center;padding:40px 0;">Loading Athena's profile…</p>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById("athena-profile-root");
+
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function renderList(items) {
+        return (items || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+      }
+
+      function renderEncouragement(ex) {
+        const enc = ex.encouragement;
+        if (Array.isArray(enc)) {
+          return enc.map((msg) => `
+            <div class="athena-example-card">
+              <p class="athena-example-text">${escapeHtml(msg)}</p>
+            </div>
+          `).join("");
+        }
+        return `<p class="athena-example-text">${escapeHtml(enc || "")}</p>`;
+      }
+
+      function render(profile) {
+        const ex = profile.examples || {};
+        const bio = profile.biography || {};
+        const style = profile.supportStyle || {};
+        const mastery = profile.masteryCoaching || {};
+        const questioning = profile.highLevelQuestioning || {};
+        const evaluation = profile.evaluationPrompts || {};
+        const examiner = profile.examinerFeedback || {};
+        const topBand = profile.topBandGuidance || {};
+        const independent = profile.independentLearning || {};
+        const reflections = profile.finalReflections || {};
+        const hints = profile.refinementHints || {};
+        const dialogue = profile.lessonCoaching || {};
+        const assessment = profile.assessmentCoaching || {};
+
+        root.innerHTML = `
+          <section class="athena-hero">
+            <div class="athena-hero-photo tutor-athena">
+              <span class="athena-hero-badge">Lvl ${profile.level}</span>
+              <img src="../${profile.image}" alt="${escapeHtml(profile.name)}, ${escapeHtml(profile.levelName)} tutor" />
+            </div>
+            <div class="athena-hero-copy">
+              <h1>${escapeHtml(profile.name)}</h1>
+              <p class="athena-hero-role">Level ${profile.level} · ${escapeHtml(profile.levelName)} · ${escapeHtml(profile.role)}</p>
+              <p class="athena-catchphrase">"${escapeHtml(profile.catchphrase)}"</p>
+              <p class="athena-hero-support">${escapeHtml(profile.description)}</p>
+            </div>
+          </section>
+
+          <section class="athena-section">
+            <h2>About Athena</h2>
+            <p>${escapeHtml(bio.expanded || bio.short || "")}</p>
+          </section>
+
+          <section class="athena-section">
+            <h2>Personality</h2>
+            <div class="athena-tags">
+              ${(profile.personalityTags || []).map((tag) => `<span class="athena-tag">${escapeHtml(tag)}</span>`).join("")}
+            </div>
+          </section>
+
+          <div class="athena-grid-2 athena-section">
+            <div class="athena-card">
+              <h3>Best for</h3>
+              <ul>${renderList(profile.bestFor)}</ul>
+            </div>
+            <div class="athena-card">
+              <h3>Support style</h3>
+              <p style="margin-bottom:14px;font-size:14px;color:var(--athena-cyan-soft);">${escapeHtml(style.headline || "")}</p>
+              <ul>${renderList(style.approaches)}</ul>
+            </div>
+          </div>
+
+          <section class="athena-section">
+            <h2>Greeting</h2>
+            <div class="athena-example-card">
+              <p class="athena-example-text">${escapeHtml(ex.greeting || "")}</p>
+            </div>
+          </section>
+
+          <section class="athena-section">
+            <h2>${escapeHtml(mastery.headline || "Mastery coaching")}</h2>
+            <div class="athena-examples">
+              ${(mastery.examples || []).map((item) => `
+                <div class="athena-example-card">
+                  <span class="athena-example-label">${escapeHtml(item.label || "Coaching")}</span>
+                  ${item.scenario ? `<p class="athena-mastery-scenario">${escapeHtml(item.scenario)}</p>` : ""}
+                  <p class="athena-example-text">${escapeHtml(item.athenaSays || "")}</p>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="athena-section">
+            <h2>${escapeHtml(questioning.headline || "High-level questioning")}</h2>
+            <div class="athena-examples">
+              ${(questioning.examples || []).map((item) => `
+                <div class="athena-example-card">
+                  <span class="athena-example-label">${escapeHtml(item.label || "Exchange")}</span>
+                  <div class="athena-exchange-block">
+                    <div class="athena-exchange-student">
+                      <span class="athena-exchange-role">Student</span>
+                      ${escapeHtml(item.studentSays || "")}
+                    </div>
+                    <div class="athena-exchange-athena">
+                      <span class="athena-exchange-role">${escapeHtml(profile.name)}</span>
+                      ${escapeHtml(item.athenaResponds || "")}
+                    </div>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="athena-section">
+            <h2>${escapeHtml(evaluation.headline || "Evaluation prompts")}</h2>
+            <div class="athena-prompt-grid">
+              ${(evaluation.prompts || []).map((item) => `
+                <div class="athena-prompt-card">
+                  <span class="athena-prompt-context">${escapeHtml(item.context || "")}</span>
+                  <p class="athena-prompt-text">${escapeHtml(item.prompt || "")}</p>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="athena-section">
+            <h2>${escapeHtml(examiner.headline || "Examiner-style feedback")}</h2>
+            ${(examiner.messages || []).map((item) => `
+              <div class="athena-examiner-block">
+                <div class="athena-examiner-situation">${escapeHtml(item.situation || "")}</div>
+                <p class="athena-examiner-message">${escapeHtml(item.message || "")}</p>
+              </div>
+            `).join("")}
+          </section>
+
+          <section class="athena-section">
+            <h2>${escapeHtml(topBand.headline || "Top-band answer guidance")}</h2>
+            ${(topBand.principles || []).map((item) => `
+              <div class="athena-principle-card">
+                <span class="athena-principle-title">${escapeHtml(item.title || "")}</span>
+                <p class="athena-principle-detail">${escapeHtml(item.detail || "")}</p>
+              </div>
+            `).join("")}
+            ${(topBand.modelQualities || []).length ? `
+              <div class="athena-card" style="margin-top:16px;">
+                <h3>What top-band answers demonstrate</h3>
+                <ul>${renderList(topBand.modelQualities)}</ul>
+              </div>
+            ` : ""}
+          </section>
+
+          <section class="athena-section">
+            <h2>${escapeHtml(independent.headline || "Independent learning prompts")}</h2>
+            <div class="athena-prompt-grid">
+              ${(independent.prompts || []).map((item) => `
+                <div class="athena-prompt-card">
+                  <span class="athena-prompt-context">${escapeHtml(item.label || "")}</span>
+                  <p class="athena-prompt-text">${escapeHtml(item.prompt || "")}</p>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="athena-section">
+            <h2>${escapeHtml(hints.headline || "Refinement hints")}</h2>
+            ${(hints.levels || []).map((item) => `
+              <div class="athena-hint-level">
+                <div class="athena-hint-badge">Lvl ${item.level}</div>
+                <div>
+                  <span class="athena-hint-title">${escapeHtml(item.title || "")}</span>
+                  <p class="athena-hint-text">${escapeHtml(item.example || "")}</p>
+                </div>
+              </div>
+            `).join("")}
+          </section>
+
+          <section class="athena-section">
+            <h2>${escapeHtml(dialogue.headline || "Lesson coaching")}</h2>
+            <div class="athena-dialogue">
+              ${(dialogue.exchange || []).map((line) => `
+                <div class="athena-dialogue-line athena-dialogue-line--${escapeHtml(line.role === "athena" ? "athena" : "student")}">
+                  <span class="athena-dialogue-role">${escapeHtml(line.role === "athena" ? profile.name : "Student")}</span>
+                  ${escapeHtml(line.text)}
+                </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="athena-section">
+            <h2>${escapeHtml(assessment.headline || "Assessment coaching")}</h2>
+            <div class="athena-examples">
+              <div class="athena-example-card">
+                <span class="athena-example-label">Introduction</span>
+                <p class="athena-example-text">${escapeHtml(assessment.introduction || "")}</p>
+              </div>
+              <div class="athena-example-card">
+                <span class="athena-example-label">During a task</span>
+                <p class="athena-example-text">${escapeHtml(assessment.duringTask || "")}</p>
+              </div>
+              ${(assessment.commandWordGuide || []).map((item) => `
+                <div class="athena-example-card">
+                  <span class="athena-example-label">${escapeHtml(item.word)}</span>
+                  <p class="athena-example-text">${escapeHtml(item.coaching || "")}</p>
+                </div>
+              `).join("")}
+              <div class="athena-example-card">
+                <span class="athena-example-label">Checking your work</span>
+                <p class="athena-example-text">${escapeHtml(assessment.checkingWork || "")}</p>
+              </div>
+              <div class="athena-example-card">
+                <span class="athena-example-label">After you submit</span>
+                <p class="athena-example-text">${escapeHtml(assessment.afterSubmit || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="athena-section">
+            <h2>Encouragement</h2>
+            <div class="athena-examples">${renderEncouragement(ex)}</div>
+          </section>
+
+          <section class="athena-section">
+            <h2>${escapeHtml(reflections.headline || "Final lesson reflections")}</h2>
+            <div class="athena-prompt-grid">
+              ${(reflections.prompts || []).map((item) => `
+                <div class="athena-prompt-card">
+                  <span class="athena-prompt-context">${escapeHtml(item.context || "")}</span>
+                  <p class="athena-prompt-text">${escapeHtml(item.prompt || "")}</p>
+                </div>
+              `).join("")}
+            </div>
+            ${(reflections.closingMessages || []).length ? `
+              <div style="margin-top:20px;">
+                ${(reflections.closingMessages || []).map((msg) => `
+                  <p class="athena-closing-line">${escapeHtml(msg)}</p>
+                `).join("")}
+              </div>
+            ` : ""}
+          </section>
+
+          <section class="athena-section">
+            <h2>End of lesson</h2>
+            <div class="athena-example-card">
+              <p class="athena-example-text">${escapeHtml(ex.completionMessage || "")}</p>
+            </div>
+          </section>
+
+          <div class="athena-footer-cta">
+            <a class="athena-cta" href="../assessment/citizenship.html">Start your assessment →</a>
+          </div>
+        `;
+      }
+
+      fetch("../assets/data/tutors/athena.json")
+        .then((r) => r.json())
+        .then(render)
+        .catch(() => {
+          root.innerHTML = "<p style=\"color:var(--muted);text-align:center;\">Could not load Athena's profile.</p>";
+        });
+    })();
+  </script>
+  <script>
+    const cv = document.getElementById("particles"), cx = cv.getContext("2d");
+    let dots = [];
+    function size(){ cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+    function init(){ size(); dots = Array.from({length:55},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*0.8+0.2,r:Math.random()*1.4+0.4,tw:Math.random()*6.28})); }
+    function draw(){ cx.clearRect(0,0,innerWidth,innerHeight); for(const d of dots){ d.y-=d.z*0.25; d.tw+=0.02; if(d.y<-5){d.y=innerHeight+5;d.x=Math.random()*innerWidth;} const a=(0.28+Math.sin(d.tw)*0.18)*d.z; cx.beginPath(); cx.arc(d.x,d.y,d.r*d.z+0.4,0,6.28); cx.fillStyle=`rgba(168,244,255,${a})`; cx.fill(); } requestAnimationFrame(draw); }
+    addEventListener("resize", size);
+    addEventListener("pointermove",(e)=>{ document.body.style.setProperty("--mx",(e.clientX/innerWidth*100)+"%"); document.body.style.setProperty("--my",(e.clientY/innerHeight*100)+"%"); });
+    init(); draw();
+  </script>
+</body>
+</html>

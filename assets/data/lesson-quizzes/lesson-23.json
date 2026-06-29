@@ -1,0 +1,37 @@
+{
+  "lessonId": "lesson-23",
+  "title": "End of lesson 23 check",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Lesson 23 — Question 1",
+      "options": [
+        "Option 1",
+        "Option 2",
+        "Option 3"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "text": "Lesson 23 — Question 2",
+      "options": [
+        "Option 1",
+        "Option 2",
+        "Option 3"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q3",
+      "text": "Lesson 23 — Question 3",
+      "options": [
+        "Option 1",
+        "Option 2",
+        "Option 3"
+      ],
+      "correctIndex": 2
+    }
+  ],
+  "maxPoints": 10
+}

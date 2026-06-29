@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>EVOlearn — Elias, Advanced tutor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-elias.css" />
+  <style>
+    .elias-profile-page { min-height: 100vh; display: flex; flex-direction: column; }
+    .elias-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 26px; position: relative; z-index: 2;
+    }
+    .elias-topbar .brand-logo { height: 38px; width: auto; display: block; }
+    .elias-back {
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      padding: 8px 14px; border-radius: 999px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); backdrop-filter: blur(10px);
+      transition: color .62s cubic-bezier(.33,.52,.35,.98), border-color .62s cubic-bezier(.33,.52,.35,.98);
+    }
+
+    .elias-shell { flex: 1; max-width: 920px; width: 100%; margin: 0 auto; padding: 14px 26px 48px; position: relative; z-index: 1; }
+
+    .elias-hero {
+      display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center;
+      margin-bottom: 36px;
+    }
+    .elias-hero-photo {
+      position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 1;
+      border: 1px solid var(--glass-line); background: var(--navy-deep);
+    }
+    .elias-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .elias-hero-badge {
+      position: absolute; top: 10px; left: 10px;
+      font-size: 12px; font-weight: 700; letter-spacing: .5px;
+      padding: 4px 10px; border-radius: 999px;
+      background: rgba(13,22,30,.75); color: var(--elias-accent-soft, #c8d4e2);
+      border: 1px solid var(--glass-line); backdrop-filter: blur(6px);
+    }
+    .elias-hero-copy h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -.5px; }
+    .elias-hero-role { font-size: 14px; letter-spacing: .4px; margin-top: 4px; }
+    .elias-catchphrase {
+      font-size: 16px; margin-top: 14px; font-style: italic;
+    }
+    .elias-hero-support { font-size: 15px; color: var(--muted); margin-top: 10px; line-height: 1.55; max-width: 520px; }
+
+    .elias-section { margin-bottom: 32px; }
+    .elias-section h2 {
+      font-size: 13px; letter-spacing: 1.6px; text-transform: uppercase;
+      margin-bottom: 14px; font-weight: 600;
+    }
+    .elias-section p, .elias-section li { font-size: 15px; line-height: 1.65; color: #cfe1ec; }
+    .elias-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .elias-section ul li::before { content: "·"; margin-right: 10px; }
+
+    .elias-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .elias-tag {
+      font-size: 13px; padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--glass-line); background: var(--glass);
+      color: var(--elias-accent-soft, #c8d4e2); backdrop-filter: blur(8px);
+    }
+
+    .elias-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .elias-card {
+      border-radius: 16px; border: 1px solid var(--glass-line);
+      background: var(--glass); backdrop-filter: blur(12px); padding: 18px 20px;
+    }
+    .elias-card h3 { font-size: 14px; margin-bottom: 10px; font-weight: 600; }
+
+    .elias-examples { display: flex; flex-direction: column; gap: 14px; }
+    .elias-example-card, .elias-step-card, .elias-connection-card {
+      border-radius: 14px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); padding: 16px 18px;
+    }
+    .elias-example-label {
+      font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px; display: block;
+    }
+    .elias-example-text { font-size: 14.5px; line-height: 1.6; color: #d8e8f2; }
+    .elias-example-sub { font-size: 13px; color: var(--muted); margin-bottom: 8px; line-height: 1.5; }
+
+    .elias-steps { display: flex; flex-direction: column; gap: 12px; }
+    .elias-step-card { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; }
+    .elias-step-num {
+      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
+      font-size: 14px; font-weight: 700; border: 1px solid;
+    }
+    .elias-step-title { font-size: 14px; font-weight: 600; color: #e0edf5; margin-bottom: 4px; }
+    .elias-step-detail { font-size: 14px; line-height: 1.55; color: #c8dcea; }
+
+    .elias-hint-levels { display: flex; flex-direction: column; gap: 10px; }
+    .elias-hint-row {
+      display: grid; grid-template-columns: 88px 1fr; gap: 12px; align-items: start;
+      padding: 12px 14px; border-radius: 12px;
+      border: 1px solid var(--glass-line); background: rgba(255,255,255,.03);
+    }
+    .elias-hint-level-label {
+      font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--elias-accent-soft, #c8d4e2); font-weight: 600;
+    }
+
+    .elias-dialogue { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .elias-dialogue-line {
+      padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.55;
+    }
+    .elias-dialogue-line--elias { align-self: flex-start; max-width: 92%; }
+    .elias-dialogue-line--student {
+      align-self: flex-end; max-width: 72%;
+      color: #eaf4fb;
+    }
+    .elias-dialogue-role {
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 4px; display: block;
+    }
+
+    .elias-footer-cta { margin-top: 12px; text-align: center; }
+    .elias-cta {
+      display: inline-block; padding: 14px 30px; border-radius: 999px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: transform .62s cubic-bezier(.33,.52,.35,.98), box-shadow .62s cubic-bezier(.33,.52,.35,.98);
+    }
+    .elias-cta:hover { transform: translateY(-2px); }
+
+    @media (max-width: 680px) {
+      .elias-hero { grid-template-columns: 1fr; text-align: center; }
+      .elias-hero-photo { max-width: 180px; margin: 0 auto; }
+      .elias-hero-support { margin-left: auto; margin-right: auto; }
+      .elias-grid-2 { grid-template-columns: 1fr; }
+      .elias-hint-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="agent-elias elias-profile-page">
+  <canvas id="particles"></canvas>
+  <div class="ambient-glow"></div>
+
+  <div class="elias-profile-page">
+    <header class="elias-topbar">
+      <a href="../index.html#citizenship" aria-label="Home">
+        <img class="brand-logo" src="../assets/logo.svg" alt="EVOlearn" />
+      </a>
+      <a class="elias-back" href="citizenship.html">← All tutors</a>
+    </header>
+
+    <main class="elias-shell" id="elias-profile-root">
+      <p style="color:var(--muted);text-align:center;padding:40px 0;">Loading Elias's profile…</p>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById("elias-profile-root");
+
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function renderCards(items, renderItem) {
+        if (!items || !items.length) return "";
+        return items.map(renderItem).join("");
+      }
+
+      function render(profile) {
+        const ex = profile.examples || {};
+        const bio = profile.biography || {};
+        const style = profile.supportStyle || {};
+        const analytical = profile.analyticalQuestioning || {};
+        const topics = profile.topicConnections || {};
+        const debates = profile.debatePrompts || {};
+        const reflections = profile.reflectionTasks || {};
+        const coaching = profile.lessonCoaching || {};
+        const walkthrough = coaching.walkthrough || {};
+        const hints = profile.structuredHints || {};
+        const assessment = profile.assessmentCoaching || {};
+        const feedback = profile.advancedFeedback || {};
+        const dialogue = walkthrough.dialogue || assessment.dialogue || [];
+
+        root.innerHTML = `
+          <section class="elias-hero">
+            <div class="elias-hero-photo tutor-elias">
+              <span class="elias-hero-badge">Lvl ${profile.level}</span>
+              <img src="../${profile.image}" alt="${escapeHtml(profile.name)}, ${escapeHtml(profile.levelName)} tutor" />
+            </div>
+            <div class="elias-hero-copy">
+              <h1>${escapeHtml(profile.name)}</h1>
+              <p class="elias-hero-role">Level ${profile.level} · ${escapeHtml(profile.levelName)} · ${escapeHtml(profile.role)}</p>
+              <p class="elias-catchphrase">"${escapeHtml(profile.catchphrase)}"</p>
+              <p class="elias-hero-support">${escapeHtml(profile.description)}</p>
+            </div>
+          </section>
+
+          <section class="elias-section">
+            <h2>About Elias</h2>
+            <p>${escapeHtml(bio.expanded || bio.short || "")}</p>
+          </section>
+
+          <section class="elias-section">
+            <h2>Personality</h2>
+            <div class="elias-tags">
+              ${(profile.personalityTags || []).map((tag) => `<span class="elias-tag">${escapeHtml(tag)}</span>`).join("")}
+            </div>
+          </section>
+
+          <div class="elias-grid-2 elias-section">
+            <div class="elias-card">
+              <h3>Best for</h3>
+              <ul>${(profile.bestFor || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+            <div class="elias-card">
+              <h3>Support style</h3>
+              <p style="margin-bottom:12px;font-size:14px;color:var(--elias-accent-soft,#c8d4e2);">${escapeHtml(style.headline || "")}</p>
+              <ul>${(style.approaches || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+          </div>
+
+          <section class="elias-section">
+            <h2>Voice in action</h2>
+            <div class="elias-examples">
+              <div class="elias-example-card">
+                <span class="elias-example-label">Greeting</span>
+                <p class="elias-example-text">${escapeHtml(ex.greeting || "")}</p>
+              </div>
+              <div class="elias-example-card">
+                <span class="elias-example-label">Encouragement</span>
+                <p class="elias-example-text">${escapeHtml(ex.encouragement || "")}</p>
+              </div>
+              <div class="elias-example-card">
+                <span class="elias-example-label">End of lesson</span>
+                <p class="elias-example-text">${escapeHtml(ex.endOfLesson || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="elias-section">
+            <h2>Analytical questioning</h2>
+            ${analytical.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(analytical.headline)}</p>` : ""}
+            <div class="elias-examples">
+              ${renderCards(analytical.examples, (item) => `
+                <div class="elias-example-card">
+                  <span class="elias-example-label">${escapeHtml(item.label || "Question")}</span>
+                  <p class="elias-example-sub">${escapeHtml(item.context || "")}</p>
+                  <p class="elias-example-text">${escapeHtml(item.eliasAsks || "")}</p>
+                </div>
+              `)}
+            </div>
+          </section>
+
+          <section class="elias-section">
+            <h2>Topic connections</h2>
+            ${topics.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(topics.headline)}</p>` : ""}
+            <div class="elias-examples">
+              ${renderCards(topics.connections, (item) => `
+                <div class="elias-connection-card">
+                  <p class="elias-connection-topics">${escapeHtml(item.from)} <span class="elias-connection-arrow">→</span> ${escapeHtml(item.to)}</p>
+                  <p class="elias-example-text" style="margin:0;">${escapeHtml(item.link || "")}</p>
+                </div>
+              `)}
+            </div>
+          </section>
+
+          <section class="elias-section">
+            <h2>Debate prompts</h2>
+            ${debates.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(debates.headline)}</p>` : ""}
+            <div class="elias-examples">
+              ${renderCards(debates.prompts, (item) => `
+                <div class="elias-example-card">
+                  <span class="elias-example-label">${escapeHtml(item.topic || "Debate")}</span>
+                  <p class="elias-example-sub">${escapeHtml(item.framing || "")}</p>
+                  <p class="elias-example-text">${escapeHtml(item.eliasCoaching || "")}</p>
+                </div>
+              `)}
+            </div>
+          </section>
+
+          <section class="elias-section">
+            <h2>Reflection tasks</h2>
+            ${reflections.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(reflections.headline)}</p>` : ""}
+            <div class="elias-examples">
+              ${renderCards(reflections.tasks, (item) => `
+                <div class="elias-example-card">
+                  <span class="elias-example-label">${escapeHtml(item.context || "Reflection")}</span>
+                  <p class="elias-example-text">${escapeHtml(item.task || "")}</p>
+                </div>
+              `)}
+            </div>
+          </section>
+
+          <section class="elias-section">
+            <h2>Lesson coaching</h2>
+            ${coaching.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(coaching.headline)}</p>` : ""}
+            <div class="elias-examples" style="margin-bottom:18px;">
+              ${renderCards(coaching.examples, (item) => `
+                <div class="elias-example-card">
+                  <span class="elias-example-label">${escapeHtml(item.label || "Coaching")}</span>
+                  <p class="elias-example-sub">${escapeHtml(item.scenario || "")}</p>
+                  <p class="elias-example-text">${escapeHtml(item.eliasSays || "")}</p>
+                </div>
+              `)}
+            </div>
+            ${walkthrough.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(walkthrough.headline)}</p>` : ""}
+            <div class="elias-steps" style="margin-bottom:18px;">
+              ${renderCards(walkthrough.steps, (item) => `
+                <div class="elias-step-card">
+                  <span class="elias-step-num">${escapeHtml(String(item.step))}</span>
+                  <div>
+                    <p class="elias-step-title">${escapeHtml(item.title || "")}</p>
+                    <p class="elias-step-detail">${escapeHtml(item.detail || "")}</p>
+                  </div>
+                </div>
+              `)}
+            </div>
+            <div class="elias-example-card">
+              <span class="elias-example-label">Sample dialogue</span>
+              <div class="elias-dialogue">
+                ${dialogue.map((line) => `
+                  <div class="elias-dialogue-line elias-dialogue-line--${escapeHtml(line.role === "elias" ? "elias" : "student")}">
+                    <span class="elias-dialogue-role">${escapeHtml(line.role === "elias" ? profile.name : "Student")}</span>
+                    ${escapeHtml(line.text)}
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          </section>
+
+          <section class="elias-section">
+            <h2>Structured hints</h2>
+            ${hints.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(hints.headline)}</p>` : ""}
+            <div class="elias-hint-levels">
+              ${renderCards(hints.levels, (item) => `
+                <div class="elias-hint-row">
+                  <span class="elias-hint-level-label">${escapeHtml(item.title || ("Level " + item.level))}</span>
+                  <p class="elias-example-text" style="margin:0;">${escapeHtml(item.example || "")}</p>
+                </div>
+              `)}
+            </div>
+          </section>
+
+          <section class="elias-section">
+            <h2>Assessment coaching</h2>
+            ${assessment.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(assessment.headline)}</p>` : ""}
+            <div class="elias-examples">
+              <div class="elias-example-card">
+                <span class="elias-example-label">Introduction</span>
+                <p class="elias-example-text">${escapeHtml(assessment.introduction || ex.assessmentIntroduction || "")}</p>
+              </div>
+              <div class="elias-example-card">
+                <span class="elias-example-label">During the task</span>
+                <p class="elias-example-text">${escapeHtml(assessment.duringTask || "")}</p>
+              </div>
+              ${renderCards(assessment.commandWordGuide, (item) => `
+                <div class="elias-example-card">
+                  <span class="elias-example-label">${escapeHtml(item.word || "Command word")}</span>
+                  <p class="elias-example-text">${escapeHtml(item.coaching || "")}</p>
+                </div>
+              `)}
+              <div class="elias-example-card">
+                <span class="elias-example-label">Checking your work</span>
+                <p class="elias-example-text">${escapeHtml(assessment.checkingWork || "")}</p>
+              </div>
+              <div class="elias-example-card">
+                <span class="elias-example-label">After submit</span>
+                <p class="elias-example-text">${escapeHtml(assessment.afterSubmit || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="elias-section">
+            <h2>Advanced feedback</h2>
+            ${feedback.headline ? `<p style="margin-bottom:14px;color:var(--muted);font-size:14px;">${escapeHtml(feedback.headline)}</p>` : ""}
+            <div class="elias-examples">
+              ${renderCards(feedback.messages, (item) => `
+                <div class="elias-example-card">
+                  <span class="elias-example-label">${escapeHtml(item.situation || "Feedback")}</span>
+                  <p class="elias-example-text">${escapeHtml(item.message || "")}</p>
+                </div>
+              `)}
+            </div>
+          </section>
+
+          <section class="elias-section">
+            <h2>More voice samples</h2>
+            <div class="elias-examples">
+              <div class="elias-example-card">
+                <span class="elias-example-label">Feedback</span>
+                <p class="elias-example-text">${escapeHtml(ex.feedback || "")}</p>
+              </div>
+              <div class="elias-example-card">
+                <span class="elias-example-label">Hint</span>
+                <p class="elias-example-text">${escapeHtml(ex.hint || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <div class="elias-footer-cta">
+            <a class="elias-cta" href="../assessment/citizenship.html">Start your assessment →</a>
+          </div>
+        `;
+      }
+
+      fetch("../assets/data/tutors/elias.json")
+        .then((r) => r.json())
+        .then(render)
+        .catch(() => {
+          root.innerHTML = "<p style=\"color:var(--muted);text-align:center;\">Could not load Elias's profile.</p>";
+        });
+    })();
+  </script>
+  <script>
+    const cv = document.getElementById("particles"), cx = cv.getContext("2d");
+    let dots = [];
+    function size(){ cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+    function init(){ size(); dots = Array.from({length:55},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*0.8+0.2,r:Math.random()*1.4+0.4,tw:Math.random()*6.28})); }
+    function draw(){ cx.clearRect(0,0,innerWidth,innerHeight); for(const d of dots){ d.y-=d.z*0.25; d.tw+=0.02; if(d.y<-5){d.y=innerHeight+5;d.x=Math.random()*innerWidth;} const a=(0.25+Math.sin(d.tw)*0.2)*d.z; cx.beginPath(); cx.arc(d.x,d.y,d.r*d.z+0.4,0,6.28); cx.fillStyle=`rgba(154,172,188,${a})`; cx.fill(); } requestAnimationFrame(draw); }
+    addEventListener("resize", size);
+    addEventListener("pointermove",(e)=>{ document.body.style.setProperty("--mx",(e.clientX/innerWidth*100)+"%"); document.body.style.setProperty("--my",(e.clientY/innerHeight*100)+"%"); });
+    init(); draw();
+  </script>
+</body>
+</html>

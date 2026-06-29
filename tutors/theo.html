@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>EVOlearn — Theo, Confident tutor</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/tutor-theo.css" />
+  <style>
+    .theo-profile-page { min-height: 100vh; display: flex; flex-direction: column; }
+    .theo-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 26px; position: relative; z-index: 2;
+    }
+    .theo-topbar .brand-logo { height: 38px; width: auto; display: block; }
+    .theo-back {
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      padding: 8px 14px; border-radius: 999px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); backdrop-filter: blur(10px);
+      transition: color .28s cubic-bezier(.34,1.2,.64,1), border-color .28s cubic-bezier(.22,1,.36,1);
+    }
+
+    .theo-shell { flex: 1; max-width: 920px; width: 100%; margin: 0 auto; padding: 14px 26px 48px; position: relative; z-index: 1; }
+
+    .theo-hero {
+      display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center;
+      margin-bottom: 36px;
+    }
+    .theo-hero-photo {
+      position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 1;
+      border: 1px solid var(--glass-line); background: var(--navy-deep);
+    }
+    .theo-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .theo-hero-badge {
+      position: absolute; top: 10px; left: 10px;
+      font-size: 12px; font-weight: 700; letter-spacing: .5px;
+      padding: 4px 10px; border-radius: 999px;
+      background: rgba(13,22,30,.75);
+      border: 1px solid var(--glass-line); backdrop-filter: blur(6px);
+    }
+    .theo-hero-copy h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -.5px; }
+    .theo-hero-role { font-size: 14px; letter-spacing: .4px; margin-top: 4px; }
+    .theo-catchphrase {
+      font-size: 16px; margin-top: 14px; font-style: italic;
+    }
+    .theo-hero-support { font-size: 15px; color: var(--muted); margin-top: 10px; line-height: 1.55; max-width: 520px; }
+
+    .theo-section { margin-bottom: 32px; }
+    .theo-section h2 {
+      font-size: 13px; letter-spacing: 1.6px; text-transform: uppercase;
+      margin-bottom: 14px; font-weight: 600;
+    }
+    .theo-section p, .theo-section li { font-size: 15px; line-height: 1.65; color: #cfe1ec; }
+    .theo-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .theo-section ul li::before { content: "·"; margin-right: 10px; }
+
+    .theo-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .theo-tag {
+      font-size: 13px; padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--glass-line); background: var(--glass);
+      backdrop-filter: blur(8px);
+    }
+
+    .theo-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .theo-card {
+      border-radius: 16px; border: 1px solid var(--glass-line);
+      background: var(--glass); backdrop-filter: blur(12px); padding: 18px 20px;
+    }
+    .theo-card h3 { font-size: 14px; margin-bottom: 10px; font-weight: 600; }
+
+    .theo-examples { display: flex; flex-direction: column; gap: 14px; }
+    .theo-example-card {
+      border-radius: 14px; border: 1px solid var(--glass-line);
+      background: rgba(255,255,255,.04); padding: 16px 18px;
+    }
+    .theo-example-label {
+      font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px; display: block;
+    }
+    .theo-example-text { font-size: 14.5px; line-height: 1.6; color: #d8e8f2; }
+    .theo-example-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .theo-example-list li {
+      font-size: 14.5px; line-height: 1.6; color: #d8e8f2;
+      padding-left: 0;
+    }
+    .theo-example-list li::before { display: none; }
+
+    .theo-footer-cta { margin-top: 12px; text-align: center; }
+    .theo-cta {
+      display: inline-block; padding: 14px 30px; border-radius: 999px;
+      font-size: 15px; font-weight: 600; text-decoration: none; color: #06222e;
+    }
+
+    @media (max-width: 680px) {
+      .theo-hero { grid-template-columns: 1fr; text-align: center; }
+      .theo-hero-photo { max-width: 180px; margin: 0 auto; }
+      .theo-hero-support { margin-left: auto; margin-right: auto; }
+      .theo-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="agent-theo theo-profile-page">
+  <canvas id="particles"></canvas>
+  <div class="ambient-glow"></div>
+
+  <div class="theo-profile-page">
+    <header class="theo-topbar">
+      <a href="../index.html#citizenship" aria-label="Home">
+        <img class="brand-logo" src="../assets/logo.svg" alt="EVOlearn" />
+      </a>
+      <a class="theo-back" href="citizenship.html">← All tutors</a>
+    </header>
+
+    <main class="theo-shell" id="theo-profile-root">
+      <p style="color:var(--muted);text-align:center;padding:40px 0;">Loading Theo's profile…</p>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById("theo-profile-root");
+
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function renderDialogue(lines, tutorName, tutorRole) {
+        if (!lines || !lines.length) return "";
+        return `<div class="theo-dialogue">${lines.map((line) => {
+          const isTutor = line.role === tutorRole || line.role === "theo";
+          return `
+            <div class="theo-dialogue-line theo-dialogue-line--${isTutor ? "theo" : "student"}">
+              <span class="theo-dialogue-role">${escapeHtml(isTutor ? tutorName : "Student")}</span>
+              ${escapeHtml(line.text)}
+            </div>`;
+        }).join("")}</div>`;
+      }
+
+      function renderSocratic(items) {
+        if (!items || !items.length) return "";
+        return `<div class="theo-question-led">${items.map((item) => `
+          <div class="theo-socratic-card">
+            <span class="theo-socratic-label">${escapeHtml(item.label || "")}</span>
+            <div class="theo-socratic-line theo-socratic-line--student">
+              <span class="theo-socratic-role">Student</span>
+              ${escapeHtml(item.studentSays || "")}
+            </div>
+            <div class="theo-socratic-line theo-socratic-line--theo">
+              <span class="theo-socratic-role">Theo</span>
+              ${escapeHtml(item.theoResponds || "")}
+            </div>
+          </div>
+        `).join("")}</div>`;
+      }
+
+      function renderReflectionPrompts(items) {
+        if (!items || !items.length) return "";
+        return `<div class="theo-question-led">${items.map((item) => `
+          <div class="theo-question-card">
+            <span class="theo-question-mark">?</span>
+            <div>
+              <span class="theo-question-label">${escapeHtml(item.context || "")}</span>
+              <p class="theo-question-text">${escapeHtml(item.prompt || "")}</p>
+            </div>
+          </div>
+        `).join("")}</div>`;
+      }
+
+      function renderDeeperHints(items) {
+        if (!items || !items.length) return "";
+        return `<div class="theo-hints">${items.map((item) => `
+          <div class="theo-hint-card">
+            <span class="theo-hint-level">${item.level != null ? item.level : ""}</span>
+            <div>
+              <div class="theo-hint-title">${escapeHtml(item.title || "")}</div>
+              <p class="theo-hint-text">${escapeHtml(item.example || "")}</p>
+            </div>
+          </div>
+        `).join("")}</div>`;
+      }
+
+      function renderFeedbackMessages(items) {
+        if (!items || !items.length) return "";
+        return `<div class="theo-question-led">${items.map((item) => `
+          <div class="theo-question-card">
+            <span class="theo-question-mark">!</span>
+            <div>
+              <span class="theo-question-label">${escapeHtml(item.situation || "")}</span>
+              <p class="theo-question-text">${escapeHtml(item.message || "")}</p>
+            </div>
+          </div>
+        `).join("")}</div>`;
+      }
+
+      function render(profile) {
+        const ex = profile.examples || {};
+        const bio = profile.biography || {};
+        const style = profile.supportStyle || {};
+        const socratic = profile.socraticQuestioning || {};
+        const reflection = profile.reflectionPrompts || {};
+        const hints = profile.deeperHints || {};
+        const lesson = profile.lessonDialogue || {};
+        const assessment = profile.assessmentCoaching || {};
+        const feedback = profile.advancedFeedback || {};
+        const encouragement = Array.isArray(ex.encouragement) ? ex.encouragement : (ex.encouragement ? [ex.encouragement] : []);
+
+        root.innerHTML = `
+          <section class="theo-hero">
+            <div class="theo-hero-photo tutor-theo">
+              <span class="theo-hero-badge">Lvl ${profile.level}</span>
+              <img src="../${profile.image}" alt="${escapeHtml(profile.name)}, ${escapeHtml(profile.levelName)} tutor" />
+            </div>
+            <div class="theo-hero-copy">
+              <h1>${escapeHtml(profile.name)}</h1>
+              <p class="theo-hero-role">Level ${profile.level} · ${escapeHtml(profile.levelName)} · ${escapeHtml(profile.role)}</p>
+              <p class="theo-catchphrase">"${escapeHtml(profile.catchphrase)}"</p>
+              <p class="theo-hero-support">${escapeHtml(profile.description)}</p>
+            </div>
+          </section>
+
+          <section class="theo-section">
+            <h2>About Theo</h2>
+            <p>${escapeHtml(bio.expanded || bio.short || "")}</p>
+          </section>
+
+          <section class="theo-section">
+            <h2>Personality</h2>
+            <div class="theo-tags">
+              ${(profile.personalityTags || []).map((tag) => `<span class="theo-tag">${escapeHtml(tag)}</span>`).join("")}
+            </div>
+          </section>
+
+          <div class="theo-grid-2 theo-section">
+            <div class="theo-card">
+              <h3>Best for</h3>
+              <ul>${(profile.bestFor || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+            <div class="theo-card">
+              <h3>Support style</h3>
+              <p style="margin-bottom:12px;font-size:14px;color:var(--theo-accent-soft);">${escapeHtml(style.headline || "")}</p>
+              <ul>${(style.approaches || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </div>
+          </div>
+
+          <section class="theo-section">
+            <h2>Voice in action</h2>
+            <div class="theo-examples">
+              <div class="theo-example-card">
+                <span class="theo-example-label">Greeting</span>
+                <p class="theo-example-text">${escapeHtml(ex.greeting || "")}</p>
+              </div>
+
+              <div class="theo-example-card">
+                <span class="theo-example-label">Encouragement</span>
+                <ul class="theo-example-list">${encouragement.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="theo-section">
+            <h2>${escapeHtml(socratic.headline || "Socratic questioning")}</h2>
+            ${socratic.principles ? `<p style="margin-bottom:14px;font-size:14px;color:var(--muted);">${escapeHtml(socratic.principles.join(" · "))}</p>` : ""}
+            ${renderSocratic(socratic.examples)}
+          </section>
+
+          <section class="theo-section">
+            <h2>${escapeHtml(reflection.headline || "Reflection prompts")}</h2>
+            ${renderReflectionPrompts(reflection.prompts)}
+          </section>
+
+          <section class="theo-section">
+            <h2>${escapeHtml(hints.headline || "Deeper hints")}</h2>
+            ${renderDeeperHints(hints.levels)}
+          </section>
+
+          <section class="theo-section">
+            <h2>${escapeHtml(lesson.headline || "Lesson dialogue")}</h2>
+            ${renderDialogue(lesson.exchange, profile.name, "theo")}
+          </section>
+
+          <section class="theo-section">
+            <h2>${escapeHtml(assessment.headline || "Assessment coaching")}</h2>
+            <div class="theo-examples">
+              <div class="theo-example-card">
+                <span class="theo-example-label">Introduction</span>
+                <p class="theo-example-text">${escapeHtml(assessment.introduction || "")}</p>
+              </div>
+              <div class="theo-example-card">
+                <span class="theo-example-label">During the task</span>
+                <ul class="theo-example-list">${(assessment.duringTask || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+              </div>
+              <div class="theo-example-card">
+                <span class="theo-example-label">Assessment dialogue</span>
+                ${renderDialogue(assessment.dialogue, profile.name, "theo")}
+              </div>
+              <div class="theo-example-card">
+                <span class="theo-example-label">Checking your work</span>
+                <p class="theo-example-text">${escapeHtml(assessment.checkingWork || "")}</p>
+              </div>
+              <div class="theo-example-card">
+                <span class="theo-example-label">After you submit</span>
+                <p class="theo-example-text">${escapeHtml(assessment.afterSubmit || "")}</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="theo-section">
+            <h2>${escapeHtml(feedback.headline || "Advanced feedback")}</h2>
+            ${renderFeedbackMessages(feedback.messages)}
+          </section>
+
+          <section class="theo-section">
+            <h2>End of lesson</h2>
+            <div class="theo-example-card">
+              <p class="theo-example-text">${escapeHtml(ex.completionMessage || ex.endOfLesson || "")}</p>
+            </div>
+          </section>
+
+          <div class="theo-footer-cta">
+            <a class="theo-cta" href="../assessment/citizenship.html">Start your assessment →</a>
+          </div>
+        `;
+      }
+
+      fetch("../assets/data/tutors/theo.json")
+        .then((r) => r.json())
+        .then(render)
+        .catch(() => {
+          root.innerHTML = "<p style=\"color:var(--muted);text-align:center;\">Could not load Theo's profile.</p>";
+        });
+    })();
+  </script>
+  <script>
+    const cv = document.getElementById("particles"), cx = cv.getContext("2d");
+    let dots = [];
+    function size(){ cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+    function init(){ size(); dots = Array.from({length:55},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*0.8+0.2,r:Math.random()*1.4+0.4,tw:Math.random()*6.28})); }
+    function draw(){ cx.clearRect(0,0,innerWidth,innerHeight); for(const d of dots){ d.y-=d.z*0.28; d.tw+=0.025; if(d.y<-5){d.y=innerHeight+5;d.x=Math.random()*innerWidth;} const a=(0.25+Math.sin(d.tw)*0.2)*d.z; cx.beginPath(); cx.arc(d.x,d.y,d.r*d.z+0.4,0,6.28); cx.fillStyle=`rgba(0,200,240,${a})`; cx.fill(); } requestAnimationFrame(draw); }
+    addEventListener("resize", size);
+    addEventListener("pointermove",(e)=>{ document.body.style.setProperty("--mx",(e.clientX/innerWidth*100)+"%"); document.body.style.setProperty("--my",(e.clientY/innerHeight*100)+"%"); });
+    init(); draw();
+  </script>
+</body>
+</html>

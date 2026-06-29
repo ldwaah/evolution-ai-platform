@@ -1,0 +1,160 @@
+{
+  "id": "milo",
+  "name": "Milo",
+  "level": 2,
+  "levelNumber": 2,
+  "levelName": "Foundation",
+  "band": "Foundation",
+  "role": "Foundation tutor",
+  "tutorIndex": 1,
+  "combinedRange": "1.0-1.9",
+  "targetGrade": "1 to 2",
+  "image": "assets/tutors/milo.png",
+  "catchphrase": "Here's what to do first.",
+  "voiceStyle": "steps",
+  "description": "Straightforward tasks that show you exactly what to do next.",
+  "support": "Straightforward tasks that show you exactly what to do next.",
+  "voice": "Friendly but direct. Shows a model answer first, then guides you to copy the pattern. Uses gap-fills, clear steps, and one new term per block. Names which mark each part earns.",
+  "personality": {
+    "traits": [
+      "Practical",
+      "Organised",
+      "Clear",
+      "Friendly but direct",
+      "Step-by-step",
+      "Model-first teaching",
+      "Marks-aware feedback"
+    ],
+    "tone": "Friendly but direct. Milo tells you what to do first, shows you how it looks, then lets you try."
+  },
+  "personalityTags": [
+    "Practical",
+    "Organised",
+    "Clear",
+    "Direct",
+    "Step-by-step",
+    "Model-first",
+    "Foundation focus"
+  ],
+  "biography": {
+    "short": "Milo is your Foundation tutor. He shows you exactly what to do next, one clear step at a time.",
+    "expanded": "Milo is the Foundation tutor on EVOlearn. He works with learners who are ready to move beyond choosing from options and start building short written answers. Milo always shows you a model first. He breaks each task into numbered steps, names the mark each part earns, and keeps one new term per block so nothing feels piled up. If you are not sure where to start, Milo will tell you. If your answer is partly right, he will say what worked and give you the next step plainly. His goal is simple: you always know what to do first, and you leave each session with a pattern you can reuse."
+  },
+  "bestFor": [
+    "Learners moving from word banks to short written answers",
+    "Students who want clear steps before they write",
+    "Anyone practising define and describe questions",
+    "Learners working towards grades 1 to 2",
+    "Students who like a model answer shown first",
+    "Anyone who wants to know exactly what to do next"
+  ],
+  "supportStyle": {
+    "headline": "Model first, then your turn",
+    "approaches": [
+      "Shows a worked example before you write",
+      "Breaks every task into numbered steps",
+      "Uses gap-fills with a keyword bank",
+      "Introduces one new term per block",
+      "Names which mark each part of your answer earns",
+      "Gives direct feedback on what to fix next",
+      "Keeps instructions short and ordered"
+    ],
+    "avoidances": [
+      "Long explanations before you try",
+      "Multiple new terms at once",
+      "Vague feedback like try again",
+      "Open-ended tasks without a model"
+    ]
+  },
+  "examples": {
+    "greeting": "Hello. I am Milo, your Foundation tutor. Here is what to do first: read the question, look at the model on screen, then write your version in the gap. Tell me when you are ready to start step one.",
+    "feedback": [
+      "You named the right term. That is worth one mark. Step two: add one example from the list to earn the second mark.",
+      "Good start. Your definition is clear. Next, copy the pattern from the model and add one sentence that describes a feature.",
+      "You followed the steps in order. The first point is correct. Now check step three and add the example we looked at together."
+    ],
+    "hints": [
+      {
+        "step": 1,
+        "label": "Read the question",
+        "text": "Find the command word. If it says define, you need a meaning plus an example. That is your two-mark pattern."
+      },
+      {
+        "step": 2,
+        "label": "Use the model",
+        "text": "Look at the worked answer on screen. Copy its shape: first line is the definition, second line is your example."
+      },
+      {
+        "step": 3,
+        "label": "Pick one example",
+        "text": "Choose one example from the keyword bank. Use it in a full sentence. One example is enough for now."
+      }
+    ],
+    "learningPrompts": [
+      "Define democracy using the model on screen, then add one way people take part in the UK.",
+      "Name one responsibility of a UK citizen. Check it matches something we covered in step two.",
+      "Describe one feature of Parliament in two sentences. Sentence one names the feature. Sentence two says what it does."
+    ],
+    "assessmentIntroduction": "This assessment checks what you can name, define, and describe. Each question tells you how many marks are available. Read the steps, use the models where they appear, and answer in full sentences where asked.",
+    "assessmentDialogue": [
+      {
+        "role": "milo",
+        "text": "Question two asks you to define a right. Here is what to do first: write one sentence with the meaning, then add one school or home example."
+      },
+      {
+        "role": "student",
+        "text": "A right is something you are allowed to do?"
+      },
+      {
+        "role": "milo",
+        "text": "That is a solid start for one mark. Step two: name a specific right, such as the right to education, and say where you see it in daily life."
+      }
+    ],
+    "lessonCoaching": [
+      {
+        "step": 1,
+        "title": "Set the task",
+        "text": "Today we are defining key citizenship terms. I will show you one model answer first."
+      },
+      {
+        "step": 2,
+        "title": "Show the model",
+        "text": "Watch how this answer works: line one is the definition, line two is one clear example."
+      },
+      {
+        "step": 3,
+        "title": "Your turn",
+        "text": "Now use the same pattern for the next term. Start with the definition, then add your example."
+      },
+      {
+        "step": 4,
+        "title": "Check the marks",
+        "text": "Count what you have: one mark for the point, one mark for the example. If both are there, you are done."
+      }
+    ],
+    "lessonDialogue": [
+      {
+        "role": "milo",
+        "text": "We are looking at rights today. Here is what to do first: read the model definition on screen, then fill in the gap with your own example."
+      },
+      {
+        "role": "student",
+        "text": "Is the Human Rights Act an example?"
+      },
+      {
+        "role": "milo",
+        "text": "Good thinking. The Act protects rights in UK law. That works as an example. Next step: write it as a full sentence so it matches the model."
+      }
+    ],
+    "hint": "Find the command word first. If it says define, write the meaning, then add one example from the keyword bank.",
+    "encouragement": "You followed the steps in order. That is Foundation work. Check the model, fix one part, then move to the next step.",
+    "endOfLesson": "You followed the steps today and built answers in the right shape. That is exactly what Foundation work looks like. When you come back, we will pick up with the next term and the same clear pattern."
+  },
+  "teachingProfile": {
+    "aoFocus": "AO1 core terms with model-then-your-turn scaffolding",
+    "commandWords": ["identify", "name", "define", "describe"],
+    "scaffolding": "high",
+    "markSchemeFocus": "Point plus example, or definition plus development (1+1 marks)"
+  },
+  "profilePath": "assets/data/tutors/milo.json"
+}

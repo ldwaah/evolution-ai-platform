@@ -1,0 +1,89 @@
+{
+  "topicId": "rights-responsibilities",
+  "topicTitle": "Rights and Responsibilities",
+  "moduleId": "module-1",
+  "lessonIds": ["lesson-4"],
+  "levels": {
+    "1": {
+      "summary": "A right is something you are allowed to have or do. A responsibility is something you should do for others or your community.",
+      "keyPoints": [
+        "Rights and responsibilities often come in pairs.",
+        "School rules protect everyone's right to learn safely.",
+        "Respecting others is a basic responsibility."
+      ],
+      "explainLike": "You have the right to be heard in class, and the responsibility to listen when others speak."
+    },
+    "2": {
+      "summary": "In the UK, rights come from law, including the Human Rights Act 1998. Citizens also have responsibilities such as obeying the law and respecting others.",
+      "keyPoints": [
+        "Freedom of expression is a right with legal limits.",
+        "Jury service and paying taxes are adult responsibilities.",
+        "Rights protect minorities as well as majorities."
+      ],
+      "explainLike": "Rights are protected by law; responsibilities keep society fair for everyone."
+    },
+    "3": {
+      "summary": "Rights can conflict and may be limited in a democratic society. Responsibilities include participating positively in school and community life.",
+      "keyPoints": [
+        "The Equality Act protects people from unfair treatment.",
+        "Rights are not unlimited, e.g. speech that incites violence is illegal.",
+        "Active citizenship means using your rights responsibly to help others."
+      ],
+      "explainLike": "When your rights bump into someone else's, the law and respect help you find a fair balance."
+    },
+    "4": {
+      "summary": "GCSE Citizenship expects you to apply rights and responsibilities to realistic scenarios in school, online, and public spaces.",
+      "keyPoints": [
+        "Online harassment can breach both school policies and the law.",
+        "Public protest is a right but must stay peaceful and lawful.",
+        "Local councils balance rights of residents when making planning decisions."
+      ],
+      "explainLike": "In scenarios, name the right, name the responsibility, then say the fairest action."
+    },
+    "5": {
+      "summary": "Explain why rights and responsibilities are linked in a democracy, citizens need protection and must support the system that protects them.",
+      "keyPoints": [
+        "Voting connects individual voice to collective decision-making.",
+        "Human rights underpin NHS access, fair trials, and privacy.",
+        "Ignoring responsibilities can weaken rights for everyone over time."
+      ],
+      "explainLike": "Democracy works when people use their rights and carry their share of responsibility."
+    },
+    "6": {
+      "summary": "Discuss tensions between individual liberty and community safety, using examples such as stop and search or school uniform policies.",
+      "keyPoints": [
+        "Police powers must balance crime prevention with personal freedom.",
+        "Schools limit some expression to maintain order and inclusion.",
+        "Both sides need evidence, not slogans."
+      ],
+      "explainLike": "Strong citizenship weighs liberty against safety and picks a reasoned middle ground."
+    },
+    "7": {
+      "summary": "Use AO2 application and AO3 evaluation in exam answers on rights in practice, cite law, context, and a judgement.",
+      "keyPoints": [
+        "Human Rights Act: courts can declare laws incompatible with rights.",
+        "Develop points: right identified + example + link to responsibility.",
+        "Evaluate whether limits are proportionate in the scenario given."
+      ],
+      "explainLike": "Examiners reward answers that apply the Human Rights Act to the facts, not generic lists."
+    },
+    "8": {
+      "summary": "Analyse how rights are protected and contested in the UK, including debate on reform or replacement of human rights legislation.",
+      "keyPoints": [
+        "European Convention on Human Rights influences UK law via the HRA.",
+        "Media and politics shape public understanding of 'rights culture'.",
+        "Evaluate reforms using rule of law, accountability, and vulnerable groups."
+      ],
+      "explainLike": "Analyse who gains and who risks losing protection when rights law changes."
+    },
+    "9": {
+      "summary": "Evaluate the extent to which the UK balance of rights and responsibilities serves justice in diverse communities, with sustained AO3 argument.",
+      "keyPoints": [
+        "Substantiated judgement: e.g. 'to a limited extent because… however…'",
+        "Integrate Equality Act, HRA, and active citizenship examples selectively.",
+        "Address counter-arguments without undermining your conclusion."
+      ],
+      "explainLike": "At mastery level, you judge the system, rights on paper versus rights experienced in daily life."
+    }
+  }
+}

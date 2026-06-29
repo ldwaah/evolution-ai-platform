@@ -1,95 +1,266 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>100% Sports &amp; Education Centre</title>
-  <link rel="stylesheet" href="assets/css/intro.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // Premium entry gate: the first time the platform is opened in a session,
+    // route through the animated intro (intro.html → intro video → here).
+    // Runs before any render to avoid a flash of the homepage.
+    (function () {
+      try {
+        if (!sessionStorage.getItem('evolearn-entered')) {
+          location.replace('intro.html');
+        }
+      } catch (e) { /* storage blocked — just show the app */ }
+    })();
+  </script>
+  <title>EVOlearn: Citizenship</title>
+  <link rel="stylesheet" href="style.css?v=mobile-watertight-1" />
+  <link rel="stylesheet" href="assets/css/evolearn-3d.css" />
+  <link rel="stylesheet" href="assets/css/tutor-nova.css" />
+  <link rel="stylesheet" href="assets/css/tutor-milo.css" />
+  <link rel="stylesheet" href="assets/css/tutor-ava.css" />
+  <link rel="stylesheet" href="assets/css/tutor-kai.css" />
+  <link rel="stylesheet" href="assets/css/tutor-zara.css" />
+  <link rel="stylesheet" href="assets/css/tutor-theo.css" />
+  <link rel="stylesheet" href="assets/css/tutor-nia.css" />
+  <link rel="stylesheet" href="assets/css/tutor-elias.css" />
+  <link rel="stylesheet" href="assets/css/tutor-athena.css" />
 </head>
-<body class="intro-body">
-  <main class="intro-screen is-idle" id="intro-screen" tabindex="-1" aria-label="School entrance">
-    <div class="intro-media" aria-hidden="true">
-      <img class="intro-poster" src="assets/images/intro-poster.png" alt="">
-      <video
-        class="intro-video"
-        id="intro-video"
-        preload="auto"
-        muted
-        playsinline
-        poster="assets/images/intro-poster.png"
-      >
-        <source src="assets/video/intro-door.mp4" type="video/mp4">
-      </video>
-      <p class="intro-fallback" id="intro-fallback" hidden>Video unavailable. Press Enter to continue.</p>
-      <div class="intro-vignette"></div>
+<body class="evo-3d">
+  <!-- depth layers: particles + glow -->
+  <canvas id="particles"></canvas>
+  <div class="ambient-glow"></div>
+
+  <!-- ====================== COURSE SELECT ====================== -->
+  <section id="select-screen" class="select-screen">
+    <div class="select-inner">
+      <img class="select-logo home-logo" src="assets/logo.svg" alt="EVOlearn" role="button" tabindex="0" aria-label="Home" />
+      <h1 class="select-title">A new way of learning</h1>
+
+      <div class="course-grid">
+        <button class="course-card" data-course="citizenship">
+          <span class="course-name">Citizenship</span>
+        </button>
+        <div class="course-card course-card--soon" aria-disabled="true">
+          <span class="course-name">Maths</span>
+        </div>
+        <div class="course-card course-card--soon" aria-disabled="true">
+          <span class="course-name">English</span>
+        </div>
+      </div>
+
+      <div class="tutor-carousel" aria-label="Meet your tutors">
+        <p class="tutor-carousel-cap">Meet your tutors</p>
+        <div class="tutor-carousel-viewport">
+          <div class="tutor-track" id="home-tutor-track"></div>
+        </div>
+      </div>
     </div>
-
-    <header class="intro-copy">
-      <h1>
-        100% Sports
-        <span class="brand-accent">&amp; Education Centre</span>
-      </h1>
-      <p>Press Enter to step through the doors.</p>
-    </header>
-
-    <p class="enter-hint is-ready" id="enter-hint">
-      <kbd>Enter</kbd>
-      <span>Press Enter to enter the platform</span>
-    </p>
-  </main>
+  </section>
 
   <script>
     (function () {
-      const screen = document.getElementById("intro-screen");
-      const video = document.getElementById("intro-video");
-      const fallback = document.getElementById("intro-fallback");
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      let leaving = false;
-      let playing = false;
-
-      function goToLogin() {
-        if (leaving) return;
-        leaving = true;
-        screen.classList.add("is-exiting");
-        window.setTimeout(function () {
-          window.location.href = "login.html";
-        }, 520);
-      }
-
-      function startFlythrough() {
-        if (leaving || playing) return;
-        playing = true;
-        screen.classList.remove("is-idle");
-        screen.classList.add("is-playing");
-
-        if (reducedMotion || !video) {
-          goToLogin();
-          return;
-        }
-
-        const playPromise = video.play();
-        if (playPromise && typeof playPromise.catch === "function") {
-          playPromise.catch(function () {
-            goToLogin();
-          });
-        }
-      }
-
-      video.addEventListener("ended", goToLogin);
-
-      video.addEventListener("error", function () {
-        if (fallback) fallback.hidden = false;
-      });
-
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" && !event.repeat) {
-          event.preventDefault();
-          startFlythrough();
-        }
-      });
-
-      screen.focus();
+      var T = [["nova","Nova"],["milo","Milo"],["ava","Ava"],["kai","Kai"],["zara","Zara"],["theo","Theo"],["nia","Nia"],["elias","Elias"],["athena","Athena"]];
+      var track = document.getElementById("home-tutor-track");
+      if (!track) return;
+      var html = T.map(function (t) {
+        return '<div class="tutor-chip tutor-' + t[0] + '"><img src="assets/tutors/' + t[0] + '.png" alt="' + t[1] + '" loading="lazy"><span>' + t[1] + '</span></div>';
+      }).join("");
+      track.innerHTML = html + html; // duplicate for a seamless loop
     })();
   </script>
+
+  <!-- ====================== CITIZENSHIP DASHBOARD ====================== -->
+  <section id="citizenship-dashboard" class="dashboard-screen" hidden>
+    <div class="dashboard-inner">
+      <button class="dashboard-back" id="dashboard-back" aria-label="Back to courses">← Back</button>
+      <img class="select-logo home-logo" src="assets/logo.svg" alt="EVOlearn" role="button" tabindex="0" aria-label="Home" />
+      <h1 class="dashboard-title">Citizenship</h1>
+      <p class="dashboard-sub" id="dashboard-greeting">Hi there</p>
+      <p class="dashboard-sub">Choose where to go next</p>
+
+      <div class="dashboard-agent-strip" id="dashboard-agent-strip" hidden>
+        <p class="dashboard-agent-level" data-agent-level>Level 1 · Access</p>
+      </div>
+
+      <div class="dashboard-grid">
+        <button class="dashboard-card" data-action="assessment">
+          <span class="dashboard-card-name">Placement assessment</span>
+          <span class="dashboard-card-hint">Required before lessons · find your level and tutor</span>
+        </button>
+        <button class="dashboard-card" data-action="tutors">
+          <span class="dashboard-card-name">Select your tutor</span>
+          <span class="dashboard-card-hint">Meet your 9 guides</span>
+        </button>
+        <button class="dashboard-card" data-action="lessons">
+          <span class="dashboard-card-name">Lesson content</span>
+          <span class="dashboard-card-hint">Choose a module</span>
+        </button>
+      </div>
+
+      <!-- revision (completed lessons only) -->
+      <section class="dashboard-revision" id="revision" aria-labelledby="dashboard-revision-heading">
+        <header class="dashboard-revision-head">
+          <h2 class="dashboard-revision-title" id="dashboard-revision-heading">Revision</h2>
+          <p class="dashboard-revision-sub" id="dashboard-revision-empty">Complete a lesson to unlock revision here.</p>
+        </header>
+        <ul class="dashboard-revision-list" id="dashboard-revision-list"></ul>
+      </section>
+    </div>
+  </section>
+
+  <!-- ====================== MODULE PICKER ====================== -->
+  <section id="module-picker" class="module-picker-screen" hidden>
+    <div class="module-picker-inner">
+      <button class="module-picker-back" id="module-picker-back" aria-label="Back to Citizenship dashboard">← Back</button>
+      <img class="select-logo home-logo" src="assets/logo.svg" alt="EVOlearn" role="button" tabindex="0" aria-label="Home" />
+      <h1 class="module-picker-title">Lesson content</h1>
+      <p class="module-picker-sub">Choose a module to open its learning map</p>
+      <div class="module-picker-grid" id="module-picker-grid"></div>
+    </div>
+  </section>
+
+  <!-- ====================== MODULE MAP ====================== -->
+  <section id="map-screen" class="map-screen" hidden>
+    <!-- top bar -->
+    <header class="topbar">
+      <div class="brand">
+        <button class="map-back" id="map-back" aria-label="Back to modules">← Back</button>
+        <img class="brand-logo home-logo" src="assets/logo.svg" alt="EVOlearn" role="button" tabindex="0" aria-label="Home" />
+      </div>
+      <div class="module-pill" id="module-pill">Module 1 · Living Together in the UK</div>
+      <div class="progress">
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        <span class="progress-label" id="progress-label">0 / 5 complete</span>
+        <button class="map-reset-progress" id="map-reset-progress" type="button" title="Clear lesson completion and quiz scores">Reset lesson progress</button>
+      </div>
+    </header>
+
+    <!-- pannable stage -->
+    <div class="stage" id="stage">
+      <div class="world" id="world">
+        <svg class="path-svg" id="path-svg" viewBox="0 0 1200 720" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="pathGrad" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%" stop-color="#5ad9ff" />
+              <stop offset="100%" stop-color="#7c9cff" />
+            </linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="4" result="b" /><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <path id="path-base" class="path-base" fill="none" />
+          <path id="path-progress" class="path-progress" fill="none" pathLength="100" />
+        </svg>
+        <div class="nodes" id="nodes"></div>
+      </div>
+      <div class="pan-hint" id="pan-hint">drag to look around</div>
+    </div>
+
+    <!-- bottom preview card -->
+    <div class="preview" id="preview" hidden>
+      <div class="preview-status" id="preview-status"></div>
+      <div class="preview-body">
+        <span class="preview-eyebrow" id="preview-eyebrow">Lesson 1</span>
+        <h2 class="preview-title" id="preview-title"></h2>
+        <p class="preview-desc" id="preview-desc"></p>
+      </div>
+      <button class="preview-cta" id="preview-cta">Begin lesson →</button>
+    </div>
+
+    <!-- Ask tutor -->
+    <button class="nova-btn" id="nova-btn" aria-label="Ask Nova">
+      <span class="nova-orb"></span>
+      <span class="nova-label" id="nova-label">Ask&nbsp;Nova</span>
+    </button>
+
+    <div class="nova-panel" id="nova-panel" hidden>
+      <div class="nova-head">
+        <span class="nova-orb nova-orb--sm"></span>
+        <div><strong id="nova-head-name">Nova</strong><span id="nova-head-level">Your AI study guide</span></div>
+        <button class="nova-close" id="nova-close" aria-label="Close">✕</button>
+      </div>
+      <div class="nova-msg" id="nova-msg">Hi! I'm Nova. Pick a lesson on the map and I can explain it, quiz you, or summarise the key ideas. <em>(Live tutor coming soon.)</em></div>
+    </div>
+  </section>
+
+  <!-- ====================== PROFILE ====================== -->
+  <section id="profile-screen" class="profile-screen" hidden>
+    <div class="profile-inner">
+      <button class="profile-back" id="profile-back" aria-label="Back">← Back</button>
+
+      <div class="profile-head">
+        <div class="profile-avatar" id="profile-avatar"></div>
+        <h1 class="profile-name">Your profile</h1>
+        <p class="profile-sub" id="profile-sub">EVOlearn learner</p>
+      </div>
+
+      <!-- quick stat cards -->
+      <div class="profile-stats">
+        <div class="stat-card">
+          <span class="stat-value" id="stat-streak">1</span>
+          <span class="stat-label">Day streak</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-lessons">0</span>
+          <span class="stat-label">Lessons done</span>
+        </div>
+      </div>
+
+      <!-- progress card -->
+      <section class="profile-card">
+        <header class="profile-card-head">
+          <h2>Course progress</h2>
+          <span class="profile-card-tag" id="progress-pct">0%</span>
+        </header>
+        <div class="bar"><div class="bar-fill" id="overall-fill"></div></div>
+        <p class="profile-card-note" id="progress-note">0 of 0 lessons complete</p>
+        <div class="module-progress" id="module-progress"></div>
+      </section>
+
+      <!-- assessment scores card -->
+      <section class="profile-card">
+        <header class="profile-card-head">
+          <h2>Assessment scores</h2>
+          <span class="profile-card-tag" id="assess-tag">Not taken</span>
+        </header>
+        <div id="assess-content"></div>
+      </section>
+
+      <!-- emblems -->
+      <section class="profile-card" id="profile-emblems-card">
+        <header class="profile-card-head">
+          <h2>Emblems</h2>
+          <span class="profile-card-tag" id="emblems-tag">0 earned</span>
+        </header>
+        <div class="profile-emblems" id="profile-emblems"></div>
+        <p class="profile-card-note" id="emblems-note">Complete lesson recaps in revision mode to earn emblems.</p>
+      </section>
+
+      <!-- retry -->
+      <a class="profile-retry" href="assessment/citizenship.html">Retake assessment →</a>
+      <button class="profile-sign-out" id="profile-sign-out" type="button" hidden>Sign out</button>
+      <button class="profile-reset-lessons" id="profile-reset-lessons" type="button">Reset lesson progress</button>
+      <button class="profile-reset" id="profile-reset" type="button">Reset everything</button>
+    </div>
+  </section>
+
+  <!-- bottom profile button -->
+  <button class="profile-fab" id="profile-fab" aria-label="Your profile">
+    <span class="profile-fab-img" id="profile-fab-img" aria-hidden="true"></span>
+    <span class="profile-fab-label">You</span>
+  </button>
+
+  <!-- toast -->
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="assets/js/firebase-config.local.js" onerror=""></script>
+  <script src="assets/js/firebase-config.js?v=student-auth-1"></script>
+  <script src="assets/js/student-sync.js?v=student-auth-1"></script>
+  <script src="assets/js/student-auth.js?v=student-auth-1"></script>
+  <script src="assets/js/student-profile.js?v=revision-recap-3"></script>
+  <script src="assets/js/lesson-progress-reset.js?v=assessment-lock-1"></script>
+  <script src="assets/js/agent-knowledge.js?v=assessment-lock-1"></script>
+  <script src="app.js?v=revision-recap-3"></script>
 </body>
 </html>

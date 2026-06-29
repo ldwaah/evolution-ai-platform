@@ -1,96 +1,296 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>100% Sports &amp; Education Centre</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EVOlearn · Sign in</title>
   <style>
-    * { box-sizing: border-box; }
-
+    :root {
+      --navy: #203140;
+      --navy-deep: #1a2935;
+      --cyan: #5ad9ff;
+      --ink: #eaf4fb;
+      --muted: #9fb3c2;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --error: #ff8a8a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { min-height: 100%; }
     body {
       min-height: 100vh;
-      margin: 0;
-      color: #07111f;
+      display: grid; place-items: center;
+      padding:
+        max(24px, env(safe-area-inset-top, 0px))
+        max(24px, env(safe-area-inset-right, 0px))
+        max(24px, env(safe-area-inset-bottom, 0px))
+        max(24px, env(safe-area-inset-left, 0px));
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
       background:
-        linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
-        #ffffff;
-      background-size: 42px 42px;
-      font-family: Inter, Arial, Helvetica, sans-serif;
+        radial-gradient(120% 90% at 50% 30%, rgba(90,217,255,.10), rgba(32,49,64,0) 55%),
+        radial-gradient(140% 120% at 50% 50%, var(--navy) 0%, var(--navy-deep) 70%, #15212c 100%);
+    }
+    .auth { width: min(420px, 100%); animation: rise .8s var(--ease) both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+    .brand { display: flex; flex-direction: column; align-items: center; margin-bottom: 22px; }
+    .brand img {
+      width: 92px; height: auto;
+      filter:
+        drop-shadow(0 1px 0 #19272f) drop-shadow(0 2px 0 #16232b)
+        drop-shadow(0 3px 0 #131e25) drop-shadow(0 4px 0 #101920)
+        drop-shadow(0 14px 22px rgba(0,0,0,.5))
+        drop-shadow(0 0 20px rgba(90,217,255,.28));
     }
 
-    main {
-      display: grid;
-      min-height: 100vh;
-      place-items: center;
-      padding: 24px;
+    .card {
+      padding: 28px 26px 24px;
+      border-radius: 20px;
+      background: rgba(20, 32, 42, .72);
+      border: 1px solid rgba(90,217,255,.18);
+      box-shadow: 0 26px 64px rgba(0,0,0,.45);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    }
+    .card h1 { font-size: 21px; font-weight: 700; text-align: center; margin-bottom: 4px; letter-spacing: -.2px; }
+    .card p.sub { text-align: center; color: var(--muted); font-size: 13.5px; margin-bottom: 20px; }
+
+    .roles {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+      padding: 5px; margin-bottom: 18px;
+      background: rgba(8, 16, 22, .5); border: 1px solid rgba(255,255,255,.06); border-radius: 12px;
+    }
+    .role {
+      appearance: none; border: none; cursor: pointer;
+      padding: 11px 8px; border-radius: 9px;
+      min-height: 44px;
+      font-size: 14px; font-weight: 600; color: var(--muted); background: transparent;
+      transition: color .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .role.is-active {
+      color: #06222e; background: linear-gradient(120deg, #5ad9ff, #7c9cff);
+      box-shadow: 0 8px 20px rgba(90,217,255,.28);
     }
 
-    .login-screen {
-      width: min(520px, 100%);
+    .field { margin-bottom: 14px; text-align: left; }
+    .field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; letter-spacing: .02em; }
+    .field input {
+      width: 100%; padding: 12px 14px; border-radius: 11px;
+      color: var(--ink); font-size: 14.5px;
+      background: rgba(10, 18, 24, .6); border: 1px solid rgba(255,255,255,.08);
+      transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+    }
+    .field input::placeholder { color: rgba(159,179,194,.55); }
+    .field input:focus { outline: none; border-color: rgba(90,217,255,.55); box-shadow: 0 0 0 3px rgba(90,217,255,.15); }
+
+    .signin {
+      width: 100%; margin-top: 6px; padding: 13px; border: none; border-radius: 999px; cursor: pointer;
+      min-height: 44px;
+      font-size: 15px; font-weight: 700; color: #06222e;
+      background: linear-gradient(120deg, #5ad9ff, #7c9cff);
+      box-shadow: 0 12px 30px rgba(90,217,255,.32);
+      transition: transform .2s var(--ease), box-shadow .2s var(--ease), opacity .2s var(--ease);
+    }
+    .signin:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(90,217,255,.42); }
+    .signin:active:not(:disabled) { transform: translateY(0) scale(.99); }
+    .signin:disabled { opacity: .65; cursor: wait; }
+
+    .skip {
+      display: block; width: 100%; margin-top: 8px; padding: 6px;
+      background: none; border: none; cursor: pointer; text-align: center;
+      color: var(--muted); font-size: 13px; font-weight: 600;
+      transition: color .2s var(--ease);
+    }
+    .skip:hover { color: var(--cyan); }
+
+    .form-error {
+      color: var(--error);
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 12px;
+      min-height: 1.2em;
+    }
+
+    .config-banner {
+      display: none;
+      margin-bottom: 14px; padding: 11px 13px; border-radius: 11px;
+      font-size: 12.5px; line-height: 1.45; text-align: center;
+      background: rgba(255, 180, 80, .12); border: 1px solid rgba(255, 180, 80, .35);
+      color: #ffd9a8;
+    }
+    .config-banner.is-visible { display: block; }
+
+    .demo-note { text-align: center; color: rgba(159,179,194,.6); font-size: 11.5px; margin-top: 16px; letter-spacing: .04em; }
+    .demo-banner {
+      margin: 14px 0 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(90,217,255,.10);
+      border: 1px solid rgba(90,217,255,.22);
+      color: rgba(234,244,251,.9);
+      font-size: 12.5px;
+      line-height: 1.45;
       text-align: center;
     }
+    .demo-banner strong { color: #5ad9ff; }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(1.8rem, 6vw, 3.2rem);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-    }
-
-    .subtitle {
-      margin: 14px 0 0;
-      color: #64748b;
-      font-size: 1rem;
-    }
-
-    .actions {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      margin-top: 34px;
-    }
-
-    .login-button {
-      display: inline-flex;
-      width: min(280px, 100%);
-      min-height: 56px;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 24px;
-      border: 1px solid #2563eb;
-      border-radius: 12px;
-      color: #ffffff;
-      background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 100%);
-      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.28);
-      font: inherit;
-      font-size: 0.95rem;
-      font-weight: 800;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-    }
-
-    .login-button:hover,
-    .login-button:focus-visible {
-      background: #1d4ed8;
-      transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.38);
-      outline: none;
-    }
+    @media (prefers-reduced-motion: reduce) { .auth { animation: none; } }
   </style>
 </head>
 <body>
-  <main>
-    <section class="login-screen" aria-label="100% Sports and Education Centre login">
-      <h1>100% Sports &amp; Education Centre</h1>
-      <p class="subtitle">Choose how you would like to sign in.</p>
-      <div class="actions">
-        <a class="login-button" href="login-staff.html">Staff Login</a>
-        <a class="login-button" href="login-student.html">Student Login</a>
+  <div class="auth">
+    <div class="brand">
+      <img src="assets/logo.svg" alt="EVOlearn" draggable="false" />
+    </div>
+
+    <form class="card" id="auth-form" autocomplete="off">
+      <h1 id="title">Welcome back</h1>
+      <p class="sub" id="subtitle">Sign in to continue to EVOlearn</p>
+
+      <p class="demo-banner" id="demo-banner">
+        <strong>Demo accounts</strong> · Students: Stacey, Joshua, Jayden, Jovan (password is <strong>FirstName123</strong>) · Teacher: <strong>Teacher123</strong>/<strong>Teacher123</strong>
+      </p>
+
+      <div class="roles" role="tablist" aria-label="Account type">
+        <button type="button" class="role is-active" data-role="student" aria-pressed="true">Student</button>
+        <button type="button" class="role" data-role="teacher" aria-pressed="false">Teacher</button>
       </div>
-    </section>
-  </main>
+
+      <p class="config-banner" id="config-banner" role="status">
+        Database not configured. Add Firebase settings to <code>assets/js/firebase-config.js</code>, or continue as guest for local testing.
+      </p>
+
+      <p class="form-error" id="form-error" role="alert" aria-live="polite"></p>
+
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" placeholder="Stacey" autocomplete="username" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="At least 6 characters" autocomplete="current-password" minlength="6" required />
+      </div>
+
+      <button class="signin" type="submit" id="signin">Sign in</button>
+      <button class="skip" type="button" id="skip">Skip — continue as guest →</button>
+
+      <p class="demo-note" id="demo-note">Demo mode · use the preset usernames above</p>
+      <p class="demo-note"><a href="teacher/index.html" style="color:#5ad9ff;text-decoration:none;font-weight:600;">Teacher portal →</a></p>
+    </form>
+  </div>
+
+  <script src="assets/js/firebase-config.local.js" onerror=""></script>
+  <script src="assets/js/firebase-config.js?v=student-auth-1"></script>
+  <script src="assets/js/student-sync.js?v=student-auth-1"></script>
+  <script src="assets/js/student-auth.js?v=student-auth-1"></script>
+  <script>
+    (function () {
+      var form = document.getElementById('auth-form');
+      var skip = document.getElementById('skip');
+      var title = document.getElementById('title');
+      var subtitle = document.getElementById('subtitle');
+      var signinBtn = document.getElementById('signin');
+      var formError = document.getElementById('form-error');
+      var configBanner = document.getElementById('config-banner');
+      var roleBtns = Array.prototype.slice.call(document.querySelectorAll('.role'));
+      var role = 'student';
+      var firebaseEnabled = window.EvoFirebaseConfig && EvoFirebaseConfig.isConfigured();
+
+      var COPY = {
+        student: {
+          signIn: { t: 'Welcome back', s: 'Sign in with your demo username' },
+        },
+        teacher: {
+          signIn: { t: 'Teacher sign in', s: 'Sign in with your demo username' },
+        },
+      };
+
+      function setRole(next) {
+        role = next;
+        roleBtns.forEach(function (b) {
+          var on = b.dataset.role === next;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        refreshCopy();
+      }
+
+      function refreshCopy() {
+        var copy = COPY[role].signIn;
+        title.textContent = copy.t;
+        subtitle.textContent = copy.s;
+        signinBtn.textContent = 'Sign in';
+        document.getElementById('password').autocomplete = 'current-password';
+      }
+
+      function enterGuest() {
+        if (window.EvoStudentAuth && EvoStudentAuth.continueAsGuest) {
+          EvoStudentAuth.continueAsGuest();
+        } else {
+          try {
+            localStorage.setItem('evolearn-role', role);
+            sessionStorage.setItem('evolearn-entered', '1');
+          } catch (e) {}
+        }
+        location.replace('index.html');
+      }
+
+      function setBusy(busy) {
+        signinBtn.disabled = busy;
+        skip.disabled = busy;
+      }
+
+      roleBtns.forEach(function (b) {
+        b.addEventListener('click', function () { setRole(b.dataset.role); });
+      });
+
+      skip.addEventListener('click', enterGuest);
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        formError.textContent = '';
+
+        if (role === 'teacher') {
+          location.href = 'teacher/index.html';
+          return;
+        }
+
+        if (!firebaseEnabled) {
+          formError.textContent = 'Database not configured. Continue as guest, or add Firebase settings first.';
+          return;
+        }
+
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        setBusy(true);
+
+        var action = EvoStudentAuth.signInWithUsername(username, password);
+
+        action.then(function (result) {
+          if (!result.ok) {
+            formError.textContent = result.message || 'Sign-in failed.';
+            setBusy(false);
+            return;
+          }
+          location.replace('index.html');
+        }).catch(function () {
+          formError.textContent = 'Something went wrong. Please try again.';
+          setBusy(false);
+        });
+      });
+
+      if (!firebaseEnabled) {
+        configBanner.classList.add('is-visible');
+        document.getElementById('demo-note').textContent = 'Demo mode · Firebase not configured';
+      } else if (window.EvoStudentAuth) {
+        EvoStudentAuth.waitForAuthReady().then(function (user) {
+          if (user) location.replace('index.html');
+        });
+      }
+
+      refreshCopy();
+    })();
+  </script>
 </body>
 </html>

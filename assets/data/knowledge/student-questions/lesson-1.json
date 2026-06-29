@@ -1,0 +1,866 @@
+{
+  "lessonId": "lesson-1",
+  "topicId": "british-identity-values",
+  "title": "Lesson 1. British Identity (student questions)",
+  "questions": [
+    {
+      "id": "q-lesson-about",
+      "patterns": [
+        "what is this lesson about",
+        "what will we learn today",
+        "what are we learning",
+        "what is citizenship"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is this lesson about?",
+      "answer": "This Citizenship lesson explores who we are, where we belong, and what it means to live in modern Britain. Citizenship is about understanding yourself, your community, and how society works. Not just laws and politics.",
+      "tutorHint": "This lesson is about you. Who you are and where you belong in Britain."
+    },
+    {
+      "id": "q-who-am-i",
+      "patterns": [
+        "who am i",
+        "who are you",
+        "who are we",
+        "what is the question"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Who am I?",
+      "answer": "Who you are is more than your name or address. Identity includes your family, friends, interests, experiences, beliefs, and the communities you belong to. Everyone's answer is different. And that is normal.",
+      "tutorHint": "Start small: your name, one interest, one person who matters to you. Identity has many pieces."
+    },
+    {
+      "id": "q-identity-meaning",
+      "patterns": [
+        "what is identity",
+        "what does identity mean",
+        "define identity",
+        "meaning of identity"
+      ],
+      "slideIndex": 1,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is identity?",
+      "answer": "Identity is who you really are. Not just facts on a passport or school register. It includes the people who influence you, the choices you make, what you enjoy, and the experiences that have shaped your life.",
+      "tutorHint": "Identity means who you feel you are. Your roles, background, and communities."
+    },
+    {
+      "id": "q-name-not-identity",
+      "patterns": [
+        "is my name who i am",
+        "is that really who i am",
+        "name age address",
+        "is my address who i am"
+      ],
+      "slideIndex": 1,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Is my name who I am?",
+      "answer": "Your name, age, and address are facts about you. But identity goes deeper. It includes the people who influence you, the choices you make, what you enjoy, and the experiences that have shaped your life.",
+      "tutorHint": "Your name is one fact. Identity is the bigger picture of who you are inside."
+    },
+    {
+      "id": "q-individual-identity",
+      "patterns": [
+        "what is individual identity",
+        "what makes up identity",
+        "pieces of identity",
+        "parts of identity"
+      ],
+      "slideIndex": 2,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What makes up my identity?",
+      "answer": "Your identity is built over time through family, culture, friendships, beliefs, achievements, and challenges. No two people have exactly the same mix. Even identical twins have different personalities and experiences.",
+      "tutorHint": "Think family, friends, culture, beliefs, and things you are proud of."
+    },
+    {
+      "id": "q-twins-different",
+      "patterns": [
+        "why are twins different",
+        "identical twins",
+        "are twins the same",
+        "twins same identity"
+      ],
+      "slideIndex": 2,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Why are twins different?",
+      "answer": "Even identical twins share the same DNA but have different personalities, interests, and experiences. That shows identity is more than biology. It is built through life.",
+      "tutorHint": "Twins can look the same but still be different people inside."
+    },
+    {
+      "id": "q-dont-understand",
+      "patterns": [
+        "i don't understand",
+        "i dont understand",
+        "i do not understand",
+        "i don't know",
+        "i dont know",
+        "i do not know",
+        "this is confusing",
+        "i'm confused",
+        "im confused",
+        "makes no sense"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "I don't understand.",
+      "answer": "That is okay. Identity is a big idea. Start with one small piece: your name, one interest, one friend, or one family role. We build the bigger picture step by step from what is on the slide.",
+      "tutorHint": "Pick one word on the slide and ask about that. We will go slowly."
+    },
+    {
+      "id": "q-dont-know-who",
+      "patterns": [
+        "i don't know who i am",
+        "i dont know who i am",
+        "not sure who i am",
+        "no idea who i am",
+        "can't think of any",
+        "cant think of any",
+        "i don't know",
+        "i dont know",
+        "i do not know",
+        "idk"
+      ],
+      "slideIndex": 2,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "I don't know who I am.",
+      "answer": "Many people find this hard at first. Try listing one piece at a time: a family role, a friendship, something you believe in, or something you are proud of. You might be surprised how many pieces make up your identity.",
+      "tutorHint": "Name one thing: a hobby, a friend, or someone in your family. That counts."
+    },
+    {
+      "id": "q-personal-i-am",
+      "patterns": [
+        "i am from",
+        "i'm from",
+        "im from",
+        "my family is from",
+        "my parents are from"
+      ],
+      "slideIndex": 2,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "I'm from another country. Who am I?",
+      "answer": "Where your family comes from is an important part of your identity. You can feel connected to more than one place at once. For example, British and Pakistani, or a Londoner with Caribbean heritage. Having more than one background is called multiple identity.",
+      "tutorHint": "Your background is one piece of you. You can belong to more than one place."
+    },
+    {
+      "id": "q-personal-share",
+      "patterns": [
+        "i am a",
+        "i'm a",
+        "im a",
+        "i feel like",
+        "i see myself as"
+      ],
+      "slideIndex": 2,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "I am a… (student shares identity)",
+      "answer": "Thank you for sharing that. It is a real part of who you are. Identity includes the roles and communities you choose, like being a student, an athlete, or part of a faith group. Which word from this lesson would you connect that to?",
+      "tutorHint": "That is a good piece of your identity. What else would you add?"
+    },
+    {
+      "id": "q-what-british-means",
+      "patterns": [
+        "what does british mean",
+        "what is british",
+        "what is being british",
+        "define british"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What does British mean?",
+      "answer": "British usually means belonging to the United Kingdom. England, Scotland, Wales, or Northern Ireland. British identity is shared and personal: you can be British while also feeling Scottish, Welsh, English, or connected to another heritage. It is not about how someone looks.",
+      "tutorHint": "British means from the UK. You can be British and something else too."
+    },
+    {
+      "id": "q-am-i-british-born",
+      "patterns": [
+        "am i british if i wasn't born here",
+        "am i british if i wasnt born here",
+        "am i british if born abroad",
+        "am i british if my parents weren't born here"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Am I British if I wasn't born here?",
+      "answer": "Many British people were born abroad or have family roots elsewhere. British identity is not only about where you were born. It can include citizenship, where you live, how you feel, and the communities you belong to. The UK is multicultural, and identity can include more than one background.",
+      "tutorHint": "Lots of British people have family from other countries. Identity can have many parts."
+    },
+    {
+      "id": "q-am-i-british-heritage",
+      "patterns": [
+        "am i british if",
+        "am i still british",
+        "can i be british and"
+      ],
+      "slideIndex": 2,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Am I British if I have another heritage?",
+      "answer": "Yes. You can be British and connected to another culture, country, or faith at the same time. That is multiple identity. British values like respect and tolerance exist so people from different backgrounds can live together fairly.",
+      "tutorHint": "You can be British and something else. That is normal in the UK."
+    },
+    {
+      "id": "q-british-values",
+      "patterns": [
+        "what are british values",
+        "british values",
+        "what is a british value",
+        "four british values"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What are British values?",
+      "answer": "The four fundamental British values are democracy, the rule of law, individual liberty, and mutual respect and tolerance. They are shared principles for living together fairly in the UK. Not a test of how someone looks or where their family comes from.",
+      "tutorHint": "Four values: democracy, rule of law, liberty, and respect/tolerance."
+    },
+    {
+      "id": "q-tolerance",
+      "patterns": [
+        "what is tolerance",
+        "what does tolerance mean",
+        "define tolerance"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is tolerance?",
+      "answer": "Tolerance means accepting that other people may think, believe, or live differently from you, and treating them fairly anyway. It is one of the fundamental British values and helps different communities live together peacefully.",
+      "tutorHint": "Tolerance means being fair to people even when they are different from you."
+    },
+    {
+      "id": "q-multiple-identity",
+      "patterns": [
+        "what is multiple identity",
+        "multiple identity",
+        "more than one identity",
+        "can i have two identities",
+        "two identities"
+      ],
+      "slideIndex": 2,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Can I have more than one identity?",
+      "answer": "Yes. Multiple identity means feeling connected to more than one culture, country, or role at the same time. For example, you might be British and Scottish, or a student and a musician. There is no such thing as an incorrect identity.",
+      "tutorHint": "You can be more than one thing at once. That is multiple identity."
+    },
+    {
+      "id": "q-local-vs-uk",
+      "patterns": [
+        "difference between local and uk",
+        "local vs uk",
+        "local community vs uk",
+        "what is the difference between local and national",
+        "local and wider uk"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is the difference between local and UK?",
+      "answer": "Your local community is where you live day to day. Your neighbourhood, school, and high street. Wider UK society is the big picture: laws made in Parliament, national services like the NHS, and institutions that affect everyone in the country.",
+      "tutorHint": "Local = your area. UK-wide = the whole country and its laws."
+    },
+    {
+      "id": "q-belonging",
+      "patterns": [
+        "what is belonging",
+        "what does belonging mean",
+        "where do i belong",
+        "do i belong"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is belonging?",
+      "answer": "Belonging means feeling part of a group, place, or community. You might belong to your family, your school, your local area, and the wider UK at the same time. Different roles and communities can all help you feel you belong.",
+      "tutorHint": "Belonging means feeling part of a group. Family, school, or your area."
+    },
+    {
+      "id": "q-modern-britain",
+      "patterns": [
+        "what is modern britain",
+        "modern britain",
+        "life in modern britain",
+        "what is the uk like today"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is modern Britain?",
+      "answer": "Modern Britain is a diverse, multicultural country where people from many backgrounds live together. Migration, history, and global links have shaped UK culture. Including food, music, and language. Shared British values help people live together fairly.",
+      "tutorHint": "The UK today has people from many backgrounds living together."
+    },
+    {
+      "id": "q-four-nations",
+      "patterns": [
+        "four countries",
+        "four nations",
+        "what countries make up the uk",
+        "what is the uk made of",
+        "england scotland wales"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What countries make up the UK?",
+      "answer": "The United Kingdom is made up of four nations: England, Scotland, Wales, and Northern Ireland. You can feel British while also feeling strongly connected to one of these nations.",
+      "tutorHint": "Four nations: England, Scotland, Wales, and Northern Ireland."
+    },
+    {
+      "id": "q-respect",
+      "patterns": [
+        "what is respect",
+        "what does respect mean",
+        "what is mutual respect"
+      ],
+      "slideIndex": 0,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is respect?",
+      "answer": "Mutual respect means treating other people fairly and politely, even when you disagree with them or they live differently from you. It is one of the fundamental British values taught in schools.",
+      "tutorHint": "Respect means treating others fairly, even when you disagree."
+    },
+    {
+      "id": "q-explain-again",
+      "patterns": [
+        "explain again",
+        "say that again",
+        "can you explain that again",
+        "explain identity again",
+        "what did you mean"
+      ],
+      "slideIndex": 1,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Can you explain that again?",
+      "answer": "Of course. Identity is who you are beyond basic facts like your name. It grows from your family, culture, friends, beliefs, and experiences. Look at the slide and pick one word. I will explain that part in simpler steps.",
+      "tutorHint": "Identity = who you are inside. Pick one word on the slide to ask about."
+    },
+    {
+      "id": "q-unique-identity",
+      "patterns": [
+        "why am i unique",
+        "what makes me unique",
+        "why is identity unique",
+        "am i the only one"
+      ],
+      "slideIndex": 2,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What makes me unique?",
+      "answer": "Your identity is unique because no one else has your exact mix of roles, background, interests, and experiences. A bit like your phone home screen being set up just for you. Even people in the same family can have different identities.",
+      "tutorHint": "No one has your exact mix of family, friends, and experiences."
+    },
+    {
+      "id": "q-street-who-are-you",
+      "patterns": [
+        "how would i answer",
+        "stopped in the street",
+        "who are you on the street",
+        "what would i say if someone asked"
+      ],
+      "slideIndex": 3,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "How would I answer if someone asked who I am?",
+      "answer": "You might talk about your name, family, hobbies, culture, or the people who matter most to you. There is no one correct answer. Identity is made up of many different pieces that fit together to make you unique.",
+      "tutorHint": "Pick one piece: your name, a hobby, your family, or someone who matters to you."
+    },
+    {
+      "id": "q-identity-layers",
+      "patterns": [
+        "what are layers of identity",
+        "identity layers",
+        "layers not label",
+        "what does layers mean"
+      ],
+      "slideIndex": 4,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What are layers of identity?",
+      "answer": "Layers of identity mean you are many things at once. Not just one label. In school you might be a student; at home you might be a sibling or helper. Different parts become more noticeable depending on where you are and who you are with, but they are all genuine parts of who you are.",
+      "tutorHint": "You are many things at once. Student, sibling, friend. Different parts show in different places."
+    },
+    {
+      "id": "q-roles-fake",
+      "patterns": [
+        "are my roles fake",
+        "pretending to be someone",
+        "am i pretending",
+        "fake identity"
+      ],
+      "slideIndex": 4,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Are my different roles fake?",
+      "answer": "No. Your different roles are all genuine parts of who you are. Being a student at school and a sibling at home are both real, not pretending. Multiple identity is about recognising all the roles that make you who you are.",
+      "tutorHint": "Your roles are all real. Student at school, sibling at home. Not pretending."
+    },
+    {
+      "id": "q-family-roles",
+      "patterns": [
+        "what family roles",
+        "family roles",
+        "roles at home",
+        "what is my role at home"
+      ],
+      "slideIndex": 5,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What are family roles?",
+      "answer": "At home you might be a son or daughter, a brother or sister, or someone who helps care for younger siblings or grandparents. These roles teach qualities like patience, kindness, teamwork, and responsibility, and they shape how you see yourself.",
+      "tutorHint": "At home you might be a son, daughter, sibling, or helper. Each role shapes who you are."
+    },
+    {
+      "id": "q-parent-role-identity",
+      "patterns": [
+        "why is being a parent important",
+        "parent role identity",
+        "parent identity",
+        "what does parent mean for identity"
+      ],
+      "slideIndex": 6,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Why is being a parent part of identity?",
+      "answer": "For many adults, becoming a parent or guardian becomes one of the biggest parts of who they are. It influences their daily choices. Providing guidance, protection, and support. Even if you are not a parent yet, this shows identity keeps developing throughout life.",
+      "tutorHint": "Being a parent shapes daily choices. Identity keeps growing as responsibilities change."
+    },
+    {
+      "id": "q-identity-changes",
+      "patterns": [
+        "does identity change",
+        "identity develop over life",
+        "identity keep changing",
+        "will my identity change"
+      ],
+      "slideIndex": 6,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Does identity change over time?",
+      "answer": "Yes. Identities continue to develop throughout life as responsibilities and experiences grow. Becoming a parent is one example, but your identity also changes as you learn new skills, take on new roles, and face new challenges.",
+      "tutorHint": "Identity keeps developing as you grow. New roles and experiences add new layers."
+    },
+    {
+      "id": "q-student-role",
+      "patterns": [
+        "what does being a student mean",
+        "student role",
+        "more than homework",
+        "what is the student role"
+      ],
+      "slideIndex": 7,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What does being a student mean?",
+      "answer": "Being a student means learning new ideas, developing skills, solving problems, asking questions, and becoming more confident. Not just sitting in class or doing homework. The resilience and confidence you build now prepare you for your future.",
+      "tutorHint": "Student means learning, asking questions, and building skills. Not just homework."
+    },
+    {
+      "id": "q-school-hard",
+      "patterns": [
+        "school is hard",
+        "learning is hard",
+        "school is difficult",
+        "i find school hard"
+      ],
+      "slideIndex": 7,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "School feels hard. Is that normal?",
+      "answer": "Yes. Sometimes learning feels easy and sometimes it is challenging. Every experience, even hard ones, helps you grow and build resilience. The confidence you gain from overcoming challenges will help you throughout your future.",
+      "tutorHint": "Hard days are normal. Every challenge helps you build resilience."
+    },
+    {
+      "id": "q-many-things-at-once",
+      "patterns": [
+        "can i be many things",
+        "many roles one person",
+        "londoner and british",
+        "football fan and student",
+        "gamer and british"
+      ],
+      "slideIndex": 8,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Can I be many things at once?",
+      "answer": "Yes. You can be a Londoner, football fan, gamer, sibling, and British citizen all at the same time. This is called having multiple identities. Different parts become more important depending on the situation, but together they all make up who you are.",
+      "tutorHint": "You can be a fan, gamer, sibling, and citizen all at once. That is multiple identity."
+    },
+    {
+      "id": "q-multiple-identity-slide",
+      "patterns": [
+        "what is multiple identity slide",
+        "multiple identities lesson",
+        "more than one role"
+      ],
+      "slideIndex": 8,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is multiple identity?",
+      "answer": "Multiple identity means feeling connected to more than one role, culture, or community at the same time. For example, you might be British and connected to another heritage, or a student and a musician. Understanding this helps us respect that there is always more to a person than what we first see.",
+      "tutorHint": "Multiple identity = more than one role or background at the same time."
+    },
+    {
+      "id": "q-dont-know-roles",
+      "patterns": [
+        "what are my roles",
+        "i don't know my roles",
+        "i dont know my roles",
+        "don't know what roles i have"
+      ],
+      "slideIndex": 5,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "I don't know what roles I have.",
+      "answer": "Think about where you are: at school you are a student; at home you might be a son, daughter, or sibling. You might also be a friend, a teammate, or part of a hobby group. List one role at a time. You probably have more than you realise.",
+      "tutorHint": "Start with school and home: student, sibling, son or daughter. Add hobbies too."
+    },
+    {
+      "id": "q-digital-identity",
+      "patterns": [
+        "what is digital identity",
+        "digital identity",
+        "online identity",
+        "what is my online identity"
+      ],
+      "slideIndex": 10,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is digital identity?",
+      "answer": "Digital identity is how you appear and behave online. What you follow, like, comment on, and share. Just like in real life, your online behaviour shapes how other people see you. Every post and comment leaves an impression.",
+      "tutorHint": "Digital identity = how you act online. Posts and comments matter."
+    },
+    {
+      "id": "q-online-vs-real",
+      "patterns": [
+        "does online matter",
+        "online vs real life",
+        "do posts matter",
+        "face to face vs online",
+        "why do online choices matter"
+      ],
+      "slideIndex": 10,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Do online choices matter?",
+      "answer": "Yes. Making positive choices online is just as important as making them face to face. Every post and comment leaves an impression on others, so your digital identity is a real part of who you are.",
+      "tutorHint": "What you do online shapes how people see you. Same as in real life."
+    },
+    {
+      "id": "q-migration",
+      "patterns": [
+        "what is migration",
+        "what does migration mean",
+        "define migration",
+        "people on the move"
+      ],
+      "slideIndex": 12,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is migration?",
+      "answer": "Migration means people moving from one place to another to live. Sometimes to another town, sometimes across the world. It has shaped the UK for thousands of years, bringing new skills, traditions, languages, and cultures.",
+      "tutorHint": "Migration = moving to live somewhere new. It shaped Britain."
+    },
+    {
+      "id": "q-push-pull",
+      "patterns": [
+        "what are push and pull factors",
+        "push and pull factors",
+        "push factor",
+        "pull factor",
+        "push vs pull"
+      ],
+      "slideIndex": 13,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What are push and pull factors?",
+      "answer": "Push factors are difficult things that force people to leave. Like war, poverty, or no jobs. Pull factors are opportunities that attract people somewhere new. Like safety, education, or employment. Most people move because of both.",
+      "tutorHint": "Push = reasons to leave. Pull = reasons to go somewhere new."
+    },
+    {
+      "id": "q-push-examples",
+      "patterns": [
+        "examples of push factors",
+        "what pushes people away",
+        "why do people leave their country"
+      ],
+      "slideIndex": 13,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What are examples of push factors?",
+      "answer": "Push factors include war, conflict, poverty, natural disasters, and a lack of jobs. Difficult things that force people to leave their home country.",
+      "tutorHint": "Push = bad things at home: war, poverty, no jobs."
+    },
+    {
+      "id": "q-pull-examples",
+      "patterns": [
+        "examples of pull factors",
+        "what pulls people to uk",
+        "why come to britain"
+      ],
+      "slideIndex": 13,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What are examples of pull factors?",
+      "answer": "Pull factors include safety, education, employment, healthcare, and a better future for families. Opportunities that attract people to a new place like the UK.",
+      "tutorHint": "Pull = good things in a new place: jobs, safety, education."
+    },
+    {
+      "id": "q-windrush",
+      "patterns": [
+        "what is the windrush",
+        "windrush generation",
+        "who were the windrush",
+        "empire windrush",
+        "what was windrush"
+      ],
+      "slideIndex": 15,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Who were the Windrush Generation?",
+      "answer": "The Windrush Generation were people who came from the Caribbean from 1948 onwards, named after the ship HMT Empire Windrush. They answered Britain's call for workers after WWII and worked in the NHS, transport, factories, and other essential services.",
+      "tutorHint": "Windrush = Caribbean workers who came after WWII, named after a ship."
+    },
+    {
+      "id": "q-windrush-when",
+      "patterns": [
+        "when did windrush arrive",
+        "1948 windrush",
+        "what year was windrush"
+      ],
+      "slideIndex": 15,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "When did the Windrush arrive?",
+      "answer": "The HMT Empire Windrush arrived in 1948, carrying passengers from the Caribbean who came to help rebuild Britain after the Second World War.",
+      "tutorHint": "1948. The Empire Windrush ship from the Caribbean."
+    },
+    {
+      "id": "q-commonwealth",
+      "patterns": [
+        "what is the commonwealth",
+        "commonwealth",
+        "what does commonwealth mean",
+        "why commonwealth workers"
+      ],
+      "slideIndex": 14,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is the Commonwealth?",
+      "answer": "The Commonwealth is a group of countries with historical links to Britain. After WWII the UK needed workers to rebuild, so the government invited people from Commonwealth countries to come and live and work here.",
+      "tutorHint": "Commonwealth = countries linked to Britain. UK invited them after the war."
+    },
+    {
+      "id": "q-post-war",
+      "patterns": [
+        "why did people come after the war",
+        "post war migration",
+        "post-war rebuilding",
+        "why migrate after ww2"
+      ],
+      "slideIndex": 14,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Why did people come to the UK after the war?",
+      "answer": "After WWII Britain needed rebuilding. Roads, railways, hospitals, and factories all needed workers. The government invited people from across the Commonwealth to come and help rebuild the country.",
+      "tutorHint": "Britain needed workers to rebuild after WWII."
+    },
+    {
+      "id": "q-diversity",
+      "patterns": [
+        "what is diversity",
+        "why is diversity good",
+        "benefits of diversity",
+        "different backgrounds"
+      ],
+      "slideIndex": 17,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Why is diversity a strength?",
+      "answer": "Modern Britain is home to people with roots in almost every country. Diversity influences food, music, sports, festivals, and languages. And lets us learn from people with different experiences and perspectives.",
+      "tutorHint": "Different backgrounds make Britain richer in food, music, and ideas."
+    },
+    {
+      "id": "q-multicultural-britain",
+      "patterns": [
+        "what is multicultural",
+        "multicultural britain",
+        "multicultural society",
+        "what is a multicultural society"
+      ],
+      "slideIndex": 17,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is a multicultural society?",
+      "answer": "A multicultural society is one where people from many different cultures and backgrounds live together. Modern Britain is multicultural. Those differences help create a vibrant, welcoming country millions proudly call home.",
+      "tutorHint": "Multicultural = many cultures living together. That is modern Britain."
+    },
+    {
+      "id": "q-music-migration",
+      "patterns": [
+        "how did migration change music",
+        "caribbean music britain",
+        "music and migration",
+        "ska reggae uk"
+      ],
+      "slideIndex": 18,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "How did migration change British music?",
+      "answer": "From the 1950s, Caribbean communities brought new rhythms and instruments that blended with British sounds. Over time those influences inspired entirely new styles. Culture evolves when communities learn from one another.",
+      "tutorHint": "Caribbean rhythms mixed with British music and created new styles."
+    },
+    {
+      "id": "q-grime-drill",
+      "patterns": [
+        "what is grime",
+        "what is drill",
+        "grime and drill",
+        "grime music",
+        "drill music",
+        "born in the uk music"
+      ],
+      "slideIndex": 19,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What are Grime and Drill?",
+      "answer": "Grime and Drill are music genres created in the UK, especially in London. They are proudly British but influenced by Caribbean, African, and British musical traditions. Showing how diversity creates new culture recognised worldwide.",
+      "tutorHint": "UK music from London, mixing Caribbean, African, and British sounds."
+    },
+    {
+      "id": "q-british-food",
+      "patterns": [
+        "british food migration",
+        "curry british food",
+        "fish and chips migration",
+        "why is food diverse"
+      ],
+      "slideIndex": 20,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "How has migration changed British food?",
+      "answer": "Traditional meals like fish and chips remain part of British history, but dishes such as curry, jerk chicken, Chinese food, and kebabs are now everyday favourites. Communities shared their food traditions, making British food a global blend.",
+      "tutorHint": "British food includes curry and kebabs. Not just fish and chips."
+    },
+    {
+      "id": "q-mle",
+      "patterns": [
+        "what is mle",
+        "multicultural london english",
+        "what is slang",
+        "why do people use slang",
+        "patois english"
+      ],
+      "slideIndex": 21,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is Multicultural London English (MLE)?",
+      "answer": "Multicultural London English (MLE) is a modern way of speaking that mixes English with Caribbean Patois, South Asian languages, African languages, and traditional British English. It shows how migration has shaped everyday language in UK cities.",
+      "tutorHint": "A mix of English and words from Caribbean and other languages."
+    },
+    {
+      "id": "q-where-belong",
+      "patterns": [
+        "where do i belong",
+        "where we belong",
+        "part 3 belonging",
+        "what is part 3 about"
+      ],
+      "slideIndex": 22,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "Where do I belong?",
+      "answer": "You can belong in many places at once. Your street, neighbourhood, town, and the wider UK. The places we live influence identity just as much as family, culture, or interests. Part 3 explores how local communities help us develop belonging.",
+      "tutorHint": "You belong in your area AND in the wider UK. Both shape who you are."
+    },
+    {
+      "id": "q-local-community",
+      "patterns": [
+        "what is my local community",
+        "local community meaning",
+        "what is a borough",
+        "neighbourhood belonging"
+      ],
+      "slideIndex": 23,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is a local community?",
+      "answer": "Your local community is where you live day to day. Your borough, town, village, or neighbourhood. It is where you know familiar faces and visit local shops. Feeling connected here often encourages people to support each other. That is where citizenship begins.",
+      "tutorHint": "Your everyday area. Shops, streets, and people you recognise."
+    },
+    {
+      "id": "q-parliament",
+      "patterns": [
+        "what does parliament do",
+        "what is parliament",
+        "who makes laws uk",
+        "uk parliament laws"
+      ],
+      "slideIndex": 24,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What does Parliament do?",
+      "answer": "Parliament creates the laws everyone in the UK follows. It is a national institution. Part of wider UK society beyond your local area. Along with the NHS and schools, it connects millions of citizens across the country.",
+      "tutorHint": "Parliament makes laws for the whole UK."
+    },
+    {
+      "id": "q-nhs",
+      "patterns": [
+        "what is the nhs",
+        "what does the nhs do",
+        "national health service",
+        "free healthcare uk"
+      ],
+      "slideIndex": 24,
+      "levelMin": 1,
+      "levelMax": 9,
+      "question": "What is the NHS?",
+      "answer": "The NHS (National Health Service) provides healthcare for everyone in the UK, usually free when you need it. It is a shared national service that connects citizens. Part of wider UK society, not just your local community.",
+      "tutorHint": "The NHS gives healthcare to everyone in the UK."
+    },
+    {
+      "id": "q-multiple-identity-society",
+      "patterns": [
+        "why multiple identities make society stronger",
+        "multiple identities stronger society",
+        "different identities society",
+        "why celebrate different identities"
+      ],
+      "slideIndex": 25,
+      "levelMin": 3,
+      "levelMax": 9,
+      "question": "Why might multiple identities make society stronger?",
+      "answer": "When people bring different backgrounds and experiences, society gains creativity and new perspectives. Like British music mixing cultures to create Grime. Britain is made up of millions of unique identities contributing to one diverse society.",
+      "tutorHint": "Different backgrounds bring new ideas. Music, food, and culture mix together."
+    },
+    {
+      "id": "q-gcse-explain",
+      "patterns": [
+        "how do i answer gcse questions",
+        "gcse citizenship answer",
+        "how to explain in exam",
+        "exam style answer",
+        "gcse challenge"
+      ],
+      "slideIndex": null,
+      "levelMin": 3,
+      "levelMax": 9,
+      "question": "How should I answer GCSE-style questions?",
+      "answer": "The best GCSE answers do not just state an opinion. They explain clearly and support ideas with examples. Link your roles to belonging, use evidence from the lesson (like the NHS or local community), and show how multiple identities can strengthen society.",
+      "tutorHint": "Explain your idea and give an example. Don't just say yes or no."
+    }
+  ]
+}

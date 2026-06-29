@@ -1,0 +1,91 @@
+{
+  "topicId": "taxation-budget",
+  "topicTitle": "Taxation and Government Spending",
+  "moduleId": "module-2",
+  "lessonIds": [
+    "lesson-11"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Government needs money from taxes to pay for schools, hospitals, and roads.",
+      "keyPoints": [
+        "Income tax is taken from earnings.",
+        "VAT is added to many purchases.",
+        "National Insurance helps fund some benefits."
+      ],
+      "explainLike": "Taxes are how the country collects money to run services everyone uses."
+    },
+    "2": {
+      "summary": "The Chancellor presents the Budget. Parliament votes on tax and spending plans.",
+      "keyPoints": [
+        "HM Treasury sets fiscal policy.",
+        "Public spending includes NHS, defence, education.",
+        "Borrowing covers gap when spending exceeds tax revenue."
+      ],
+      "explainLike": "Budget pattern: government plans spending → Commons approves → services funded."
+    },
+    "3": {
+      "summary": "Taxes can be direct (income tax) or indirect (VAT). Progressive taxes take a higher share from higher earners.",
+      "keyPoints": [
+        "Income tax bands in England/Wales set at Budget.",
+        "Council tax funds local services.",
+        "Corporation tax on company profits."
+      ],
+      "explainLike": "Link tax type to who pays: income tax from workers, VAT from shoppers."
+    },
+    "4": {
+      "summary": "Government choices on tax and spend affect inequality, growth, and public services. Citizens debate fairness.",
+      "keyPoints": [
+        "Redistribution via tax credits and benefits.",
+        "Austerity (2010s) reduced some departmental budgets.",
+        "Office for Budget Responsibility forecasts finances."
+      ],
+      "explainLike": "Four steps: policy choice → who pays → who benefits → citizenship opinion."
+    },
+    "5": {
+      "summary": "Explain why taxation is a citizenship issue linking rights to responsibilities.",
+      "keyPoints": [
+        "Tax funds universal NHS and state education.",
+        "Tax avoidance/evasion reduce money for public goods.",
+        "Democratic consent: MPs approve Budget."
+      ],
+      "explainLike": "Because public services need funding, therefore paying tax is a shared responsibility."
+    },
+    "6": {
+      "summary": "Discuss whether higher taxes on wealth or income would improve fairness.",
+      "keyPoints": [
+        "Pro: fund services, reduce inequality.",
+        "Con: may discourage investment or business.",
+        "Use examples: NHS funding crises, cost of living."
+      ],
+      "explainLike": "Theo: weigh economic arguments against social justice goals."
+    },
+    "7": {
+      "summary": "AO exam: identify taxes (AO1), apply Budget choices to scenario (AO2), evaluate fairness (AO3).",
+      "keyPoints": [
+        "Define progressive/regressive tax.",
+        "Develop: tax + service link + citizen impact.",
+        "'Evaluate' needs supported judgement on trade-offs."
+      ],
+      "explainLike": "Examiner: name a tax, explain who bears burden, judge if system is fair."
+    },
+    "8": {
+      "summary": "Analyse fiscal devolution and Barnett formula funding for Scotland, Wales, NI.",
+      "keyPoints": [
+        "Barnett determines changes in block grants.",
+        "Debates on needs-based versus population formula.",
+        "Devolved administrations set some taxes."
+      ],
+      "explainLike": "Challenge: is UK funding formula equitable across nations?"
+    },
+    "9": {
+      "summary": "Evaluate whether UK tax and spend policy delivers social justice in a citizenship framework.",
+      "keyPoints": [
+        "Integrate rights, inequality data, political choices.",
+        "Judgement on intergenerational debt and climate spend.",
+        "Coherent evaluative conclusion."
+      ],
+      "explainLike": "Synthesis: wallet of the nation reflects values — judge whose interests prevail."
+    }
+  }
+}

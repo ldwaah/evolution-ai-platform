@@ -1,0 +1,321 @@
+/**
+ * Zara (Level 5 Secure) — scoped tutor theme
+ * Apply via .tutor-zara on cards or .agent-zara on pages where Zara is active.
+ * Elegant premium accent: soft gold with refined teal highlight.
+ * Does not affect other tutor styles.
+ */
+
+:root {
+  --zara-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --zara-gold: #c4a574;
+  --zara-gold-soft: #d9c49a;
+  --zara-teal: #6eb8c4;
+  --zara-teal-soft: #8ecbd4;
+  --zara-glow: rgba(196, 165, 116, 0.3);
+  --zara-glow-strong: rgba(110, 184, 196, 0.38);
+  --zara-glow-soft: rgba(196, 165, 116, 0.12);
+  --zara-line: rgba(196, 165, 116, 0.24);
+  --zara-line-teal: rgba(110, 184, 196, 0.22);
+}
+
+/* ---------- Tutor selection card ---------- */
+.tutor-card.tutor-zara {
+  transition:
+    transform 0.6s var(--zara-ease),
+    box-shadow 0.6s var(--zara-ease),
+    border-color 0.6s var(--zara-ease);
+}
+
+.tutor-card.tutor-zara::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.42;
+  background:
+    radial-gradient(ellipse 85% 55% at 50% 0%, rgba(196, 165, 116, 0.14), transparent 68%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(110, 184, 196, 0.08), transparent 70%);
+  transition: opacity 0.6s var(--zara-ease);
+}
+
+.tutor-card.tutor-zara:hover {
+  transform: translateY(-4px);
+  border-color: var(--zara-line);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.4),
+    0 0 32px var(--zara-glow),
+    0 0 48px rgba(110, 184, 196, 0.08);
+}
+
+.tutor-card.tutor-zara:hover::before {
+  opacity: 0.9;
+}
+
+.tutor-card.tutor-zara:hover .tutor-photo img {
+  transform: scale(1.05);
+  transition: transform 0.8s var(--zara-ease);
+}
+
+.tutor-card.tutor-zara .tutor-photo img {
+  transition: transform 0.8s var(--zara-ease);
+}
+
+.tutor-card.tutor-zara.is-selected {
+  border-color: var(--zara-gold);
+  box-shadow:
+    0 0 0 2px rgba(196, 165, 116, 0.38),
+    0 0 36px var(--zara-glow),
+    0 0 56px rgba(110, 184, 196, 0.14),
+    0 24px 54px rgba(0, 0, 0, 0.48);
+  animation: zara-card-glow 4s var(--zara-ease) infinite alternate;
+}
+
+.tutor-card.tutor-zara.is-selected::before {
+  opacity: 1;
+}
+
+@keyframes zara-card-glow {
+  from {
+    box-shadow:
+      0 0 0 2px rgba(196, 165, 116, 0.32),
+      0 0 30px var(--zara-glow),
+      0 24px 54px rgba(0, 0, 0, 0.48);
+  }
+  to {
+    box-shadow:
+      0 0 0 2px rgba(110, 184, 196, 0.36),
+      0 0 44px var(--zara-glow-strong),
+      0 24px 54px rgba(0, 0, 0, 0.48);
+  }
+}
+
+/* ---------- Home carousel chip ---------- */
+.tutor-chip.tutor-zara {
+  transition: transform 0.6s var(--zara-ease), box-shadow 0.6s var(--zara-ease);
+}
+
+.tutor-chip.tutor-zara:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 24px var(--zara-glow);
+}
+
+.tutor-chip.tutor-zara:hover img {
+  border-color: var(--zara-gold);
+  box-shadow: 0 12px 32px var(--zara-glow-soft);
+}
+
+/* ---------- Active agent: map panel, dashboard, lessons ---------- */
+body.agent-zara .zara-btn,
+body.agent-zara .zara-panel {
+  transition: transform 0.6s var(--zara-ease), box-shadow 0.6s var(--zara-ease), border-color 0.6s var(--zara-ease);
+}
+
+body.agent-zara .zara-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px var(--zara-glow);
+}
+
+body.agent-zara .zara-orb {
+  box-shadow: 0 0 20px var(--zara-glow);
+  animation: zara-orb-pulse 4.5s var(--zara-ease) infinite alternate;
+}
+
+@keyframes zara-orb-pulse {
+  from { box-shadow: 0 0 14px var(--zara-glow-soft); }
+  to   { box-shadow: 0 0 26px var(--zara-glow-strong); }
+}
+
+body.agent-zara .zara-panel {
+  border-color: var(--zara-line);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.44), 0 0 28px var(--zara-glow-soft);
+}
+
+body.agent-zara .dashboard-agent-strip {
+  box-shadow: inset 0 0 28px var(--zara-glow-soft);
+  border-color: var(--zara-line-teal);
+}
+
+body.agent-zara .lesson-sidebar {
+  box-shadow: inset 0 0 36px var(--zara-glow-soft);
+}
+
+body.agent-zara .lesson-avatar-frame {
+  box-shadow: 0 0 22px var(--zara-glow);
+  transition: box-shadow 0.6s var(--zara-ease);
+}
+
+body.agent-zara .chat-msg--agent,
+body.agent-zara .lesson-tutor-preview {
+  border-color: var(--zara-line);
+  box-shadow: 0 0 18px var(--zara-glow-soft);
+}
+
+/* ---------- Zara profile page ---------- */
+.zara-profile-page {
+  --zara-accent: var(--zara-gold);
+  --zara-accent-soft: var(--zara-gold-soft);
+  --zara-highlight: var(--zara-teal);
+}
+
+.zara-profile-page .zara-hero-photo {
+  box-shadow: 0 0 44px var(--zara-glow), 0 0 64px rgba(110, 184, 196, 0.1);
+  transition: box-shadow 0.6s var(--zara-ease);
+}
+
+.zara-profile-page .zara-hero-photo:hover {
+  box-shadow: 0 0 56px var(--zara-glow-strong), 0 0 80px rgba(110, 184, 196, 0.14);
+}
+
+.zara-profile-page .zara-hero-role,
+.zara-profile-page .zara-section h2,
+.zara-profile-page .zara-card h3 {
+  color: var(--zara-gold);
+}
+
+.zara-profile-page .zara-catchphrase {
+  color: var(--zara-gold-soft);
+  animation: zara-catchphrase-glow 4.5s var(--zara-ease) infinite alternate;
+}
+
+@keyframes zara-catchphrase-glow {
+  from { text-shadow: 0 0 10px var(--zara-glow-soft); }
+  to   { text-shadow: 0 0 20px var(--zara-glow), 0 0 32px rgba(110, 184, 196, 0.12); }
+}
+
+.zara-profile-page .zara-tag {
+  transition: border-color 0.6s var(--zara-ease), box-shadow 0.6s var(--zara-ease);
+  color: var(--zara-gold-soft);
+  background: linear-gradient(135deg, rgba(196, 165, 116, 0.06), rgba(110, 184, 196, 0.04));
+}
+
+.zara-profile-page .zara-tag:hover {
+  border-color: var(--zara-line);
+  box-shadow: 0 0 16px var(--zara-glow-soft);
+}
+
+.zara-profile-page .zara-card,
+.zara-profile-page .zara-example-card,
+.zara-profile-page .zara-step-card,
+.zara-profile-page .zara-stretch-card,
+.zara-profile-page .zara-compare-card {
+  transition: border-color 0.6s var(--zara-ease), box-shadow 0.6s var(--zara-ease);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(14px);
+}
+
+.zara-profile-page .zara-card:hover,
+.zara-profile-page .zara-example-card:hover,
+.zara-profile-page .zara-step-card:hover,
+.zara-profile-page .zara-stretch-card:hover,
+.zara-profile-page .zara-compare-card:hover {
+  border-color: var(--zara-line);
+  box-shadow: 0 0 24px var(--zara-glow-soft), 0 0 40px rgba(110, 184, 196, 0.06);
+}
+
+.zara-profile-page .zara-section ul li::before {
+  color: var(--zara-teal);
+}
+
+.zara-profile-page .zara-dialogue-line--zara {
+  align-self: flex-start;
+  max-width: 92%;
+  background: linear-gradient(135deg, rgba(196, 165, 116, 0.1), rgba(110, 184, 196, 0.08));
+  border: 1px solid var(--zara-line);
+  color: #ebe4d8;
+}
+
+.zara-profile-page .zara-cta {
+  background: linear-gradient(120deg, var(--zara-gold-soft), var(--zara-teal));
+  color: #1a2430;
+  box-shadow: 0 16px 40px var(--zara-glow);
+}
+
+.zara-profile-page .zara-cta:hover {
+  box-shadow: 0 20px 48px var(--zara-glow-strong);
+}
+
+.zara-profile-page .zara-back:hover {
+  color: var(--zara-gold);
+  border-color: var(--zara-line);
+}
+
+.zara-profile-page .zara-hero-badge {
+  color: var(--zara-gold-soft);
+}
+
+.zara-profile-page .zara-compare-weaker {
+  border-left: 3px solid rgba(255, 255, 255, 0.12);
+  padding-left: 12px;
+  margin-bottom: 10px;
+  color: #a8b8c4;
+}
+
+.zara-profile-page .zara-compare-stronger {
+  border-left: 3px solid var(--zara-teal);
+  padding-left: 12px;
+  margin-bottom: 10px;
+  color: #dce8ec;
+}
+
+.zara-profile-page .zara-compare-why {
+  font-size: 13px;
+  color: var(--zara-gold-soft);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.zara-profile-page .zara-stretch-focus {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--zara-teal);
+  margin-top: 8px;
+  display: block;
+}
+
+.zara-profile-page .zara-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.zara-profile-page .zara-step-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  align-items: start;
+  border-radius: 14px;
+  border: 1px solid var(--glass-line);
+  padding: 16px 18px;
+}
+
+.zara-profile-page .zara-step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a2430;
+  background: linear-gradient(135deg, var(--zara-gold-soft), var(--zara-teal));
+  box-shadow: 0 4px 16px var(--zara-glow-soft);
+  flex-shrink: 0;
+}
+
+.zara-profile-page .zara-step-label {
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--zara-gold);
+  margin-bottom: 4px;
+  display: block;
+  font-weight: 600;
+}
+
+.zara-profile-page .zara-step-text {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #d8e4ea;
+}

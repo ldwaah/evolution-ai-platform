@@ -1,0 +1,91 @@
+{
+  "topicId": "petitions-boycotts-media",
+  "topicTitle": "Petitions, Boycotts, and Digital Participation",
+  "moduleId": "module-4",
+  "lessonIds": [
+    "lesson-18"
+  ],
+  "levels": {
+    "1": {
+      "summary": "Citizens can speak up by signing petitions, boycotting products, or posting on social media.",
+      "keyPoints": [
+        "Petition asks leaders to change something.",
+        "Boycott = refusing to buy to protest.",
+        "Peaceful protest is a democratic right."
+      ],
+      "explainLike": "Three ways to be heard: ask (petition), spend (boycott), share (social media)."
+    },
+    "2": {
+      "summary": "UK Parliament considers petitions with 100,000+ signatures for debate. Local councils accept petitions too.",
+      "keyPoints": [
+        "petition.parliament.uk is official.",
+        "Boycotts target companies or countries.",
+        "Social media can spread campaigns fast."
+      ],
+      "explainLike": "Model: issue → petition signatures → debate or government response."
+    },
+    "3": {
+      "summary": "Digital tools lower barriers to participation but raise misinformation risks.",
+      "keyPoints": [
+        "Clicktivism may be shallow engagement.",
+        "Hashtags coordinate global campaigns.",
+        "Echo chambers reinforce one-sided views."
+      ],
+      "explainLike": "One benefit, one risk: fast reach versus false claims spreading."
+    },
+    "4": {
+      "summary": "Apply lawful participation limits: harassment, incitement, and defamation online.",
+      "keyPoints": [
+        "Public Order Act limits violent protest.",
+        "Online abuse can be criminal.",
+        "Successful campaigns use evidence and allies."
+      ],
+      "explainLike": "Steps: goal → lawful tactic → audience → measure response."
+    },
+    "5": {
+      "summary": "Explain how petitions and boycotts influence decision-makers in democracy.",
+      "keyPoints": [
+        "MPs track constituency petition numbers.",
+        "Economic pressure can change corporate policy.",
+        "Media coverage amplifies campaigns."
+      ],
+      "explainLike": "Therefore elected representatives respond when many voters care visibly."
+    },
+    "6": {
+      "summary": "Discuss whether online activism creates real change or only awareness.",
+      "keyPoints": [
+        "Pro: mobilises youth, low cost, rapid.",
+        "Con: slacktivism, algorithms, polarisation.",
+        "Examples: climate strikes, consumer boycotts."
+      ],
+      "explainLike": "Weigh awareness versus concrete policy wins."
+    },
+    "7": {
+      "summary": "Exam: define boycott (AO1), apply tactics to scenario (AO2), evaluate digital democracy (AO3).",
+      "keyPoints": [
+        "Distinguish petition from referendum.",
+        "Suggest lawful actions for given issue.",
+        "Evaluate representation of all groups online."
+      ],
+      "explainLike": "Nia: 'suggest' needs realistic, legal citizenship actions."
+    },
+    "8": {
+      "summary": "Analyse government e-petition responses and selective engagement.",
+      "keyPoints": [
+        "Government may decline to act despite signatures.",
+        "Astroturfing fake grassroots campaigns.",
+        "Data protection in campaign apps."
+      ],
+      "explainLike": "Examine power imbalance between citizens and institutions."
+    },
+    "9": {
+      "summary": "Evaluate whether digital participation strengthens UK democracy.",
+      "keyPoints": [
+        "Synthesis: media, pressure groups, active citizenship.",
+        "Judgement on inclusion and manipulation.",
+        "Coherent evaluative line."
+      ],
+      "explainLike": "Mastery: democracy in the feed — judge quality not just quantity of voice."
+    }
+  }
+}

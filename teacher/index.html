@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EVOlearn · Teacher portal</title>
+  <link rel="stylesheet" href="../assets/css/teacher-portal.css" />
+</head>
+<body class="teacher-portal">
+  <div class="tp-shell">
+    <header class="tp-brand">
+      <img src="../assets/logo.svg" alt="EVOlearn" width="56" height="56" />
+      <div>
+        <h1>Teacher portal</h1>
+        <p>Approve tutor placements and view student progress</p>
+      </div>
+    </header>
+
+    <div id="tp-status" class="tp-status-bar" role="status" aria-live="polite"></div>
+
+    <!-- Firebase not configured -->
+    <section id="tp-unconfigured" class="tp-card tp-unconfigured" hidden>
+      <h2>Firebase not configured</h2>
+      <p class="tp-sub">Add your Firebase web config to enable the teacher portal. Until then, use demo mode on the student app without cloud sync.</p>
+      <p>See <strong>docs/DATABASE.md</strong> for setup steps.</p>
+      <code>window.EVO_FIREBASE_CONFIG = { apiKey, authDomain, projectId, ... }</code>
+      <a class="tp-back-link" href="../login.html">← Back to sign in</a>
+    </section>
+
+    <!-- Login -->
+    <section id="tp-login" class="tp-card tp-card--narrow">
+      <h2>Teacher sign in</h2>
+      <p class="tp-sub">Sign in with your demo username and password</p>
+      <form id="tp-login-form" autocomplete="on">
+        <div class="tp-field">
+          <label for="tp-username">Username</label>
+          <input id="tp-username" name="username" type="text" autocomplete="username" required />
+        </div>
+        <div class="tp-field">
+          <label for="tp-password">Password</label>
+          <input id="tp-password" name="password" type="password" autocomplete="current-password" required />
+        </div>
+        <button class="tp-btn tp-btn--primary tp-btn--block" type="submit">Sign in</button>
+      </form>
+      <p class="tp-sub" style="margin-top:10px">Demo teacher: <strong>Teacher123</strong> / <strong>Teacher123</strong></p>
+      <a class="tp-back-link" href="../login.html">← Student sign in</a>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="tp-dashboard" hidden>
+      <div class="tp-topbar">
+        <div>
+          <strong id="tp-teacher-name">Teacher</strong>
+          <span class="tp-muted"> · School <span id="tp-school-id">demo</span></span>
+          <span id="tp-pending-count" class="tp-badge" hidden>0 pending</span>
+        </div>
+        <div class="tp-topbar-actions">
+          <button type="button" class="tp-btn tp-btn--ghost" id="tp-refresh">Refresh</button>
+          <button type="button" class="tp-btn tp-btn--ghost" id="tp-sign-out">Sign out</button>
+        </div>
+      </div>
+
+      <div id="tp-list-view">
+        <div class="tp-card">
+          <h2>Students</h2>
+          <p class="tp-sub">Review tutor placements and track learning progress</p>
+          <div class="tp-table-wrap">
+            <table class="tp-table" id="tp-students-table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Level</th>
+                  <th>Tutor</th>
+                  <th>Status</th>
+                  <th>Lessons</th>
+                  <th>Quizzes</th>
+                  <th>Last active</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tp-students-body"></tbody>
+            </table>
+          </div>
+          <p id="tp-students-empty" class="tp-empty" hidden>No students in this school yet. Students appear here after they sign up and complete the placement assessment.</p>
+        </div>
+      </div>
+
+      <div id="tp-detail" class="tp-card" hidden>
+        <button type="button" class="tp-btn tp-btn--ghost" id="tp-detail-back">← Back to students</button>
+        <h2 id="tp-detail-name" style="margin-top:16px">Student</h2>
+        <p class="tp-sub" id="tp-detail-meta"></p>
+
+        <div id="tp-detail-tutor" class="tp-detail-card" style="margin-top:12px"></div>
+
+        <div class="tp-tutor-change">
+          <select id="tp-detail-tutor-select" aria-label="Choose tutor"></select>
+          <button type="button" class="tp-btn tp-btn--primary" id="tp-detail-save-tutor">Save tutor</button>
+          <button type="button" class="tp-btn tp-btn--primary" id="tp-detail-approve">Approve suggested tutor</button>
+        </div>
+
+        <div class="tp-detail-grid">
+          <div class="tp-detail-card">
+            <h3>Lessons completed</h3>
+            <div id="tp-detail-lessons"></div>
+          </div>
+          <div class="tp-detail-card">
+            <h3>Quiz results</h3>
+            <div id="tp-detail-quizzes"></div>
+          </div>
+          <div class="tp-detail-card">
+            <h3>Assessment band</h3>
+            <p id="tp-detail-assessment" class="tp-muted">See level and placement score above.</p>
+          </div>
+          <div class="tp-detail-card">
+            <h3>Emblems</h3>
+            <div id="tp-detail-emblems"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="../assets/js/firebase-config.local.js" onerror=""></script>
+  <script src="../assets/js/firebase-config.js"></script>
+  <script src="../assets/js/student-profile.js"></script>
+  <script src="../assets/js/student-sync.js"></script>
+  <script src="../assets/js/teacher-auth.js"></script>
+  <script src="../assets/js/teacher-portal.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.EvoTeacherPortal) EvoTeacherPortal.boot();
+    });
+  </script>
+</body>
+</html>

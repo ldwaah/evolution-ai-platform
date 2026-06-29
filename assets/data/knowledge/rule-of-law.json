@@ -1,0 +1,88 @@
+{
+  "topicId": "rule-of-law",
+  "topicTitle": "The Rule of Law",
+  "moduleId": "module-3",
+  "lessonIds": ["lesson-13"],
+  "levels": {
+    "1": {
+      "summary": "The rule of law means everyone must follow the law, including the government. No one is above the law.",
+      "keyPoints": [
+        "Laws help keep people safe and treat people fairly.",
+        "Police and courts make sure laws are followed."
+      ],
+      "explainLike": "Even the Prime Minister has to obey the law, just like everyone else. That is what rule of law means."
+    },
+    "2": {
+      "summary": "In the UK, laws are made by Parliament and applied by courts. The rule of law protects people from unfair treatment and arbitrary power.",
+      "keyPoints": [
+        "Everyone is equal before the law regardless of wealth or status.",
+        "Judges are independent, politicians cannot tell them how to decide cases.",
+        "Innocent until proven guilty is a key principle in criminal trials."
+      ],
+      "explainLike": "If someone is accused of a crime, the court must prove guilt, the accused does not have to prove innocence. That keeps trials fair."
+    },
+    "3": {
+      "summary": "The rule of law is a fundamental British value. It means laws are clear, public, and applied consistently, with access to justice for all.",
+      "keyPoints": [
+        "Magistrates' courts and Crown Court handle criminal cases at different levels.",
+        "Solicitors and barristers represent people in legal proceedings.",
+        "Legal aid helps people who cannot afford a lawyer."
+      ],
+      "explainLike": "Rule of law is like the referee in sport, the rules are known, the referee is neutral, and the same rules apply to both teams."
+    },
+    "4": {
+      "summary": "The UK constitution is largely unwritten but rests on principles including parliamentary sovereignty, the rule of law, and separation of powers.",
+      "keyPoints": [
+        "Parliament makes law; the judiciary interprets it; the executive implements it.",
+        "Judicial review allows courts to check whether government action is lawful.",
+        "Human Rights Act 1998 allows courts to declare incompatibility with ECHR rights."
+      ],
+      "explainLike": "Separation of powers stops one group having too much control, MPs make laws, but judges decide if the government followed them."
+    },
+    "5": {
+      "summary": "Explain why the rule of law matters in a democracy. Link to fairness, accountability, and protection of rights with accurate legal vocabulary.",
+      "keyPoints": [
+        "Arbitrary power = decisions without legal limits; rule of law prevents this.",
+        "Due process means fair procedures must be followed in legal cases.",
+        "Without rule of law, governments could imprison critics without trial."
+      ],
+      "explainLike": "Use a because chain: rule of law ensures fair trials, which protects liberty, which allows people to participate in democracy without fear."
+    },
+    "6": {
+      "summary": "Apply the rule of law to scenarios involving police powers, stop and search, or government emergency measures. Consider whose rights are affected.",
+      "keyPoints": [
+        "Police must act within their legal powers, abuse can be challenged in court.",
+        "Stop and search must meet legal thresholds; disproportionate use raises equality concerns.",
+        "Emergency laws during crises must still respect core rights and judicial oversight."
+      ],
+      "explainLike": "In scenario answers, identify the legal principle, describe the rights at stake, and judge whether the action respects rule of law."
+    },
+    "7": {
+      "summary": "Exam technique: describe rule of law principles (AO1), explain how courts uphold them (AO2), evaluate whether the UK achieves rule of law in practice (AO3).",
+      "keyPoints": [
+        "Use 'innocent until proven guilty' and 'equality before the law' as AO1 anchors.",
+        "Judicial review and the Supreme Court are strong AO2 examples.",
+        "Discuss cuts to legal aid as a challenge to equal access to justice."
+      ],
+      "explainLike": "For AO3, argue the UK has strong institutions but note real barriers, cost, delays, or discrimination, then reach a supported conclusion."
+    },
+    "8": {
+      "summary": "Analyse tensions between national security and civil liberties. Examine whether counter-terrorism powers and surveillance laws comply with rule of law standards.",
+      "keyPoints": [
+        "Prevention of Terrorism Acts expand state powers, critics cite erosion of liberties.",
+        "Investigatory Powers Act regulates surveillance but remains controversial.",
+        "International courts (ECtHR) can rule on whether UK law breaches human rights."
+      ],
+      "explainLike": "Evaluate proportionality, are security measures the least restrictive option that still protects the public? That is the rule of law test."
+    },
+    "9": {
+      "summary": "Evaluate the health of the rule of law in the UK amid constitutional change, executive dominance, and declining public trust. Compare formal protections with lived experience of justice.",
+      "keyPoints": [
+        "Miller cases (2017, 2019) affirmed courts' role in checking executive power.",
+        "Over-incarceration and racial disparities in sentencing challenge equal treatment.",
+        "A strong rule of law requires independent judiciary, accessible courts, and government compliance."
+      ],
+      "explainLike": "Grade 8-9 answers integrate case law, social data, and constitutional theory to deliver a nuanced judgement on whether rule of law is theory, practice, or both."
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "lessonId": "lesson-2",
+  "title": "End of lesson 2 check",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Which statement best describes the difference between rights and wants?",
+      "options": [
+        "A new games console is a legal right for every UK citizen",
+        "Legal rights are protections in law for freedom, safety, and dignity",
+        "Rights must be earned through good behaviour at school and home"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "text": "A workplace introduces a rule that applies to all staff but puts disabled workers at an unfair disadvantage. Which type of discrimination is this most likely to be?",
+      "options": [
+        "Direct discrimination because one person was treated badly",
+        "Indirect discrimination because a neutral rule disadvantages a particular group",
+        "Victimisation because someone complained about unfair treatment"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q3",
+      "text": "Before carrying out a stop and search in most situations, what must a police officer have?",
+      "options": [
+        "Permission from the person's parents or teachers",
+        "Reasonable grounds for suspicion",
+        "A court order signed in advance for each individual search"
+      ],
+      "correctIndex": 1
+    }
+  ],
+  "maxPoints": 10
+}
