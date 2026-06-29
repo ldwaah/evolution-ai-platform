@@ -264,6 +264,45 @@
     });
   }
 
+  function lessonCountFromPayload(data) {
+    if (!data) return 0;
+    const lp = data.lessonProgress ?? data.localStorage?.["evolearn-progress"];
+    return Array.isArray(lp) ? lp.length : 0;
+  }
+
+  function checkpointCountFromPayload(data) {
+    if (!data) return 0;
+    const cp = data.lessonCheckpoints ?? data.localStorage?.evoLessonCheckpoints;
+    return cp && typeof cp === "object" && !Array.isArray(cp) ? Object.keys(cp).length : 0;
+  }
+
+  function quizHistoryCountFromPayload(data) {
+    if (!data) return 0;
+    const history = data.lessonQuizHistory ?? data.localStorage?.evoLessonQuizHistory;
+    return Array.isArray(history) ? history.length : 0;
+  }
+
+  function hasMeaningfulProgress(data) {
+    if (!data) return false;
+    return lessonCountFromPayload(data) > 0
+      || checkpointCountFromPayload(data) > 0
+      || quizHistoryCountFromPayload(data) > 0
+      || Boolean(data.profile?.assessedAt)
+      || typeof data.profile?.level === "number"
+      || Boolean(data.localStorage?.evoStudentProfile?.assessedAt)
+      || typeof data.localStorage?.evoStudentProfile?.level === "number";
+  }
+
+  /** Prefer uploading local when cloud was seeded empty but the device has real progress. */
+  function isCloudEmptierThanLocal(cloudData, localData) {
+    if (!localData || !hasMeaningfulProgress(localData)) return false;
+    if (!cloudData || !hasMeaningfulProgress(cloudData)) return true;
+    if (lessonCountFromPayload(localData) > lessonCountFromPayload(cloudData)) return true;
+    if (checkpointCountFromPayload(localData) > checkpointCountFromPayload(cloudData)) return true;
+    if (quizHistoryCountFromPayload(localData) > quizHistoryCountFromPayload(cloudData)) return true;
+    return false;
+  }
+
   function collectLocalProgress() {
     const localStorageSnapshot = {};
     PERSIST_KEYS.forEach((key) => {
@@ -536,6 +575,8 @@
     const ctx = await getFirestoreContext();
     if (!ctx) return { ok: false, reason: "no-firestore" };
 
+    const localPayload = collectLocalProgress();
+
     try {
       const [progressSnap, studentSnap] = await Promise.all([
         firestoreMod.getDoc(ctx.docRef),
@@ -545,13 +586,22 @@
         mergeTutorApprovalFromStudentDoc(studentSnap.data());
       }
       if (!progressSnap.exists()) {
-        if (options?.uploadLocalIfEmpty) {
-          return saveAllProgress({ reason: "first-cloud-seed" });
+        if (hasMeaningfulProgress(localPayload) || options?.uploadLocalIfEmpty) {
+          return saveAllProgress({ reason: "first-cloud-seed", payload: localPayload });
         }
         return { ok: true, empty: true };
       }
-      applySnapshotToLocal(progressSnap.data(), { cloudWins: options?.cloudWins !== false });
-      return { ok: true, updatedAt: progressSnap.data()?.updatedAt || null };
+
+      const cloudData = progressSnap.data();
+      if (isCloudEmptierThanLocal(cloudData, localPayload)) {
+        return saveAllProgress({
+          reason: "local-richer-than-cloud",
+          payload: localPayload,
+        });
+      }
+
+      applySnapshotToLocal(cloudData, { cloudWins: options?.cloudWins !== false });
+      return { ok: true, updatedAt: cloudData?.updatedAt || null };
     } catch (err) {
       warn("progress load failed", err);
       return { ok: false, reason: "load-failed", error: err };
@@ -822,7 +872,9 @@
 
   async function recordLessonComplete(progressKey, lessonId, moduleId) {
     notifyChange("lesson-complete");
-    return writeEvent("lesson_complete", { progressKey, lessonId, moduleId });
+    const eventResult = await writeEvent("lesson_complete", { progressKey, lessonId, moduleId });
+    await flushSave("lesson-complete");
+    return eventResult;
   }
 
   async function logEvent(type, payload) {
@@ -853,8 +905,19 @@
       flushQueue().catch(() => {});
     });
     global.addEventListener("evolearn:auth-ready", (event) => {
-      if (event.detail?.signedIn) flushQueue().catch(() => {});
+      if (event.detail?.signedIn) {
+        flushQueue().catch(() => {});
+        flushSave("auth-ready").catch(() => {});
+      }
     });
+    global.document?.addEventListener?.("visibilitychange", () => {
+      if (global.document.visibilityState === "hidden") {
+        flushSave("visibility-hidden").catch(() => {});
+      }
+    });
+    global.setInterval?.(() => {
+      if (isSignedIn() && isOnline()) flushSave("periodic").catch(() => {});
+    }, 60000);
     global.addEventListener("storage", (event) => {
       if (!event.key || !PERSIST_KEYS.includes(event.key)) return;
       if (!isSignedIn()) return;

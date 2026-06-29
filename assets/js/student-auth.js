@@ -48,7 +48,8 @@
     initPromise = (async () => {
       const config = global.EvoFirebaseConfig.getConfig();
       const { appMod, authMod, firestoreMod } = await loadFirebaseModules();
-      firebaseApp = appMod.initializeApp(config);
+      const existing = appMod.getApps?.() || [];
+      firebaseApp = existing.length ? existing[0] : appMod.initializeApp(config);
       auth = authMod.getAuth(firebaseApp);
       db = firestoreMod.getFirestore(firebaseApp);
 
@@ -266,8 +267,8 @@
           try { global.localStorage.setItem("evoSchoolId", DEMO_SCHOOL_ID); } catch { /* ignore */ }
           await ctx.authMod.updateProfile(user, { displayName: u });
           await ensureStudentAccountDoc(ctx, user, u, { schoolId: DEMO_SCHOOL_ID });
-          if (global.EvoStudentSync?.saveAllProgress) {
-            await global.EvoStudentSync.saveAllProgress({ reason: "demo-auto-create" });
+          if (global.EvoStudentSync?.loadProgressIntoLocal) {
+            await global.EvoStudentSync.loadProgressIntoLocal({ cloudWins: true });
           }
           markSessionEntered();
           if (switched) maybeReloadAfterUserSwitch();

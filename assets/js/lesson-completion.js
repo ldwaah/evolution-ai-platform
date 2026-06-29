@@ -18,7 +18,7 @@
     }
   }
 
-  function markComplete(progressKey) {
+  async function markComplete(progressKey) {
     const done = getDone();
     if (done.has(progressKey)) return false;
     done.add(progressKey);
@@ -27,6 +27,9 @@
       global.EvoLessonProgress?.clearCheckpoint?.(progressKey);
     } catch { /* checkpoint optional */ }
     global.EvoStudentSync?.notifyChange?.("lesson-complete");
+    try {
+      await global.EvoStudentSync?.flushSave?.("lesson-complete");
+    } catch { /* sync optional */ }
     return true;
   }
 
@@ -106,7 +109,7 @@
       btn.classList.toggle("is-done", hint.done);
     }
 
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
       const s = state();
       if (!canComplete({
         progressKey,
@@ -115,10 +118,10 @@
         quizActive: s.quizActive,
         requireQuizView,
       })) return;
-      markComplete(progressKey);
+      await markComplete(progressKey);
       try {
         const parts = String(progressKey || "").split(".");
-        global.EvoStudentSync?.recordLessonComplete?.(
+        await global.EvoStudentSync?.recordLessonComplete?.(
           progressKey,
           parts[2] || "",
           parts[1] || "",
